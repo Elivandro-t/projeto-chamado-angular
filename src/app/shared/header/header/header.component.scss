@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .toolbar{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+    .span{
+      cursor: pointer;
+      font-size: 25px;
+      color: white;
+    }
+  }
+  .favoritos{
+    background-color: rgb(131, 170, 157);
+  }
+  .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .button-icon{
+      width:120px;
+    }
+    button{
+     margin-left: 10px;
+     font-size: 16px;
+    }
+  }

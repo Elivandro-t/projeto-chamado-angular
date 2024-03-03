@@ -1,0 +1,19 @@
+<header class="container header">
+    <div class="toolbar">
+        <span class="span" (click)="navigate()" style="color: aliceblue;size:50px;" >My App</span>
+        <span class="example-spacer"></span>
+        <div class="button">
+          <mat-chip-listbox  aria-label="Fish selection">
+            <mat-chip-option mat-button [matMenuTriggerFor]="menu" color="accent" selected>chamados</mat-chip-option>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </mat-chip-listbox>
+          <button mat-icon-button class="favoritos" aria-label="Example icon-button with heart icon">
+            <mat-icon></mat-icon>
+          </button>
+        </div>
+      </div>
+      
+</header>
