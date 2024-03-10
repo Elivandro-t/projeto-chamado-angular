@@ -1,0 +1,95 @@
+<app-mural-pricipal>
+    <div class="continer_int">
+        <div class="campos ">
+            <div class="logo">
+                <img class="imagen-card" src="assets/pc.png" />
+                <h2>suporte informatica</h2>
+            </div>
+            <form [formGroup]="myForm">
+                <div class="input_container-int">
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>informe o setor</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="setor"  aria-label="Number" matInput 
+                            [matAutocomplete]="auto">
+                            <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">campo obrigatorio</mat-error>
+                        </mat-form-field>
+                        <mat-autocomplete class="auto" #auto="matAutocomplete">
+                             <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">campo obrigatorio</mat-error>
+                            <mat-option *ngFor="let options of setor" [value]="options.name">{{options.name}}</mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>informe o seu nome</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="usuario"   matInput >
+                            <mat-error *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">campo obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+                  
+                   
+                </div>
+                <div class="input_container-int2">
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>solicitação</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="solicitacao"   matInput >
+                            <mat-error *ngIf="myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched">campo obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="input_container">
+                        <b class="ls-label-text">
+                            <p>informe o patrimonio</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="patrimonio"   matInput >
+                            <mat-error *ngIf="myForm.get('patrimonio')?.errors?.['required']&&myForm.get('patrimonio')?.touched">campo obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="input_container">
+                        <b class="ls-label-text">
+                            <p>tipo de equipamento</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="equipamento"   matInput >
+                            <mat-error *ngIf="myForm.get('equipamento')?.errors?.['required']&&myForm.get('equipamento')?.touched">campo obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="input_container textarea">
+                        <label class="txt ls-label">
+                            <b class="ls-label-text">
+                                <p>Descrição</p>
+                                <p class="risc">*</p>
+                            </b>
+                            <textarea formControlName="descricao" rows="1" class="textarea_input ls-textarea-autoresize"></textarea>
+                        </label>
+                    </div>
+                    <div class="input_container">
+                        <b class="ls-label-text">
+                            <p>imagem</p>
+                            <p>{{titule}}</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <input  type="file" (change)="uplods($event)" accept="image/*" rows="1" class="textarea_input ls-textarea-autoresize">
+                </div>
+                    <div class="button">
+                        <button (click)="onFile()" [disabled]="!myForm.valid" class="button" mat-raised-button color="primary">Enviar</button>
+                    </div>
+                </div>
+                
+        </form>
+        </div>
+    </div>
+</app-mural-pricipal>

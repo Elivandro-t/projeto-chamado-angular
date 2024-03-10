@@ -1,0 +1,48 @@
+<app-mural-pricipal>
+    <div class="lista" >
+        <div class="lista-titulo">
+            <a>Central informatica</a>
+        </div>
+        <h2>chamados</h2>
+        <form class="form">
+            <div class="example-container">
+                <div class="search" hintLabel="Max 10 characters">
+                    <input  placeholder="buscar...">
+                </div>
+                <select class="select">
+                    <option>todos criados</option>
+                </select>
+                <select class="select">
+                    <option>Status</option>
+                </select>
+            </div>
+        </form>
+        <div class="lista-chamado" *ngIf="number>0,else spiner">
+            <div  class="mat-elevation-z8">
+                
+                <table >
+                    <thead >
+                        <tr class="header">
+                            <th  *ngFor="let i of displayedColumns">{{i}}</th>
+                        </tr>
+                    </thead>
+                   <tbody *ngFor="let itens of dataSource" >
+                        <tr class="data" >
+                            <td ><a href="/chamado/{{itens.chamadoid}}">{{itens.chamadoid}}</a></td>
+                            <td ><a href="">{{itens.titulo}}</a></td>
+                            <td id="status"  >{{itens.status}}</td>
+                            <td >{{itens.usuario}}</td>
+                            <td >{{itens.titulo}}</td>
+                        </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</app-mural-pricipal>
+<ng-template #spiner class="spiner">
+    <mat-spinner></mat-spinner> buscando dados por favor aguarde...
+</ng-template>
+
+
+

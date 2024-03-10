@@ -1,0 +1,84 @@
+<app-mural-pricipal>
+    <div class="continer_int" *ngFor="let i of foto">
+        <div class="logo">
+            <b>chamado criando por </b>
+        </div>
+        <div class="campos1 ">
+            <div class="logo">
+                <img class="imagen-card"
+                    src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" />
+                <h2>{{i.titulo}}</h2>
+            </div>
+        </div>
+        <div class="campos ">
+            <section class="container_templete ">
+                <div class="Card">
+                    <section id="formButton" class="container">
+                        <div class="name">
+                            <div class="input">
+
+                                <div class="ls-label">
+                                    <img class="imagen-card" width="30" [height]="30" src="assets/pc.png" />
+                                    <b>chamado criado por {{i.usuario}} em {{i.data}}</b>
+                                    <a (click)="ocults()">{{titulo}} detalhes</a>
+                                </div>
+                            </div>
+                            <div *ngIf="ocultar" class="ds">
+                                <div class="input-Top">
+                                
+                                    <b class="ls-label-text">
+                                        <p>informe o setor</p>
+                                        <p class="risc">*</p>
+                                    </b>
+
+                                    <label>{{i.setor}}</label>
+                                </div>
+                                <div class="input-Top">
+                                    <b class="ls-label-text">
+                                        <p>parimonio</p>
+                                        <p class="risc">*</p>
+                                    </b>
+                                    <label>{{i.patrimonio}}</label>
+                                </div>
+                                <div class="input-Top">
+                                    <b class="ls-label-text">
+                                        <p>parimonio</p>
+                                        <p class="risc">*</p>
+                                    </b>
+
+                                    <label>{{i.patrimonio}}</label>
+                                </div>
+                                <div class="input-Top">
+                                    <b class="ls-label-text">
+                                        <p>informe o seu nome</p>
+                                        <p class="risc">*</p>
+                                    </b>
+                                    <label></label>
+                                </div>
+                                <div class="input-Top">
+                                    <b class="ls-label-text">
+                                        <p>informe o setor</p>
+                                        <p class="risc">*</p>
+                                    </b>
+
+                                    <label>eee</label>
+                                </div>
+                                <div class="input-Top">
+                                    <b class="ls-label-text">
+                                        <p>Descrição</p>
+                                        <p class="risc">*</p>
+                                    </b>
+                                    <label>fgsdfgd</label>
+                                </div>
+
+                            </div>
+                        </div>
+                       <app-coments></app-coments>
+                    </section>
+                </div>
+            </section>
+                <app-dados-tecnicos></app-dados-tecnicos>
+        </div>
+    </div>
+</app-mural-pricipal>
+

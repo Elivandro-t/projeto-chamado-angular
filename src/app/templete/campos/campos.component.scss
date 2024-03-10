@@ -1,0 +1,123 @@
+.continer_int {
+  height: 100%;
+  padding: 0 56px;
+  .campos{
+    .logo{
+      width: 100%;
+      display: flex;
+      gap:10px;
+      margin-top: 5px;  
+      .imagen-card{
+        width: 50px;
+        height:50px;
+        margin-top:5px;
+      }
+    }
+  .input_container {
+    display: flex;
+    margin:32px 0;
+    flex-direction: column;
+    .input-form {
+      height:20px;
+    }
+    .txt {
+      display: flex;
+      border: 0;
+      flex-direction: column;
+      height: auto;
+      .textarea_input {
+        height: 200px;
+        max-height: 450px;
+        border-radius: 5px;
+        outline: 0;
+        resize: none;
+        border-bottom: none;
+
+      }
+    }
+  }
+
+  .input_container-int {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin:36px 0;
+    gap:40px;
+
+    .input {
+      height:20px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid rgba(136, 136, 125, 0.267);
+      outline-color: rgb(53, 36, 206);
+      border: 1px #ff34;
+    }
+
+    .input-Top {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+ 
+      .input-form {
+        height:20px;
+      }
+    }
+
+    .input-Top2 {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+
+    }
+
+  }
+
+  .input_container-int2 {
+    display: flex;
+    flex-direction: column;
+    margin:37px 0;
+    .container-int{
+      margin:40px 0;
+    }
+
+    .button {
+      width: 180px;
+    }
+
+    .input {
+      height:20px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid rgba(136, 136, 125, 0.267);
+      outline-color: rgb(53, 36, 206);
+      border: 1px #ff34;
+    }
+
+    .input-Top {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .input-form {
+        height:20px;
+      }
+    }
+
+
+  }
+
+  .textarea {
+    height: auto;
+  }
+}
+
+}
+
+.ls-label-text {
+  display: flex;
+
+  .risc {
+    color: red;
+  }
+}

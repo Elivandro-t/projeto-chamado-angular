@@ -1,6 +1,11 @@
+import { DadosReecebidosComponent } from './templete/dados-reecebidos/dados-reecebidos.component';
 import { Routes } from '@angular/router';
 import { TelaHomeComponent } from './Home/tela-home/tela-home.component';
 import { MuralComponent } from './templete/mural/mural.component';
+import { CamposComponent } from './templete/campos/campos.component';
+import { CanvasComponent } from './grafico/canvas/canvas.component';
+import { ExcelComponentComponent } from './excel-component/excel-component.component';
+import { ListaChamdoComponent } from './shared/lista-chamdo/lista-chamdo.component';
 
 export const routes: Routes = [
     {
@@ -10,6 +15,18 @@ export const routes: Routes = [
         path:'cards',component:TelaHomeComponent
     },
     {
-        path:'hardware', component:MuralComponent
+        path:'hardware', component:CamposComponent
+    },
+    {
+        path:"chamado/:card",component:DadosReecebidosComponent
+    },
+    {
+        path:"canvas", component:CanvasComponent
+    },
+    {
+        path:"planilha", component:ExcelComponentComponent
+    },
+    {
+        path:"lista", component:ListaChamdoComponent
     }
 ];
