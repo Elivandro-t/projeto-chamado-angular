@@ -4,6 +4,10 @@
 .lista{
     padding: 0 25px;
 }
+.mat-elevation-z8{
+    overflow-y: auto;
+    
+}
 .form{
         .example-container{
             display: flex;
@@ -37,6 +41,22 @@
 }
 .lista-chamado{
     height:100%;
+
+    .paginator{
+        display: flex;
+        align-items: center;
+        gap:10px;
+        .totalPages{
+            height: 30px;
+            display: flex;
+            align-items: center;
+        }
+        .button-paginator{
+            border-radius:50%;
+            width:0px;
+            height:40px;
+        }
+    }
     
     
 }
@@ -53,10 +73,15 @@
 }
 table {
     width: 100%;
+    td{
+        font-size:18px;
+        height:50px;
+    }
   }
  .spiner{
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: red;
+
  }

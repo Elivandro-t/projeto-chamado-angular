@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { GraficopizzaComponent } from '../../canvas/graficopizza/graficopizza.component';
 @Component({
   selector: 'app-canvas',
   standalone: true,
-  imports: [GraficopizzaComponent],
+  imports: [],
   templateUrl: './canvas.component.html',
   styleUrl: './canvas.component.scss'
 })

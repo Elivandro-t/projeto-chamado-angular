@@ -29,12 +29,14 @@ export class DadosReecebidosComponent implements OnInit {
   ocultar:boolean = false;
   titulo:"Mostrar"|"Ocultar"="Mostrar"
   foto:any;
+  id:any;
   constructor(private service:ChamadoApiService,private route:ActivatedRoute){}
   ngOnInit(): void {
      const card = this.route.snapshot.paramMap.get("card") as string;
-    this.service.ChamdoId(card).subscribe(e=>{
+     const id = this.route.snapshot.paramMap.get("id") as any;
+    this.service.ChamadoId(card,id).subscribe(e=>{
       this.foto = e.itens;
-      console.log(e.itens)
+
     })
    
   }

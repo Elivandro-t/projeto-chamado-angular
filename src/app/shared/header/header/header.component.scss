@@ -1,3 +1,6 @@
+.container header{
+  
+}
 .example-spacer {
     flex: 1 1 auto;
   }
@@ -5,44 +8,44 @@
     display: flex;
     justify-content: space-between;
     margin:20px;
-    .span{
-      cursor: pointer;
-      font-size: 25px;
-      color: white;
-    }
-  }
-  .favoritos{
-    background-color: rgb(131, 170, 157);
-  }
-  .button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .menu{
-      margin-right:5rem;
-      background-color: aqua;
-      width:187px;
+    .button{
+      display: flex;
+      justify-content: center;
+      .button-icon{
+        width:120px;
+      }
+      mat-chip-listbox{
+       gap: 5px;
+       .menu{}
+      }
+      .favoritos{
+        background-color: rgb(131, 170, 157);
+      }
      
+      .alert{
+        background-color: rgb(116, 116, 204);
+        width:20px;
+        height:20px;
+        text-align: center;
+        border-radius:100%;
+        font-size:12px;
+        color: azure;
+        
+      }
+      .span{
+        cursor: pointer;
+        font-size: 25px;
+        color: white;
+      }
+      .buttosn{
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+        align-items:start;
+        gap:5px;
+      }
     }
-    .button-icon{
-      width:120px;
-    }
-    button{
-     margin-left: 10px;
-     font-size: 16px;
-     display: flex;
-    }
+    
   }
-  .alert{
-    background-color: blue;
-    width:30px;
-    height:30px;
-    text-align: center;
-    border-radius:100%;
-  }
-  .buttosn{
-    font-size: 14px;
-    display: flex;
-    flex-direction: row;
-  }
-  
+
+ 

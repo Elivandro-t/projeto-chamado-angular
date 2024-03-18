@@ -73,7 +73,7 @@
                                 <p>Descrição</p>
                                 <p class="risc">*</p>
                             </b>
-                            <textarea formControlName="descricao" rows="1" class="textarea_input ls-textarea-autoresize"></textarea>
+                                <textarea class="textarea_input ls-textarea-autoresize" formControlName="descricao" rows="1" ></textarea>
                         </label>
                     </div>
                     <div class="input_container">
@@ -82,7 +82,9 @@
                             <p>{{titule}}</p>
                             <p class="risc">*</p>
                         </b>
-                        <input  type="file" (change)="uplods($event)" accept="image/*" rows="1" class="textarea_input ls-textarea-autoresize">
+                       <form  action="" enctype="multipart/form-data">
+                        <input  type="file" (change)="uplods($event)" accept="image/*" rows="5" class="textarea_input ls-textarea-autoresize"  multiple>
+                       </form>
                 </div>
                     <div class="button">
                         <button (click)="onFile()" [disabled]="!myForm.valid" class="button" mat-raised-button color="primary">Enviar</button>

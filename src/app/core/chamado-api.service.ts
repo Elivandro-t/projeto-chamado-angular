@@ -1,9 +1,9 @@
-import { Component, Injectable, Type } from '@angular/core';
+import {  Injectable } from '@angular/core';
 import { FormService } from '../service/form.service';
 import { data } from './data';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
-import { ApiResponse, Chamado, ChamdoId, Foto, setor } from './types';
+import { Observable, map } from 'rxjs';
+import { HttpClient, HttpEvent, HttpRequest, HttpResponse } from '@angular/common/http';
+import { ApiResponse, ChamadoRes, ChamdoId, Foto, setor } from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,14 @@ export class ChamadoApiService {
       data]})
   }
   pegarSetor():Observable<setor[]>{
-    return this.http.get<setor[]>(`${this.api}/service/lista`).pipe();
+    return this.http.get<setor[]>(`${this.api}/lista/setor`).pipe();
   }
-
-  pegarimg(file:File|any,data:any):Observable<any>{
+  // criando um chamdo 
+  pegarimg(file:File|any,data:any):Observable<HttpEvent<ChamadoRes>>{
     const formData: FormData = new FormData();
     const dataa = {
-      usuario_id:1,
-      usuario:data.usuario,
+      id:2,
+      servico:data.titulo,
       itens:[
         data
       ]
@@ -31,23 +31,44 @@ export class ChamadoApiService {
     const json = JSON.stringify(dataa)
     formData.append('file', file);
     formData.append("data",json)
-    const headrs= new HttpHeaders();
     console.log(json)
-  const resquest = new HttpRequest('POST','http://localhost:8080/chamado',formData,{reportProgress:true,responseType:'text'})
- return this.http.request(resquest);
+  const resquest = new HttpRequest('POST','http://localhost:8080/chamado',formData,{reportProgress:true,responseType:"json"})
+ return this.http.request<ChamadoRes>(resquest).pipe(
+  map((e:any)=>{
+    if(e instanceof HttpResponse){
+      return e.body as ChamadoRes | any;
+    }
+    return null;
+  })
+ );
     // return this.http.post(`${this.api}/foto`,formData,{reportProgress:true,responseType:'arraybuffer'})
   }
   pegarFoto():Observable<Foto[]>{
     return this.http.get<Foto[]>(`${this.api}/foto/lista`);
   }
+  // listando os chamados de usuario por usuario
 
   lista():Observable<ApiResponse>{
     let id = 1
-    return this.http.get<ApiResponse>(`${this.api}/chamado/${id}`);
-    
+    return this.http.get<ApiResponse>(`${this.api}/chamado/${id}?size=10`);
   }
-  ChamdoId(card:string):Observable<ChamdoId>{
-    let itens = `/chamado/unit/card/${card}`
+  //pegando chamdo por id
+  ChamadoId(card:string,id:number):Observable<ChamdoId>{
+    let itens = `/chamado/card/${card}/${id}`
     return this.http.get<ChamdoId>(`${this.api}${itens}`);
+  }
+  ListaAdm(page:number):Observable<ApiResponse>{
+    console.log(page)
+    return this.http.get<ApiResponse>(`${this.api}/lista?size=2&page=${page}`)
+  }
+  PegarTec(idItens:number,IdIChamado:number):Observable<ChamadoRes>{
+    const data = {
+      id:idItens,
+      tecnicoid:1,
+	    tecnico_responsavel:"fulano"
+    }
+    const dados = JSON.stringify(data)
+    console.log(dados)
+    return this.http.put<ChamadoRes>(`${this.api}/chamado/ativo/${IdIChamado}`,data);
   }
 }

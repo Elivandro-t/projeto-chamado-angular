@@ -5,9 +5,19 @@
         <div class="button">
           <mat-chip-listbox  aria-label="Fish selection">
             <mat-chip matBadge="{{titulo}}" matBadgePosition="before" matBadgeColor="accent" mat-raised-button color="accent" [matMenuTriggerFor]="menu" selected>
-              <p>chamados</p></mat-chip>
-            <mat-menu #menu="matMenu" class="menu">
-              <button  routerLink="/lista" class="buttosn" mat-menu-item><p>seu chamados</p> <p class="alert">{{titulo}}</p></button>
+              <p>chamados</p>
+            </mat-chip>
+            <mat-menu  #menu="matMenu" class="menu">
+              <button    routerLink="/lista" mat-menu-item>
+                <div class="buttosn">
+                  <p>seu chamados</p>
+                </div>
+              </button>
+              <button    routerLink="/lista/admin" mat-menu-item>
+                <div class="buttosn">
+                  <p>lista administrador</p>
+                </div>
+              </button>
               <button mat-menu-item>sair</button>
             </mat-menu>
           </mat-chip-listbox>

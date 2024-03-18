@@ -5,6 +5,7 @@ import { FigureComponent } from './shared/banner/figure/figure.component';
 import { TelaHomeComponent } from './Home/tela-home/tela-home.component';
 import { RodapeComponent } from './shared/footer/rodape/rodape.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListaChamadoComponent } from './shared/lista-chamdo/lista-chamado.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     RodapeComponent,
     HeaderComponent,
     FigureComponent,
-    HttpClientModule
+    HttpClientModule,
+    ListaChamadoComponent
   ],
   providers:[],
   templateUrl: './app.component.html',
