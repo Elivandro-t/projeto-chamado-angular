@@ -6,7 +6,10 @@
       display: flex;
       margin: 32px 0;
       flex-direction: column;
-
+      .comments-container {
+        max-height:200px;
+        overflow:auto;
+      }
       .ls-label-text {
         height: 60px;
         display: flex;

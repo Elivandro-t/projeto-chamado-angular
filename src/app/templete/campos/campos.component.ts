@@ -24,7 +24,7 @@ import e from 'express';
   imports: [
     MatFormFieldModule,
     AsyncPipe, ReactiveFormsModule, MatInputModule,
-    FormsModule, FormsModule, MatAutocompleteModule,
+    FormsModule, MatAutocompleteModule,
     MatFormFieldModule,
     CommonModule,
     MatButtonModule,

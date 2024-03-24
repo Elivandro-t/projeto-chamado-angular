@@ -1,14 +1,16 @@
-import { MuralComponent } from './../mural/mural.component';
+import { Chamado } from './../../../../core/types';
+import { MuralComponent } from '../../../mural/mural.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { CardsChamadosComponent } from '../../shared/cards/cards-chamados/cards-chamados.component';
-import { ChamadoApiService } from '../../core/chamado-api.service';
-import { MuralPricipalComponent } from '../../mural/mural-pricipal/mural-pricipal.component';
+import { CardsChamadosComponent } from '../../../../shared/cards/cards-chamados/cards-chamados.component';
+import { ChamadoApiService } from '../../../../core/chamado-api.service';
+import { MuralPricipalComponent } from '../../../../mural/mural-pricipal/mural-pricipal.component';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { DadosTecnicosComponent } from './dados-tecnicos/dados-tecnicos.component';
-import { ComentsComponent } from '../coments/coments.component';
-import { AlertComponent } from './alert/alert.component';
+import { DadosTecnicosComponent } from '../botoes/dados-tecnicos.component';
+import { ComentsComponent } from '../../../coments/coments.component';
+import { AlertComponent } from '../../../../shared/cards/cards-anuncios/alert/alert.component';
+import { StatusChamadoService } from '../../../../core/status-chamado.service';
 
 @Component({
   selector: 'app-dados-reecebidos',
@@ -37,7 +39,7 @@ export class DadosReecebidosComponent implements OnInit {
   desableButton:boolean = false;
 
  
-  constructor(private service:ChamadoApiService,private route:ActivatedRoute){}
+  constructor(private service:ChamadoApiService,private route:ActivatedRoute,private servicestatus:StatusChamadoService){}
   ngOnInit(): void {
      const card = this.route.snapshot.paramMap.get("card") as string;
      const id = this.route.snapshot.paramMap.get("id") as any;
@@ -49,7 +51,7 @@ export class DadosReecebidosComponent implements OnInit {
           this.desableButton = true;
           break;
         case "user":
-           this.desable = false;
+           this.desable = true;
           break;
         default:
           break;
@@ -60,7 +62,12 @@ export class DadosReecebidosComponent implements OnInit {
    
   }
 
-
+  atualizarstatus(id:number,Chamado:string){
+ 
+   
+    alert("id "+id+ "card"+Chamado)
+  
+  }
   ocults(){
     this.ocultar=!this.ocultar;
     switch(this.ocultar){

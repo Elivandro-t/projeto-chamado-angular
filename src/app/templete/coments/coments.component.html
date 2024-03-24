@@ -1,23 +1,28 @@
 <Section class="container_templet">
 <div class="input_container-int2">
 
-    <div class="input_container">
-        <b class="ls-label-text">
-            <p>tipo de equipamento</p>
+    <div class="input_container" >
+        <b class="ls-label-text ">
+            <p>comments</p>
             <p class="risc">*</p>
         </b>
+        <div class="comments-container"  #commentsContainer>
+            <p *ngFor="let commet of cooments">{{commet}}</p>
+        </div>
     </div>
-    <div class="input_container textarea">
-        <label class="txt ls-label">
+    <div class="input_container textarea" >
+        <form class="txt ls-label" [formGroup]="form">
             <b class="ls-label-text">
                 <p>Descrição</p>
                 <p class="risc">*</p>
             </b>
-            <textarea ows="1" class="textarea_input ls-textarea-autoresize"></textarea>
-        </label>
+           
+                <textarea ows="1" class="textarea_input ls-textarea-autoresize" formControlName="commets"></textarea>
+           
+        </form>
     </div>
     <div class="button">
-        <button class="button" mat-raised-button color="primary">Enviar</button>
+        <button (click)="enviar()" class="button" mat-raised-button color="primary">Enviar</button>
     </div>
 </div>
 </Section>

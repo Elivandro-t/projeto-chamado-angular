@@ -1,0 +1,92 @@
+<app-mural-pricipal>
+    <div class="continer_int" *ngFor="let i of foto">
+        <div class="logolink">
+            <a href=""><b>tela pricipal</b></a>/
+            <a href=""><b>tela pricipal</b></a>/
+            <a href=""><b>tela pricipal</b></a>
+        </div>
+        <div class="campos1 ">
+            <div class="logo">
+                <img class="imagen-card"
+                    src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" />
+                <h2>{{i.titulo}}</h2>
+            </div>
+        </div>
+        <div class="campos ">
+            <section class="container_templete ">
+                <div class="Card">
+                    <section id="formButton" class="container">
+                        <div class="input">
+
+                            <div class="ls-label">
+                                <img class="imagen-card" width="30" [height]="30" src="assets/pc.png" />
+                                <b>chamado criado por {{i.usuario}} em {{i.data}}</b>
+                                <a (click)="ocults()">{{titulo}} detalhes</a>
+                            </div>
+                        </div>
+                        <div class="name" *ngIf="ocultar">
+
+                            <div class="input-Top">
+                                <app-alert titulos="informe o setor"></app-alert>
+
+                                <b class="ls-label-text">
+                                    <p>informe o setor</p>
+                                    <p class="risc">*</p>
+                                </b>
+
+                                <label>{{i.setor}}</label>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="informe o pratimonio"></app-alert>
+                                <b class="ls-label-text">
+                                    <p>patrimonio</p>
+                                    <p class="risc">*</p>
+                                </b>
+                                <label>{{i.patrimonio}}</label>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="descreva a situaçao que está acontencendo"></app-alert>
+                                <b class="ls-label-text">
+                                    <p>situaçao</p>
+                                    <p class="risc">*</p>
+                                </b>
+
+                                <label>{{i.patrimonio}}</label>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="nome do usuario"></app-alert>
+                                <b class="ls-label-text">
+                                    <p>informe o seu nome</p>
+                                    <p class="risc">*</p>
+                                </b>
+                                <label></label>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="informe o equipamento"></app-alert>
+                                <b class="ls-label-text">
+                                    <p>informe o equipamento </p>
+                                    <p class="risc">*</p>
+                                </b>
+
+                                <label>eee</label>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert
+                                    titulos="descreva sua solicitacao de acordo com problema ocorrido"></app-alert>
+                                <b class="ls-label-text">
+                                    <p>Descrição</p>
+                                    <p class="risc">*</p>
+                                </b>
+                                <label>fgsdfgd</label>
+                            </div>
+                        </div>
+                    </section>
+                    <app-coments></app-coments>
+                </div>
+            </section>
+            <app-dados-tecnicos 
+            [Data]="i.tecnico_responsavel"
+            [status]="i.status" [disableAdmin]="true" [habilitaBotao]="i.client_feito"></app-dados-tecnicos>
+        </div>
+    </div>
+</app-mural-pricipal>

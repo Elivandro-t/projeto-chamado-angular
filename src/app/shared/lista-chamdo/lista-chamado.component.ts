@@ -15,6 +15,7 @@ import { ChamadoApiService } from '../../core/chamado-api.service';
 import { BuscaService } from '../../core/busca.service';
 import {MatIconModule} from '@angular/material/icon';
 import { AcitiveModule } from '../../core/activete.module';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -29,9 +30,20 @@ import { AcitiveModule } from '../../core/activete.module';
 })
 @Inject('root')
 export class ListaChamadoComponent implements OnInit {
-  constructor(private service: ChamadoApiService, public busca: BuscaService) { }
+  @Input()desableBotton!:boolean;
+  desable:boolean =false;
+  constructor(private service: ChamadoApiService, public busca: BuscaService,private route:Router) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    switch (this.desableBotton) {
+      case true:
+        this.desable = false;
+        break;
+      case false:
+         this.desable = true;
+        break;
+      default:
+        break;
+     }
   }
   totalPages=0;
   @Output() PegesUpdate = new EventEmitter();
@@ -72,6 +84,14 @@ back() {
 
   al(){
     alert("nem")
+  }
+  chamadoUser(idChamado:string,Id:number){
+    this.route.navigate([`/chamado/${idChamado}/${Id}`])
+    
+  }
+  chamadoAdmin(idChamado:string,Id:number){
+    this.route.navigate([`/chamado/${idChamado}/${Id}/admin`])
+    
   }
   
 }

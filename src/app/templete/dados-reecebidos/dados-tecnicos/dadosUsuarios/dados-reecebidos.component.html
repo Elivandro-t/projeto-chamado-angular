@@ -1,7 +1,9 @@
 <app-mural-pricipal>
     <div class="continer_int" *ngFor="let i of foto">
-        <div class="logo">
-            <b>chamado criando por </b>
+        <div class="logolink">
+            <a href=""><b>tela pricipal</b></a>/
+            <a href=""><b>tela pricipal</b></a>/
+            <a href=""><b>tela pricipal</b></a>
         </div>
         <div class="campos1 ">
             <div class="logo">
@@ -14,16 +16,16 @@
             <section class="container_templete ">
                 <div class="Card">
                     <section id="formButton" class="container">
-                        <div class="name">
-                            <div class="input">
+                        <div class="input">
 
-                                <div class="ls-label">
-                                    <img class="imagen-card" width="30" [height]="30" src="assets/pc.png" />
-                                    <b>chamado criado por {{i.usuario}} em {{i.data}}</b>
-                                    <a (click)="ocults()">{{titulo}} detalhes</a>
-                                </div>
+                            <div class="ls-label">
+                                <img class="imagen-card" width="30" [height]="30" src="assets/pc.png" />
+                                <b>chamado criado por {{i.usuario}} em {{i.data}}</b>
+                                <a (click)="ocults()">{{titulo}} detalhes</a>
                             </div>
-                            <div *ngIf="ocultar" class="ds">
+                        </div>
+                        <div class="name" *ngIf="ocultar" >
+                            
                                 <div class="input-Top">
                                     <app-alert titulos="informe o setor"></app-alert>
                                 
@@ -35,21 +37,24 @@
                                     <label>{{i.setor}}</label>
                                 </div>
                                 <div class="input-Top">
+                                    <app-alert titulos="informe o pratimonio"></app-alert>
                                     <b class="ls-label-text">
-                                        <p>parimonio</p>
+                                        <p>patrimonio</p>
                                         <p class="risc">*</p>
                                     </b>
                                     <label>{{i.patrimonio}}</label>
                                 </div>
                                 <div class="input-Top">
+                                    <app-alert titulos="descreva a situaçao que está acontencendo"></app-alert>
                                     <b class="ls-label-text">
-                                        <p>parimonio</p>
+                                        <p>situaçao</p>
                                         <p class="risc">*</p>
                                     </b>
 
                                     <label>{{i.patrimonio}}</label>
                                 </div>
                                 <div class="input-Top">
+                                    <app-alert titulos="nome do usuario"></app-alert>
                                     <b class="ls-label-text">
                                         <p>informe o seu nome</p>
                                         <p class="risc">*</p>
@@ -57,28 +62,28 @@
                                     <label></label>
                                 </div>
                                 <div class="input-Top">
+                                    <app-alert titulos="informe o equipamento"></app-alert>
                                     <b class="ls-label-text">
-                                        <p>informe o setor</p>
+                                        <p>informe o equipamento </p>
                                         <p class="risc">*</p>
                                     </b>
 
                                     <label>eee</label>
                                 </div>
                                 <div class="input-Top">
+                                    <app-alert titulos="descreva sua solicitacao de acordo com problema ocorrido"></app-alert>
                                     <b class="ls-label-text">
                                         <p>Descrição</p>
                                         <p class="risc">*</p>
                                     </b>
                                     <label>fgsdfgd</label>
                                 </div>
-
-                            </div>
                         </div>
-                       <app-coments ></app-coments>
                     </section>
+                    <app-coments ></app-coments>
                 </div>
             </section>
-                <app-dados-tecnicos [disable]="desable" [disableAdmin]="desableButton"></app-dados-tecnicos>
+                <app-dados-tecnicos [id]="foto.id" [ChamdoId]="i.chamadoid" [status]="i.status" [Perfil]="false" [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
         </div>
     </div>
 </app-mural-pricipal>

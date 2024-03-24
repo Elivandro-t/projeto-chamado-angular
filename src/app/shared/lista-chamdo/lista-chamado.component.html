@@ -19,53 +19,60 @@
             </div>
         </form>
         <div id="id" class="lista-chamado">
-            <div *ngIf="number>0,else spiner"  class="lista-chamado">
-            <div class="paginator">
-                <button class="button-paginator" [disabled]="disable" mat-button color="primary" (click)="back()">
-                    <mat-icon>arrow_back_ios</mat-icon>
-                </button>
-                <select>
-                    <option value="">1</option>
-                    <option value="">5</option>
-                    <option value="">10</option>
-                </select>
-                <button class="button-paginator1" [disabled]="disableNext" mat-button color="primary" (click)="next()">
-                    <mat-icon>arrow_forward_ios</mat-icon>
-                </button>
-                <div class="titulo">
-                  <span class="sp">1</span>
+            <div *ngIf="number>0,else spiner" class="lista-chamado">
+                <div class="paginator">
+                    <button class="button-paginator" [disabled]="disable" mat-button color="primary" (click)="back()">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <select>
+                        <option value="">1</option>
+                        <option value="">5</option>
+                        <option value="">10</option>
+                    </select>
+                    <button class="button-paginator1" [disabled]="disableNext" mat-button color="primary"
+                        (click)="next()">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                    <div class="titulo">
+                        <span class="sp">1</span>
+                    </div>
+                </div>
+                <div class="mat-elevation-z8">
+
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th *ngFor="let i of displayedColumns">{{i}}</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let servico of dataSource;let s = index">
+                            <tr class="data" *ngFor="let ite of servico.itens">
+
+                              @if (desableBotton) {
+                                <td><a  (click)="chamadoUser(ite.chamadoid,servico.id)">{{ite.chamadoid}}</a></td>
+                              }@else {
+                                <td><a (click)="chamadoAdmin(ite.chamadoid,servico.id)">{{ite.chamadoid}}</a></td>
+                              }
+
+                                <td><a href="">{{ite.titulo}}</a></td>
+                                <td id="status">{{ite.status}}</td>
+                                <td>{{ite.setor}}</td>
+                                <td>{{ite.usuario}}</td>
+                                <td>{{ite.data}}</td>
+                                <td>{{ite.tecnico_responsavel}}</td>
+
+                                <td *ngIf="exibir">
+                                    <button [disabled]="ite.aceito" mat-raised-button color="primary"
+                                        (click)="getRa(ite.id,servico.id)">aceitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="mat-elevation-z8">
-
-                <table>
-                    <thead>
-                        <tr class="header">
-                            <th *ngFor="let i of displayedColumns">{{i}}</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let servico of dataSource;let s = index">
-                        <tr class="data" *ngFor="let ite of servico.itens">
-                            <td><a href="/chamado/{{ite.chamadoid}}/{{servico.id}}">{{ite.chamadoid}}</a></td>
-                            <td><a href="">{{ite.titulo}}</a></td>
-                            <td id="status">{{ite.status}}</td>
-                            <td>{{ite.setor}}</td>
-                            <td>{{ite.usuario}}</td>
-                            <td>{{ite.data}}</td>
-                            <td>{{ite.tecnico_responsavel}}</td>
-
-                            <td *ngIf="exibir">
-                                <button [disabled]="ite.aceito" mat-raised-button color="primary"
-                                   (click)="getRa(ite.id,servico.id)">aceitar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
         </div>
     </div>
 </app-mural-pricipal>
-<ng-template #spiner class="lista-chamado" >
-    <mat-spinner></mat-spinner> 
+<ng-template #spiner class="lista-chamado">
+    <mat-spinner></mat-spinner>
 </ng-template>

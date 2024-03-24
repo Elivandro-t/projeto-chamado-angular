@@ -65,8 +65,8 @@ export class ChamadoApiService {
   PegarTec(idItens:number,IdIChamado:number):Observable<ChamadoRes>{
     const data = {
       id:idItens,
-      tecnicoid:1,
-	    tecnico_responsavel:"elivandro"
+      tecnicoid:2,
+	    tecnico_responsavel:"miqueias"
     }
     const dados = JSON.stringify(data)
     console.log(dados)
