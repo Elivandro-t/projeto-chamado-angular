@@ -1,3 +1,4 @@
+import { ListaUserComponent } from './../../shared/lista-user/lista-user.component';
 import { HttpEvent } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { setor, Chamado, ApiResponse, chamadoNew, ChamadoRes, ChamdoId } from './../../core/types';
@@ -42,11 +43,12 @@ export class CamposComponent implements OnInit {
   dats!: data;
   changeImage = false;
   files!: FileList;
-  currentFile!: File | null;
+  currentFile: File | null = null;
   filteredOptions!: Observable<setor[]>;
   titule!: number;
   setor!: setor[];
   card!: any;
+  chamdoId:any;
   constructor(private service: FormService, private http: ChamadoApiService, private router: Router) {
     this.myForm = service.form;
   }
@@ -61,6 +63,9 @@ export class CamposComponent implements OnInit {
     //        this.setor = e
     //        console.log(e)
     //  })
+    this.http.lista().subscribe(e=>{
+      this.chamdoId = e.content.map(e=>e.id)
+    })
   }
   private _filter(value: string): setor[] {
     const filterValue = value.toLowerCase();
@@ -78,8 +83,12 @@ export class CamposComponent implements OnInit {
   }
   onFile() {
     let chamado:any;
-    this.currentFile = this.files.item(0);
-    this.http.pegarimg(this.currentFile, this.service.data()).subscribe((s: any) => {
+   if(this.files!=null){
+    for(let i=0;i<this.titule;i++){
+      this.currentFile = this.files.item(i);
+    }
+   }
+    this.http.pegarimg(1,this.currentFile, this.service.data()).subscribe((s: any) => {
       if (Array.isArray(s.itens)) {
         s.itens.forEach((e: any) => {
           chamado = e.chamadoid;
@@ -90,7 +99,9 @@ export class CamposComponent implements OnInit {
 
   }
   uplods(Event: any) {
+   
     this.files = Event.target.files;
+  
     this.titule = this.files.length
   }
 

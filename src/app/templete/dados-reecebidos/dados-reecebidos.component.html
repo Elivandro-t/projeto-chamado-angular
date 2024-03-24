@@ -25,6 +25,7 @@
                             </div>
                             <div *ngIf="ocultar" class="ds">
                                 <div class="input-Top">
+                                    <app-alert titulos="informe o setor"></app-alert>
                                 
                                     <b class="ls-label-text">
                                         <p>informe o setor</p>
@@ -73,11 +74,11 @@
 
                             </div>
                         </div>
-                       <app-coments></app-coments>
+                       <app-coments ></app-coments>
                     </section>
                 </div>
             </section>
-                <app-dados-tecnicos></app-dados-tecnicos>
+                <app-dados-tecnicos [disable]="desable" [disableAdmin]="desableButton"></app-dados-tecnicos>
         </div>
     </div>
 </app-mural-pricipal>

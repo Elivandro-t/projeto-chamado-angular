@@ -18,12 +18,15 @@ export class ListaUserComponent implements OnInit {
   itens!: ChamdoId;
   event!: number;
   number!: number
+  chamadoID:any;
   constructor(private service: ChamadoApiService) { }
   ngOnInit(): void {
     this.service.lista().subscribe((e) => {
       this.dataSource = this.Extrair(e)
       this.itens = this.Extrai(e)
       this.number = e.totalElements;
+      this.chamadoID = e.content.flatMap(e=>e.id);
+      console.log("id" +this.chamadoID)
     }
     )
 
@@ -32,7 +35,7 @@ export class ListaUserComponent implements OnInit {
     return response.content.flatMap((e: any) => e)
   }
   private Extrai(response: ApiResponse): any{
-    const itens = response.content.flatMap(e => e.itens)
+    const itens = response.content.flatMap(e =>e.itens )
 
     return itens.length;
   }

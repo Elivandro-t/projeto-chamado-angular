@@ -28,16 +28,16 @@
     width: 100%;
 
     .container_templete {
-
+      padding:20px;
       width: 100%;
-
+      border: 0.2px solid #5746ee;
       .Card {
         display: flex;
-        height: 100vh;
-
         .container {
+          width: 100%;
           .name {
-            border: 0.2px solid #d6caca;
+            width: 100%;
+            border: 0.2px solid #5746ee;
             border-radius: 2px;
             .input {
               width: 100%;

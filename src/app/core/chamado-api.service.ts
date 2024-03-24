@@ -19,18 +19,19 @@ export class ChamadoApiService {
     return this.http.get<setor[]>(`${this.api}/lista/setor`).pipe();
   }
   // criando um chamdo 
-  pegarimg(file:File|any,data:any):Observable<HttpEvent<ChamadoRes>>{
+  pegarimg(id:number,file:File|any,data:any):Observable<HttpEvent<ChamadoRes>>{
     const formData: FormData = new FormData();
     const dataa = {
-      id:2,
+      id:id,
+      usuarioid:1,
       servico:data.titulo,
       itens:[
         data
       ]
     }
     const json = JSON.stringify(dataa)
-    formData.append('file', file);
     formData.append("data",json)
+      formData.append('file', file);
     console.log(json)
   const resquest = new HttpRequest('POST','http://localhost:8080/chamado',formData,{reportProgress:true,responseType:"json"})
  return this.http.request<ChamadoRes>(resquest).pipe(
@@ -49,8 +50,8 @@ export class ChamadoApiService {
   // listando os chamados de usuario por usuario
 
   lista():Observable<ApiResponse>{
-    let id = 1
-    return this.http.get<ApiResponse>(`${this.api}/chamado/${id}?size=10`);
+    let usuarioID = 1;
+    return this.http.get<ApiResponse>(`${this.api}/chamado/${usuarioID}?size=10`);
   }
   //pegando chamdo por id
   ChamadoId(card:string,id:number):Observable<ChamdoId>{
@@ -65,7 +66,7 @@ export class ChamadoApiService {
     const data = {
       id:idItens,
       tecnicoid:1,
-	    tecnico_responsavel:"fulano"
+	    tecnico_responsavel:"elivandro"
     }
     const dados = JSON.stringify(data)
     console.log(dados)

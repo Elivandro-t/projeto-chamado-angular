@@ -6,6 +6,7 @@ export interface Foto{
 }
 export interface Chamados {
   id:number,
+  usuarioid:number,
   servico:string,
   itens:[
     {
@@ -101,6 +102,6 @@ export interface chamadoNew{
   equipamento: string;
   solicitacao:string,
   descricao: string;
-  usuario_id: number;
+  usuarioid: number;
   usuario: string;
 }

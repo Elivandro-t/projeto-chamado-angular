@@ -39,9 +39,10 @@
 .lista-titulo{
     height:10%;
 }
+
 .lista-chamado{
     height:100%;
-
+    width: 100%;
     .paginator{
         display: flex;
         align-items: center;
@@ -56,6 +57,7 @@
             width:0px;
             height:40px;
         }
+       
     }
     
     
@@ -78,10 +80,10 @@ table {
         height:50px;
     }
   }
- .spiner{
+
+#id{
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
-
- }
+}

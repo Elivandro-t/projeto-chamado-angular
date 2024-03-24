@@ -8,6 +8,7 @@ import { MuralPricipalComponent } from '../../mural/mural-pricipal/mural-pricipa
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DadosTecnicosComponent } from './dados-tecnicos/dados-tecnicos.component';
 import { ComentsComponent } from '../coments/coments.component';
+import { AlertComponent } from './alert/alert.component';
 
 @Component({
   selector: 'app-dados-reecebidos',
@@ -20,7 +21,8 @@ import { ComentsComponent } from '../coments/coments.component';
     CardsChamadosComponent,
     MuralComponent,
     MuralPricipalComponent,
-    ComentsComponent
+    ComentsComponent,
+    AlertComponent
   ],
   templateUrl: './dados-reecebidos.component.html',
   styleUrl: './dados-reecebidos.component.scss'
@@ -30,16 +32,35 @@ export class DadosReecebidosComponent implements OnInit {
   titulo:"Mostrar"|"Ocultar"="Mostrar"
   foto:any;
   id:any;
+  user:any="admin"
+  desable:boolean = false;
+  desableButton:boolean = false;
+
+ 
   constructor(private service:ChamadoApiService,private route:ActivatedRoute){}
   ngOnInit(): void {
      const card = this.route.snapshot.paramMap.get("card") as string;
      const id = this.route.snapshot.paramMap.get("id") as any;
     this.service.ChamadoId(card,id).subscribe(e=>{
       this.foto = e.itens;
+      switch (this.user) {
+        case "admin":
+          this.desable = false;
+          this.desableButton = true;
+          break;
+        case "user":
+           this.desable = false;
+          break;
+        default:
+          break;
+       }
+      
 
     })
    
   }
+
+
   ocults(){
     this.ocultar=!this.ocultar;
     switch(this.ocultar){

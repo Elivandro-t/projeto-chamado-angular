@@ -18,7 +18,8 @@
                 <button mat-raised-button color="primary">buscar</button>
             </div>
         </form>
-        <div class="lista-chamado" *ngIf="number>0,else spiner">
+        <div id="id" class="lista-chamado">
+            <div *ngIf="number>0,else spiner"  class="lista-chamado">
             <div class="paginator">
                 <button class="button-paginator" [disabled]="disable" mat-button color="primary" (click)="back()">
                     <mat-icon>arrow_back_ios</mat-icon>
@@ -55,15 +56,16 @@
 
                             <td *ngIf="exibir">
                                 <button [disabled]="ite.aceito" mat-raised-button color="primary"
-                                    (click)="getRa(ite.id,servico.id)">aceitar</button>
+                                   (click)="getRa(ite.id,servico.id)">aceitar</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        </div>
     </div>
 </app-mural-pricipal>
-<ng-template #spiner class="spiner">
-    <mat-spinner></mat-spinner> buscando dados por favor aguarde...
+<ng-template #spiner class="lista-chamado" >
+    <mat-spinner></mat-spinner> 
 </ng-template>

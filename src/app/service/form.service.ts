@@ -26,7 +26,7 @@ export class FormService {
   }
   data():chamadoNew{
 		const data:chamadoNew = {
-      usuario_id:1,
+    usuarioid:1,
     usuario:this.selecione('usuario').value,
     titulo:this.selecione('titulo').value,
     equipamento:this.selecione('equipamento').value,
