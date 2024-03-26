@@ -2,6 +2,8 @@ import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { ChamadoApiService } from '../../core/chamado-api.service';
 import { ApiResponse,Chamados } from '../../core/types';
 import { ListaChamadoComponent } from '../lista-chamdo/lista-chamado.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertaDialogServiceComponent } from '../../AlertaDialog/alerta-dialog-service/alerta-dialog-service.component';
 @Component({
   selector: 'app-lista-adm',
   standalone: true,
@@ -16,7 +18,7 @@ export class ListaAdmComponent implements OnInit{
   number!:number;
   totalPages!:number;
   itens!:any;
-  constructor(private service:ChamadoApiService){}
+  constructor(private service:ChamadoApiService,private dialog:MatDialog){}
   ngOnInit(): void {
     try {
       
@@ -44,6 +46,9 @@ transformeEmIten(Itens:ApiResponse):any[]{
 getRas(event:any,ids:any) {
       
   this.service.PegarTec(event.id, ids.Idchamado).subscribe(e => {
+  
+      // this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e } })
+ 
   })
   this.ngOnInit()
 }

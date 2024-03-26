@@ -13,8 +13,8 @@
             <p>chamado para informatica</p>
         </div>
         <div class="button">
-            <button (click)="atualizarstatusFechado()" mat-raised-button color="primary" >Concluir</button>
-            <button (click)="ReabrirChamado()" style="margin:5px 0;" mat-raised-button color="secundary" >Fechar</button>
+            <button (click)="atualizarstatusFechado()" mat-raised-button color="primary" >Aprovar</button>
+            <button (click)="ReabrirChamado()" style="margin:5px 0;" mat-raised-button color="secundary" >Recusar</button>
         </div>
      
    </div>
@@ -27,6 +27,7 @@
             <button [disabled]="habilitaBotao" (click)="atualizarstatus()" mat-raised-button color="primary" >Agurdando Cliente</button>
             <button [disabled]="habilitaBotao" (click)="ReabrirChamado()" mat-raised-button color="primary" >Reabrir</button>
             <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado() " style="margin:5px 0;" mat-raised-button color="secundary" >Fechar</button>
+            <button  (click)="atu() " style="margin:5px 0;" mat-raised-button color="secundary" >dialog</button>
         </div>
  
 </div>

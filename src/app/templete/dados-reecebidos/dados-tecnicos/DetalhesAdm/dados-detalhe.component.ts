@@ -7,26 +7,28 @@ import { MuralPricipalComponent } from "../../../../mural/mural-pricipal/mural-p
 import { CardsChamadosComponent } from "../../../../shared/cards/cards-chamados/cards-chamados.component";
 import { ComentsComponent } from "../../../coments/coments.component";
 import { MuralComponent } from "../../../mural/mural.component";
-import { AlertComponent } from "../../alert/alert.component";
 import { DadosTecnicosComponent } from "../botoes/dados-tecnicos.component";
+import { AlertComponent } from "../../../alerta/alert/alert.component";
 
 
 @Component({
-  selector: 'app-dados-detahe',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    DadosTecnicosComponent,
-    MatAutocompleteModule,
-    CommonModule,
-    CardsChamadosComponent,
-    MuralComponent,
-    MuralPricipalComponent,
-    ComentsComponent,
-    AlertComponent
-  ],
-  templateUrl: './dados-detalhe.component.html',
-  styleUrl: './dados-detalhe.component.scss'
+    selector: 'app-dados-detahe',
+    standalone: true,
+    templateUrl: './dados-detalhe.component.html',
+    styleUrl: './dados-detalhe.component.scss',
+    imports: [
+        AsyncPipe,
+        DadosTecnicosComponent,
+        MatAutocompleteModule,
+        CommonModule,
+        CardsChamadosComponent,
+        MuralComponent,
+        MuralPricipalComponent,
+        ComentsComponent,
+        AlertComponent
+        
+        
+    ]
 })
 export class DadosDetalheComponent implements OnInit {
   ocultar:boolean = false;

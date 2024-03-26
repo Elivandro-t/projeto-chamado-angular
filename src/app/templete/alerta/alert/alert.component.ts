@@ -9,5 +9,5 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './alert.component.scss'
 })
 export class AlertComponent {
- @Input() titulos:any=""
+@Input() titulos:any;
 }

@@ -44,32 +44,46 @@ export class CamposComponent implements OnInit {
   changeImage = false;
   files!: FileList;
   currentFile: File | null = null;
-  filteredOptions!: Observable<setor[]>;
+  setor!: Observable<any[]>;
   titule!: number;
-  setor!: setor[];
+  setores!: setor[];
+  equipamento!:any[];
   card!: any;
-  chamdoId:any;
-  constructor(private service: FormService, private http: ChamadoApiService, private router: Router) {
+  chamdoId: any;
+  busca=""
+  constructor(public service: FormService, private http: ChamadoApiService, private router: Router) {
     this.myForm = service.form;
   }
   ngOnInit() {
-    this.filteredOptions = this.myForm.valueChanges.pipe(
+    this.carregar();
+    this.equipamentosLista();
+    this.setor = this.myForm.valueChanges.pipe(
       startWith(''),
       map(value =>
         this._filter(value as any)
       )
     )
-    //   this.http.pegarSetor().subscribe(e=>{
-    //        this.setor = e
-    //        console.log(e)
-    //  })
-    this.http.lista().subscribe(e=>{
-      this.chamdoId = e.content.map(e=>e.id)
+
+    this.http.lista().subscribe(e => {
+      this.chamdoId = e.content.map(e => e.id)
     })
   }
-  private _filter(value: string): setor[] {
+  carregar() {
+    this.http.pegarSetor().subscribe((e: any) => {
+      this.setores = e
+      console.log(e)
+    })
+  }
+  equipamentosLista(){
+    this.http.ListaEquipamento().subscribe((e:any)=>{
+       this.equipamento=e;
+       console.log("equipamento"+e.name)
+    })
+  }
+
+ public _filter(value: string): setor[] {
     const filterValue = value.toLowerCase();
-    const resultado = this.setor.filter(e => e.name.toLowerCase().includes(filterValue))
+    const resultado = this.setores.filter(e => e.name.toLowerCase().includes(filterValue))
     return resultado;
   };
 
@@ -82,13 +96,13 @@ export class CamposComponent implements OnInit {
     this.router.navigate(['/cards'])
   }
   onFile() {
-    let chamado:any;
-   if(this.files!=null){
-    for(let i=0;i<this.titule;i++){
-      this.currentFile = this.files.item(i);
+    let chamado: any;
+    if (this.files != null) {
+      for (let i = 0; i < this.titule; i++) {
+        this.currentFile = this.files.item(i);
+      }
     }
-   }
-    this.http.pegarimg(1,this.currentFile, this.service.data()).subscribe((s: any) => {
+    this.http.pegarimg(1, this.currentFile, this.service.data()).subscribe((s: any) => {
       if (Array.isArray(s.itens)) {
         s.itens.forEach((e: any) => {
           chamado = e.chamadoid;
@@ -99,9 +113,9 @@ export class CamposComponent implements OnInit {
 
   }
   uplods(Event: any) {
-   
+
     this.files = Event.target.files;
-  
+
     this.titule = this.files.length
   }
 

@@ -13,14 +13,14 @@
                             <p class="risc">*</p>
                         </b>
                         <mat-form-field class="input-form" appearance="outline">
-                            <input class="input" type="text" formControlName="setor"  aria-label="Number" matInput 
+                            <input class="input" type="text" formControlName="setor" matInput 
                             [matAutocomplete]="auto">
-                            <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">campo obrigatorio</mat-error>
+                            <mat-autocomplete class="auto" #auto="matAutocomplete"  >
+                                <mat-option *ngFor="let options of setores" [value]="options.name">{{options.name.toUpperCase()}}</mat-option>
+                            </mat-autocomplete>
+                            <!-- <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">campo obrigatorio</mat-error> -->
                         </mat-form-field>
-                        <mat-autocomplete class="auto" #auto="matAutocomplete">
-                             <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">campo obrigatorio</mat-error>
-                            <mat-option *ngFor="let options of setor" [value]="options.name">{{options.name}}</mat-option>
-                        </mat-autocomplete>
+                        
                     </div>
                     <div class="input-Top">
                         <b class="ls-label-text">
@@ -52,8 +52,10 @@
                             <p class="risc">*</p>
                         </b>
                         <mat-form-field class="input-form" appearance="outline">
-                            <input class="input" type="text" formControlName="patrimonio"   matInput >
+                            <input class="input" type="text" formControlName="patrimonio" maxlength="10"  matInput >
                             <mat-error *ngIf="myForm.get('patrimonio')?.errors?.['required']&&myForm.get('patrimonio')?.touched">campo obrigatorio</mat-error>
+                            <mat-error  *ngIf="myForm.get('patrimonio')?.errors?.['pattern']&&myForm.get('patrimonio')?.touched">Apenas números são permitidos</mat-error >
+                            <mat-error  *ngIf="myForm.get('patrimonio')?.errors?.['maxlength']&&myForm.get('patrimonio')?.touched">Máximo de 6 caracteres</mat-error >
                         </mat-form-field>
                     </div>
         
@@ -63,7 +65,11 @@
                             <p class="risc">*</p>
                         </b>
                         <mat-form-field class="input-form" appearance="outline">
-                            <input class="input" type="text" formControlName="equipamento"   matInput >
+                            <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="equipamento"   matInput >
+                            <mat-autocomplete #autoEq="matAutocomplete">
+                                <mat-option *ngFor="let opt of equipamento" [value]="opt.name" >{{opt.name.toUpperCase()}}</mat-option>
+                                <mat-option  matAutocomplete value="outros">outros</mat-option>
+                            </mat-autocomplete>
                             <mat-error *ngIf="myForm.get('equipamento')?.errors?.['required']&&myForm.get('equipamento')?.touched">campo obrigatorio</mat-error>
                         </mat-form-field>
                     </div>

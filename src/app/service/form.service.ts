@@ -11,7 +11,7 @@ export class FormService {
     setor: new FormControl(null, [Validators.required]),
     usuario: new FormControl(null, [Validators.required]),
     solicitacao: new FormControl(null, [Validators.required]),
-    patrimonio: new FormControl(null, [Validators.required]),
+    patrimonio: new FormControl(null, [Validators.required,Validators.maxLength(6),Validators.pattern('^[0-9]*$')]),
     equipamento: new FormControl(null, [Validators.required]),
     descricao: new FormControl(null, [Validators.required]),
     status:new FormControl(false)

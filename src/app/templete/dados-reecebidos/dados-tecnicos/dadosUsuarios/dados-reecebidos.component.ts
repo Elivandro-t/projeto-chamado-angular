@@ -9,8 +9,8 @@ import { MuralPricipalComponent } from '../../../../mural/mural-pricipal/mural-p
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DadosTecnicosComponent } from '../botoes/dados-tecnicos.component';
 import { ComentsComponent } from '../../../coments/coments.component';
-import { AlertComponent } from '../../../../shared/cards/cards-anuncios/alert/alert.component';
 import { StatusChamadoService } from '../../../../core/status-chamado.service';
+import { AlertComponent } from '../../../alerta/alert/alert.component';
 
 @Component({
   selector: 'app-dados-reecebidos',
@@ -24,7 +24,7 @@ import { StatusChamadoService } from '../../../../core/status-chamado.service';
     MuralComponent,
     MuralPricipalComponent,
     ComentsComponent,
-    AlertComponent
+   AlertComponent
   ],
   templateUrl: './dados-reecebidos.component.html',
   styleUrl: './dados-reecebidos.component.scss'

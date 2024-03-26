@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ChamadoApiService } from '../../../../core/chamado-api.service';
 import { StatusChamadoService } from '../../../../core/status-chamado.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Route } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertaDialogServiceComponent } from '../../../../AlertaDialog/alerta-dialog-service/alerta-dialog-service.component';
 
 @Component({
   selector: 'app-dados-tecnicos',
@@ -14,21 +16,24 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Route } from '@angular/router';
   styleUrl: './dados-tecnicos.component.scss'
 })
 export class DadosTecnicosComponent implements OnInit {
+  atua() {
+    throw new Error('Method not implemented.');
+  }
   @Output() Status: EventEmitter<any> = new EventEmitter();
   @Input() Perfil!: boolean;
   @Input() disable = false;
-  @Input() habilitaBotao!:boolean;
+  @Input() habilitaBotao!: boolean;
   @Input() disableAdmin = false;
   @Input() status: any;
-  @Input() Data!:any;
+  @Input() Data!: any;
   @Input() ChamdoId!: string;
   @Input() id!: number;
-  statusAtualizado:any;
-  constructor(private Service: StatusChamadoService, private paranss: ActivatedRoute) { }
+  statusAtualizado: any;
+  constructor(private Service: StatusChamadoService, private paranss: ActivatedRoute, private dialog: MatDialog) { }
   ngOnInit(): void {
     this.id = this.paranss.snapshot.paramMap.get("id") as any;
     this.ChamdoId = this.paranss.snapshot.paramMap.get("card") as any;
-    switch(this.status){
+    switch (this.status) {
       case "AGUARDANDO_TECNICO":
         this.statusAtualizado = "AGUARDANDO TECNICO";
         break;
@@ -53,31 +58,27 @@ export class DadosTecnicosComponent implements OnInit {
   }
   atualizarstatusFechado() {
     this.Service.mudaStatusFechado(this.id, this.ChamdoId).subscribe(e => {
-      alert(e.msg)
+      this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e.msg } })
     })
-    setTimeout(() => {
-      window.location.reload(); 
-    }, 100);
+
   }
   // reabrir chamado
   ReabrirChamado() {
     this.Service.mudaStatusReabrir(this.id, this.ChamdoId).subscribe(e => {
-      alert(e.msg)
+      this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e.msg } })
     })
-    setTimeout(() => {
-      window.location.reload(); 
-    }, 100);
   }
   //mudar status chamado para aguardando cliente
   atualizarstatus() {
     this.Service.mudaStatus(this.id, this.ChamdoId).subscribe(e => {
-     alert(e.msg)
+      this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e.msg } })
     })
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
-    
 
+
+
+  }
+  atu() {
+    this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: "ola" } })
   }
 
 }

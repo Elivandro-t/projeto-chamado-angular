@@ -18,6 +18,9 @@ export class ChamadoApiService {
   pegarSetor():Observable<setor[]>{
     return this.http.get<setor[]>(`${this.api}/lista/setor`).pipe();
   }
+  ListaEquipamento():Observable<setor[]>{
+    return this.http.get<setor[]>(`${this.api}/equipamentos/lista`).pipe();
+  }
   // criando um chamdo 
   pegarimg(id:number,file:File|any,data:any):Observable<HttpEvent<ChamadoRes>>{
     const formData: FormData = new FormData();
