@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+  .titule {
+    display: flex;
+    font-size: small;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ds-surface, #FFFFFF);
+    font-family: Arial, Helvetica, sans-serif;
+    gap:4px;
+  }
+}

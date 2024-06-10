@@ -1,0 +1,74 @@
+<app-mural-pricipal>
+    <div class="continer_int" *ngFor="let i of foto">
+        <div class="logolink">
+            <app-back-button></app-back-button>
+        </div>
+        <div class="campos1 ">
+            <div class="logo">
+                <!-- <img class="imagen-card"
+                    src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" /> -->
+                <h2>{{i.titulo}}</h2>
+            </div>
+        </div>
+        <div class="campos ">
+            <section class="container_templete ">
+                <div class="Card">
+                    <section id="formButton" class="container">
+                        <div class="input">
+
+                            <div class="ls-span">
+                                <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30" src="assets/pc.png" />
+                                <b>Chamado criado por {{auth.getname()}} em {{i.data}}</b>
+                                <a (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}} detalhes</a>
+                            </div>
+                        </div>
+                        <div class="name" *ngIf="ocultar" >
+                          
+                            <div class="input-Top">
+                                <app-alert titulos="tipo"></app-alert>
+                                <span>{{i.issuetype}}</span>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="setor"></app-alert>
+                                <span>{{i.setor}}</span>
+                            </div>
+                            @if (i.issuetype.includes("Hardware")) {
+                                <div class="input-Top">
+                                    <app-alert id="patrimonio" titulos="informe patrimonio"></app-alert>
+                                    <span>{{i.patrimonio}}</span>
+                                </div>
+                                <div class="input-Top">
+                                    <app-alert titulos="informe equipamento"></app-alert>
+                                    <span>{{i.equipamento}}</span>
+                                </div>
+                            }
+                            @else if (i.issuetype.includes("Sistema")) {
+                                <div class="input-Top">
+                                    <app-alert titulos="informe tipo de sistema"></app-alert>
+                                    <span>{{i.sistem_erro}}</span>
+                                </div>
+                                <div class="input-Top">
+                                    <app-alert titulos="informe erro"></app-alert>
+                                    <span>{{i.erro}}</span>
+                                </div>
+                            }
+                            <div class="input-Top">
+                                <app-alert titulos="nome"></app-alert>
+                                <small>{{i.usuario}}</small>
+                            </div>
+                            <div class="input-Top">
+                                <app-alert titulos="Descrição"></app-alert>
+                                <small class="descricao-itens"[innerHTML]="sanitize(i.descricao)"></small>
+                            </div>
+                            <app-imagens [data]="i.imagens"></app-imagens>
+                            
+                        </div>
+                    </section>
+                    <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
+                </div>
+            </section>
+                <app-dados-tecnicos  [id]="ids" [ChamdoId]="i.chamadoid"  [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false" [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
+        </div>
+    </div>
+</app-mural-pricipal>
+

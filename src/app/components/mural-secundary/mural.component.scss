@@ -1,0 +1,114 @@
+:host {
+    display: block;
+    margin: 0 auto;
+    max-width: 1248px;
+    width: 100%;
+    box-sizing: border-box;
+
+
+}
+
+.mural {
+    box-sizing: border-box;
+    margin-top: -24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+     .template {
+        &.primary {
+            max-width: 100%;
+            width: 900px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: var(--ds-surface, #FFFFFF);
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 0 10px;
+
+        }
+
+        &.secundary {
+            max-width: 100%;
+            // box-shadow: 1px 2px 200px 4px;
+            width: 900px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        width: 100%;
+        height:100vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:930px) {
+    .mural {
+        .template {
+            &.primary {
+                width:100%;
+                margin:  0 25px;
+            }
+
+            &.secundary {
+                // box-shadow: 1px 2px 200px 4px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:824px) {
+    .mural {
+        .template {
+            &.primary {
+                width:100%;
+
+            }
+
+            &.secundary {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:634px) {
+    .mural {
+        .template {
+            &.primary {
+                display: flex;
+                align-items: center;
+                width:100%;
+
+            }
+
+            &.secundary {
+                // box-shadow: 1px 2px 200px 4px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:444px) {
+    .mural {
+        .template {
+            &.primary {
+                width:100%;
+                margin: 0 5px;
+
+            }
+
+            &.secundary {
+                // box-shadow: 1px 2px 200px 4px;
+                width: 100%;
+            }
+        }
+    }
+}

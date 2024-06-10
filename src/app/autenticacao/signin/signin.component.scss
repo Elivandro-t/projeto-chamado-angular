@@ -1,0 +1,132 @@
+.painel{
+    height:384px;
+    background-color:var(--ds-surface,#FFFFFF);
+    border-radius:5px;
+    legend{
+        color: rgb(1, 9, 26);
+        font-size:18px;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    .painel-login{
+        width:500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+            mat-label{
+              
+                margin: 0 5px;
+            }
+            .pass{
+              display: flex;
+            }
+            mat-form-field{
+             width: 300px;
+            }
+        }
+        .btn-password{
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            padding:5px 0;
+            gap: 10px;
+            a{
+                color: blue;
+                cursor: pointer;
+            }
+            a:hover{
+                    color: rgb(180, 166, 166);
+                    text-decoration: underline;
+                    text-decoration-color: rgb(180, 166, 166);
+            }
+        }
+        
+        .btn-login-button{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            flex-direction: column;
+            gap: 5px;
+            .btn-login{
+                width: 300px;
+    
+            }
+            .btn-login-registrar{
+                width: 300px;
+                display: flex;
+                align-items: center;
+                justify-content:center;
+                gap: 10px;
+                p{
+                    color: rgb(45, 79, 107);
+                }
+                a{
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: blue;
+                }
+                a:hover{
+                    color: rgb(153, 153, 172);
+                }
+            }
+        
+       
+    }
+}
+@media screen and (max-width:520px) {
+    .painel{
+        width:90%;
+        padding: 0 25px;
+        .painel-login{
+            width:90%;
+            margin: 0 20px;
+        }
+    }
+    
+}
+@media screen and (max-width:420px) {
+    .painel{
+        display: flex;
+        width:70%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 10px;
+        .painel-login{
+            background: var(--red-to-pink-to-purple-horizontal-gradient);
+            width:100%;
+        }
+    }
+    
+}
+@media screen and (max-width:320px) {
+    .painel{
+        .painel-login{
+            background: var(--red-to-pink-to-purple-horizontal-gradient);
+            width:100%;
+            mat-form-field{
+                width:100%;
+               }
+        }
+        .btn-login-button{
+            width:90%;
+            .btn-login{
+               width:100%;
+    
+            }
+            .btn-login-registrar{
+                p{
+                    font-size:12px;
+                }
+                a{
+                    font-size: 10px;
+                }
+            }
+        
+       
+    }
+    }
+    
+}

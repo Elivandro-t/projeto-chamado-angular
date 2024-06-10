@@ -1,0 +1,102 @@
+
+<app-tela-de-login variant="primary">
+    <div class="painel">
+       <div class="logo">
+       
+            <mat-icon class="btn" (click)="voltar()">arrow_back</mat-icon>
+       
+        <legend>Cadastro de usuário</legend>
+       </div>
+
+        <form class="painel-login" [formGroup]="service.form" >
+            <div class="campo-top">
+              
+                    <mat-form-field>
+                        <mat-label>Nome</mat-label>
+                        <input matInput #nameInput  type="text"  formControlName="name" maxlength="25" (keydown.enter)="focusNext(lastnameInput)"/>
+                        <mat-error *ngIf="service.form.get('name')?.errors?.['required']&&service.form.get('name')?.touched">campo obrigatorio</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Sobrenome</mat-label>
+                        <input matInput type="text" formControlName="lastname" #lastnameInput maxlength="20" (keydown.enter)="focusNext(setorInput)"/>
+                        <mat-error *ngIf="service.form.get('lastname')?.errors?.['required']&&service.form.get('lastname')?.touched">campo obrigatorio</mat-error>
+                    </mat-form-field>
+            </div>
+            <label class="campo-botton">
+                @if (disabledbutton) {
+                    <div class="container-center">
+                        <div class="container-int">
+                            Em {{contador}} segundos você será redirecionado a tela de login ou click no botão
+                            <button (click)="teladeLogin()" mat-raised-button color="primary">tela de login</button>
+                            
+                        </div>
+                    </div>
+                }
+                <mat-form-field class="campo">
+                    <mat-label>Setor</mat-label>
+                    <input type="text"
+                           placeholder="Setor.."
+                           aria-label="Setor"
+                           matInput
+                           formControlName="setor"
+                           [matAutocomplete]="auto" #setorInput (keydown.enter)="focusNext(filialInput)">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      @for (option of filteredOptions|async; track option) {
+                        <mat-option [value]="option.name">{{option.name}}</mat-option>
+                      }
+                    </mat-autocomplete>
+                    <mat-error *ngIf="service.form.get('setor')?.errors?.['required']&&service.form.get('setor')?.touched">Campo obrigatorio</mat-error>
+                  </mat-form-field>
+            </label>
+            <label class="campo-botton">
+                <mat-form-field class="campo">
+                    <mat-label>Filial</mat-label>
+                    <input matInput type="text" formControlName="filial" #filialInput (keydown.enter)="focusNext(emailInput)"/>
+                    <mat-error *ngIf="service.form.get('filial')?.errors?.['required']&&service.form.get('filial')?.touched">Campo obrigatorio</mat-error>
+                    <mat-error *ngIf="service.form.get('filial')?.errors?.['pattern']&&service.form.get('filial')?.touched">Apenas numeros</mat-error>
+                    <mat-error *ngIf="service.form.get('filial')?.errors?.['maxlength']&&service.form.get('filial')?.touched">Max de carater 4</mat-error>
+                    <mat-error *ngIf="service.form.get('filial')?.errors?.['minLength']&&service.form.get('filial')?.touched">No minimo 2 caracter</mat-error>
+                </mat-form-field>
+            </label>
+            <label class="campo-botton">
+                <mat-form-field class="campo">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput type="text" formControlName="email" #emailInput (keydown.enter)="focusNext(passwordInput)"/>
+                    <mat-error *ngIf="service.form.get('email')?.errors?.['required']&&service.form.get('email')?.touched" >Campo obrigatorio</mat-error>
+                    <mat-error *ngIf="service.form.get('email')?.errors?.['email']&&service.form.get('email')?.touched">Digite um email valido</mat-error>
+                </mat-form-field>
+            </label>
+            <div style="width: 100%;height:40px;background-color: rgb(102, 102, 206);margin: 0 5px;">
+                <small style=" color: #fdf8f8;">Certifique-se de que sua senha tenha no mínimo 8 caracteres, incluindo pelo menos uma letra maiúscula e um caractere especial.</small>
+            </div>
+    
+            <label class="campo-botton">
+                <mat-form-field class="campo">
+                    <div class="pass">
+                        <input matInput type="{{text}}" formControlName="password" #passwordInput maxlength="20" placeholder="senha..." (keydown.enter)="focusNext(replacepasswordInput)" />
+                      </div>
+                    <mat-error *ngIf="service.form.get('password')?.errors?.['required']&&service.form.get('password')?.touched">Campo obrigatorio</mat-error>
+                </mat-form-field>
+            </label>
+            <label class="campo-botton">
+                <mat-form-field class="campo">
+                    <div class="pass">
+                        <input matInput type="{{text}}" formControlName="replacepassword" maxlength="14" #replacepasswordInput placeholder="confirme senha..."/>
+                        <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+                      </div>
+                    <mat-error *ngIf="service.form.get('replacepassword')?.errors?.['required']&&service.form.get('replacepassword')?.touched">Campo obrigatorio</mat-error>
+                    <mat-error *ngIf="erro">{{erro}}</mat-error>
+
+                </mat-form-field>
+            </label>
+        </form>
+            <div class="btn-bottom">
+                <div class="campo-btn">
+                        <button [disabled]="!service.form.valid || disabledbutton" (click)="Enviar()" class="btn-login" mat-raised-button color="primary" [mtBasicSpinner]="spinnerbotton" [hideText]="true">Registrar</button>
+                </div>
+                <div class="campo-btn">
+                    <button   class="btn-login" (click)="cancelar()" mat-raised-button color="secundary">Cancelar</button>
+                </div>
+            </div>
+    </div>
+</app-tela-de-login>

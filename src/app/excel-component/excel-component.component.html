@@ -1,0 +1,16 @@
+
+<input #fileInput type="file" (change)="onFileChange($event)">
+<button (click)="clear()">Limpar</button>
+
+<table *ngIf="data && data.length > 0" style="border-collapse: collapse; width: 100%; margin-top: 10px;">
+  <thead>
+    <tr style="border-bottom: 1px solid #ddd; background-color: #f2f2f2;">
+      <th *ngFor="let cell of data[0]" style="padding: 8px; text-align: left;">{{ cell }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data.slice(1)" style="border-bottom: 1px solid #ddd;">
+      <td *ngFor="let cell of row" style="padding: 8px;">{{ cell }}</td>
+    </tr>
+  </tbody>
+</table>

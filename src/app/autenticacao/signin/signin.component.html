@@ -1,0 +1,45 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<app-tela-de-login *ngIf="!Logued.isLogout()">
+  <div class="painel">
+    <legend>Login</legend>
+    <form class="painel-login" [formGroup]="service.Signin">
+      <label>
+        <mat-form-field>
+          <mat-label>email</mat-label>
+          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" />
+          <mat-error *ngIf="service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched">digite
+            um email valido</mat-error>
+          <mat-error
+            *ngIf="service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched">campo e
+            obrigatorio</mat-error>
+        </mat-form-field>
+      </label>
+      <label class="input-text">
+        <mat-form-field>
+          <mat-label>senha</mat-label>
+          <div class="pass">
+            <input matInput type="{{text}}" formControlName="password" maxlength="14"  #password/>
+            <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+          </div>
+          <mat-error
+            *ngIf="service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched">campo
+            e obrigatorio</mat-error>
+        </mat-form-field>
+      </label>
+      <div class="btn-password">
+        <a (click)="esqueceuSenha()">esqueceu a senha?</a>
+      </div>
+      <div class="btn-login-button">
+
+        <button color="primary" [disabled]="!service.Signin.valid" (click)="Enviar()" (mousedown.enter)="Enviar()" class="btn-login" mat-raised-button
+          [mtBasicSpinner]="sppiner" [hideText]="true"><p>Acessar conta</p><mat-icon>login</mat-icon></button>
+
+        <div class="btn-login-registrar">
+          <p>ainda não tem conta?</p>
+          <a (click)="registrar()">registrar-se</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-tela-de-login>

@@ -1,0 +1,68 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin:15px 50px;
+  .span {
+    color: aliceblue;
+    cursor: pointer;
+  }
+  .active-page {
+    color: red;
+  }
+  .butosn{
+    display: flex;
+    align-items: center;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .button-icon {
+      width: 120px;
+    }
+    .search {
+      background-color: aliceblue;
+    }
+    mat-chip-listbox {
+      gap: 5px;
+    }
+    .favoritos{
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+       .menu{
+       
+          .btn-icon{
+            width:25px;
+            height:25px;
+          
+         }
+       
+       }
+     
+     }
+
+  }
+
+}
+.user-name {
+  padding: 0 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  small {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 6px;
+      color: blue;
+    }
+  }
+
+}

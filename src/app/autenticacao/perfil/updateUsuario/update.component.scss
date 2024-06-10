@@ -1,0 +1,20 @@
+.container_int{
+  display: flex;
+  margin: 0;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+.perfil{
+  display: flex;
+  flex-direction: column;
+  input{
+    margin: 10px 0;
+
+    padding: 5px;
+    outline-color: blue;
+    transform: scaleX(2s);
+
+  }
+}
+}

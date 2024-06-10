@@ -1,0 +1,62 @@
+<header class="container header">
+  <div class="toolbar">
+    <span class="span" routerLink="/cards" routerLinkActive="active-page" ariaCurrentWhenActive="page"
+      style="size:50px;">{{logoName}}</span>
+    <span class="example-spacer"></span>
+    <div class="button" *ngIf="Auth.isLogout()">
+      <mat-chip-listbox aria-label="Fish selection">
+        <button (EventClick)="search()" class="search" mat-icon-button matTooltip="primary"
+          aria-label="Example icon-button with a heart icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-chip-listbox>
+      @if (alertDialog) {
+      <app-search-dialog [close]="alertDialog" (closes)="close()"></app-search-dialog>
+      }
+      <div matBadge="{{titulo}}" style="background-color: wheat;" mat-icon-button class="favoritos"
+        [matMenuTriggerFor]="perfil" aria-label="Example icon-button with heart icon">
+        @if (img!==null || img!==undefined) {
+        <img src="{{img}}" alt="Perfil" width="50px" height="50px" style="border-radius: 100%;">
+        }@else {
+        <img [style]="" alt="imagem do usuario logado" src="../../../assets/user.png" width="50px" height="50px"
+          style="border-radius: 100%;">
+        }
+        <mat-icon>fg</mat-icon>
+        <mat-menu #perfil="matMenu" class="menu">
+          <!-- <div class="user-name">
+            <small><b>olá</b> <p>{{Auth.getname()}}</p></small>
+          </div> -->
+          <button routerLink="/lista" mat-menu-item style="display: flex;">
+            <mat-icon><img src="assets/lista.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Seus chamados</span>
+          </button>
+          <button routerLink="/lista/aprovacoes/pendentes" mat-menu-item style="display: flex;">
+            <mat-icon><img src="assets/arquivo.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Aprovações</span>
+          </button>
+          @if (user.includes("admin")||user.includes("suporte")||user.includes("dev")) {
+          <button mat-menu-item (click)="chamadoUser()" style="display: flex;">
+            <mat-icon><img src="assets/aceito.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Seus atendimentos</span>
+          </button>
+          }
+          @if (user.includes("admin")||user.includes("dev")||user.includes("suporte")) {
+          <button mat-menu-item routerLink="/lista/admin" style="display: flex;">
+            <mat-icon><img src="assets/solicitacao.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Cards</span>
+          </button>
+          }
+          <button routerLink="/auth/user/perfil" mat-menu-item style="display: flex;">
+            <mat-icon><img src="assets/perfil.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Minha conta</span>
+          </button>
+          <button mat-menu-item (click)="removeTOken()" style="display: flex;">
+            <mat-icon><img src="assets/saida.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Sair</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+</header>

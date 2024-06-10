@@ -1,0 +1,35 @@
+<app-mural variant="primary">
+    <app-back-button></app-back-button>
+
+    <div class="painel">
+       <div class="painel-logo">
+        <form [formGroup]="form" class="form" (ngSubmit)="buscar()">
+            <div for="">
+                    <div class="campo">
+                     <input #roleBusca matInput type="email" formControlName="email" placeholder="digite seu email" />
+                    </div>
+            </div>
+        </form>
+       </div>
+        <section class="painel-login">
+           <div  *ngIf="detalheUser,else erro">
+            <div class="btn-add">
+                <button (EventClick)="Edit()" mat-raised-button color="primary"><mat-icon>add</mat-icon> <small>add</small></button>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput value="{{detalheUser.email}}" type="search" disabled />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput value="{{detalheUser.name}} {{detalheUser.lastname}}" type="search" disabled />
+                </mat-form-field>
+            </div>
+            <div class="icon-delete" *ngFor="let itens of detalheUser.itens">
+               <span>{{itens.name}}</span>
+               <button mat-button (click)="id(detalheUser.email,itens.id)"><mat-icon>delete {{itens.id}}</mat-icon></button>
+            </div>
+           </div>
+        </section>
+    </div>
+</app-mural>
+<ng-template #erro>nada encontrado...</ng-template>

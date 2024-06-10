@@ -1,0 +1,67 @@
+.painel-login{
+    width:500px;
+    height:264px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    legend{
+        color: rgb(228, 222, 222);;
+        font-size:15px;
+        margin:25px 0;
+    }
+    .input-text{
+        .input-search{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+       
+    }
+        mat-label{
+          
+            margin: 0 5px;
+        }
+        mat-form-field{
+         width: 300px;
+        }
+    }
+    .btn-password{
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        padding:10px 0;
+        gap: 10px;
+        a:hover{
+                color: rgb(238, 216, 216);
+        }
+    
+    }
+    
+    .btn-login-button{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+        gap: 5px;
+        .btn-login{
+            width: 300px;
+
+        }
+        .btn-login-registrar{
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            gap: 10px;
+            p{
+                color: white;
+            }
+        
+        }
+    
+   
+}

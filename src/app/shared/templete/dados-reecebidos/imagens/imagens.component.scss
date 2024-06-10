@@ -1,0 +1,141 @@
+.input-Img {
+    display: flex;
+    .dadosFoto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* largura máxima da div */
+
+        .imglog {
+            width: 80px;
+            height: 60px;
+            margin-right: 5px;
+        }
+
+    }
+
+    .modal {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        z-index: 9999;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        background-color: rgba(0.0.0.6);
+
+        .titule {
+            display: flex;
+            align-items: center;
+            background-color: rgb(39, 38, 38);
+            justify-content:space-between;
+            width: 100%;
+            height: 50px;
+            margin: 0;
+            margin-top: -3rem;
+            .bot{
+                display: flex;
+                .icon {
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    color: antiquewhite;
+                }
+    
+                .icon:hover {
+                    border: 2px solid #888;
+                    border-radius: 100%;
+                }
+    
+                .button-icon {
+                    width:35px;
+                    background-color: #202020;
+                    height:25px;
+                    border-radius: 3px;
+                    text-align: center;
+                    color: aliceblue;
+                }
+                .button-icon:hover{
+                    border-radius: 3px;
+                    border: 2px solid #ddd4d4;
+                }
+            }
+
+           
+        }
+
+        .history {
+            display: inline-block;
+            flex-direction: row;
+            height: 60px;
+
+            .imghistory {
+                display: inline-block;
+                flex-direction: row;
+                margin: 10px;
+            }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 70%;
+            height: 880px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 80vh;
+            margin-bottom: 2rem;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+    }
+
+
+    .ls-label-text {
+        height: 60px;
+        display: flex;
+        align-items: center;
+
+        a {
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            color: blue;
+        }
+
+        img {
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+    }
+
+    .risc {
+        color: red;
+    }
+
+    .input-form {
+        height: 30px;
+
+    }
+}

@@ -1,0 +1,20 @@
+<div class="container_int">
+  <h3 mat-dialog-title>Atualizar dados</h3>
+  <mat-dialog-actions>
+    <mat-icon mat-button  color="primary" mat-dialog-close>close</mat-icon>
+  </mat-dialog-actions>   
+</div>
+<mat-dialog-content>
+    <div class="form">
+       <form action="" class="perfil" [formGroup]="UserUpdate">
+        <label for="contatp">Nome</label>
+         <input type="text" formControlName="name" placeholder="nome..." name="" id="">
+         <label for="contatp">sobrenome</label>
+         <input type="text" formControlName="lastname" placeholder="sobrenome..." name="" id="">
+         <label for="contatp">Contato</label>
+         <input type="tel" (keypress)="formatPhone($event)" formControlName="contato" placeholder="telefone..." name="" id="">
+       </form>
+       <button [disabled]="!UserUpdate.valid" mat-raised-button color="primary" type="submit" (click)="hendleapi()">atualizar</button>
+    </div>
+</mat-dialog-content>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

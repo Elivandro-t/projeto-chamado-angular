@@ -1,0 +1,57 @@
+<div class="input_container-int">
+    <div class="input_container-int2">
+        <div class="logo">
+            <h3>Status</h3>
+            @for (item of itens; track $index) {
+            @if (item) {
+            <h4>{{item.status.replace("_"," ")}}</h4>
+            }
+            }
+        </div>
+        <div class="container" *ngIf="disable">
+            <div class="logo">
+                <b>Validar</b>
+                <p>Chamado para informatica</p>
+            </div>
+            <div class="button">
+                <button (click)="atualizarstatusFechado()" mat-raised-button color="primary" [mtBasicSpinner]="spinner1"
+                    [hideText]="true">Aprovar</button>
+                <button (click)="ReabrirChamado()" style="margin:5px 0;" mat-raised-button [mtBasicSpinner]="spinner2"
+                    [hideText]="true" color="secundary">Recusar</button>
+            </div>
+        </div>
+        <div class="container" *ngIf="disableAdmin">
+            <div class="logo">
+                <small>Chamados informatica</small>
+            </div>
+            <div class="button">
+                <button [disabled]="habilitaBotao" (click)="atualizarstatus()" mat-raised-button
+                    [mtBasicSpinner]="spinner3" [hideText]="true" color="primary">Feito</button>
+                <button [disabled]="habilitaBotao" (click)="ReabrirChamado()" mat-raised-button
+                    [mtBasicSpinner]="spinner2" [hideText]="true" color="primary">Reabrir</button>
+                <button [disabled]="habilitaBotao" (click)="atualizarstatusJira()" mat-raised-button
+                    [mtBasicSpinner]="spinner4" [hideText]="true" color="primary">Aguandando jira</button>
+                <button [disabled]="habilitaBotao" (click)="atualizarstatusAprovador()" mat-raised-button
+                    [mtBasicSpinner]="spinner5" [hideText]="true" color="primary">Aguand aprovação</button>
+                <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado() " style="margin:5px 0;"
+                    [mtBasicSpinner]="spinner1" [hideText]="true" mat-raised-button color="secundary">Fechar</button>
+            </div>
+
+        </div>
+
+        <div class="solicitacao">
+            <span>Solicitação de serviço </span>
+            <div style="background: rgb(175, 175, 240);">
+                <small style="color: rgb(231, 20, 20);margin: 0 5px;">suporte {{service.servico}}</small>
+            </div>
+        </div>
+        <div class="solicitacao">
+            <span></span>
+            Tecnico Responsavel
+            <span></span>
+            <div>
+                <small style="color: rgb(231, 20, 20);margin: 0 5px;">{{nomeUsuario}}</small>
+            </div>
+        </div>
+    </div>
+</div>

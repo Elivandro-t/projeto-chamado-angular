@@ -1,0 +1,202 @@
+.painel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 2px;
+    max-width: 900px;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    .container-int {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+
+        .menu_drop {
+            display: none;
+        }
+    }
+
+    legend {
+        color: rgb(22, 22, 22);
+        font-family: var(--mdc-text-button-label-text-font);
+        font-size: 22;
+        margin-right: 25px;
+
+    }
+
+    .painel-login {
+        width: 100%;
+        height: 464px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 2px;
+        margin-top: 7rem;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            .dados_usuario {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                label {
+                    color: #4a54b3;
+                }
+
+                input {
+                    width: 250px;
+                    margin: 10px 0;
+                    border: 1px solid #888;
+
+                }
+            }
+        }
+        .label_logo{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .foto_perfil {
+            background-color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            border-radius: 100%;
+            margin-left: 5px;
+
+            .foto_perfil_camera {
+                background-color: rgba(0, 0, 0, 0.6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+
+                .foto_camera {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .foto_perfil_principal {
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+            }
+
+        }
+
+
+    }
+
+}
+
+@media screen and (max-width:930px) {
+    .painel {
+        max-width: 100%;
+        width: 700px;
+
+        legend {
+            font-size: 14px;
+        }
+
+        .container-int {
+            max-width: 930px;
+            width: 100%;
+
+            .menu_p {
+                display: none;
+            }
+
+            .menu_drop {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:930px) {
+    .painel {
+        width: 600px;
+
+    }
+}
+
+
+@media screen and (max-width:600px) {
+    .painel {
+        max-width: 800px;
+        width: 100%;
+
+        .painel-login {
+            margin: 0 26px;
+        }
+    }
+
+}
+
+@media screen and (max-width:518px) {
+    .painel {
+        legend {
+            font-size: 12px;
+        }
+
+        .container-int {
+            width: 100%;
+            margin: 0 20px;
+
+            .menu_p {
+                display: none;
+            }
+        }
+
+        .painel-login {
+            margin: 0 26px;
+        }
+    }
+
+}
+
+@media screen and (max-width:401px) {
+    .painel {
+        legend {
+            font-size: 16px;
+        }
+
+        .container-int {
+            width: 100%;
+            margin: 0 20px;
+        }
+
+        .painel-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+    }
+
+}
+@media screen and (max-width:268px) {
+    .painel {
+       width: 300px;
+    }
+
+}

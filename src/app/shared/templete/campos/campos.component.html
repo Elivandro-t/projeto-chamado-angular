@@ -1,0 +1,173 @@
+<app-mural-pricipal>
+    <div class="container_int">
+        <div class="campos ">
+            <div class="logo">
+                <app-back-button></app-back-button>
+                <img class="imagen-card" alt="logo" src="assets/ti.png" />
+                <h2>Suporte informatica</h2>
+            </div>
+            <form [formGroup]="myForm">
+                @if (titulo.includes("Hardware")) {
+                <div class="input-Top">
+                    <app-alert aviso="Suporte hardware, solicitacao de periféricos de entrada"
+                        saudacao="Para solicitaçao periféricos de entrada: mouse, teclado, HDMI,VGA etc.."
+                        subtitulo=" "></app-alert>
+                </div>
+                }
+                @if(titulo.includes("Sistema")){
+                <div class="input-Top">
+                    <app-alert aviso="Inclusão de acesso ao usuario GMcore"
+                        saudacao="Para solicitacao de acesso ao usuario: Rotina, modulo coletor, Reset de senha, Configurar perfil, Mudança de filial,Add filial"
+                        subtitulo="NOME COMPLETO, CPF ou USUARIO, FUNÇÃO,SETOR,FILIAL. Obs: Caso precise de linha de separação informar ou autorizar despesas informar as placas filias e centro de custo!"></app-alert>
+                </div>}
+                <div class="input_container-int">
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>Nome do colaborador</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="usuario" placeholder="Nome completo.."
+                                matInput #usuario (keydown.enter)="enter(setors)">
+                            <mat-error
+                                *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">campo
+                                obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>Setor</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor"
+                                #setors (keydown.enter)="enter(solicitacao)" matInput placeholder="Selecione o setor.."
+                                [matAutocomplete]="auto">
+                            <mat-autocomplete class="auto" #auto="matAutocomplete">
+                                @for (item of filteredOptions|async ; track item) {
+                                <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
+
+                                }
+                            </mat-autocomplete>
+                            <mat-error
+                                *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
+                                o setor</mat-error> </mat-form-field>
+
+                    </div>
+
+                </div>
+                <div class="input_container-int2">
+                    <div class="input-Top">
+                        <b class="ls-label-text">
+                            <p>Solicitação</p>
+                            <p class="risc">*</p>
+                        </b>
+                        <mat-form-field class="input-form" appearance="outline">
+                            <input class="input" type="text" formControlName="solicitacao"
+                                placeholder="Problema relacionado" matInput #solicitacao
+                                (keydown.enter)="enter(patrimon)">
+                            <mat-error
+                                *ngIf="myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched">campo
+                                obrigatorio</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_container">
+                        <div class="input_container">
+                            <b class="ls-label-text">
+                                <p>Patrimonio</p>
+                                <p class="">*</p>
+                            </b>
+                            <mat-form-field class="input-form" appearance="outline">
+                                <input class="input" type="text" formControlName="patrimonio" placeholder="Patrimonio"
+                                    #patrimon (keydown.enter)="enter(equipa)" maxlength="10" matInput />
+                                <mat-error
+                                    *ngIf="myForm.get('patrimonio')?.errors?.['pattern']&&myForm.get('patrimonio')?.touched">Apenas
+                                    Numeros são permitidos</mat-error>
+                                <mat-error
+                                    *ngIf="myForm.get('patrimonio')?.errors?.['maxlength']&&myForm.get('patrimonio')?.touched">Máximo
+                                    de 6 caracteres</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="input_container">
+                            <b class="ls-label-text">
+                                <p>Equipamento</p>
+                                <p class="">*</p>
+                            </b>
+                            <mat-form-field class="input-form" appearance="outline">
+                                <input class="input" [matAutocomplete]="autoEq" type="text"
+                                    formControlName="equipamento" #equipa (keydown.enter)="enter(sistem)" matInput
+                                    placeholder="Equipamento...">
+
+                                <mat-autocomplete #autoEq="matAutocomplete">
+                                    <mat-option *ngFor="let opt of dat"
+                                        [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
+                                    <mat-option matAutocomplete value="outros">outros</mat-option>
+                                </mat-autocomplete>
+                                <mat-error
+                                    *ngIf="myForm.get('equipamento')?.errors?.['required']&&myForm.get('equipamento')?.touched">Campo
+                                    obrigatorio</mat-error>
+                            </mat-form-field>
+                        </div>
+                        @if(titulo.includes("Sistema")){
+                        <div class="input_container">
+                            <b class="ls-label-text">
+                                <p>Erro</p>
+                                <p class="">*</p>
+                            </b>
+                            <mat-form-field class="input-form" appearance="outline">
+                                <input class="input" type="text" formControlName="erro" placeholder="Informe o erro..."
+                                    #sistem #equipa (keydown.enter)="enter(erro)" maxlength="22" matInput>
+                            </mat-form-field>
+                        </div>
+                        <div class="input_container">
+                            <b class="ls-label-text">
+                                <p>Sistema</p>
+                                <p class="">*</p>
+                            </b>
+                            <mat-form-field class="input-form" appearance="outline">
+                                <input class="input" [matAutocomplete]="autoEq" type="text"
+                                    formControlName="sistem_erro" #erro matInput
+                                    placeholder="Sistema tipo GMcore,Email,Office..">
+                                <mat-autocomplete #autoEq="matAutocomplete">
+                                    <mat-option *ngFor="let opt of list"
+                                        [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
+                                    <mat-option matAutocomplete value="outros">não encontrado</mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        }
+                    </div>
+                    <div class="input_container textarea">
+                        @if(titulo.includes("Sistema")){
+                        <div>
+                            <app-alert
+                                aviso="Criação de E-mail, Licença de software, Criação ou Reset de senha no sistema JIRA, Suporte maestro"
+                                saudacao="Para criação de conta E-email e reset de senha, Criação de conta AD informa: ⬇️"
+                                subtitulo="NOME COMPLETO, CPF,EMAIL, FUNÇÃO, SETOR,USUARIO, MATRICULA, CENTRO DE CUSTO, NOME DO GESTOR, EMAIL GESTOR APROVADOR"></app-alert>
+                        </div>
+                        }
+                        <div class="input_container">
+                            <b class="ls-label-text">
+                                <p>Descrição</p>
+                                <p class="risc">*</p>
+                            </b>
+                            <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
+                            </editor>
+                        </div>
+                    </div>
+                    <div>
+
+                        <app-drop (emiter)="onSelect($event)"></app-drop>
+                    </div>
+                </div>
+
+            </form>
+            <div class="button">
+                <button color="primary" [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
+                    mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">acessar</button>
+
+            </div>
+        </div>
+    </div>
+</app-mural-pricipal>

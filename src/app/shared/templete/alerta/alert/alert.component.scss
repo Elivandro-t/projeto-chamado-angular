@@ -1,0 +1,11 @@
+.aviso{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    width: 96%;
+    gap: 5px;
+    background-color:  var(--ds-background-accent-blue-subtlest, #DEEBFF);
+    margin:20px 0px;
+    border-radius:1px;
+    color: inherit;
+}
