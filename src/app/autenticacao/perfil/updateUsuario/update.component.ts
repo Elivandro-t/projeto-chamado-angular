@@ -53,7 +53,7 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: any,private router: Router,pri
  }
  formatPhone(event: any) {
   const input = event.target;
-  const value = input.value.replace(/\D/g, '').substring(0, 11);
+  const value = input.value.replace(/\D/g, '').substring(0, 10);
   input.value = value
     .replace(/\D/g, '')
     .replace(/^(\d{2})(\d)/g, '($1) $2')

@@ -133,13 +133,13 @@ export class ChamadoApiService {
     return this.http.get<ApiResponse>(`${this.api}/chamado/tecnico/${this.id}?size=${size}&page=${page}`);
   }
   
-  PegarTec(idItens: number, IdIChamado: number): Observable<ChamadoRes> {
+  PegarTec(idCard: number, idItens: number): Observable<ChamadoRes> {
     const data = {
-      id: idItens,
+      id: idCard,
       tecnicoid: this.Inforuser.getId(),
       tecnico_responsavel: this.Inforuser.getname()
     };
-    return this.http.put<ChamadoRes>(`${this.api}/chamado/ativo/${IdIChamado}`, data);
+    return this.http.put<ChamadoRes>(`${this.api}/chamado/ativo/${idItens}`, data);
   }
   listaAguardandoValidacao(): Observable<ApiResponse> {
     const params = new HttpParams();

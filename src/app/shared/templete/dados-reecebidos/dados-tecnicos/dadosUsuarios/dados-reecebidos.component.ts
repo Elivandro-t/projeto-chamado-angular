@@ -15,6 +15,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { UserAuthService } from '../../../../../core/user-auth.service';
 import { ImagensComponent } from "../../imagens/imagens.component";
 import { BotaoBackComponent } from '../../../../../components/botao_voltar/botaoVoltar.component';
+import { SnackBar } from '../../../../../AlertaDialog/snackBar/snackbar.component';
 
 @Component({
   selector: 'app-dados-reecebidos',
@@ -43,7 +44,7 @@ export class DadosReecebidosComponent implements OnInit {
   user: string="admin";
   desable: boolean = false;
   desableButton: boolean = false;
-  constructor(private sanitizer: DomSanitizer,private service: ChamadoApiService,private route: ActivatedRoute,private servicestatus: StatusChamadoService,public auth: UserAuthService){}
+  constructor(private api: ChamadoApiService,private snack: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private route: ActivatedRoute,private servicestatus: StatusChamadoService,public auth: UserAuthService){}
   ngOnInit(): void {
      const card = this.route.snapshot.paramMap.get("card") as string;
      const id = this.route.snapshot.paramMap.get("id") as any;
@@ -80,6 +81,12 @@ export class DadosReecebidosComponent implements OnInit {
     }
   }
 
-  
+  getRas(id: any, itensid: any) {
+
+    this.api.PegarTec(id,parseInt(itensid)).subscribe((e: any) => {
+     this.snack.openSnackBar(e.msg);
+
+    });
+  } 
 
 }

@@ -33,6 +33,10 @@ export class StatusChamadoService {
     const endPoint = `/validacao/${usuarioId}/chamadoCard/${chamadoID}/fechado/${this.user.getId()}`;
       return this.http.put<any>(this.api+endPoint,{}).pipe();
   }
+  mudaStatusRecusado(usuarioId: number,chamadoID: string): Observable<any>{
+    const endPoint = `/validacao/${usuarioId}/chamadoCard/${chamadoID}/recusado/${this.user.getId()}`;
+      return this.http.put<any>(this.api+endPoint,{}).pipe();
+  }
   OneStatus(usuarioId: number, chamadoID: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/lista/status/service/${usuarioId}/${chamadoID}`).pipe();
   }

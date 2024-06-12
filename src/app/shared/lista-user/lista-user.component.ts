@@ -48,6 +48,7 @@ export class ListaUserComponent implements OnInit {
       this.number = e.totalElements;
       this.chamadoID = e.content.flatMap(e=>e.id);
       this.totalPage = e.totalPages;
+      localStorage.setItem("idcard", this.chamadoID);
 
     }
     );

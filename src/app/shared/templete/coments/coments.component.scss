@@ -5,16 +5,16 @@
     flex-direction: column;
     box-sizing: content-box;
     .button-exibir{
-      background-color: rgb(115, 160, 245);
+      color: blue;
       height: 20px;
       border-radius: 5px;
       text-align: center;
       cursor: pointer;
-      margin: 25px 0;
+      margin:20px 0;
     }
     .button-exibir:hover{
-      transition: all 2s;
-      background-color: rgb(191, 222, 247);
+      color: rgb(169, 191, 209);
+      text-decoration: underline;
     }
     .sty{
       width:100;
@@ -52,6 +52,10 @@
      border-radius: 2px;
      border: 1px solid #888;
      box-sizing: border-box;
+     .editor{
+      width: 100%;
+      padding:0 auto;
+     }
      .button{
       padding:10px;
     }

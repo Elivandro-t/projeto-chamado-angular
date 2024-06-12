@@ -2,9 +2,11 @@
   height: 100%;
   box-sizing: border-box;
   padding: 0 16px;
+
   .logolink {
     padding: 20px 0px;
   }
+
   .campos1 {
     .logo {
       width: 100&;
@@ -13,6 +15,7 @@
       align-items: center;
       gap: 10px;
       margin-top: 5px;
+
       .imagen-card {
         width: 50px;
         height: 50px;
@@ -20,21 +23,27 @@
       }
     }
   }
+
   .campos {
     display: flex;
+
     .container_templete {
       width: 100%;
-      margin-bottom:5rem;
+      margin-bottom: 5rem;
+
       .Card {
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+
         .container {
           border: 0.2px solid #bdbadb;
-          padding:10px;
+          padding: 10px;
+
           .input {
             width: 100%;
             margin-bottom: 5px;
+
             a {
               cursor: pointer;
               width: 150px;
@@ -42,83 +51,165 @@
               margin: 0 10px;
               font-size: 14px;
             }
+
             a:hover {
               text-decoration: underline;
             }
+
             img {
               border-radius: 50%;
               margin: 0 10px;
             }
           }
+
           .name {
             border: 0.2px solid #9f9ac7;
             border-radius: 2px;
-            background-color: rgb(182, 213, 241);
-             padding: 2px 25px;
-            .input-Top {
-              width: 100%;
+            background-color: rgb(233, 237, 240);
+            padding: 2px 25px;
+
+            .data_top {
               display: flex;
-              flex-direction: column;
-              .ls-label-text {
-                height: 60px;
+
+              .input-Top {
+                width: 100%;
                 display: flex;
-                align-items: center;
-                a {
-                  cursor: pointer;
-                  margin: 0 10px;
+                flex-direction: column;
+
+                .inforDescricao {
+                  color: var(--ds-text-subtle, #0d3a88);
+                  font-family: sans-serif;
+                  font-weight: 600;
+                  margin:6px 0;
                 }
-                a:hover {
-                  color: blue;
+
+                small {
+                  color: var(--ds-text-subtle, #6B778C);
                 }
-                img {
-                  border-radius: 50%;
-                  margin: 0 10px;
+
+                .ls-label-text {
+                  height: 60px;
+                  display: flex;
+                  align-items: center;
+
+                  a {
+                    cursor: pointer;
+                    margin: 0 10px;
+                  }
+
+                  a:hover {
+                    color: blue;
+                  }
+
+                  img {
+                    border-radius: 50%;
+                    margin: 0 10px;
+                  }
                 }
-              }
-              .risc {
-                color: red;
-              }
-              .input-form {
-                height: 30px;
+
+                .risc {
+                  color: red;
+                }
+
+                .input-form {
+                  height: 30px;
+                }
               }
             }
+            .data_top2 {
+              display: flex;
+              flex-direction: column;
+              margin: 5px 0;
+
+              .input-Top {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .inforDescricao {
+                  color: var(--ds-text-subtle, #0d3a88);
+                  font-family: sans-serif;
+                  font-weight: 600;
+                  margin: 5px 0;
+                }
+
+                small {
+                  color: var(--ds-text-subtle, #6B778C);
+                }
+
+                .ls-label-text {
+                  height: 60px;
+                  display: flex;
+                  align-items: center;
+
+                  a {
+                    cursor: pointer;
+                    margin: 0 10px;
+                  }
+
+                  a:hover {
+                    color: blue;
+                  }
+
+                  img {
+                    border-radius: 50%;
+                    margin: 0 10px;
+                  }
+                }
+
+                .input-form {
+                  height: 30px;
+                }
+              }
+            }
+
+
           }
 
         }
       }
 
     }
+
     .input_container {
       display: flex;
       margin: 32px 0;
       flex-direction: column;
+
       .ls-label-text {
         height: 60px;
         display: flex;
         align-items: center;
+
         a {
           cursor: pointer;
           margin: 0 10px;
         }
+
         a:hover {
           color: blue;
         }
+
         img {
           border-radius: 50%;
           margin: 0 10px;
         }
+
         .risc {
           color: red;
         }
       }
+
       .input-form {
         height: 30px;
       }
+
       .txt {
         display: flex;
         border: 0;
         flex-direction: column;
         height: auto;
+
         .textarea_input {
           height: 200px;
           max-height: 450px;
@@ -126,6 +217,7 @@
           outline: 0;
           resize: none;
           border-bottom: none;
+
           .input {
             height: 30px;
             width: 100%;
@@ -140,26 +232,30 @@
   }
 
 }
+
 @media screen and (max-width:891px) {
-  .campos{
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+  .campos {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  
+
 }
+
 @media screen and (max-width:634px) {
   .input {
     background-color: rgb(71, 73, 236);
     color: #000;
+
     a {
-      width:100px;
+      width: 100px;
       margin: 0 2px;
-      font-size:13px;
+      font-size: 13px;
     }
   }
-  
+
 }
+
 @media screen and (max-width:495px) {
   .input {
     width: 100%;
@@ -169,13 +265,15 @@
       margin: 0 30px;
       font-size: 14px;
     }
+
     img {
       border-radius: 50%;
       margin: 0 6px;
     }
   }
-  .campo_comment{
-    width:300px;
+
+  .campo_comment {
+    width: 300px;
   }
-  
+
 }

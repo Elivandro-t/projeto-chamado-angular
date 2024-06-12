@@ -24,52 +24,69 @@
                         </div>
                         
                         <div class="name" *ngIf="ocultar">
-                            <div class="input-Top">
-                                <small >{{i.issuetype}}</small>
-                            </div>
                             <app-alert titulos="Informações do colaborador"></app-alert>
 
-                            <div class="input-Top">
-                                 <span class="inforDescricao">Setor</span>
-                                <small>{{i.setor}}</small>
+                            
+                            <div class="data_top">
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Suporte</span>
+                                    <small >{{i.issuetype}}</small>
+                                </div>
+                                <div class="input-Top">
+                                     <span class="inforDescricao">Setor</span>
+                                    <small>{{i.setor}}</small>
+                                </div>
                             </div>
-                            @if (i.issuetype.includes("Hardware")) {
+                            <div class="data_top">
+                               @if (i.issuetype.includes("Hardware")) {
                                 <div class="input-Top">
                                     <span class="inforDescricao">Patrimonio</span>
                                     <small>{{i.patrimonio}}</small>
                                 </div>
                                 <div class="input-Top">
-                                    
+                                    <span class="inforDescricao">Equipamento</span>
                                     <small>{{i.equipamento}}</small>
                                 </div>
                             }
-                            @else if (i.issuetype.includes("Sistema")) {
+                            </div>
+                            <div class="data_top">
+                                @if (i.issuetype.includes("Sistema")) {
+                                    <div class="input-Top">
+                                        <span class="inforDescricao">Sistema</span>
+                                        <small>{{i.sistem_erro}}</small>
+                                    </div>
+                                    <div class="input-Top">
+                                        <span class="inforDescricao">Erro</span>
+                                        <small>{{i.erro}}</small>
+                                    </div>
+                                }
+                            </div>
+                            <div class="data_top">
                                 <div class="input-Top">
-                                    <span class="inforDescricao">Sistema</span>
-                                    <small>{{i.sistem_erro}}</small>
+                                    <span class="inforDescricao">Nome completo</span>
+                                    <small>{{i.usuario}}</small>
                                 </div>
                                 <div class="input-Top">
-                                    <span class="inforDescricao">Erro</span>
-                                    <small>{{i.erro}}</small>
+                                    <span class="inforDescricao">Solicitação</span>
+                                    <small>{{i.solicitacao}}</small>
+                                   
+                               </div>
+                            </div>
+                            <div class="data_top2">
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Descrição</span>
+                                    <div class="descricao-itens" [innerHTML]="sanitize(i.descricao)"></div>
                                 </div>
-                            }
-                            <div class="input-Top">
-                                <span class="inforDescricao">Nome completo</span>
-                                <small>{{i.usuario}}</small>
-                            </div>
-                            <div class="input-Top">
-                                <span >Descrição</span>
-                                <small class="descricao-itens" [innerHTML]="sanitize(i.descricao)"></small>
-                            </div>
-                            <div class="input-Top">
-                                <app-imagens [data]="i.imagens"></app-imagens>
+                                <div class="input-Top">
+                                    <app-imagens [data]="i.imagens"></app-imagens>
+                                </div>
                             </div>
                         </div>
                     </section>
                     <app-coments [chamadoId]="i.id"></app-coments>
                 </div>
             </section>
-            <app-dados-tecnicos [nomeUsuario]="i.tecnico_responsavel"[disableAdmin]="true"
+            <app-dados-tecnicos (Pegartect)="pegart(i.id)"  [nomeUsuario]="i.tecnico_responsavel"[disableAdmin]="true"
                 [habilitaBotao]="i.client_feito"></app-dados-tecnicos>
         </div>
     </div>

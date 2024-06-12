@@ -18,6 +18,10 @@
                     [hideText]="true">Aprovar</button>
                 <button (click)="ReabrirChamado()" style="margin:5px 0;" mat-raised-button [mtBasicSpinner]="spinner2"
                     [hideText]="true" color="secundary">Recusar</button>
+                    <!-- @if (user.includes("admin")||user.includes("suporte")||user.includes("dev")) {
+                        <button (click)="getRas()" style="margin:5px 0;" mat-raised-button [mtBasicSpinner]="spinner2"
+                    [hideText]="true" color="secundary">Aceita chamado</button>
+                    } -->
             </div>
         </div>
         <div class="container" *ngIf="disableAdmin">
@@ -35,6 +39,12 @@
                     [mtBasicSpinner]="spinner5" [hideText]="true" color="primary">Aguand aprovação</button>
                 <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado() " style="margin:5px 0;"
                     [mtBasicSpinner]="spinner1" [hideText]="true" mat-raised-button color="secundary">Fechar</button>
+
+                    <button [disabled]="habilitaBotao" (click)="atualizarstatusRecusado() " style="margin:5px 0;"
+                    [mtBasicSpinner]="spinner6" [hideText]="true" mat-raised-button color="secundary">Recusado</button>
+
+                    <button [disabled]="habilitaBotao" (click)="getRas() " style="margin:5px 0;"
+                    [mtBasicSpinner]="spinner7" [hideText]="true" mat-raised-button color="secundary" >Aceita card</button>
             </div>
 
         </div>

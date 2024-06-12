@@ -32,7 +32,7 @@ export class ComentsComponent implements OnInit,AfterViewInit{
   exibiBotao: boolean = false;
   @Input() chamadoId!: number;
   imagens: { [key: string]: string }={};
-  numComentariosExibidos = 2;
+  numComentariosExibidos = 3;
   constructor(public Auth: UserAuthService,private sanitizer: DomSanitizer,public Formb: FormBuilder,private userApi: UserService,public http: CommentsService,private user: UserAuthService){}
   ngAfterViewInit(): void {
     this.commentsContainer.nativeElement.addEventListener('input',this.Resize.bind(this));
@@ -51,6 +51,13 @@ export class ComentsComponent implements OnInit,AfterViewInit{
     =this.commentsContainer.nativeElement.scrollHeight+'px';
 
   }
+  // Defina o número inicial de comentários a serem exibidos
+comments: any[] = []; // Suponho que você tenha um array para armazenar todos os comentários
+
+carregarMaisComentarios() {
+    // Aumente o número de comentários a serem exibidos quando o botão for clicado
+    this.numComentariosExibidos += 5; // Ajuste o valor conforme necessário
+}
   editorConfig = {
     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',

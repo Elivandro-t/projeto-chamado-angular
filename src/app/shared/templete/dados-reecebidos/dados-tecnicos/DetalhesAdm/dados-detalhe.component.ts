@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserAuthService } from './../../../../../core/user-auth.service';
 import { AsyncPipe, CommonModule } from "@angular/common";
@@ -43,6 +44,7 @@ export class DadosDetalheComponent implements OnInit {
   ocultar: boolean = false;
   titulo: "Mostrar"|"Ocultar"="Mostrar";
   foto: any;
+  chamdoCard: any;
   id: any;
   user: string="admin";
   desable: boolean = false;
@@ -57,14 +59,23 @@ export class DadosDetalheComponent implements OnInit {
      const card = this.route.snapshot.paramMap.get("card") as string;
      const id = this.route.snapshot.paramMap.get("id") as any;
     this.service.ChamadoId(card,id).subscribe(e=>{
-      new Promise((resolve)=>{
-        resolve(this.foto = e.itens);
+      new Promise(()=>{
+        this.chamdoCard = e;
+          this.foto = e.itens;
       });
     });
     
    
   }
-
+pegart(idchamdo: any){
+  alert("id "+idchamdo +" "+ this.chamdoCard.id);
+    // console.log(this.idchamado);
+    //   this.spinner7 =true;
+    // this.api.PegarTec(this.iditens,this.idchamado).subscribe((e: any) => {
+    //  this.snackba.openSnackBar(e.msg);
+    //    this.spinner7 = false;
+    // });
+}
 
   sanitize(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);

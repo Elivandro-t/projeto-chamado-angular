@@ -23,44 +23,62 @@
                             </div>
                         </div>
                         <div class="name" *ngIf="ocultar" >
-                          
-                            <div class="input-Top">
-                                <app-alert titulos="tipo"></app-alert>
-                                <span>{{i.issuetype}}</span>
+                            <app-alert titulos="Informações do colaborador"></app-alert>
+
+                            <div class="data_top">
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Suporte</span>
+                                    <small >{{i.issuetype}}</small>
+                                </div>
+                                <div class="input-Top">
+                                     <span class="inforDescricao">Setor</span>
+                                    <small>{{i.setor}}</small>
+                                </div>
                             </div>
-                            <div class="input-Top">
-                                <app-alert titulos="setor"></app-alert>
-                                <span>{{i.setor}}</span>
-                            </div>
-                            @if (i.issuetype.includes("Hardware")) {
+                            <div class="data_top">
+                               @if (i.issuetype.includes("Hardware")) {
                                 <div class="input-Top">
-                                    <app-alert id="patrimonio" titulos="informe patrimonio"></app-alert>
-                                    <span>{{i.patrimonio}}</span>
+                                    <span class="inforDescricao">Patrimonio</span>
+                                    <small>{{i.patrimonio}}</small>
                                 </div>
                                 <div class="input-Top">
-                                    <app-alert titulos="informe equipamento"></app-alert>
-                                    <span>{{i.equipamento}}</span>
-                                </div>
-                            }
-                            @else if (i.issuetype.includes("Sistema")) {
-                                <div class="input-Top">
-                                    <app-alert titulos="informe tipo de sistema"></app-alert>
-                                    <span>{{i.sistem_erro}}</span>
-                                </div>
-                                <div class="input-Top">
-                                    <app-alert titulos="informe erro"></app-alert>
-                                    <span>{{i.erro}}</span>
+                                    <span class="inforDescricao">Equipamento</span>
+                                    <small>{{i.equipamento}}</small>
                                 </div>
                             }
-                            <div class="input-Top">
-                                <app-alert titulos="nome"></app-alert>
-                                <small>{{i.usuario}}</small>
                             </div>
-                            <div class="input-Top">
-                                <app-alert titulos="Descrição"></app-alert>
-                                <small class="descricao-itens"[innerHTML]="sanitize(i.descricao)"></small>
+                            <div class="data_top">
+                                @if (i.issuetype.includes("Sistema")) {
+                                    <div class="input-Top">
+                                        <span class="inforDescricao">Sistema</span>
+                                        <small>{{i.sistem_erro}}</small>
+                                    </div>
+                                    <div class="input-Top">
+                                        <span class="inforDescricao">Erro</span>
+                                        <small>{{i.erro}}</small>
+                                    </div>
+                                }
                             </div>
-                            <app-imagens [data]="i.imagens"></app-imagens>
+                            <div class="data_top">
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Nome completo</span>
+                                    <small>{{i.usuario}}</small>
+                                </div>
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Solicitação</span>
+                                    <small>{{i.solicitacao}}</small>
+                                   
+                               </div>
+                            </div>
+                            <div class="data_top2">
+                                <div class="input-Top">
+                                    <span class="inforDescricao">Descrição</span>
+                                    <small class="descricao-itens" [innerHTML]="sanitize(i.descricao)"></small>
+                                </div>
+                                <div class="input-Top">
+                                    <app-imagens [data]="i.imagens"></app-imagens>
+                                </div>
+                            </div>
                             
                         </div>
                     </section>

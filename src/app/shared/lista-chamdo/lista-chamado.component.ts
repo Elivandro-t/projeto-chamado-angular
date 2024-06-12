@@ -132,6 +132,7 @@ user!: any;
     return new Promise((resolve) => {
 
       resolve(this.atualizar.emit({ id, Idchamado }));
+      console.log(id + " " + " "+Idchamado);
 
     });
   }

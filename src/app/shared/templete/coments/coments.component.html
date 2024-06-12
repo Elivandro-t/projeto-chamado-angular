@@ -8,10 +8,15 @@
                 <p class="risc">*</p>
             </b>
             <div class="comments-container">
-                    <div class="button-exibir" (click)="exibirTodosComentarios()" tabindex="0" (keydown.enter)="exibirTodosComentarios()">Carregar comentarios</div>
                 
+                    <!-- <div class="button-exibir" (click)="exibirTodosComentarios()" tabindex="0" (keydown.enter)="exibirTodosComentarios()">Carregar comentarios</div> -->
+                    <div class="input_container">
+                        <div *ngIf="numComentariosExibidos">
+                            <button class="btn" mat-button color="primary" (click)="exibirTodosComentarios()" tabindex="0" role="button">Exibir mais comentários</button>
+                        </div>
+                    </div>
                 @if (cooments) {
-                <div *ngFor="let commet of cooments.slice(0,numComentariosExibidos)">
+                <div *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)">
                     <div style="display: flex;border:0.2px dotted #4565;margin: 2px 0;padding: 2px px;">
                        @if (img) {
                         <img [src]="commet.userImagem" width="25px" height="25px"  style="border-radius: 50%;"
@@ -42,12 +47,13 @@
                     apiKey="2rptpuxtvy9rtscq2utfbgoipgbya6fcqg4sihje2y0m34hn" [init]="editorConfig"></editor>}@else {
                 <input type="text" #textArea class="textArea" placeholder="comentarios (max 240  caracteres)" />
                 }
+                @if (exibiBotao) {
+                    <div class="button">
+                        <button class="btn" mat-raised-button color="primary" (click)="enviar()" tabindex="0"  (keydown.enter)="enviar()" role="button">Enviar</button>
+                    </div>
+                    }
             </form>
-            @if (exibiBotao) {
-            <div class="button">
-                <button class="btn" mat-raised-button color="primary" (click)="enviar()" tabindex="0"  (keydown.enter)="enviar()" role="button">Enviar</button>
-            </div>
-            }
+            
         </div>
     </div>
 </Section>

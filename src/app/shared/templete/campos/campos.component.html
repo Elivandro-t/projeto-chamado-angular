@@ -57,6 +57,9 @@
 
                 </div>
                 <div class="input_container-int2">
+                    <!-- <div class="input-Top">
+                        <app-alert aviso="Descreva sua solicitaçao!"></app-alert>
+                    </div> -->
                     <div class="input-Top">
                         <b class="ls-label-text">
                             <p>Solicitação</p>
@@ -71,44 +74,45 @@
                                 obrigatorio</mat-error>
                         </mat-form-field>
                     </div>
-
                     <div class="input_container">
-                        <div class="input_container">
-                            <b class="ls-label-text">
-                                <p>Patrimonio</p>
-                                <p class="">*</p>
-                            </b>
-                            <mat-form-field class="input-form" appearance="outline">
-                                <input class="input" type="text" formControlName="patrimonio" placeholder="Patrimonio"
-                                    #patrimon (keydown.enter)="enter(equipa)" maxlength="10" matInput />
-                                <mat-error
-                                    *ngIf="myForm.get('patrimonio')?.errors?.['pattern']&&myForm.get('patrimonio')?.touched">Apenas
-                                    Numeros são permitidos</mat-error>
-                                <mat-error
-                                    *ngIf="myForm.get('patrimonio')?.errors?.['maxlength']&&myForm.get('patrimonio')?.touched">Máximo
-                                    de 6 caracteres</mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="input_container">
-                            <b class="ls-label-text">
-                                <p>Equipamento</p>
-                                <p class="">*</p>
-                            </b>
-                            <mat-form-field class="input-form" appearance="outline">
-                                <input class="input" [matAutocomplete]="autoEq" type="text"
-                                    formControlName="equipamento" #equipa (keydown.enter)="enter(sistem)" matInput
-                                    placeholder="Equipamento...">
-
-                                <mat-autocomplete #autoEq="matAutocomplete">
-                                    <mat-option *ngFor="let opt of dat"
-                                        [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
-                                    <mat-option matAutocomplete value="outros">outros</mat-option>
-                                </mat-autocomplete>
-                                <mat-error
-                                    *ngIf="myForm.get('equipamento')?.errors?.['required']&&myForm.get('equipamento')?.touched">Campo
-                                    obrigatorio</mat-error>
-                            </mat-form-field>
-                        </div>
+                        @if(titulo.includes("Hardware")){
+                            <div class="input_container">
+                                <b class="ls-label-text">
+                                    <p>Patrimonio</p>
+                                    <p class="">*</p>
+                                </b>
+                                <mat-form-field class="input-form" appearance="outline">
+                                    <input class="input" type="text" formControlName="patrimonio" placeholder="Patrimonio"
+                                        #patrimon (keydown.enter)="enter(equipa)" maxlength="10" matInput />
+                                    <mat-error
+                                        *ngIf="myForm.get('patrimonio')?.errors?.['pattern']&&myForm.get('patrimonio')?.touched">Apenas
+                                        Numeros são permitidos</mat-error>
+                                    <mat-error
+                                        *ngIf="myForm.get('patrimonio')?.errors?.['maxlength']&&myForm.get('patrimonio')?.touched">Máximo
+                                        de 6 caracteres</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="input_container">
+                                <b class="ls-label-text">
+                                    <p>Equipamento</p>
+                                    <p class="">*</p>
+                                </b>
+                                <mat-form-field class="input-form" appearance="outline">
+                                    <input class="input" [matAutocomplete]="autoEq" type="text"
+                                        formControlName="equipamento" #equipa (keydown.enter)="enter(sistem)" matInput
+                                        placeholder="Equipamento...">
+    
+                                    <mat-autocomplete #autoEq="matAutocomplete">
+                                        <mat-option *ngFor="let opt of dat"
+                                            [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
+                                        <mat-option matAutocomplete value="outros">outros</mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error
+                                        *ngIf="myForm.get('equipamento')?.errors?.['required']&&myForm.get('equipamento')?.touched">Campo
+                                        obrigatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                        }
                         @if(titulo.includes("Sistema")){
                         <div class="input_container">
                             <b class="ls-label-text">
@@ -144,7 +148,7 @@
                             <app-alert
                                 aviso="Criação de E-mail, Licença de software, Criação ou Reset de senha no sistema JIRA, Suporte maestro"
                                 saudacao="Para criação de conta E-email e reset de senha, Criação de conta AD informa: ⬇️"
-                                subtitulo="NOME COMPLETO, CPF,EMAIL, FUNÇÃO, SETOR,USUARIO, MATRICULA, CENTRO DE CUSTO, NOME DO GESTOR, EMAIL GESTOR APROVADOR"></app-alert>
+                                subtitulo="NOME COMPLETO, CPF, EMAIL, FUNÇÃO, SETOR, USUARIO, ID MATEUS, MATRICULA, CENTRO DE CUSTO, NOME DO GESTOR, EMAIL GESTOR APROVADOR"></app-alert>
                         </div>
                         }
                         <div class="input_container">
