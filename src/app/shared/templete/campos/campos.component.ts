@@ -58,13 +58,14 @@ export class CamposComponent implements OnInit {
     {name:"DESKTOP"},
     {name:"LEPTOP"},
     {name:"IMPRESSORA ARGOX"},
-    {name:"IMPRESSORA LISER"},
+    {name:"IMPRESSORA LASER"},
     {name:"IMPRESSORA MATRICIAL"},
     {name:"BALANCA"},
 
   ];
   list  = [
     {name:"GM CORE"},
+    {name:"COLETOR"},
     {name:"WMS"},
     {name:"FINANCEIRO"},
     {name:"ZIMBRA"},

@@ -16,35 +16,37 @@
             <div class="button">
                 <button (click)="atualizarstatusFechado()" mat-raised-button color="primary" [mtBasicSpinner]="spinner1"
                     [hideText]="true">Aprovar</button>
-                <button (click)="ReabrirChamado()" style="margin:5px 0;" mat-raised-button [mtBasicSpinner]="spinner2"
+                <button (click)="ReabrirChamado()"  mat-raised-button [mtBasicSpinner]="spinner2"
                     [hideText]="true" color="secundary">Recusar</button>
-                    <!-- @if (user.includes("admin")||user.includes("suporte")||user.includes("dev")) {
-                        <button (click)="getRas()" style="margin:5px 0;" mat-raised-button [mtBasicSpinner]="spinner2"
-                    [hideText]="true" color="secundary">Aceita chamado</button>
-                    } -->
             </div>
+
         </div>
+        <!-- <div >
+            @if (user.includes("admin")||user.includes("suporte")||user.includes("dev")) {
+                <button (click)="getRas()" style="margin:5px 0;" mat-raised-button 
+           color="secundary">Aceitar card</button>
+            }
+        </div> -->
         <div class="container" *ngIf="disableAdmin">
             <div class="logo">
-                <small>Chamados informatica</small>
+                <small>Mudar status</small>
             </div>
             <div class="button">
                 <button [disabled]="habilitaBotao" (click)="atualizarstatus()" mat-raised-button
-                    [mtBasicSpinner]="spinner3" [hideText]="true" color="primary">Feito</button>
+                    [mtBasicSpinner]="spinner3" [hideText]="true" color="primary">Solicitar validação</button>
                 <button [disabled]="habilitaBotao" (click)="ReabrirChamado()" mat-raised-button
                     [mtBasicSpinner]="spinner2" [hideText]="true" color="primary">Reabrir</button>
                 <button [disabled]="habilitaBotao" (click)="atualizarstatusJira()" mat-raised-button
                     [mtBasicSpinner]="spinner4" [hideText]="true" color="primary">Aguandando jira</button>
                 <button [disabled]="habilitaBotao" (click)="atualizarstatusAprovador()" mat-raised-button
-                    [mtBasicSpinner]="spinner5" [hideText]="true" color="primary">Aguand aprovação</button>
-                <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado() " style="margin:5px 0;"
-                    [mtBasicSpinner]="spinner1" [hideText]="true" mat-raised-button color="secundary">Fechar</button>
+                    [mtBasicSpinner]="spinner5" [hideText]="true" color="primary">Aguandando aprovação</button>
+                <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado()"
+                    [mtBasicSpinner]="spinner1" [hideText]="true" mat-raised-button color="primary">Fechar</button>
+                <button [disabled]="habilitaBotao" (click)="atualizarstatusRecusado()"
+                    [mtBasicSpinner]="spinner6" [hideText]="true" mat-raised-button color="primary">Recusado</button>
 
-                    <button [disabled]="habilitaBotao" (click)="atualizarstatusRecusado() " style="margin:5px 0;"
-                    [mtBasicSpinner]="spinner6" [hideText]="true" mat-raised-button color="secundary">Recusado</button>
-
-                    <button [disabled]="habilitaBotao" (click)="getRas() " style="margin:5px 0;"
-                    [mtBasicSpinner]="spinner7" [hideText]="true" mat-raised-button color="secundary" >Aceita card</button>
+                <!-- <button [disabled]="habilitaBotao" (click)="getRas() " style="margin:5px 0;"
+                    [mtBasicSpinner]="spinner7" [hideText]="true" mat-raised-button color="secundary" >Aceitar card</button> -->
             </div>
 
         </div>

@@ -14,8 +14,10 @@
         }
         .logo{
             width: 100%;
+            text-align: center;
             h4{
                 color: rgb(6, 117, 6);
+                text-align: center;
             }
         }
         .button {
@@ -23,13 +25,17 @@
             display: flex;
             flex-direction: column;
             gap:7px;
+            button{
+                font-size: 10px;
+                font-family: sans-serif;
+            }
            
         }
         .solicitacao {
             width: 100%;
             display: flex;
             flex-direction: column;
-            
+            align-items: center;
             gap: 5px;
             margin-top: 20px
         }

@@ -77,7 +77,7 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
 
     this.service.PegarTec(event.id, ids.Idchamado).subscribe((e: any) => {
 
-      this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e.msg } });
+      this.snackBar.openSnackBar(e.msg);
       this.ngOnInit();
 
     });

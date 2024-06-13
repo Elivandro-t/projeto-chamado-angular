@@ -1,3 +1,4 @@
+import { SnackBar } from './../../../../../AlertaDialog/snackBar/snackbar.component';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserAuthService } from './../../../../../core/user-auth.service';
@@ -54,7 +55,7 @@ export class DadosDetalheComponent implements OnInit {
   showDownloadButtons: boolean = false;
 
  
-  constructor(private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
+  constructor(private SnackBar: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
   ngOnInit(): void {
      const card = this.route.snapshot.paramMap.get("card") as string;
      const id = this.route.snapshot.paramMap.get("id") as any;
@@ -68,13 +69,9 @@ export class DadosDetalheComponent implements OnInit {
    
   }
 pegart(idchamdo: any){
-  alert("id "+idchamdo +" "+ this.chamdoCard.id);
-    // console.log(this.idchamado);
-    //   this.spinner7 =true;
-    // this.api.PegarTec(this.iditens,this.idchamado).subscribe((e: any) => {
-    //  this.snackba.openSnackBar(e.msg);
-    //    this.spinner7 = false;
-    // });
+    this.service.PegarTec(idchamdo,this.chamdoCard.id).subscribe((e: any) => {
+     this.SnackBar.openSnackBar(e.msg);
+    });
 }
 
   sanitize(html: string): SafeHtml {

@@ -46,6 +46,7 @@ export class DadosTecnicosComponent implements OnInit{
   spinner5 = false;
   spinner6 = false;
   spinner7 = false;
+  spinner8 = false;
 @Output()statusMud = new EventEmitter<string>();
   constructor(private Auth: UserAuthService,private snackba: SnackBar,private api: ChamadoApiService, private Service: StatusChamadoService, private paranss: ActivatedRoute, private snack: SnackBar) { }
 

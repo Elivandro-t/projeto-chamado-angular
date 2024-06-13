@@ -4,7 +4,7 @@
 import * as XLSX from 'xlsx';
 import { UserAuthService } from './../../core/user-auth.service';
 import { ChamdoId } from '../../core/types';
-import { Component, EventEmitter, Inject, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -42,6 +42,7 @@ import { PdfService } from '../templete/service/pdf.service';
 })
 @Inject('root')
 export class ListaChamadoComponent implements OnInit {
+  @ViewChild("color")  trColor!: ElementRef;
   toppings = new FormControl('');
   lista = [
     { "ativo": false, "name": "fechado" },
@@ -85,6 +86,9 @@ user!: any;
         break;
     }
 
+  }
+  getRowClass(ite: any): string {
+    return ite.done ? '' : 'red-row';
   }
   sizePage(event: any) {
     this.emitsize.emit(event);
@@ -130,9 +134,7 @@ user!: any;
   }
   getRa(id: number, Idchamado: number) {
     return new Promise((resolve) => {
-
       resolve(this.atualizar.emit({ id, Idchamado }));
-      console.log(id + " " + " "+Idchamado);
 
     });
   }
@@ -159,7 +161,6 @@ user!: any;
     for (let datas of this.dataSource) {
         if (datas.itens !== undefined && datas.itens !== null) {
             data.push(datas.itens);
-            console.log(datas.itens);
         }
     }
 

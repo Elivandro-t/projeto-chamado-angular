@@ -94,25 +94,25 @@
                         </thead>
                         <tbody >
                             @for (servico of dataSource; track $index) {
-                            <tr style="text-align: start;color: var(--ds-text-subtle, #6B778C);" class="data" *ngFor="let ite of servico.itens">
+                            <tr style="text-align: start;color: var(--ds-text-subtle, #6B778C);" class="data" *ngFor="let ite of servico.itens" [ngClass]="getRowClass(ite)">
                                 @if (desableBotton) {
                                 <td><a class="chamadoId" (click)="chamadoUser(ite.cardId,servico.usuarioid)"
                                         tabindex="0"
                                         (keydown.enter)="chamadoUser(ite.cardId,servico.usuarioid)">{{ite.cardId}}</a>
                                 </td>
                                 }@else {
-                                <td><a class="chamadoId"
+                                <td style="width:130px;"><a class="chamadoId"
                                         (click)="chamadoAdmin(ite.cardId,servico.usuarioid)">{{ite.cardId}}</a></td>
                                 }
 
-                                <td>{{ite.issuetype}}</td>
-                                <td id="status">{{ite.status.replace('_'," ")}}</td>
-                                <td>{{ite.setor}}</td>
-                                <td>{{ite.usuario}}</td>
-                                <td>{{ite.data}}</td>
-                                <td style="color: rgb(209, 73, 73);">{{ite.tecnico_responsavel}}</td>
+                                <td style="width:130px;">{{ite.issuetype}}</td>
+                                <td style="width:130px;" id="status">{{ite.status.replace('_'," ")}}</td>
+                                <td style="width:130px;">{{ite.setor}}</td>
+                                <td style="width:130px;">{{ite.usuario}}</td>
+                                <td style="width:130px;">{{ite.data}}</td>
+                                <td style="width:130px;" style="color: rgb(209, 73, 73);">{{ite.tecnico_responsavel}}</td>
                                 <td *ngIf="exibir">
-                                    <button [disabled]="ite.aceito" mat-raised-button style="font-size:12px" color="primary"
+                                    <button [disabled]="ite.done" mat-raised-button style="font-size:9px;height: 20px;" color="primary"
                                         (click)="getRa(ite.id,servico.id)">aceitar</button>
                                 </td>
                             </tr>
