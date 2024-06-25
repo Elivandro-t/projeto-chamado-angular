@@ -25,22 +25,30 @@ export class AuthInterceptors implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 500) {
+        if (error.status === 500 ) {
               const isToken = confirm("Sessão expirada! deseja continuar?");
             if (isToken) {
               this.authApi.$refreshtoken.next(true);
             } 
         }
         if (error.status === 401) {
-
           this.router.navigate(["/auth/login"]);
           this.auth.RemoveToken();
           this.auth.RemoveRefreshToken();
         }
-        if (error.status === 5001) {
-          this.snackBar.openSnackBar("Erro 502 serviço em manutenção");
+        // if (error.status === 400) {
+        //   this.snackBar.openSnackBar(error.error.msg);
+        // }
+        // if (error.status === 502) {
+        //   this.snackBar.openSnackBar(error.message);
+        // }
+        if (error.status === 501) {
+          this.snackBar.openSnackBar("Erro 501 serviço em manutenção");
         }
-        return throwError(new Error("deu erro"));
+        // if (error.status === 503) {
+        //   this.snackBar.openSnackBar(error.message);
+        // }
+        return throwError(error.message);
       })
     );
   }

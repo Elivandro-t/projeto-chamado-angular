@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AsyncPipe, CommonModule } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -31,6 +31,7 @@ interface FileWithPreview extends File {
     styleUrl:"./drop.component.scss"
 })
 export class DropComponent{
+  @Input() drop: "primary"|"secundary" = "primary";
     @Output() emiter =new EventEmitter();
     constructor(){}
     loading = false;

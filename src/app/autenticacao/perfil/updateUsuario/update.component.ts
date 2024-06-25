@@ -35,7 +35,8 @@ export class UpdateComponent{
     id: new FormControl(this.data.user.id,Validators.required),
     name: new FormControl(this.data.user.name,Validators.required),
     lastname: new FormControl(this.data.user.lastname,Validators.required),
-    contato:new FormControl(this.data.user.contato,Validators.required)
+    contato:new FormControl(this.data.user.contato,Validators.required),
+    filial:new FormControl(this.data.user.filial,Validators.pattern('^[0-9]*$'))
   });
 constructor(@Inject(MAT_DIALOG_DATA) public data: any,private router: Router,private snack: SnackBar,public user: SigninServiceService,private endpoint: ApiLoginService){}
  

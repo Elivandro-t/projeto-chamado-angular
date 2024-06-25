@@ -12,7 +12,7 @@ import { ChamadoApiService } from '../../core/chamado-api.service';
   styleUrl: './lista-aguardando-validacao.component.scss'
 })
 export class ListaAguardandoValidacaoComponent implements OnInit{
-  displayedColumns = ['card', 'referencia', 'status', 'setor', 'usuario', 'data', 'tec'];
+  displayedColumns = ['Cards', 'Ref', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
   number!: number;
   Lista!: Chamados[];
   constructor(private service: ChamadoApiService){}

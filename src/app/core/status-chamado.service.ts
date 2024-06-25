@@ -21,6 +21,10 @@ export class StatusChamadoService {
     const endPoint = `/validacao/${usuarioId}/chamadoCard/${chamadoID}/aberto/${this.user.getId()}`;
       return this.http.put<any>(this.api+endPoint,{}).pipe();
   }
+  retornaChamadoAberto(usuarioId: number,chamadoID: string): Observable<any>{
+    const endPoint = `/guardando-tecnico/${usuarioId}/chamadoCard/${chamadoID}/tec/${this.user.getId()}`;
+      return this.http.put<any>(this.api+endPoint,{}).pipe();
+  }
   mudaStatusJira(usuarioId: number,chamadoID: string): Observable<any>{
     const endPoint = `/validacao/${usuarioId}/chamadoCard/${chamadoID}/jira/${this.user.getId()}`;
       return this.http.put<any>(this.api+endPoint,{}).pipe();

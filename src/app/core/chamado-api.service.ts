@@ -74,16 +74,29 @@ export class ChamadoApiService {
   }
   // listando os chamados de usuario por usuario
 
-  lista(page: any,size: any): Observable<ApiResponse> {
-    const params = new HttpParams();
+  lista(page: any,size: any,ativo: any): Observable<ApiResponse> {
+    let params = new HttpParams();
     const search: string = this.busca.form.value.search ?? '';
-
+    if (ativo !== null && ativo !== undefined) {
+      params = params.set("ativo", ativo);
+    }
    if(search!=null&&search!=undefined){
-    params.set('descricao', search);
+    params = params.set('descricao', search);
    }
-    return this.http.get<ApiResponse>(`${this.api}/chamado/usuarioid/${this.id}?size=${size}&page=${page}`, { params });
+   if (page !== null && page !== undefined) {
+    params = params.set("page", page);
 
+  }
+  if (size !== null && size !== undefined) {
+    params = params.set("size", size);
 
+  }
+  if(this.Inforuser.getId()!=null||this.Inforuser.getId()!=undefined){
+    return this.http.get<ApiResponse>(`${this.api}/chamado/usuarioid/${this.Inforuser.getId()}`, { params });
+
+  }
+
+return null as any;
 
   }
   //pegando chamdo por id
@@ -109,7 +122,45 @@ export class ChamadoApiService {
       params = params.set("dataDepois", dataDepois);
 
     }
-    return this.http.get<ApiResponse>(`${this.api}/lista/${this.Inforuser.getFilial()}?size=${size}&page=${page}`, { params });
+    if (page !== null && page !== undefined) {
+      params = params.set("page", page);
+
+    }
+    if (size !== null && size !== undefined) {
+      params = params.set("size", size);
+
+    }
+    return this.http.get<ApiResponse>(`${this.api}/lista/${this.Inforuser.getFilial()}`, { params });
+  }
+  
+  // buscando todos os chamados das filiais
+  ListaAdmFiliais(page: number, ativo: any,dataAntes: any,dataDepois: any,size: any): Observable<ApiResponse> {
+    const setor = this.busca.form.value.search as any;
+    let params = new HttpParams();
+    if (ativo !== null && ativo !== undefined) {
+      params = params.set("ativo", ativo);
+    }
+    if (setor !== null && setor !== undefined) {
+      params = params.set("setor", setor);
+
+    }
+    if (dataAntes !== null && dataAntes !== undefined) {
+      params = params.set("dataAntes", dataAntes);
+
+    }
+    if (dataDepois !== null && dataDepois !== undefined) {
+      params = params.set("dataDepois", dataDepois);
+
+    }
+    if (page !== null && page !== undefined) {
+      params = params.set("page", page);
+
+    }
+    if (size !== null && size !== undefined) {
+      params = params.set("size", size);
+
+    }
+    return this.http.get<ApiResponse>(`${this.api}/lista/filiais/cds`, { params });
   }
   ListaTecnico(page: number,size: number): Observable<ApiResponse> {
     const setor = this.busca.form.value.search as any;

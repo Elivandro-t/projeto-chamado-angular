@@ -11,6 +11,6 @@ import { RodapeComponent } from '../../../shared/footer/rodape/rodape.component'
   styleUrl: './mural-pricipal.component.scss'
 })
 export class MuralPricipalComponent {
-@Input() variant: "primary"|"secundary"|"list"|"auth" = "primary";
+@Input() variant: "primary"|"secundary"|"list"|"auth"|"home"= "primary";
 @Input() logo!: string;
 }

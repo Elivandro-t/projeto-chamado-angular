@@ -4,35 +4,42 @@
 
         <div class="input_container">
             <b class="ls-label-text ">
-                <p>comentários</p>
+                <p>Comentários</p>
                 <p class="risc">*</p>
             </b>
             <div class="comments-container">
-                
-                    <!-- <div class="button-exibir" (click)="exibirTodosComentarios()" tabindex="0" (keydown.enter)="exibirTodosComentarios()">Carregar comentarios</div> -->
-                    <div class="input_container">
-                        <div *ngIf="numComentariosExibidos">
-                            <button class="btn" mat-button color="primary" (click)="exibirTodosComentarios()" tabindex="0" role="button">Exibir mais comentários</button>
-                        </div>
+
+                <!-- <div class="button-exibir" (click)="exibirTodosComentarios()" tabindex="0" (keydown.enter)="exibirTodosComentarios()">Carregar comentarios</div> -->
+                <div class="input_container">
+                    <div *ngIf="numComentariosExibidos">
+                        <button class="btn" mat-button color="primary" (click)="exibirTodosComentarios()" tabindex="0"
+                            role="button">Exibir mais comentários</button>
                     </div>
+                </div>
                 @if (cooments) {
-                <div *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)">
-                    <div style="display: flex;border:0.2px dotted #4565;margin: 2px 0;padding: 2px px;">
-                       @if (img) {
-                        <img [src]="commet.userImagem" width="25px" height="25px"  style="border-radius: 50%;"
-                        alt="">
-                       }@else if(commet.userImagem===null || commet.userImagem===undefined) {
-                        <img src="../../../../assets/user.png" width="25px" height="25px"  style="border-radius: 50%;" alt="">
-                       }
-                        <div style="display: flex;flex-direction: column;align-items:start;">
+                <div class="comentarios"
+                    *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)" style="">
+                    <div class="itens" style="display: flex;border:0.2px dotted #4565;padding:5px;">
+                        @if (img) {
+                        <img [src]="commet.userImagem" width="30px" height="30px" style="border-radius: 50%;" alt="">
+                        }@else if(commet.userImagem===null || commet.userImagem===undefined) {
+                        <img src="../../../../assets/user.png" width="30px" height="30px" style="border-radius: 50%;"
+                            alt="">
+                        }
+                        <div class="commet-itens" style="display: flex;flex-direction: column;align-items:start;">
                             <div style="display: flex;">
                                 <p style="margin: 0 5px;"><small>{{commet.usuario}}</small></p>
-                                 <p style="margin: 0 5px;"><small>{{commet.data}}</small></p>
+                                <p style="margin: 0 5px;"><small>{{commet.data}}</small></p>
                             </div>
-                            <div style="margin: 0 5px;margin-top: -0.5rem;">
-                                <small class="sty" [innerHTML]="sanitize(commet.comments)"></small>
-    
+                            <div class="detalhes" style="margin:0px 5px; box-sizing: border-box;">
+                                <small #name class="sty" [innerHTML]="sanitize(commet.comments)"></small>
+
                             </div>
+                         
+                            <div class="detalhes" style="margin:0 5px;box-sizing: border-box;">
+                                <app-imagens [data]="commet.imagens"></app-imagens>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -44,16 +51,28 @@
                 @if (exibiBotao) {
 
                 <editor class="editor" formControlName="comment"
-                    apiKey="2rptpuxtvy9rtscq2utfbgoipgbya6fcqg4sihje2y0m34hn" [init]="editorConfig"></editor>}@else {
-                <input type="text" #textArea class="textArea" placeholder="comentarios (max 240  caracteres)" />
-                }
+                    apiKey="2rptpuxtvy9rtscq2utfbgoipgbya6fcqg4sihje2y0m34hn" [init]="editorConfig"></editor>
+                    <!-- <p-editor formControlName="comment" #app/> -->
+                    
+                }@else {
+                <div class="textArea">
+                    <input type="text" #textArea  placeholder="Digitar comentarios aqui!" />
+                </div>
+
+            }
                 @if (exibiBotao) {
-                    <div class="button">
-                        <button class="btn" mat-raised-button color="primary" (click)="enviar()" tabindex="0"  (keydown.enter)="enviar()" role="button">Enviar</button>
-                    </div>
-                    }
+                <div class="button">
+                    <section>
+                        <div class="drop">
+                            <input #file type="file" accept="image/*" (change)="PegaImagens($event)" multiple title="Não jogue imagem na descricao, joguei aqui!">
+                        </div>
+                    </section>
+                    <button class="btn" mat-raised-button color="primary" (click)="enviar()" tabindex="0"
+                        (keydown.enter)="enviar()" role="button">Enviar</button>
+                </div>
+                }
             </form>
-            
+
         </div>
     </div>
 </Section>

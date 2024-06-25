@@ -102,9 +102,16 @@ export class CamposComponent implements OnInit {
   
   descricao ="descricao";
   editorConfig = {
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-    statusbar:false
+    selector: 'textarea',  // change this value according to your HTML
+    max_height:900, 
+    height:300,
+    plugins: 'autoresize anchor textcolor colorpicke autolink charmap codesample emoticons link lists  searchreplace table visualblocks wordcount linkchecker',
+    toolbar: 'fontfamily fontsize | bold italic underline strikethrough forecolor backcolor | align lineheight  | emoticons charmap',
+    statusbar:false,
+    menubar:false,
+  
+    
+    
   };
   enter(event: any): void{
     if(event){
@@ -201,7 +208,7 @@ onSelect(event: any) {
         });
       }
       this.sprinner=false;
-      this.router.navigate([`/chamado/${chamado}/${s.usuarioid}`]);
+      this.router.navigate([`/chamado/${chamado}/${s.usuarioid}/${s.id}/create`]);
       this.myForm.reset();
     });
 

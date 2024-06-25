@@ -1,0 +1,22 @@
+<!-- eslint-disable @angular-eslint/template/alt-text -->
+<div class="card flex justify-content-cente">
+    <p-dropdown 
+        [options]="countries"
+        [(ngModel)]="selectedCountry"
+        optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Country">
+            
+            <ng-template let-country pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <img 
+                        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                        [class]="'flag flag-' + country.code.toLowerCase()"
+                        style="width:10px" />
+                    <div>{{ country.name }}</div>
+                </div>
+            </ng-template>
+    </p-dropdown>
+</div>

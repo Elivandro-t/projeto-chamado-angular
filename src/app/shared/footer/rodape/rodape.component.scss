@@ -5,8 +5,10 @@
     font-size: small;
     align-items: center;
     justify-content: center;
-    background-color: var(--ds-surface, #FFFFFF);
     font-family: Arial, Helvetica, sans-serif;
     gap:4px;
+    span{
+      color:var(--ds-surface, #FFFFFF) ;
+    }
   }
 }

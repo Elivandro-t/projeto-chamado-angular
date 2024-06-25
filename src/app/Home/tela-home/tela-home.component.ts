@@ -7,6 +7,7 @@ import { CardsChamadosComponent } from './cards/cards-chamados/cards-chamados.co
 import { AlertComponent } from './cards/cards-anuncios/alert/alert.component';
 import { RodapeComponent } from '../../shared/footer/rodape/rodape.component';
 import { UserAuthService } from '../../core/user-auth.service';
+import { MuralPricipalComponent } from '../../components/mural/mural-pricipal/mural-pricipal.component';
 @Component({
   selector: 'app-tela-home',
   standalone: true,
@@ -14,6 +15,7 @@ import { UserAuthService } from '../../core/user-auth.service';
     CardsButtonComponent,
     HeaderComponent,
     CardsChamadosComponent,
+    MuralPricipalComponent,
     MatIconModule,
     FigureComponent,
     AlertComponent,

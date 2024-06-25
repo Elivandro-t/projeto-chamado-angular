@@ -22,3 +22,21 @@ section{
     }
 
 }
+
+@media screen  and (max-width:400px){
+    section{
+    mat-card {
+        width:280px;
+        height: 130px;
+       
+        padding: 0 26px;
+        .imagen-card{
+            width:70px;
+            height:50px;
+        }
+       
+    }
+}
+
+    
+}

@@ -4,7 +4,7 @@
             <div class="logo">
                 <app-back-button></app-back-button>
                 <img class="imagen-card" alt="logo" src="assets/ti.png" />
-                <h2>Suporte informatica</h2>
+                <h2>SUPORTE TI</h2>
             </div>
             <form [formGroup]="myForm">
                 @if (titulo.includes("Hardware")) {
@@ -136,7 +136,7 @@
                                 <mat-autocomplete #autoEq="matAutocomplete">
                                     <mat-option *ngFor="let opt of list"
                                         [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
-                                    <mat-option matAutocomplete value="outros">não encontrado</mat-option>
+                                    <mat-option matAutocomplete value="outros">Não encontrado</mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
                         </div>
@@ -156,7 +156,7 @@
                                 <p>Descrição</p>
                                 <p class="risc">*</p>
                             </b>
-                            <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
+                            <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig" >
                             </editor>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
             </form>
             <div class="button">
                 <button color="primary" [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
-                    mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">acessar</button>
+                    mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
 
             </div>
         </div>

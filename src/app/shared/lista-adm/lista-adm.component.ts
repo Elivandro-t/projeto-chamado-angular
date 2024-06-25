@@ -11,6 +11,8 @@ import { AcitiveModule } from '../../core/activete.module';
 import { BuscaService } from '../../core/busca.service';
 import e from 'express';
 import { Subscription } from 'rxjs';
+import { LogServiceService } from '../../core/log-service.service';
+import { UserAuthService } from '../../core/user-auth.service';
 interface ativo {
   ativo: boolean;
 }
@@ -22,8 +24,8 @@ interface ativo {
   styleUrl: './lista-adm.component.scss'
 })
 export class ListaAdmComponent implements OnInit, OnDestroy {
-
-  displayedColumns = ['Cards', 'referencias', 'status', 'setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+ datauser: any;
+  displayedColumns = ['Cards', 'Referencias', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
   dataSouce!: Chamados[];
   number!: number;
   totalPages!: number;
@@ -31,7 +33,7 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
   ativo!: boolean;
   minhaSubscription: Subscription | undefined;
   size = 10;
-  constructor(private service: ChamadoApiService, public busca: BuscaService, private snackBar: SnackBar, private dialog: MatDialog) { }
+  constructor(private api: LogServiceService,private service: ChamadoApiService, public busca: BuscaService, private snackBar: SnackBar, private dialog: MatDialog,private user: UserAuthService) { }
 
   ngOnInit(): void {
     this.ativo = true;
@@ -39,7 +41,6 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
     this.gerar();
   }
   gerarativo(event: boolean) {
-    this.busca.form.reset();
     this.ativo = event;
     this.gerar();
   }
@@ -57,6 +58,12 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
       this.number = e.totalPages;
     });
   }
+
+  pegarLog(chamadoId: any,){
+    this.datauser = chamadoId;
+    this.api.apiLog(chamadoId.id,`<div style="color:green;">Chamado aceito por <p style="color: rgb(90, 88, 230);">${this.user.getname()}</p> card: ${chamadoId.cardId} </div>` ).subscribe();
+  }
+
   ngOnDestroy(): void {
     if (this.minhaSubscription) {
       this.minhaSubscription.unsubscribe();

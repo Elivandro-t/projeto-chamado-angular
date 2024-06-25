@@ -3,13 +3,13 @@
         <legend>Digite o codigo enviado ao E-mail</legend>
          <label  class="input-text">
           <mat-form-field>
-            <mat-label>codigo de verificaçao</mat-label>
+            <mat-label>Codigo de verificaçao</mat-label>
             <div class="input-search">
-                <input matInput type="text" formControlName="codigo" />
-                <button [disabled]="!form.valid"  (click)="enviar()" class="btn-login"  mat-button color="primary"><mat-icon>search</mat-icon></button>
+                <input matInput type="text" formControlName="codigo"/>
+                <button [disabled]="!form.valid"  (click)="enviar()" (keydown.enter)="enviar()" class="btn-login"  mat-button color="primary"><mat-icon>search</mat-icon></button>
 
             </div>
-             <mat-error *ngIf="form.get('codigo')?.errors?.['required']&&form.get('codigo')?.touched">campo obrigatorio</mat-error>
+             <mat-error *ngIf="form.get('codigo')?.errors?.['required']&&form.get('codigo')?.touched">Campo obrigatorio</mat-error>
           </mat-form-field>
         </label >
     </form>

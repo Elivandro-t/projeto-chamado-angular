@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserService } from './../../../autenticacao/services/user.service';
 
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,10 +13,13 @@ import { commentRegiste } from '../../../autenticacao/services/comments.service/
 import { UserAuthService } from '../../../core/user-auth.service';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DropComponent } from '../campos/drop/drop.component';
+import { ImagensComponent } from '../dados-reecebidos/imagens/imagens.component';
+// import { EditorModule } from 'primeng/editor';
 @Component({
   selector: 'app-coments',
   standalone: true,
-  imports: [EditorModule,ReactiveFormsModule,FormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,CommonModule],
+  imports: [ImagensComponent,EditorModule,ReactiveFormsModule,FormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,CommonModule,DropComponent],
   templateUrl: './coments.component.html',
   styleUrl: './coments.component.scss'
 })
@@ -23,6 +27,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ComentsComponent implements OnInit,AfterViewInit{
   @ViewChild('textArea') private commentsContainer!: ElementRef;
   @ViewChild("textAreaForm") textAreaForm!: ElementRef;
+  @ViewChild("app") app!: ElementRef;
+  @ViewChild("name",{static:false}) name!: ElementRef;
+
   resizeEnabled = true;
   quandadeDeItens!: any;
   form!: FormGroup;
@@ -33,22 +40,29 @@ export class ComentsComponent implements OnInit,AfterViewInit{
   @Input() chamadoId!: number;
   imagens: { [key: string]: string }={};
   numComentariosExibidos = 3;
+  @Output() files: File[] = [];
+  @ViewChild("file") file!: ElementRef;
   constructor(public Auth: UserAuthService,private sanitizer: DomSanitizer,public Formb: FormBuilder,private userApi: UserService,public http: CommentsService,private user: UserAuthService){}
   ngAfterViewInit(): void {
     this.commentsContainer.nativeElement.addEventListener('input',this.Resize.bind(this));
     this.textAreaForm.nativeElement.addEventListener('click',()=>{
-      this.textAreaForm.nativeElement.style.padding="0 40px";
-      this.textAreaForm.nativeElement.style.border="0";
       this.exibiBotao = true;
     });
     this.Auth.retornUser().subscribe((e) => {
        this.img = e.imagem;
      });
+     this.app.nativeElement.addEventListener('input',this.Resizes.bind(this));
   }
   Resize(){
     this.commentsContainer.nativeElement.style.height="auto";
     this.commentsContainer.nativeElement.style.height
     =this.commentsContainer.nativeElement.scrollHeight+'px';
+
+  }
+  Resizes(){
+    this.app.nativeElement.style.height="auto";
+    this.app.nativeElement.style.height
+    =this.app.nativeElement.scrollHeight+'px';
 
   }
   // Defina o número inicial de comentários a serem exibidos
@@ -58,10 +72,16 @@ carregarMaisComentarios() {
     // Aumente o número de comentários a serem exibidos quando o botão for clicado
     this.numComentariosExibidos += 5; // Ajuste o valor conforme necessário
 }
+// desabilitado devido ao teste de outro editor do priming
   editorConfig = {
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-    statusbar:false
+    selector: 'textarea', 
+    max_height:900, 
+    height:150,// change this value according to your HTML
+    icons: 'my_icon_pack' ,
+    plugins: 'autoresize anchor textcolor colorpicke autolink charmap codesample emoticons link lists  searchreplace table visualblocks wordcount linkchecker',
+    toolbar: 'fontfamily fontsize | bold italic underline strikethrough forecolor backcolor | align lineheight  | emoticons charmap',
+    statusbar:false,
+    menubar:false,
   };
   exibirTodosComentarios() {
     const mt = Math.floor(Math.random()*10);
@@ -73,7 +93,7 @@ carregarMaisComentarios() {
   ngOnInit(): void {
     this.reload();
    this.form = this.Formb.group({
-    comment:[""]
+    comment:[" "]
    });
    this.cooments.forEach(e=>{
     this.users(e.email);
@@ -101,16 +121,39 @@ carregarMaisComentarios() {
     
   }
    enviar(){
-    if(this.datas().comments.trim()!=""){
-      this.http.RegistroComment(this.chamadoId,this.datas()).subscribe(()=>{
+    if(this.datas().comments.trim()!=null){
+      this.http.RegistroComment(this.chamadoId,this.datas(),this.files).subscribe(()=>{
         this.http.comment(this.chamadoId).subscribe(e=>{
           this.cooments=e.itens;
           this.quandadeDeItens  =  this.pegarItens(e.itens);
         });
        });
         this.form.reset();
+        if(this.file){
+          this.files = [];
+          this.file.nativeElement.value = '';
+        }
     }
    }
+   onSelect(event: any) {
+    // this.files.push(...event.addedFiles);
+    this.files = event;
+  }
+  PegaImagens(event: any){
+    if (event && event.target.files && event.target.files.length > 0) {
+      this.files = [];
+
+      for (let i = 0; i < event.target.files.length; i++) {
+          const file = event.target.files[i];
+
+          if (file.type.startsWith('image/')) {
+              // Adiciona o arquivo à lista de arquivos
+              this.files.push(file);
+          }
+      }
+     
+  }
+  }
    pegarItens(itens: any[]): number{
     const name = itens.flatMap(e=>e);
     

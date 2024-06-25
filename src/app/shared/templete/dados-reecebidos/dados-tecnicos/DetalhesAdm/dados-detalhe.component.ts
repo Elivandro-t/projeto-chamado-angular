@@ -17,6 +17,7 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { MuralPricipalComponent } from "../../../../../components/mural/mural-pricipal/mural-pricipal.component";
 import { MuralComponent } from "../../../../../components/mural-secundary/mural.component";
 import { BotaoBackComponent } from '../../../../../components/botao_voltar/botaoVoltar.component';
+import { LogServiceService } from '../../../../../core/log-service.service';
 
 
 @Component({
@@ -53,25 +54,37 @@ export class DadosDetalheComponent implements OnInit {
   showModal: boolean = false;
   FotoName!: string;
   showDownloadButtons: boolean = false;
-
+ cardid: any;
+ idchamdo: any;
+ card: any;
  
-  constructor(private SnackBar: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
+  constructor(private api: LogServiceService,private SnackBar: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
   ngOnInit(): void {
-     const card = this.route.snapshot.paramMap.get("card") as string;
-     const id = this.route.snapshot.paramMap.get("id") as any;
-    this.service.ChamadoId(card,id).subscribe(e=>{
+      this.card = this.route.snapshot.paramMap.get("card") as string;
+      this.cardid = this.route.snapshot.paramMap.get("cardid") as string;
+
+     this.idchamdo = this.route.snapshot.paramMap.get("id") as any;
+     this.ColetarIfor();
+    this.service.ChamadoId(this.card,this.idchamdo).subscribe(e=>{
       new Promise(()=>{
         this.chamdoCard = e;
           this.foto = e.itens;
       });
     });
     
-   
   }
+
 pegart(idchamdo: any){
+
+ return new Promise((resolve)=>{
+    resolve(
     this.service.PegarTec(idchamdo,this.chamdoCard.id).subscribe((e: any) => {
      this.SnackBar.openSnackBar(e.msg);
-    });
+     this.ngOnInit();
+    })
+  );
+  });
+
 }
 
   sanitize(html: string): SafeHtml {
@@ -111,5 +124,18 @@ pegart(idchamdo: any){
       this.showDownloadButtons = false;
     },10000); // Esconde os botões após 2 segundos sem movimento do mouse
   }
+  //logs usuarios
+  ColetarIfor(){
+
+    this.pegarLog(this.cardid,`Visualizado por <p style="color: rgb(90, 88, 230);">${this.auth.getname()}</p> card: ${this.card}`);
+  }
+  pegarLog(chamadoId: any,cardId: any){
+    this.api.apiLog(chamadoId,cardId).subscribe();
+  }
+  buscar(){
+    this.pegarLog(this.cardid,`<div style="color:green;">Chamado aceito por <p style="color: rgb(90, 88, 230);">${this.auth.getname()}</p> card: ${this.card} </div>`);
+  }
+  
+
 
 }

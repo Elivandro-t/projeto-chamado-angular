@@ -60,7 +60,7 @@ export class UserAuthService {
   getname(){
     let name;
     this.retornUser().subscribe(e=>{
-      name = e.name;
+      name = e.name +" "+e.lastname;
     });
     return name;
   }

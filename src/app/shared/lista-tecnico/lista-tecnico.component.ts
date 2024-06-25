@@ -9,19 +9,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { AcitiveModule } from '../../core/activete.module';
 import { BuscaService } from '../../core/busca.service';
 import { Subscription } from 'rxjs';
+import { JspdfComponent } from './pdf/jsPdf.component';
 interface ativo {
   ativo: boolean;
 }
 @Component({
   selector: 'app-lista-adm',
   standalone: true,
-  imports: [ListaChamadoComponent, AcitiveModule],
+  imports: [ListaChamadoComponent, AcitiveModule,JspdfComponent],
   templateUrl: './lista-tecnico.component.html',
   styleUrl: './lista-tecnico.component.scss'
 })
 export class ListaTecnicoComponent implements OnInit, OnDestroy {
 
-  displayedColumns = ['Cards', 'referencias', 'status', 'setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Cards', 'Ref', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
   dataSouce!: Chamados[];
   number!: number;
   totalPages!: number;

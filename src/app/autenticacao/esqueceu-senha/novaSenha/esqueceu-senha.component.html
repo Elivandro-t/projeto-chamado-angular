@@ -1,31 +1,45 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <app-tela-de-login variant="primary">
- <div class="painel-login">
- <div class="btn">
-  <app-back-button></app-back-button>
- </div>
-  <form  [formGroup]="form">
-      <legend>Alterar senha</legend>
-       <div  class="input-text">
+  <div class="painel-login">
+    <div class="btn">
+      <app-back-button></app-back-button>
+      <div class="logo">
+        <legend>Alterar senha</legend>
+      </div>
+    </div>
+    @if (disabledbutton) {
+    <div class="container-center">
+      <div class="container-int">
+        Em {{contador}} segundos você será redirecionado a tela de login ou click no botão
+        <button (click)="teladeLogin()" mat-raised-button color="primary">Tela de login</button>
+
+      </div>
+    </div>
+    }
+    <form [formGroup]="form">
+      <div class="input-text">
         <mat-form-field>
-          <mat-label>nova senha</mat-label>
-           <input matInput type="{{text}}" formControlName="newPassword"/>
-           <mat-error *ngIf="form.get('newPassword')?.errors?.['required']&&form.get('newPassword')?.touched">campo obrigatorio</mat-error>
+          <mat-label>Nova senha</mat-label>
+          <input matInput type="{{text}}" formControlName="newPassword" />
+          <mat-error *ngIf="form.get('newPassword')?.errors?.['required']&&form.get('newPassword')?.touched">Campo
+            obrigatorio</mat-error>
 
         </mat-form-field>
-      </div >
-      <div  class="input-text">
-          <mat-form-field>
-            <mat-label>confirme senha</mat-label>
-             <input matInput type="{{text}}" formControlName="repleceAssword"/>
-             <mat-error *ngIf="form.get('repleceAssword')?.errors?.['required']&&form.get('repleceAssword')?.touched">campo obrigatorio</mat-error>
-            </mat-form-field>
-        </div >
-    <div class="btn-login-button"> 
-      <button [disabled]="!form.valid" (click)="newPassword()" class="btn-login"  mat-raised-button color="primary">Alterar</button>
-    </div>
-    <a style="color: blue;text-decoration:underline;cursor: pointer;" (click)="enable()">mostrar senha</a>
-  </form>
- </div>
+      </div>
+      <div class="input-text">
+        <mat-form-field>
+          <mat-label>Confirme senha</mat-label>
+          <input matInput type="{{text}}" formControlName="repleceAssword" />
+          <mat-error *ngIf="form.get('repleceAssword')?.errors?.['required']&&form.get('repleceAssword')?.touched">Campo
+            obrigatorio</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="btn-login-button">
+        <button [disabled]="!form.valid" (click)="newPassword()" class="btn-login" mat-raised-button
+          color="primary">Alterar</button>
+      </div>
+      <a style="color: blue;text-decoration:underline;cursor: pointer;" (click)="enable()">Mostrar senha</a>
+    </form>
+  </div>
 </app-tela-de-login>

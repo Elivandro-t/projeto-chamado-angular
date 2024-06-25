@@ -8,13 +8,15 @@
     <div class="form">
        <form action="" class="perfil" [formGroup]="UserUpdate">
         <label for="contatp">Nome</label>
-         <input type="text" formControlName="name" placeholder="nome..." name="" id="">
-         <label for="contatp">sobrenome</label>
-         <input type="text" formControlName="lastname" placeholder="sobrenome..." name="" id="">
+         <input type="text" formControlName="name" placeholder="Nome..." name="" id="">
+         <label for="contatp">Sobrenome</label>
+         <input type="text" formControlName="lastname" placeholder="Sobrenome..." name="" id="">
+         <label for="contatp">Filial</label>
+         <input type="text" formControlName="filial" placeholder="Filial..." name="" id="">
          <label for="contatp">Contato</label>
-         <input type="tel" (keypress)="formatPhone($event)" formControlName="contato" placeholder="telefone..." name="" id="">
+         <input type="tel" (keypress)="formatPhone($event)" formControlName="Contato" placeholder="telefone..." name="" id="">
        </form>
-       <button [disabled]="!UserUpdate.valid" mat-raised-button color="primary" type="submit" (click)="hendleapi()">atualizar</button>
+       <button mat-raised-button color="primary" type="submit" (click)="hendleapi()">atualizar</button>
     </div>
 </mat-dialog-content>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

@@ -6,29 +6,29 @@
     <form class="painel-login" [formGroup]="service.Signin">
       <label>
         <mat-form-field>
-          <mat-label>email</mat-label>
+          <mat-label>E-mail</mat-label>
           <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" />
-          <mat-error *ngIf="service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched">digite
+          <mat-error *ngIf="service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched">Digite
             um email valido</mat-error>
           <mat-error
-            *ngIf="service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched">campo e
-            obrigatorio</mat-error>
+            *ngIf="service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched">Campo e
+            Obrigatorio</mat-error>
         </mat-form-field>
       </label>
       <label class="input-text">
         <mat-form-field>
-          <mat-label>senha</mat-label>
+          <mat-label>Senha</mat-label>
           <div class="pass">
             <input matInput type="{{text}}" formControlName="password" maxlength="14"  #password/>
             <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
           </div>
           <mat-error
-            *ngIf="service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched">campo
+            *ngIf="service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched">Campo
             e obrigatorio</mat-error>
         </mat-form-field>
       </label>
       <div class="btn-password">
-        <a (click)="esqueceuSenha()">esqueceu a senha?</a>
+        <a (click)="esqueceuSenha()">Esqueceu a senha?</a>
       </div>
       <div class="btn-login-button">
 
@@ -36,8 +36,8 @@
           [mtBasicSpinner]="sppiner" [hideText]="true"><p>Acessar conta</p><mat-icon>login</mat-icon></button>
 
         <div class="btn-login-registrar">
-          <p>ainda não tem conta?</p>
-          <a (click)="registrar()">registrar-se</a>
+          <p>Ainda não tem conta?</p>
+          <a (click)="registrar()">Registrar-se</a>
         </div>
       </div>
     </form>

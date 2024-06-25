@@ -15,7 +15,7 @@ import { BuscaService } from '../../core/busca.service';
   styleUrl: './lista-user.component.scss'
 })
 export class ListaUserComponent implements OnInit {
-  displayedColumns = ['Cards', 'Referencias', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Cards', 'Ref', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
   dataSource!: Chamados[];
   itens!: ChamdoId;
   event!: number;
@@ -26,13 +26,14 @@ export class ListaUserComponent implements OnInit {
  @Input() totalPage: any;
   constructor(private service: ChamadoApiService, public busca: BuscaService) { }
   ngOnInit(): void {
-    this.gerar();
+    this.ativo = true;
+     new Promise((resolve)=>{
+      resolve(this.gerar());
+    });
   }
   gerarativo(event: boolean) {
-    // this.busca.form.reset();
-    // this.ativo = event;
-    // this.gerar();
-    alert("em desenvolvimento");
+    this.ativo = event;
+    this.gerar();
   }
   emitsize(event: any){
     this.size = event.target.value;
@@ -42,7 +43,7 @@ export class ListaUserComponent implements OnInit {
     this.gerar();
   }
   gerar(){
-    this.service.lista(this.totalPage,this.size).subscribe((e) => {
+    this.service.lista(this.totalPage,this.size,this.ativo).subscribe((e) => {
       this.dataSource = this.Extrair(e);
       this.itens = this.Extrai(e);
       this.number = e.totalElements;
@@ -62,4 +63,5 @@ export class ListaUserComponent implements OnInit {
 
     return itens.length;
   }
+  
 }

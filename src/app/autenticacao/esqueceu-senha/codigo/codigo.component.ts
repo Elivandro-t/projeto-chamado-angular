@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
-import { AlterDialogPasswdMSg } from "./msg/passwd.component";
+import { SnackBar } from "../../../AlertaDialog/snackBar/snackbar.component";
 
 @Component({
     selector:"app-codigo",
@@ -19,7 +19,7 @@ import { AlterDialogPasswdMSg } from "./msg/passwd.component";
     imports:[MatIcon,MatInputModule,MatButtonModule,TelaDeLoginComponent,MatInputModule,ReactiveFormsModule,CommonModule]
 })
 export class CodigoComponent{
-    constructor(private http: EsqueceuSenhaService,private dialog: MatDialog,private router: Router,private act: ActivatedRoute){}
+    constructor(private snack: SnackBar,private http: EsqueceuSenhaService,private dialog: MatDialog,private router: Router,private act: ActivatedRoute){}
     form=new FormGroup({
         codigo:new FormControl("",[Validators.required])
       });
@@ -27,13 +27,19 @@ export class CodigoComponent{
         const email=this.act.snapshot.paramMap.get("email");
         this.http.Verificar(email,this.form.get("codigo")?.value).subscribe(
             e=>{
-               if(e.msg){
+                alert(e.ok);
+               if(e.ok){
+                this.snack.openSnackBar(e.msg);
                 this.http.salvarEmail(email);
                 this.router.navigate([`/auth/esqueceu/senha`]);
+                
                }
+
             },
             (erro: HttpErrorResponse)=>{
-                this.dialog.open(AlterDialogPasswdMSg,{data:{informacoes:erro.error.msg}});
+                console.log(erro.error.msg);
+                this.snack.openSnackBar(erro.error.ok);
+                // this.dialog.open(AlterDialogPasswdMSg,{data:{informacoes:erro.error.msg}});
     
             }
         );

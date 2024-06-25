@@ -1,11 +1,23 @@
+.mat{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+}
 .card{
+  
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: auto;
+    margin: 0 15rem;
     background-color: rgb(237, 236, 247);
     .card_int{
-        width: 500px;
+        text-align: center;
+        width:500px;
     }
     .card1{
 
@@ -40,17 +52,14 @@
 
 @media screen {
   .card{
-   width:100%;
+  
     display: flex;
     align-items: center;
    justify-content: center;
-  }
-  
+   .card_int{
+    text-align: center;
+    width:250px;
 }
-@media screen and (max-width:583) {
-  .card{
-    width:30%;
-    margin-left: 25px;
   }
   
 }

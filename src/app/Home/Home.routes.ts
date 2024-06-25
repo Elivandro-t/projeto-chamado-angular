@@ -13,10 +13,9 @@ import { DadosReecebidosComponent } from "../shared/templete/dados-reecebidos/da
 import { ServiceComponent } from "../shared/templete/service/service.component";
 import { CamposComponent } from "../shared/templete/campos/campos.component";
 import { ListaTecnicoComponent } from "../shared/lista-tecnico/lista-tecnico.component";
+import { ListaFiliaisComponent } from "../shared/ListaChamadosFiliais/lista-chamados-filiais.component";
 export const routes: Routes = [
-    {
-        path:"auth", loadChildren:()=>import("../autenticacao/autentication.routes").then(s=>s.routes)
-    },
+  
     {
         path: 'cards', component: TelaHomeComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },
         title:"cards - Chamados"
@@ -28,10 +27,10 @@ export const routes: Routes = [
         path: 'itens/:id', component: ServiceComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
     },
     {
-        path: "chamado/:card/:id", component: DadosReecebidosComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
+        path: "chamado/:card/:id/:cardid/create", component: DadosReecebidosComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
     },
     {
-        path: "chamado/:card/:id/admin", component: DadosDetalheComponent, canActivate: [authGuard], data: { acess: ["admin","suporte","dev"] }
+        path: "chamado/:card/:id/:cardid/admin", component: DadosDetalheComponent, canActivate: [authGuard], data: { acess: ["user","admin","suporte","dev"] }
     },
     {
         path: "canvas", component: CanvasComponent, canActivate: [authGuard], data: { acess: ["admin","suporte","dev"] }
@@ -43,11 +42,15 @@ export const routes: Routes = [
         path: "add/card", component: ItensSistemaComponent, canActivate: [authGuard], data: { acess:  ["suporte","dev"] }
     },
     {
-        path: "lista", component: ListaUserComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },title:"lista de chamado usuarios"
+        path: "lista", component: ListaUserComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },title:"Lista de chamado usuarios"
     },
     {
-        path: "lista/admin", component: ListaAdmComponent, canActivate: [authGuard], data: { acess: ["admin","suporte","dev"] },title:"lista de chamados admin"
+        path: "lista/admin", component: ListaAdmComponent, canActivate: [authGuard], data: { acess: ["admin","suporte","dev"] },title:"Lista de chamados admin"
     },
+    {
+        path: "lista/chamados/filiais", component: ListaFiliaisComponent, canActivate: [authGuard], data: { acess: ["suporte"] },title:"Lista de chamados filiais"
+    }
+    ,
     {
         path: "meuchamado/aceito", component: ListaTecnicoComponent, canActivate: [authGuard], data: { acess: ["admin","suporte","dev"] },title:"chamados usuario tecnico"
     },
@@ -57,5 +60,8 @@ export const routes: Routes = [
 
     {
         path: "lista/aprovacoes/pendentes", component: ListaAguardandoValidacaoComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },title:"aprovações"
+    },
+    {
+        path:"auth", loadChildren:()=>import("../autenticacao/autentication.routes").then(s=>s.routes)
     }
 ];

@@ -7,9 +7,9 @@ import { TelaDeLoginComponent } from '../../tela-de-login/tela-de-login.componen
 import { FormControl,FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
 import { EsqueceuSenhaService } from '../service/EsqueceuSenha.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AlertaDialogPasswd } from '../../alterar-senha/AlertaSenha/alerta.passwd.component';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SnackBar } from '../../../AlertaDialog/snackBar/snackbar.component';
 @Component({
   selector: 'app-esqueceu-senha',
   standalone: true,
@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './esqueceu-senha.component.scss'
 })
 export class EsqueceuSenhaComponent {
-  constructor(private api: EsqueceuSenhaService, private dialog: MatDialog, private router: Router) { }
+  constructor(private snack: SnackBar,private api: EsqueceuSenhaService, private dialog: MatDialog, private router: Router) { }
   form = new FormGroup({
     newPassword: new FormControl('', [Validators.required]),
     repleceAssword: new FormControl('', [Validators.required])
@@ -26,24 +26,39 @@ export class EsqueceuSenhaComponent {
   exib: boolean = false;
   text: "text" | "password" = "password";
   erro!: string;
+  contador = 20;
+  disabledbutton =false;
+  mudarRota() {
+    const intervalo = setInterval(() => {
+      this.contador--;
+      if (this.contador === 0) {
+        clearInterval(intervalo);
+        this.disabledbutton = false;
+        this.router.navigate(["/auth/login"]);
+      }
+    }, 1000);
+  }
   newPassword() {
     if (this.form.get("newPassword")?.value === this.form.get("repleceAssword")?.value) {
       this.api.alterPasswd(this.api.email,this.form.get("newPassword")?.value).subscribe(
         e => {
-          if (e.msg) {
-            this.dialog.open(AlertaDialogPasswd, { data: { informacoes: e.msg } });
+          if (e.ok) {
+            this.disabledbutton = true;
+            this.snack.openSnackBar(e.ok);
+            this.mudarRota();
 
             return;
           }
           else {
-            this.dialog.open(AlertaDialogPasswd, { data: { informacoes: e.ok } });
+            this.disabledbutton = false;
+            this.snack.openSnackBar(e.ok);
             this.form.reset();
           }
 
         }
       );
     } else {
-      alert("senhas não sao iguais");
+      alert("Senhas não sao iguais");
     }
 
   }
@@ -57,7 +72,12 @@ export class EsqueceuSenhaComponent {
     }
 
   }
-
+  teladeLogin() {
+    this.disabledbutton = false;
+    this.router.navigate(["/auth/login"]);
+  }
+ 
 }
+
 // this.http.alterPasswd(this.http.email,)
 //alert(this.http.email)

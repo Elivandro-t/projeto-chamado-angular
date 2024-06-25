@@ -30,63 +30,80 @@ import { SnackBar } from '../../../../../AlertaDialog/snackBar/snackbar.componen
     MuralComponent,
     MuralPricipalComponent,
     ComentsComponent,
-   AlertComponent,
-   BotaoBackComponent
+    AlertComponent,
+    BotaoBackComponent
   ],
   templateUrl: './dados-reecebidos.component.html',
   styleUrl: './dados-reecebidos.component.scss'
 })
 export class DadosReecebidosComponent implements OnInit {
+
   ocultar: boolean = false;
-  titulo: "Mostrar"|"Ocultar"="Mostrar";
+  titulo: "Mostrar" | "Ocultar" = "Mostrar";
   foto: any;
   ids: any;
-  user: string="admin";
+  user: string = "admin";
   desable: boolean = false;
   desableButton: boolean = false;
-  constructor(private api: ChamadoApiService,private snack: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private route: ActivatedRoute,private servicestatus: StatusChamadoService,public auth: UserAuthService){}
+  chamdoCard: any;
+
+  constructor(private Snack: SnackBar, private api: ChamadoApiService, private snack: SnackBar, private sanitizer: DomSanitizer, private service: ChamadoApiService, private route: ActivatedRoute, private servicestatus: StatusChamadoService, public auth: UserAuthService) { }
   ngOnInit(): void {
-     const card = this.route.snapshot.paramMap.get("card") as string;
-     const id = this.route.snapshot.paramMap.get("id") as any;
-     this.service.ChamadoId(card,id).subscribe(e=>{
-      this.ids=e.id;
-      this.foto = e.itens;
-      switch (this.user) {
-        case "admin":
-          this.desable = false;
-          this.desableButton = true;
-          break;
-        case "user":
-           this.desable = true;
-          break;
-        default:
-          break;
-       }
-      
+    const card = this.route.snapshot.paramMap.get("card") as string;
+    const id = this.route.snapshot.paramMap.get("id") as any;
+    this.service.ChamadoId(card, id).subscribe(e => {
+      new Promise(() => {
+        this.chamdoCard = e;
+        this.ids = e.id;
+        this.foto = e.itens;
+
+        switch (this.user) {
+          case "admin":
+            this.desable = false;
+            this.desableButton = true;
+            break;
+          case "user":
+            this.desable = true;
+            break;
+          default:
+            break;
+        }
+      });
 
     });
-   
+
   }
   sanitize(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
-  ocults(){
-    this.ocultar=!this.ocultar;
-    switch(this.ocultar){
+  ocults() {
+    this.ocultar = !this.ocultar;
+    switch (this.ocultar) {
       case true:
-       return  this.titulo="Ocultar";
+        return this.titulo = "Ocultar";
       case false:
-        return  this.titulo = "Mostrar";
+        return this.titulo = "Mostrar";
     }
   }
 
   getRas(id: any, itensid: any) {
 
-    this.api.PegarTec(id,parseInt(itensid)).subscribe((e: any) => {
-     this.snack.openSnackBar(e.msg);
+    this.api.PegarTec(id, parseInt(itensid)).subscribe((e: any) => {
+      this.snack.openSnackBar(e.msg);
 
     });
-  } 
+  }
+  pegart(idchamdo: any) {
+
+    return new Promise((resolve) => {
+      resolve(
+        this.service.PegarTec(idchamdo, this.chamdoCard.id).subscribe((e: any) => {
+          this.snack.openSnackBar(e.msg);
+          this.ngOnInit();
+        })
+      );
+    });
+  }
 
 }

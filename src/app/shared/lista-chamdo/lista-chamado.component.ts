@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -27,13 +28,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BotaoBackComponent } from '../../components/botao_voltar/botaoVoltar.component';
 import { PdfService } from '../templete/service/pdf.service';
+import { JspdfComponent } from '../lista-tecnico/pdf/jsPdf.component';
+import { MatDialog } from '@angular/material/dialog';
+import { RelatoriopdfComponent } from '../../grafico/canvas/modal/AlertRole/Relatoriopdf.component';
+import { LogServiceService } from '../../core/log-service.service';
+
 @Component({
   selector: 'app-lista-chamado',
   standalone: true,
   imports: [MatButtonModule, MatIconModule, MatPaginatorModule, MuralPricipalComponent, MatProgressSpinnerModule, ReactiveFormsModule, CommonModule,
     MatSelectModule, MatCheckboxModule, MatSelectModule,
     AcitiveModule, BotaoBackComponent,
-    MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatPaginatorModule, MenuComponent, LoadingComponent],
+    MatInputModule,JspdfComponent,JspdfComponent, MatAutocompleteModule, MatFormFieldModule, MatPaginatorModule, MenuComponent, LoadingComponent],
   providers: [
 
   ],
@@ -52,6 +58,8 @@ export class ListaChamadoComponent implements OnInit {
   desable: boolean = false;
   totalPages = 0;
   @Output() PegesUpdate = new EventEmitter();
+  @Output() pdf = new EventEmitter();
+
   @Output() Buscar = new EventEmitter();
   @Output() atualizar = new EventEmitter();
   @Input() displayedColumns: string[] = [];
@@ -65,12 +73,16 @@ export class ListaChamadoComponent implements OnInit {
   @Output() emitdata = new EventEmitter();
   @Output() emitsize = new EventEmitter();
   @Output() gerarDados = new EventEmitter();
+  @Output() log = new EventEmitter();
   habilita!: boolean;
   @Input() page: any;
   @Input() itemTotal: any;
+  @ViewChild("el",{static:false}) el!: ElementRef;
+  @Input() filialAdmin = false;
+
   size = 5;
 user!: any;
-  constructor(private Auth: UserAuthService,private pd: PdfService, private sanitizer: DomSanitizer, private snackBar: SnackBar, private service: ChamadoApiService, public busca: BuscaService, private route: Router, public auth: UserAuthService) { }
+  constructor(private api: LogServiceService,private Snec: SnackBar,private dialog: MatDialog,public Auth: UserAuthService,private pd: PdfService, private sanitizer: DomSanitizer, private snackBar: SnackBar, private service: ChamadoApiService, public busca: BuscaService, private route: Router, public auth: UserAuthService) { }
   ngOnInit(): void {
     this.Auth.retornUser().subscribe((e)=>{
       this.user = e.perfil;
@@ -87,6 +99,10 @@ user!: any;
     }
 
   }
+  HendlePdf() {
+    this.dialog.open(RelatoriopdfComponent, { data: { informacoes:this.dataSource ,total: this.number,totalItens:this.itemTotal} });
+
+  }
   getRowClass(ite: any): string {
     return ite.done ? '' : 'red-row';
   }
@@ -96,6 +112,19 @@ user!: any;
   pegaData() {
     this.emitdata.emit();
 
+  }
+
+  userName(even: any){
+    if (typeof even === 'string') {
+      return even.toUpperCase();
+    }
+    return "- - -"; 
+  }
+  tecName(even: any){
+    if (typeof even === 'string') {
+      return even.toUpperCase();
+    }
+    return "- - -"; 
   }
   check(event: any) {
     this.habilita = event.target.checked;
@@ -132,19 +161,35 @@ user!: any;
     this.Buscar.emit();
 
   }
-  getRa(id: number, Idchamado: number) {
+  getRa(id: number, Idchamado: number,cardId: any) {
+    this.log.emit({id,cardId});
+
     return new Promise((resolve) => {
       resolve(this.atualizar.emit({ id, Idchamado }));
 
     });
+    
   }
-  chamadoUser(idChamado: string, Id: number) {
-    this.route.navigate([`/chamado/${idChamado}/${Id}`]);
 
-  }
-  chamadoAdmin(idChamado: string, Id: number) {
+  // chamadoUser(idChamado: string, Id: number) {
+  //   chamado/:card/:id/:cardid/admin
+  //   this.route.navigate([`/chamado/${idChamado}/${Id}`]);
+
+  // }
+  chamadoUser(idChamado: string, Id: number,cardId: number,) {
+    
     new Promise<void>((resolve, reject) => {
-      this.route.navigate([`/chamado/${idChamado}/${Id}/admin`]).then(() => {
+      this.route.navigate([`/chamado/${idChamado}/${Id}/${cardId}/create`]).then(() => {
+        resolve();
+      }).catch(erro => {
+        reject(erro);
+      });
+    });
+  }
+  chamadoAdmin(idChamado: string, Id: number,cardId: number,) {
+    
+    new Promise<void>((resolve, reject) => {
+      this.route.navigate([`/chamado/${idChamado}/${Id}/${cardId}/admin`]).then(() => {
         resolve();
       }).catch(erro => {
         reject(erro);
@@ -172,7 +217,7 @@ user!: any;
 
         this.saveExcelFile(excelBuffer, 'relatorio.xlsx');
     } else {
-        console.error('Não há dados para criar o relatório.');
+       this.Snec.openSnackBar("Não há dados para criar o relatório.");
     }
 }
 

@@ -18,25 +18,29 @@ export class ImagensComponent {
   @Input() data: any;
   constructor(private http: HttpClient) { }
   showFullScreen(arg0: any) {
+    document.body.classList.add("semScroll");
     this.FotoName = arg0;
     this.showModal = true;
   }
   close() {
+    document.body.classList.remove("semScroll");
     this.showModal = false;
   }
 
   showButtons() {
+    document.body.classList.add("semScroll");
     this.showDownloadButtons = true;
-    setTimeout(() => {
+   const time = setTimeout(() => {
       this.showDownloadButtons = false;
-    }, 20000);
+    }, 10000);
+    clearTimeout(time);
   }
 
   navigar(arg0: string) {
     this.http.get(arg0, { responseType: 'blob' }).subscribe((res: Blob) => {
       const downloadLink = document.createElement('a');
       downloadLink.href = URL.createObjectURL(res);
-      downloadLink.download = 'photo.jpg';
+      downloadLink.download = 'SomosUmSoCoraçao.jpg';
       downloadLink.click();
     }
     );

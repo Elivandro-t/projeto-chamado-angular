@@ -1,4 +1,8 @@
 .painel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height:384px;
     background-color:var(--ds-surface,#FFFFFF);
     border-radius:5px;
@@ -6,6 +10,7 @@
         color: rgb(1, 9, 26);
         font-size:18px;
         font-family:Arial, Helvetica, sans-serif;
+        margin: 5px 0;
     }
     .painel-login{
         width:500px;

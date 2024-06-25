@@ -66,7 +66,7 @@
             border: 0.2px solid #9f9ac7;
             border-radius: 2px;
             background-color: rgb(233, 237, 240);
-            padding: 2px 25px;
+            padding: 2px 10px;
 
             .data_top {
               display: flex;
@@ -120,7 +120,35 @@
               display: flex;
               flex-direction: column;
               margin: 5px 0;
-
+              .input-descricao{
+                max-width: 650px;
+                width: 100%;
+                .descricao-itens{
+                
+                  max-width: 650px;
+                  width: 100%;
+                 
+                  font-size: 13px;
+                  margin: 0 5px;
+                  p{
+                    strong{
+                      img{
+                        position: absolute;
+                         width: 400px;
+                      }
+                    }
+                  }
+                  img{
+                    position: absolute;
+                     width: 400px;
+                  }
+                }
+                .descricao-itens  img{
+                  width: 300px; /* Define a largura desejada para as imagens */
+                  height: auto;
+                }
+                
+              }
               .input-Top {
                 width: 100%;
                 display: flex;
@@ -276,4 +304,8 @@
     width: 300px;
   }
 
+}
+element.style {
+  width: 200px;
+  height: auto;
 }

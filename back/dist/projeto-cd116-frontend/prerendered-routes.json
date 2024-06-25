@@ -1,0 +1,24 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/add/card",
+    "/add/role",
+    "/auth",
+    "/auth/alterar/senha",
+    "/auth/esqueceu/senha",
+    "/auth/login",
+    "/auth/send/email",
+    "/auth/signup",
+    "/auth/user/perfil",
+    "/canvas",
+    "/cards",
+    "/lista",
+    "/lista/admin",
+    "/lista/aprovacoes/pendentes",
+    "/lista/chamados/filiais",
+    "/meuchamado/aceito",
+    "/planilha",
+    "/relatorio"
+  ]
+}

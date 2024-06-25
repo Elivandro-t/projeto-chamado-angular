@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
   constructor(private snack: SnackBar,private button: ApiLoginService,private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
   ngOnInit(): void {
     const name = null;
-    this.api.lista(name,undefined).subscribe((e)=> {
+    this.api.lista(name,undefined,true).subscribe((e)=> {
       if(e){
         this.titulo = this.totalItens(e);
       }

@@ -1,7 +1,9 @@
 <header class="container header">
   <div class="toolbar">
     <span class="span" routerLink="/cards" routerLinkActive="active-page" ariaCurrentWhenActive="page"
-      style="size:50px;">{{logoName}}</span>
+      style="size:50px;">
+      <img src="../../../assets/agile.png" width="150px" height="80px" alt="">
+      </span>
     <span class="example-spacer"></span>
     <div class="button" *ngIf="Auth.isLogout()">
       <mat-chip-listbox aria-label="Fish selection">
@@ -46,6 +48,12 @@
             <span>Cards</span>
           </button>
           }
+          @if (user.includes("suporte")) {
+            <button mat-menu-item routerLink="lista/chamados/filiais" style="display: flex;">
+              <mat-icon><img src="assets/all.png" width="25px" height="25px" alt=""></mat-icon>
+              <span>Cards gerais</span>
+            </button>
+            }
           <button routerLink="/auth/user/perfil" mat-menu-item style="display: flex;">
             <mat-icon><img src="assets/perfil.png" width="25px" height="25px" alt=""></mat-icon>
             <span>Minha conta</span>

@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { FigureComponent } from './shared/banner/figure/figure.component';
 import { RodapeComponent } from './shared/footer/rodape/rodape.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HomeComponent } from '../HomePrincipal/Home.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,7 +11,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RouterOutlet,
     FigureComponent,
     RodapeComponent,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HomeComponent
   ],
   providers:[
     // {

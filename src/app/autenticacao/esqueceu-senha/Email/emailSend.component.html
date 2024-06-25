@@ -1,15 +1,15 @@
 <app-tela-de-login variant="secundary">
     <form class="painel-login" [formGroup]="form">
-        <legend>esqueceu a senha?</legend>
+        <legend>Esqueceu a senha?</legend>
          <label  class="input-text">
           <mat-form-field>
-            <mat-label>email</mat-label>
+            <mat-label>E-mail</mat-label>
              <div class="input-search">
                 <input matInput type="text" formControlName="email" />
-                <button [disabled]="!form.valid"  (click)="enviar()" class="btn-login"  mat-button color="primary"><mat-icon>search</mat-icon></button>
+                <button [disabled]="!form.valid"  (click)="enviar()" (keydown.enter)="enviar()" class="btn-login"  mat-button color="primary"><mat-icon>search</mat-icon></button>
             </div>
-            <mat-error *ngIf="form.get('email')?.errors?.['required']&&form.get('email')?.touched">campo obrigatorio</mat-error>
-            <mat-error *ngIf="form.get('email')?.errors?.['email']&&form.get('email')?.touched">digite um E-mail valido</mat-error>
+            <mat-error *ngIf="form.get('email')?.errors?.['required']&&form.get('email')?.touched">Campo obrigatorio</mat-error>
+            <mat-error *ngIf="form.get('email')?.errors?.['email']&&form.get('email')?.touched">Digite um E-mail valido</mat-error>
 
 
           </mat-form-field>

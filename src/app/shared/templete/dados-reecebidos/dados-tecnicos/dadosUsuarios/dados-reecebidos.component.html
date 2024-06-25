@@ -71,9 +71,9 @@
                                </div>
                             </div>
                             <div class="data_top2">
-                                <div class="input-Top">
+                                <div class="input-descricao">
                                     <span class="inforDescricao">Descrição</span>
-                                    <small class="descricao-itens" [innerHTML]="sanitize(i.descricao)"></small>
+                                    <div class="input-Top"  [innerHTML]="sanitize(i.descricao)"></div>
                                 </div>
                                 <div class="input-Top">
                                     <app-imagens [data]="i.imagens"></app-imagens>
@@ -85,7 +85,7 @@
                     <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
                 </div>
             </section>
-                <app-dados-tecnicos  [id]="ids" [ChamdoId]="i.chamadoid"  [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false" [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
+                <app-dados-tecnicos  [habilitaBotao]="i.client_feito"  [id]="ids" [ChamdoId]="i.chamadoid" (Pegartect)="pegart(i.id)" [done]="i.done" [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false" [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
         </div>
     </div>
 </app-mural-pricipal>

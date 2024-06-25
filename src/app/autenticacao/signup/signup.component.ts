@@ -21,6 +21,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 import { AlertComponent } from '../../Home/tela-home/cards/cards-anuncios/alert/alert.component';
+import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -47,7 +48,7 @@ export class SignupComponent implements OnInit {
   spinnerbotton = false;
   contador = 40;
 
-  constructor(private api: ChamadoApiService, public service: SigninServiceService, private http: ApiLoginService, private router: Router, private dialog: MatDialog) {
+  constructor(private Snack: SnackBar,private api: ChamadoApiService, public service: SigninServiceService, private http: ApiLoginService, private router: Router, private dialog: MatDialog) {
 
   }
   ngOnInit(): void {
@@ -77,7 +78,7 @@ export class SignupComponent implements OnInit {
     } else {
       this.http.Signup(this.service.form.value).subscribe(e => {
         if(e.sucess){
-          this.dialog.open(AlertaDialogServiceComponent, { data: { informacoes: e.sucess } });
+           this.Snack.openSnackBar(e.sucess);
           this.disabledbutton = true;
           this.service.form.reset();
           this.spinnerbotton = false;

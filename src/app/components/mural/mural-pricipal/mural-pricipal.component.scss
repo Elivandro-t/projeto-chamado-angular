@@ -6,13 +6,13 @@
     
   }
   .mural{
-    box-sizing: border-box;
     max-width:100%;
     width:80%;
     margin: auto;
     margin-top: -24.5rem;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
   .template{
       &.primary{
         width: 100%;
@@ -25,6 +25,7 @@
         border-top-right-radius: 2px;
         box-shadow: 0px 2px 2px 0px;
         padding: 10px 0;
+        border-radius: 2px;
         }
         &.secundary{
             width:100%;
@@ -33,6 +34,8 @@
             background-color:white;
             box-sizing: border-box;
             box-shadow: 0px 1px 1px 0px;
+            border-radius: 2px;
+
         }
         &.list{
           width: 100%;
@@ -49,6 +52,18 @@
         flex-direction: column;
         box-sizing: border-box;
     }
+    &.home{
+      width: 100%;
+      display: flex;
+      margin-top:5rem;
+      flex-direction: column;
+      max-height:880px;
+      height:90vh;     
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+     
+      padding: 10px 0;
+      }
     }
 }
 
