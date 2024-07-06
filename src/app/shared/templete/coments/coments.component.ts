@@ -165,7 +165,7 @@ carregarMaisComentarios() {
           usuario:this.user.getname() as any,
           email:this.user.getEmail() as any,
           comments:this.form.get('comment')!.value,
-          userImagem:this.user.getimage() as any
+          userImagem:this.img as any
     };
     return data;
   }

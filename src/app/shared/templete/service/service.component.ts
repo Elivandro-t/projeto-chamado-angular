@@ -28,8 +28,11 @@ export class ServiceComponent implements OnInit{
     });
   }
   router(Event: number,Titulo: string,$index: any){
-    
-        this.natigate.navigate([`sistema/${Event}/serviços/${this.data.name}/${Titulo}/${$index}`]);
+    if(Event===3){
+      this.natigate.navigate([`reset/${Event}/serviços/${this.data.name}/${Titulo}/${$index}`]);
+    }else{
+      this.natigate.navigate([`sistema/${Event}/serviços/${this.data.name}/${Titulo}/${$index}`]);
+    }
   }
 
 }

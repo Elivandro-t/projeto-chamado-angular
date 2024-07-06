@@ -30,6 +30,7 @@ export class PerfilComponent implements OnInit {
   constructor(private service: UserService,private matDialog: MatDialog,private router: Router,public auth: UserAuthService) { }
   ngOnInit(): void {
    this.chamaDadosUsuarios();
+   localStorage.setItem("image",this.detalheUser.imagem);
   }
   chamaDadosUsuarios(){
    this.service.detalheUser().subscribe(e => {

@@ -2,10 +2,10 @@
   <div class="toolbar">
     <span class="span" routerLink="/cards" routerLinkActive="active-page" ariaCurrentWhenActive="page"
       style="size:50px;">
-      <img src="../../../assets/agile.png" width="150px" height="80px" alt="">
-      </span>
+       {{logoName}}
+    </span>
     <span class="example-spacer"></span>
-    <div class="button" *ngIf="Auth.isLogout()">
+    <div class="button" *ngIf="Auth?.isLogout()">
       <mat-chip-listbox aria-label="Fish selection">
         <button (EventClick)="search()" class="search" mat-icon-button matTooltip="primary"
           aria-label="Example icon-button with a heart icon">
@@ -18,7 +18,7 @@
       <div matBadge="{{titulo}}" style="background-color: wheat;" mat-icon-button class="favoritos"
         [matMenuTriggerFor]="perfil" aria-label="Example icon-button with heart icon">
         @if (img!==null || img!==undefined) {
-        <img src="{{img}}" alt="Perfil" width="50px" height="50px" style="border-radius: 100%;">
+        <img src="{{img}}" alt="Perfil" width="100%" height="100%" style="border-radius: 100%;">
         }@else {
         <img [style]="" alt="imagem do usuario logado" src="../../../assets/user.png" width="50px" height="50px"
           style="border-radius: 100%;">
@@ -30,30 +30,28 @@
           </div> -->
           <button routerLink="/lista" mat-menu-item style="display: flex;">
             <mat-icon><img src="assets/lista.png" width="25px" height="25px" alt=""></mat-icon>
-            <span>Seus chamados</span>
+            <span>Meus chamados</span>
           </button>
           <button routerLink="/lista/aprovacoes/pendentes" mat-menu-item style="display: flex;">
             <mat-icon><img src="assets/arquivo.png" width="25px" height="25px" alt=""></mat-icon>
             <span>Aprovações</span>
           </button>
-          @if (user.includes("admin")||user.includes("suporte")||user.includes("dev")) {
+          @if (user?.includes("admin")||user?.includes("suporte")||user?.includes("dev")) {
           <button mat-menu-item (click)="chamadoUser()" style="display: flex;">
             <mat-icon><img src="assets/aceito.png" width="25px" height="25px" alt=""></mat-icon>
-            <span>Seus atendimentos</span>
+            <span>Meus atendimentos</span>
           </button>
-          }
-          @if (user.includes("admin")||user.includes("dev")||user.includes("suporte")) {
           <button mat-menu-item routerLink="/lista/admin" style="display: flex;">
             <mat-icon><img src="assets/solicitacao.png" width="25px" height="25px" alt=""></mat-icon>
-            <span>Cards</span>
+            <span>Lista de cards</span>
           </button>
           }
-          @if (user.includes("suporte")) {
-            <button mat-menu-item routerLink="lista/chamados/filiais" style="display: flex;">
-              <mat-icon><img src="assets/all.png" width="25px" height="25px" alt=""></mat-icon>
-              <span>Cards gerais</span>
-            </button>
-            }
+          @if (user?.includes("suporte")) {
+          <button mat-menu-item routerLink="lista/chamados/filiais" style="display: flex;">
+            <mat-icon><img src="assets/all.png" width="25px" height="25px" alt=""></mat-icon>
+            <span>Cards gerais</span>
+          </button>
+          }
           <button routerLink="/auth/user/perfil" mat-menu-item style="display: flex;">
             <mat-icon><img src="assets/perfil.png" width="25px" height="25px" alt=""></mat-icon>
             <span>Minha conta</span>

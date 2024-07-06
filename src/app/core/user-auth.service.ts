@@ -68,6 +68,10 @@ export class UserAuthService {
     
     return localStorage.getItem("image");
   }
+  getimageRemuve(){
+    
+    return this.AuthToken.Removeimage();
+  }
   retornUser(){
     return  this.userSubject.asObservable();
   }

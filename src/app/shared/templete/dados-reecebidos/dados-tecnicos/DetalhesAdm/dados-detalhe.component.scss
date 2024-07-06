@@ -80,6 +80,7 @@
                 .inforDescricao {
                   color: var(--ds-text-subtle, #0d3a88);
                   font-family: sans-serif;
+                  font-size: 12px;
                   font-weight: 600;
                   margin: 6px 0;
                 }
@@ -136,7 +137,7 @@
               display: flex;
               flex-direction: column;
               margin: 5px 0;
-              .input-Top {
+              .input-descricao {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -145,11 +146,13 @@
                   color: var(--ds-text-subtle, #0d3a88);
                   font-family: sans-serif;
                   font-weight: 600;
+                  font-size: 12px;
                   margin: 5px 0;
                 }
 
-                small {
+                .input-Top {
                   color: var(--ds-text-subtle, #6B778C);
+                  font-size: 12px;
                 }
                 .descricao-itens img{
                   max-width: 100%; /* ou o valor que desejar */

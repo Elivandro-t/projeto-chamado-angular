@@ -1,0 +1,133 @@
+
+.input_container-int {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 36px 0;
+  gap: 40px;
+
+  .input {
+    height: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(136, 136, 125, 0.267);
+    outline-color: rgb(53, 36, 206);
+    border: 1px #ff34;
+  }
+
+  .input-Top {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    .input-form {
+      height: 20px;
+    }
+  }
+
+  .input-Top2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
+
+.input_container-int2 {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap:40px;
+   
+    .input_container textarea{
+      margin-top: 5px;
+    }
+  .editor {
+    outline: none;
+  }
+
+  .button {
+    width: 250px;
+    margin-top: 5px;
+  }
+
+  .input {
+    height: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(136, 136, 125, 0.267);
+    outline-color: rgb(53, 36, 206);
+    border: 1px #ff34;
+  }
+
+  .input-Top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .input-form {
+      height: 20px;
+    }
+    
+  }
+
+
+}
+.button{
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+  width: 250px;
+}
+
+@media screen and (max-width:755px) {
+.container_int {
+height: 100%;
+padding: 0 56px;
+
+.campos {
+  .logo {
+    width:100%;
+    .imagen-card {
+      width: 30px;
+      height: 30px;
+      margin-top: 5px;
+    }
+    h2{
+      font-size: 16px;
+    }
+  }
+  .input_container {
+    margin:15px 0;
+  }
+  .input_container-int {
+    flex-direction: column;
+    .input-Top {
+      width: 100%;
+      display: flex;
+  .ls-label-text {
+    display: flex;
+    .risc {
+      color: red;
+    }
+  }
+    }
+  }
+}
+}
+
+}
+
+.ls-label-text {
+display: flex;
+font-size: 12px;
+
+.risc {
+color: red;
+}
+}
+mat-form-field{
+height: 25px;
+}

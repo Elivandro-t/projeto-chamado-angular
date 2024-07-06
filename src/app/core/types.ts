@@ -65,9 +65,8 @@ export interface ChamdoId {
 }
 export interface ApiResponse {
   content: {
-    id: {
-      id: number
-    }
+    id: number,
+    usuario_logado: any,
     servico: string,
     itens: Chamado;
   }[];
@@ -103,6 +102,7 @@ export interface chamadoNew {
   titulo: string;
   setor: string;
   sistemaid: number;
+  usuario_logado: any;
   issuetype: string;
   patrimonio: string;
   equipamento: string;
@@ -124,6 +124,49 @@ export interface sistemaNew {
   descricao: string;
   usuarioid: any;
   usuario: string;
+}
+export interface user {
+  name: string,
+  lastname: string,
+  email: string,
+  setor: string,
+  filial: number,
+  imagem: string,
+  contato: string
+
+}
+
+export interface chamadoNew {
+  titulo: string;
+  setor: string;
+  sistemaid: number;
+  issuetype: string;
+  patrimonio: string;
+  equipamento: string;
+  solicitacao: string,
+  descricao: string;
+  usuarioid: any;
+  usuario: string;
+  sistem_erro: string;
+  erro: string
+}
+export interface sistemaReset{
+  usuarioid: any;
+  usuario_logado: any;
+  sistemaid: number;
+  titulo: string;
+  usuario: string;
+  setor: string;
+  issuetype: string;
+  gmid: string;
+  funcao: string;
+  solicitacao: string,
+  cpf: any,
+  descricao: string;
+  nome_mae: string;
+  filial: any;
+  data_nasc: string;
+  data_admin: string
 }
 export interface user {
   name: string,

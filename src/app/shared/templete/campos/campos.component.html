@@ -14,12 +14,6 @@
                         subtitulo=" "></app-alert>
                 </div>
                 }
-                @if(titulo.includes("Sistema")){
-                <div class="input-Top">
-                    <app-alert aviso="Inclusão de acesso ao usuario GMcore"
-                        saudacao="Para solicitacao de acesso ao usuario: Rotina, modulo coletor, Reset de senha, Configurar perfil, Mudança de filial,Add filial"
-                        subtitulo="NOME COMPLETO, CPF ou USUARIO, FUNÇÃO,SETOR,FILIAL. Obs: Caso precise de linha de separação informar ou autorizar despesas informar as placas filias e centro de custo!"></app-alert>
-                </div>}
                 <div class="input_container-int">
                     <div class="input-Top">
                         <b class="ls-label-text">
@@ -30,7 +24,7 @@
                             <input class="input" type="text" formControlName="usuario" placeholder="Nome completo.."
                                 matInput #usuario (keydown.enter)="enter(setors)">
                             <mat-error
-                                *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">campo
+                                *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">Campo
                                 obrigatorio</mat-error>
                         </mat-form-field>
                     </div>
@@ -70,7 +64,7 @@
                                 placeholder="Problema relacionado" matInput #solicitacao
                                 (keydown.enter)="enter(patrimon)">
                             <mat-error
-                                *ngIf="myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched">campo
+                                *ngIf="myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched">Campo
                                 obrigatorio</mat-error>
                         </mat-form-field>
                     </div>
@@ -143,14 +137,6 @@
                         }
                     </div>
                     <div class="input_container textarea">
-                        @if(titulo.includes("Sistema")){
-                        <div>
-                            <app-alert
-                                aviso="Criação de E-mail, Licença de software, Criação ou Reset de senha no sistema JIRA, Suporte maestro"
-                                saudacao="Para criação de conta E-email e reset de senha, Criação de conta AD informa: ⬇️"
-                                subtitulo="NOME COMPLETO, CPF, EMAIL, FUNÇÃO, SETOR, USUARIO, ID MATEUS, MATRICULA, CENTRO DE CUSTO, NOME DO GESTOR, EMAIL GESTOR APROVADOR"></app-alert>
-                        </div>
-                        }
                         <div class="input_container">
                             <b class="ls-label-text">
                                 <p>Descrição</p>

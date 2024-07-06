@@ -21,7 +21,7 @@ import { MuralPricipalComponent } from "../../../components/mural/mural-pricipal
 import { ChamadoApiService } from "../../../core/chamado-api.service";
 import { setor, chamadoNew } from "../../../core/types";
 import { UserAuthService } from "../../../core/user-auth.service";
-import { FormService } from "../../../service/form.service";
+import { FormService } from "../../../core/form.service";
 import { DropComponent } from "./drop/drop.component";
 import { AlertComponent } from "../../../Home/tela-home/cards/cards-anuncios/alert/alert.component";
 
@@ -159,6 +159,7 @@ onSelect(event: any) {
   }
   datas(): chamadoNew {
     const data: chamadoNew = {
+      usuario_logado: "",
       usuarioid: this.user.getId(),
       sistemaid: parseInt(this.ids),
       issuetype: this.rout.snapshot.paramMap.get("name") as any,

@@ -40,34 +40,37 @@ import { ApiLoginService } from '../../autenticacao/services/api-login.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  @Input() logoName: "SUPORTE TI" | "Tela de Login" = "SUPORTE TI";
+  @Input() logoName: "AGILE SERVICE" | "Tela de Login" = "AGILE SERVICE";
   titulo!: any;
   logued: boolean = false;
   user: any;
   img: any;
   desable: boolean = false;
   alertDialog: boolean = false;
-  constructor(private snack: SnackBar,private button: ApiLoginService,private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
+  constructor(private snack: SnackBar, private button: ApiLoginService, private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
   ngOnInit(): void {
-    const name = null;
-    this.api.lista(name,undefined,true).subscribe((e)=> {
-      if(e){
-        this.titulo = this.totalItens(e);
-      }
-      this.logued = this.Auth.isLogout();
+    new Promise(() => {
+      const name = null;
+      this.api.lista(true, undefined, null, null, null).subscribe((e) => {
+        if (e) {
+          this.titulo = this.totalItens(e);
+        }
+        this.logued = this.Auth.isLogout();
+
+      });
+    });
+      this.Auth.retornUser().subscribe((e) => {
+        if (e && e.perfil) {
+          this.user = e.perfil;
+        }
+        if (e && e.imagem) {
+          this.img = e.imagem;
+        }
+
       
     });
-    this.Auth.retornUser().subscribe((e) => {
-     if(e && e.perfil){
-      this.user = e.perfil;
-     }
-     if(e && e.imagem){
-      this.img = e.imagem;
-     }
-     
-    });
   }
-  chamadoUser(){
+  chamadoUser() {
     this.router.navigate(['/meuchamado/aceito']);
   }
   navigate() {
@@ -81,7 +84,8 @@ export class HeaderComponent implements OnInit {
   removeTOken() {
     this.Auth.removeRefreshToken();
     this.Auth.removeToken();
-    window.location.reload();
+    this.Auth.getimageRemuve();
+    this.router.navigateByUrl("auth/login");
   }
   search() {
     document.body.classList.add("semScroll");

@@ -1,0 +1,116 @@
+<form [formGroup]="myForm">
+    <div class="input_container-int">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Nome do colaborador</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="usuario" placeholder="Nome completo.." matInput
+                    #usuario (keydown.enter)="enter(setors)">
+                <mat-error *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Setor</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor" #setors
+                    (keydown.enter)="enter(gm)" matInput placeholder="Selecione o setor.."
+                    [matAutocomplete]="auto">
+                <mat-autocomplete class="auto" #auto="matAutocomplete">
+                    @for (item of filteredOptions|async ; track item) {
+                    <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
+
+                    }
+                </mat-autocomplete>
+                <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
+                    o setor</mat-error> </mat-form-field>
+
+        </div>
+
+    </div>
+    <div class="input_container-int">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Gmcore id</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="gmid" placeholder="Gmcore id..." matInput
+                    #gm (keydown.enter)="enter(cpf)">
+                <mat-error *ngIf="myForm.get('gmid')?.errors?.['required']&&myForm.get('gmid')?.touched">Campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>CPF</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input  (keypress)="formatPhone($event)" (keydown)="formatPhone($event)" class="input" type="text" aria-label="Cpf" id="cpf" formControlName="cpf" #cpf
+                    (keydown.enter)="enter(filial)" matInput placeholder="Adicione o CPF...">
+                <mat-error *ngIf="myForm.get('cpf')?.errors?.['required']&&myForm.get('cpf')?.touched">Informe
+                    o setor</mat-error> </mat-form-field>
+
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Filial</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="filial" placeholder="Sua filial" #filial
+                    (keydown.enter)="enter(funcao)" maxlength="3" matInput />
+                    <mat-autocomplete #autoEq="matAutocomplete">
+                        <mat-option *ngFor="let opt of listFiliais"
+                            [value]="opt.name">{{opt.name}}</mat-option>
+                    </mat-autocomplete>
+                <mat-error *ngIf="myForm.get('filial')?.errors?.['pattern']&&myForm.get('filial')?.touched">Apenas
+                    Numeros são permitidos</mat-error>
+                <mat-error *ngIf="myForm.get('filial')?.errors?.['maxlength']&&myForm.get('filial')?.touched">Máximo
+                    de 3 caracteres</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+   
+    <div class="input_container-int2">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Função</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="funcao" placeholder="Funçao do usuario"
+                    matInput #funcao >
+                <mat-error
+                    *ngIf="myForm.get('funcao')?.errors?.['required']&&myForm.get('funcao')?.touched">Campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input_container textarea">
+            <div class="input_container">
+                <b class="ls-label-text">
+                    <p>Descrição</p>
+                    <p class="">*</p>
+                    <small style="margin-left: 5px;color: brown;">{{Alert}}</small>
+                </b>
+                <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
+                </editor>
+            </div>
+        </div>
+        <div>
+
+            <app-drop (emiter)="onSelect($event)"></app-drop>
+        </div>
+    </div>
+</form>
+<div class="button">
+    <button style="margin-top: 5px;" color="primary" [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
+        mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
+
+</div>

@@ -5,12 +5,17 @@
   display: flex;
   justify-content: space-between;
   margin:15px 50px;
+  span{
+    font-weight: 600;
+    color: aliceblue;
+  }
   .span {
     color: aliceblue;
     cursor: pointer;
   }
   .active-page {
-    color: red;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
   }
   .butosn{
     display: flex;

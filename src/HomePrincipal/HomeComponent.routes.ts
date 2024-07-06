@@ -2,7 +2,6 @@
 import {  Routes } from "@angular/router";
 import { RelatorioComponent } from "../app/admin/relatorio/relatorio.component";
 import { ErrorComponent } from "../app/shared/error/error.component";
-import { AboutComponentComponent } from "../About/about.component";
 
 const routes: Routes = [
     {

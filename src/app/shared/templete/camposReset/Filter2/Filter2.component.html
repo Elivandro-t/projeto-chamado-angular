@@ -1,0 +1,181 @@
+<form [formGroup]="myForm">
+    <div class="input_container-int">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Nome completo</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="usuario" placeholder="Nome completo..." matInput
+                    #usuario (keydown.enter)="enter(setors)">
+                <mat-error *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">Campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Setor</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor" #setors
+                    (keydown.enter)="enter(gmid)" matInput placeholder="Selecione o setor..."
+                    [matAutocomplete]="auto">
+                <mat-autocomplete class="auto" #auto="matAutocomplete">
+                    @for (item of filteredOptions|async ; track item) {
+                    <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
+
+                    }
+                </mat-autocomplete>
+                <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
+                    o setor</mat-error> </mat-form-field>
+
+        </div>
+
+    </div>
+
+    <div class="input_container-int">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Gmcore id</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="gmid" placeholder="Gm core id..." maxlength="12" matInput #gmid
+                    (keydown.enter)="enter(cpf)">
+                <mat-error *ngIf="myForm.get('gmid')?.errors?.['required']&&myForm.get('gmid')?.touched">Campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>CPF</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input (keypress)="formatCpf($event)" class="input" type="text" aria-label="Cpf" id="Cpf" formControlName="cpf" #cpf
+                    (keydown.enter)="enter(filial)" matInput placeholder="Adicione o CPF..">
+                <mat-error *ngIf="myForm.get('cpf')?.errors?.['required']&&myForm.get('cpf')?.touched">Informe
+                    o cpf</mat-error> </mat-form-field>
+
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Filial</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="filial" placeholder="Sua filial..." #filial
+                    (keydown.enter)="enter(custo)" maxlength="3" matInput />
+                <mat-error *ngIf="myForm.get('filial')?.errors?.['required']&&myForm.get('filial')?.touched">
+                    Campo obrigatorio!
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+
+    </div>
+    <div class="input_container-int">
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Centro de custo</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="centroDeCusto" maxlength="16"
+                    placeholder="ex.: 1.1.1.95.1" matInput #custo (keydown.enter)="enter(email)">
+                <mat-error
+                    *ngIf="myForm.get('centroDeCusto')?.errors?.['required']&&myForm.get('centroDeCusto')?.touched">Campo
+                    obrigatorio</mat-error>
+                    <mat-error
+                    *ngIf="myForm.get('centroDeCusto')?.errors?.['minLength']&&myForm.get('centroDeCusto')?.touched">No minimo
+                   4 numeros</mat-error>
+                   <mat-error
+                    *ngIf="myForm.get('centroDeCusto')?.errors?.['maxLength']&&myForm.get('centroDeCusto')?.touched">No maximo
+                   12 numeros</mat-error>
+                   <mat-error
+                    *ngIf="myForm.get('centroDeCusto')?.errors?.['pattern']&&myForm.get('centroDeCusto')?.touched">Apenas numero</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>E-mail</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="email" formControlName="emailUsuario" placeholder="Seu email..." matInput
+                    #email (keydown.enter)="enter(cargo)">
+                <mat-error *ngIf="myForm.get('emailUsuario')?.errors?.['required']&&myForm.get('emailUsuario')?.touched">campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Cargo</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="funcao"
+                    placeholder="Seu cargo..." matInput #cargo (keydown.enter)="enter(gestor)">
+                <mat-error
+                    *ngIf="myForm.get('funcao')?.errors?.['required']&&myForm.get('funcao')?.touched">Campo
+                    obrigatorio</mat-error>
+            </mat-form-field>
+            
+        </div>
+
+
+    </div>
+    <div class="input_container-int2">
+        <!-- <div class="input-Top">
+        <app-alert aviso="Descreva sua solicitaçao!"></app-alert>
+    </div> -->
+
+         <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Nome do gestor</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" aria-label="filial" id="Cpf" formControlName="nomeDogestor" #gestor
+                    (keydown.enter)="enter(emailGestor)" matInput placeholder="Nome do gerente da sua filial...">
+                <mat-error *ngIf="myForm.get('nomeDogestor')?.errors?.['required']&&myForm.get('nomeDogestor')?.touched">Informe
+                    o nome do gestor aprovador da sua filial</mat-error> </mat-form-field>
+        </div>
+        <div class="input-Top">
+            <b class="ls-label-text">
+                <p>Email gestor aprovador</p>
+                <p class="risc">*</p>
+            </b>
+            <mat-form-field class="input-form" appearance="outline">
+                <input class="input" type="text" formControlName="emailGestorAprovador" placeholder="Email do gerente..." #emailGestor
+                   matInput />
+                <mat-error
+                    *ngIf="myForm.get('emailGestorAprovador')?.errors?.['required']&&myForm.get('emailGestorAprovador')?.touched">
+                    Campo obrigatorio!
+                </mat-error>
+                <mat-error *ngIf="myForm.get('emailGestorAprovador')?.errors?.['email']&&myForm.get('emailGestorAprovador')?.touched">
+                    Email invalido!
+                </mat-error>
+
+            </mat-form-field>
+        </div> 
+        <div>
+            <div class="input_container">
+                <b class="ls-label-text">
+                    <p>Descrição</p>
+                    <p class="risc">*</p>
+                </b>
+                <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig" >
+                </editor>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="button">
+    <button color="primary"  [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
+        mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
+        <button color="secundary" class="button" 
+        mat-raised-button [mtBasicSpinner]="sprinner" (click)="desabilitarCampo()" [hideText]="true">Cancelar</button>
+
+</div>

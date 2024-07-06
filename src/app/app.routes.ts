@@ -10,6 +10,9 @@ const routes: Routes = [
         path: '',loadChildren:()=>import("../app/Home/Home.routes").then(e=>e.routes),
     },
     {
+        path:"auth", loadChildren:()=>import("./autenticacao/autentication.routes").then(s=>s.routes)
+    },
+    {
         path: 'relatorio',component:RelatorioComponent
     },
     {

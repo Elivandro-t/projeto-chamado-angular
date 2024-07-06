@@ -78,6 +78,7 @@
 
                 .inforDescricao {
                   color: var(--ds-text-subtle, #0d3a88);
+                  font-size: 12px;
                   font-family: sans-serif;
                   font-weight: 600;
                   margin:6px 0;
@@ -149,45 +150,46 @@
                 }
                 
               }
+              .inforDescricao {
+                color: var(--ds-text-subtle, #0d3a88);
+                font-family: sans-serif;
+                font-weight: 600;
+                font-size: 12px;
+                margin: 5px 0;
+              }
+
+              .input-Top {
+                color: var(--ds-text-subtle, #6B778C);
+                font-size: 12px;
+              }
+
+              .ls-label-text {
+                height: 60px;
+                display: flex;
+                align-items: center;
+
+                a {
+                  cursor: pointer;
+                  margin: 0 10px;
+                }
+
+                a:hover {
+                  color: blue;
+                }
+
+                img {
+                  border-radius: 50%;
+                  margin: 0 10px;
+                }
+              }
+
+              .input-form {
+                height: 30px;
+              }
               .input-Top {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-
-                .inforDescricao {
-                  color: var(--ds-text-subtle, #0d3a88);
-                  font-family: sans-serif;
-                  font-weight: 600;
-                  margin: 5px 0;
-                }
-
-                small {
-                  color: var(--ds-text-subtle, #6B778C);
-                }
-
-                .ls-label-text {
-                  height: 60px;
-                  display: flex;
-                  align-items: center;
-
-                  a {
-                    cursor: pointer;
-                    margin: 0 10px;
-                  }
-
-                  a:hover {
-                    color: blue;
-                  }
-
-                  img {
-                    border-radius: 50%;
-                    margin: 0 10px;
-                  }
-                }
-
-                .input-form {
-                  height: 30px;
-                }
               }
             }
 

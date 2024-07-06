@@ -6,7 +6,6 @@ import { EsqueceuSenhaService } from "../service/EsqueceuSenha.service";
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
-import { HttpErrorResponse } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
 import { SnackBar } from "../../../AlertaDialog/snackBar/snackbar.component";
@@ -27,21 +26,20 @@ export class CodigoComponent{
         const email=this.act.snapshot.paramMap.get("email");
         this.http.Verificar(email,this.form.get("codigo")?.value).subscribe(
             e=>{
-                alert(e.ok);
-               if(e.ok){
-                this.snack.openSnackBar(e.msg);
+               if(e.sucess){
+                this.snack.openSnackBar(e.sucess);
                 this.http.salvarEmail(email);
                 this.router.navigate([`/auth/esqueceu/senha`]);
                 
+               }else{
+                this.snack.openSnackBar(e.msg);
                }
 
-            },
-            (erro: HttpErrorResponse)=>{
-                console.log(erro.error.msg);
-                this.snack.openSnackBar(erro.error.ok);
-                // this.dialog.open(AlterDialogPasswdMSg,{data:{informacoes:erro.error.msg}});
+            }// this.snack.openSnackBar(erro.error.msg);
+             
+          
+              
     
-            }
         );
     }
 }

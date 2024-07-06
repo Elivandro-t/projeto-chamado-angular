@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -34,10 +35,24 @@ export class SigninComponent {
   @ViewChild("email") email!: ElementRef;
 
   constructor(public service: SigninServiceService, private router: Router, private http: ApiLoginService, public Logued: UserAuthService, private dialog: MatDialog) { }
+ selecione<T>(name: string){
+  const form = this.service.Signin.get(name);
+  if (!form) {
+    throw new Error("nome nao existe");
+  }
+  return form as FormControl;
+ }
+  fazerLogin(): any{
+    const data: any = {
+      email: this.selecione("email").value.toLowerCase(),
+      password:this.selecione("password").value
+    };
+    return data;
+  }
   Enviar() {
     if(this.service.Signin.get("password")!.value&&this.service.Signin.get("email")!.value){
       this.sppiner = true;
-      this.http.login(this.service.Signin.value).subscribe(e => {
+      this.http.login(this.fazerLogin()).subscribe(e => {
         if (e.token) {
           this.router.navigateByUrl("/");
           this.sppiner = false;

@@ -1,0 +1,107 @@
+.container_int {
+  height: 100%;
+  padding: 0 56px;
+
+  .campos {
+    .logo {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 5px;
+
+      .imagen-card {
+        width: 50px;
+        height: 50px;
+        margin-top: 5px;
+      }
+    }
+
+    .input_container {
+      display: flex;
+      margin:5px 0;
+      flex-direction: column;
+
+      .ls-label-text {
+        display: flex;
+
+        .risc {
+          color: red;
+        }
+      }
+
+
+      .input-form {
+        height: 20px;
+      }
+
+      .txt {
+        display: flex;
+        border: 0;
+        flex-direction: column;
+        height: auto;
+
+        .textarea_input {
+          width: 100%;
+          min-height: 50%;
+          border-radius: 5px;
+          padding: 10px;
+          overflow: hidden;
+          resize: none;
+          outline: 0;
+          box-sizing: border-box;
+
+        }
+      }
+    }
+
+
+
+    }
+
+}
+
+@media screen and (max-width:755px) {
+  .container_int {
+    height: 100%;
+    padding: 0 56px;
+
+    .campos {
+      .logo {
+        width:100%;
+        .imagen-card {
+          width: 30px;
+          height: 30px;
+          margin-top: 5px;
+        }
+        h2{
+          font-size: 16px;
+        }
+      }
+    
+      .input_container-int {
+        flex-direction: column;
+        .input-Top {
+          width: 100%;
+          display: flex;
+      .ls-label-text {
+        display: flex;
+        .risc {
+          color: red;
+        }
+      }
+        }
+      }
+    }
+  }
+
+}
+
+.ls-label-text {
+  display: flex;
+  font-size: 14px;
+
+  .risc {
+    color: red;
+  }
+}

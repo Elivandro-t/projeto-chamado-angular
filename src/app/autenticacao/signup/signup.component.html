@@ -61,7 +61,7 @@
             <label class="campo-botton">
                 <mat-form-field class="campo">
                     <mat-label>E-mail</mat-label>
-                    <input matInput type="text" formControlName="email" #emailInput (keydown.enter)="focusNext(passwordInput)"/>
+                    <input matInput type="email" formControlName="email" #emailInput (keydown.enter)="focusNext(passwordInput)"/>
                     <mat-error *ngIf="service.form.get('email')?.errors?.['required']&&service.form.get('email')?.touched" >Campo obrigatorio</mat-error>
                     <mat-error *ngIf="service.form.get('email')?.errors?.['email']&&service.form.get('email')?.touched">Digite um email valido</mat-error>
                 </mat-form-field>
@@ -73,20 +73,21 @@
             <label class="campo-botton">
                 <mat-form-field class="campo">
                     <div class="pass">
-                        <input matInput type="{{text}}" formControlName="password" #passwordInput maxlength="20" placeholder="senha..." (keydown.enter)="focusNext(replacepasswordInput)" />
+                        <input matInput type="{{text}}" formControlName="password" #passwordInput maxlength="20" placeholder="Senha..." (keydown.enter)="focusNext(replacepasswordInput)" />
                       </div>
                     <mat-error *ngIf="service.form.get('password')?.errors?.['required']&&service.form.get('password')?.touched">Campo obrigatorio</mat-error>
+                    <mat-error *ngIf="service.form.get('password')?.errors?.['minLength']&&service.form.get('password')?.touched">No minimo 8 caracteres</mat-error>
+
                 </mat-form-field>
             </label>
             <label class="campo-botton">
                 <mat-form-field class="campo">
                     <div class="pass">
-                        <input matInput type="{{text}}" formControlName="replacepassword" maxlength="14" #replacepasswordInput placeholder="confirme senha..."/>
+                        <input matInput type="{{text}}" formControlName="replacepassword" maxlength="20" #replacepasswordInput placeholder="Confirme senha..."/>
                         <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
                       </div>
-                    <mat-error *ngIf="service.form.get('replacepassword')?.errors?.['required']&&service.form.get('replacepassword')?.touched">Campo obrigatorio</mat-error>
-                    <mat-error *ngIf="erro">{{erro}}</mat-error>
-
+                    <mat-error *ngIf="service.form.get('replacepassword')?.errors?.['required']&&service.form.get('replacepassword')?.touched">Campo obrigatorio</mat-error>       
+                     <mat-error *ngIf="service.form.get('replacepassword')?.errors?.['minLength']&&service.form.get('replacepassword')?.touched">No minimo 8 caracteres</mat-error>
                 </mat-form-field>
             </label>
         </form>

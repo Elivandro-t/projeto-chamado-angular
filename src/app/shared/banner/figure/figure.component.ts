@@ -10,5 +10,6 @@ import { HeaderComponent } from '../../../Home/header/header.component';
   styleUrl: './figure.component.scss'
 })
 export class FigureComponent {
+  img = "../../../../assets/bn.jpeg";
 
 }

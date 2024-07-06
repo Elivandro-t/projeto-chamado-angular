@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {  Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { AcitiveModule } from '../../../core/activete.module';
 
@@ -9,11 +9,14 @@ import { AcitiveModule } from '../../../core/activete.module';
   templateUrl: './itens.component.html',
   styleUrl: './itens.component.scss'
 })
-export class ItensComponent {
+export class ItensComponent{
 @Input() titulo!: string;
 @Input() subTitulo!: string;
 @Output() navigate = new EventEmitter();
+@ViewChild("titule") titule!: ElementRef;
+
 router(){
   this.navigate.emit();
 }
+
 }

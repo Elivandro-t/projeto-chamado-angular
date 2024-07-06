@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChamdoId, Chamados } from './../../core/types';
@@ -7,6 +8,7 @@ import { ApiResponse } from '../../core/types';
 import { ChamadoApiService } from '../../core/chamado-api.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BuscaService } from '../../core/busca.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-lista-user',
   standalone: true,
@@ -23,17 +25,19 @@ export class ListaUserComponent implements OnInit {
   chamadoID: any;
   ativo!: boolean;
   size = 10;
- @Input() totalPage: any;
+  minhaSubscription: Subscription | undefined;
+
+ totalPage: any;
   constructor(private service: ChamadoApiService, public busca: BuscaService) { }
   ngOnInit(): void {
     this.ativo = true;
-     new Promise((resolve)=>{
-      resolve(this.gerar());
-    });
+    this.busca.form.reset();
+     this.gerar();
   }
   gerarativo(event: boolean) {
     this.ativo = event;
     this.gerar();
+
   }
   emitsize(event: any){
     this.size = event.target.value;
@@ -43,13 +47,17 @@ export class ListaUserComponent implements OnInit {
     this.gerar();
   }
   gerar(){
-    this.service.lista(this.totalPage,this.size,this.ativo).subscribe((e) => {
+    const data = {
+      dataAntes:this.busca.form.get("dataAntes")?.value,
+      dataDepois:this.busca.form.get("dataDepois")?.value
+    };
+    this.service.lista(this.ativo,this.totalPage,this.size,data.dataAntes,data.dataDepois).subscribe((e) => {
       this.dataSource = this.Extrair(e);
       this.itens = this.Extrai(e);
-      this.number = e.totalElements;
+      this.number = e.totalPages;
       this.chamadoID = e.content.flatMap(e=>e.id);
-      this.totalPage = e.totalPages;
       localStorage.setItem("idcard", this.chamadoID);
+      
 
     }
     );
@@ -62,6 +70,11 @@ export class ListaUserComponent implements OnInit {
     const itens = response.content.flatMap(e =>e.itens );
 
     return itens.length;
+  }
+  ngOnDestroy(): void {
+    if (this.minhaSubscription) {
+      this.minhaSubscription.unsubscribe();
+    }
   }
   
 }

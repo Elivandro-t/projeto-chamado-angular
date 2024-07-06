@@ -46,7 +46,10 @@ export class DadosReecebidosComponent implements OnInit {
   desable: boolean = false;
   desableButton: boolean = false;
   chamdoCard: any;
-
+  list = ["CRIACAO DE CONTA AD","RESET DE SENHA ZIMBRA","RESET DE SENHA MAESTRO","RESET DE SENHA JIRA","RESET DE CONTA AD",
+    "SOLICITACAO DE PACOTE OFFICE",
+    "SOLICITACAO DE VPM"
+  ];
   constructor(private Snack: SnackBar, private api: ChamadoApiService, private snack: SnackBar, private sanitizer: DomSanitizer, private service: ChamadoApiService, private route: ActivatedRoute, private servicestatus: StatusChamadoService, public auth: UserAuthService) { }
   ngOnInit(): void {
     const card = this.route.snapshot.paramMap.get("card") as string;

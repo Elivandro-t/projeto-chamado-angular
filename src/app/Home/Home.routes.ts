@@ -1,27 +1,31 @@
 import { Routes } from "@angular/router";
-import { authGuard } from "../autenticacao/auth/Auth.guard";
-import { TelaHomeComponent } from "./tela-home/tela-home.component";
 import { AddRoleComponent } from "../autenticacao/AdicionarPerfil/AddRole.component";
+import { authGuard } from "../autenticacao/auth/Auth.guard";
 import { ItensSistemaComponent } from "../autenticacao/perfil/itens-sistema/itens-sistema.component";
 import { ExcelComponentComponent } from "../excel-component/excel-component.component";
 import { CanvasComponent } from "../grafico/canvas/canvas.component";
+import { ListaFiliaisComponent } from "../shared/ListaChamadosFiliais/lista-chamados-filiais.component";
 import { ListaAdmComponent } from "../shared/lista-adm/lista-adm.component";
 import { ListaAguardandoValidacaoComponent } from "../shared/lista-aguardando-validacao/lista-aguardando-validacao.component";
+import { ListaTecnicoComponent } from "../shared/lista-tecnico/lista-tecnico.component";
 import { ListaUserComponent } from "../shared/lista-user/lista-user.component";
+import { CamposComponent } from "../shared/templete/campos/campos.component";
+import { ResetComponent } from "../shared/templete/camposReset/Reset.component";
 import { DadosDetalheComponent } from "../shared/templete/dados-reecebidos/dados-tecnicos/DetalhesAdm/dados-detalhe.component";
 import { DadosReecebidosComponent } from "../shared/templete/dados-reecebidos/dados-tecnicos/dadosUsuarios/dados-reecebidos.component";
 import { ServiceComponent } from "../shared/templete/service/service.component";
-import { CamposComponent } from "../shared/templete/campos/campos.component";
-import { ListaTecnicoComponent } from "../shared/lista-tecnico/lista-tecnico.component";
-import { ListaFiliaisComponent } from "../shared/ListaChamadosFiliais/lista-chamados-filiais.component";
+import { TelaHomeComponent } from "./tela-home/tela-home.component";
+
 export const routes: Routes = [
-  
     {
         path: 'cards', component: TelaHomeComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },
         title:"cards - Chamados"
     },
     {
         path: 'sistema/:id/serviços/:data/:name/:index', component: CamposComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
+    },
+    {
+        path: 'reset/:id/serviços/:data/:name/:index', component: ResetComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
     },
     {
         path: 'itens/:id', component: ServiceComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
@@ -60,8 +64,5 @@ export const routes: Routes = [
 
     {
         path: "lista/aprovacoes/pendentes", component: ListaAguardandoValidacaoComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },title:"aprovações"
-    },
-    {
-        path:"auth", loadChildren:()=>import("../autenticacao/autentication.routes").then(s=>s.routes)
     }
 ];

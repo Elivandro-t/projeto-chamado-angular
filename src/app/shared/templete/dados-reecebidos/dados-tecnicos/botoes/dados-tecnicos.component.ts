@@ -240,7 +240,6 @@ handleSelectClick(event: any) {
     this.Service.mudaStatus(this.id as any, this.ChamdoId).subscribe(e => {
       this.snack.openSnackBar(e.msg);
       this.spinner3 = false;
-      this.disable = true;
       this.pegarApi();
     });
   }

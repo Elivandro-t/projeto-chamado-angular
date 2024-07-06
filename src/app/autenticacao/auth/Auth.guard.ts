@@ -6,12 +6,8 @@ import { inject } from '@angular/core';
 export const authGuard: CanActivateChildFn= (route)=>{
   const token = inject(UserAuthService);
   const routers  = inject(Router);
-  if(!token.isLogout()){
-    window.location.href ="/auth/login";
-    return false;
-  }else{
-   
-     const user = token.getRole() as unknown as any[];
+  if(token.isLogout()){
+    const user = token.getRole() as unknown as any[];
     const ath = route.data['acess'] as string[];
   
     if(ath.some(role=>user.includes(role))){
@@ -19,5 +15,10 @@ export const authGuard: CanActivateChildFn= (route)=>{
     
    }
     return false;
+    
+  }else{
+    window.location.href ="auth/login";
+    return false;
+   
   }
 };

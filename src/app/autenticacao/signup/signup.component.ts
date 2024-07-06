@@ -3,7 +3,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
  import { MatDialog } from '@angular/material/dialog';
@@ -69,6 +69,25 @@ export class SignupComponent implements OnInit {
   }
     
   }
+ // funcao vindo do form
+ selecione<T>(name: string) {
+  const form = this.service.form.get(name);
+  if (!form) {
+    throw new Error("nome nao existe");
+  }
+  return form as FormControl;
+}
+  dadosUsuario(): any{
+    const data: any = {
+    name: this.selecione("name").value,
+    lastname: this.selecione("lastname").value,
+    setor: this.selecione("setor").value,
+    filial:this.selecione("filial").value,
+    email:this.selecione("email").value.toLowerCase(),
+    password:this.selecione("password").value
+    };
+    return data;
+  }
   Enviar() {
     const password = this.service.form.get("password")?.value;
     const confirmSenha = this.service.form.get("replacepassword")?.value;
@@ -76,7 +95,7 @@ export class SignupComponent implements OnInit {
       alert("senhas não conferem");
       this.spinnerbotton = false;
     } else {
-      this.http.Signup(this.service.form.value).subscribe(e => {
+      this.http.Signup(this.dadosUsuario()).subscribe(e => {
         if(e.sucess){
            this.Snack.openSnackBar(e.sucess);
           this.disabledbutton = true;

@@ -37,11 +37,12 @@ export class ChamadoApiService {
     return this.http.get<setor[]>(`${this.api}/equipamentos/lista`).pipe();
   }
   // criando um chamdo 
-  pegarimg(id: number, files: File[] | any, data: any): Observable<HttpEvent<ChamadoRes>> {
+  pegarimg(id: number, files: File[] | any, data: any): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     const Response = {
       id: id,
       usuarioid: this.Inforuser.getId(),
+      usuario_logado: this.Inforuser.getname(),
       filial: this.Inforuser.getFilial(),
       servico: data.titulo,
       itens: [
@@ -60,10 +61,10 @@ export class ChamadoApiService {
 
     }
     const resquest = new HttpRequest('POST', `${this.api}/chamado`, formData, { reportProgress: true, responseType: "json" });
-    return this.http.request<ChamadoRes>(resquest).pipe(
+    return this.http.request<any>(resquest).pipe(
       map((e: any) => {
         if (e instanceof HttpResponse) {
-          return e.body as ChamadoRes | any;
+          return e.body as any;
         }
         return null;
       })
@@ -74,9 +75,13 @@ export class ChamadoApiService {
   }
   // listando os chamados de usuario por usuario
 
-  lista(page: any,size: any,ativo: any): Observable<ApiResponse> {
+  lista(ativo: any,page: any,size: any,dataAntes: any,dataDepois: any): Observable<ApiResponse> {
     let params = new HttpParams();
     const search: string = this.busca.form.value.search ?? '';
+    if (dataAntes !== null && dataAntes !== undefined) {
+      params = params.set("dataAntes", dataAntes);
+
+    }
     if (ativo !== null && ativo !== undefined) {
       params = params.set("ativo", ativo);
     }
@@ -89,6 +94,14 @@ export class ChamadoApiService {
   }
   if (size !== null && size !== undefined) {
     params = params.set("size", size);
+
+  }
+  if (dataAntes !== null && dataAntes !== undefined) {
+    params = params.set("dataAntes", dataAntes);
+
+  }
+  if (dataDepois !== null && dataDepois !== undefined) {
+    params = params.set("dataDepois", dataDepois);
 
   }
   if(this.Inforuser.getId()!=null||this.Inforuser.getId()!=undefined){

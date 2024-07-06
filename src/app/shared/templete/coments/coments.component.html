@@ -20,11 +20,11 @@
                 <div class="comentarios"
                     *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)" style="">
                     <div class="itens" style="display: flex;border:0.2px dotted #4565;padding:5px;">
-                        @if (img) {
-                        <img [src]="commet.userImagem" width="30px" height="30px" style="border-radius: 50%;" alt="">
-                        }@else if(commet.userImagem===null || commet.userImagem===undefined) {
+                        @if (img!==null||img !==undefined) {
+                        <img [src]="commet.userImagem" width="30px" height="30px" style="border-radius: 50%;" alt="Sua imagem">
+                        }@else{
                         <img src="../../../../assets/user.png" width="30px" height="30px" style="border-radius: 50%;"
-                            alt="">
+                            alt="Imagem do usuario">
                         }
                         <div class="commet-itens" style="display: flex;flex-direction: column;align-items:start;">
                             <div style="display: flex;">
