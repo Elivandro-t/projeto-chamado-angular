@@ -1,6 +1,6 @@
 <header class="container header">
   <div class="toolbar">
-    <span class="span" routerLink="/cards" routerLinkActive="active-page" ariaCurrentWhenActive="page"
+    <span  *ngIf="Auth?.isLogout()" class="span" routerLink="/cards" routerLinkActive="active-page" ariaCurrentWhenActive="page"
       style="size:50px;">
        {{logoName}}
     </span>

@@ -44,6 +44,7 @@ export class ChamadoApiService {
       usuarioid: this.Inforuser.getId(),
       usuario_logado: this.Inforuser.getname(),
       filial: this.Inforuser.getFilial(),
+      contato:this.Inforuser.getContato(),
       servico: data.titulo,
       itens: [
         data
@@ -154,7 +155,9 @@ return null as any;
       params = params.set("ativo", ativo);
     }
     if (setor !== null && setor !== undefined) {
+
       params = params.set("setor", setor);
+      alert(setor);
 
     }
     if (dataAntes !== null && dataAntes !== undefined) {
@@ -175,26 +178,34 @@ return null as any;
     }
     return this.http.get<ApiResponse>(`${this.api}/lista/filiais/cds`, { params });
   }
-  ListaTecnico(page: number,size: number): Observable<ApiResponse> {
+  ListaTecnico(page: number,size: number, ativo: any,dataAntes: any,dataDepois: any): Observable<ApiResponse> {
     const setor = this.busca.form.value.search as any;
     let params = new HttpParams();
-    // if (ativo !== null && ativo !== undefined) {
-    //   params = params.set("ativo", ativo);
-    // }
-    // if (setor !== null && setor !== undefined) {
-    //   params = params.set("setor", setor);
+    if (ativo !== null && ativo !== undefined) {
+      params = params.set("ativo", ativo);
+    }
+    if (setor !== null && setor !== undefined) {
+      params = params.set("setor", setor);
 
-    // }
-    // if (dataAntes !== null && dataAntes !== undefined) {
-    //   params = params.set("dataAntes", dataAntes);
+    }
+    if (dataAntes !== null && dataAntes !== undefined) {
+      params = params.set("dataAntes", dataAntes);
 
-    // }
-    // if (dataDepois !== null && dataDepois !== undefined) {
-    //   params = params.set("dataDepois", dataDepois);
+    }
+    if (dataDepois !== null && dataDepois !== undefined) {
+      params = params.set("dataDepois", dataDepois);
 
-    // }
-  
-    return this.http.get<ApiResponse>(`${this.api}/chamado/tecnico/${this.id}?size=${size}&page=${page}`);
+    }
+    if (page !== null && page !== undefined) {
+      params = params.set("page", page);
+
+    }
+    if (size !== null && size !== undefined) {
+      params = params.set("size", size);
+
+    }
+    
+    return this.http.get<ApiResponse>(`${this.api}/chamado/tecnico/${this.id}`,{params});
   }
   
   PegarTec(idCard: number, idItens: number): Observable<ChamadoRes> {
@@ -211,7 +222,11 @@ return null as any;
 
     params.set('setor', search);
 
-    return this.http.get<ApiResponse>(`${this.api}/lista/aguardando/${this.Inforuser.getId()}?size=5`);
+    return this.http.get<ApiResponse>(`${this.api}/lista/aguardando/${this.Inforuser.getId()}?size=100`);
+  }
+
+  DeleteChamado(idChamado: number): Observable<any> {
+    return this.http.delete<any>(`${this.api}/chamado/delete/${idChamado}`);
   }
 
 }

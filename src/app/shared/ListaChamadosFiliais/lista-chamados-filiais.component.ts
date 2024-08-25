@@ -25,13 +25,14 @@ interface ativo {
 })
 export class ListaFiliaisComponent implements OnInit, OnDestroy {
  datauser: any;
-  displayedColumns = ['Cards', 'Ref', 'Filiais','Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Card', 'Ref', 'Filial','Status', 'Setor', 'Solicitante', 'Data de criação', 'Atendente'];
   dataSouce!: Chamados[];
   number!: number;
   totalPages!: number;
   itens!: any;
   ativo!: boolean;
   minhaSubscription: Subscription | undefined;
+  pageNumber: any;
   size = 30;
   constructor(private api: LogServiceService,private service: ChamadoApiService, public busca: BuscaService, private snackBar: SnackBar, private dialog: MatDialog,private user: UserAuthService) { }
 
@@ -56,6 +57,7 @@ export class ListaFiliaisComponent implements OnInit, OnDestroy {
       this.dataSouce = this.transformeEmItens(e);
       this.itens = this.transformeEmIten(e);
       this.number = e.totalPages;
+      this.pageNumber = e.number;
     });
   }
 

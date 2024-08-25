@@ -49,26 +49,26 @@ export class HeaderComponent implements OnInit {
   alertDialog: boolean = false;
   constructor(private snack: SnackBar, private button: ApiLoginService, private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
   ngOnInit(): void {
-    new Promise(() => {
-      const name = null;
-      this.api.lista(true, undefined, null, null, null).subscribe((e) => {
-        if (e) {
+    this.option();
+      this.api.lista(true, 0, 0, 0, 0).subscribe(e=> {
+        if (e && e!=null) {
           this.titulo = this.totalItens(e);
         }
         this.logued = this.Auth.isLogout();
 
-      });
     });
-      this.Auth.retornUser().subscribe((e) => {
-        if (e && e.perfil) {
-          this.user = e.perfil;
-        }
+     
+  }
+  option(){
+    this.Auth.retornUser().subscribe((e) => {
+      if (e && e.perfil) {
+        this.user = e.perfil;
+      }
+     
         if (e && e.imagem) {
           this.img = e.imagem;
         }
-
-      
-    });
+      });
   }
   chamadoUser() {
     this.router.navigate(['/meuchamado/aceito']);

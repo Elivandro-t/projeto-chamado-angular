@@ -12,5 +12,5 @@ import { MuralPricipalComponent } from '../../components/mural/mural-pricipal/mu
   styleUrl: './tela-de-login.component.scss'
 })
 export class TelaDeLoginComponent {
-@Input() variant: "primary"|"secundary"|"list"="primary";
+@Input() variant: "primary"|"secundary"|"list"|"login"="primary";
 }

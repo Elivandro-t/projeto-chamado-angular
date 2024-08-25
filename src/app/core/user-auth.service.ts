@@ -35,6 +35,13 @@ export class UserAuthService {
     });
     return filial as any;
   }
+  getContato(){
+    let contato;
+    this.retornUser().subscribe(e=>{
+      contato = e.contato;
+    });
+    return contato as any;
+  }
   getEmail(){
     let role;
     this.retornUser().subscribe(e=>{

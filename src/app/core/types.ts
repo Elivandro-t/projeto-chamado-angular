@@ -9,6 +9,7 @@ export interface Chamados {
   id: number,
   usuarioid: number,
   servico: string,
+  contato: any; 
   itens: [
     {
       id: number,
@@ -61,14 +62,17 @@ export interface ChamdoId {
   id: number;
   usuarioid: number,
   servico: string,
+  contato: any; 
   itens: Chamado[];
 }
 export interface ApiResponse {
+  [x: string]: any;
   content: {
     id: number,
     usuario_logado: any,
     servico: string,
     itens: Chamado;
+    contato: any; 
   }[];
   pageable: {
     pageNumber: number;
@@ -163,7 +167,6 @@ export interface sistemaReset{
   solicitacao: string,
   cpf: any,
   descricao: string;
-  nome_mae: string;
   filial: any;
   data_nasc: string;
   data_admin: string

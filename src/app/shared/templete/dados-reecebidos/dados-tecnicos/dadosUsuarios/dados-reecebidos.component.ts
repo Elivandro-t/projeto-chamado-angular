@@ -54,12 +54,13 @@ export class DadosReecebidosComponent implements OnInit {
   ngOnInit(): void {
     const card = this.route.snapshot.paramMap.get("card") as string;
     const id = this.route.snapshot.paramMap.get("id") as any;
+
     this.service.ChamadoId(card, id).subscribe(e => {
+
       new Promise(() => {
-        this.chamdoCard = e;
+        this.chamdoCard = e; 
         this.ids = e.id;
         this.foto = e.itens;
-
         switch (this.user) {
           case "admin":
             this.desable = false;

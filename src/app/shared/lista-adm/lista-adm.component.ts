@@ -25,13 +25,14 @@ interface ativo {
 })
 export class ListaAdmComponent implements OnInit, OnDestroy {
  datauser: any;
-  displayedColumns = ['Cards', 'Referencias', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Card', 'Ref', 'Status', 'Setor', 'Solicitante', 'Data de criação', 'Atendente'];
   dataSouce!: Chamados[];
   number!: number;
   totalPages!: number;
   itens!: any;
   ativo!: boolean;
   minhaSubscription: Subscription | undefined;
+  numberOfPages: any;
   size = 10;
   constructor(private api: LogServiceService,private service: ChamadoApiService, public busca: BuscaService, private snackBar: SnackBar, private dialog: MatDialog,private user: UserAuthService) { }
 
@@ -56,6 +57,7 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
       this.dataSouce = this.transformeEmItens(e);
       this.itens = this.transformeEmIten(e);
       this.number = e.totalPages;
+      this.numberOfPages = e.number;
     });
   }
 
@@ -86,6 +88,12 @@ export class ListaAdmComponent implements OnInit, OnDestroy {
 
       this.snackBar.openSnackBar(e.msg);
       this.ngOnInit();
+
+    });
+  }
+  deleteChamado(event: any){
+    this.service.DeleteChamado(event).subscribe((e: any) => {
+      this.snackBar.openSnackBar(e.msg);
 
     });
   }

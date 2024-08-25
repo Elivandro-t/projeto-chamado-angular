@@ -116,6 +116,9 @@
 .data {
     text-align: center;
     border-top: 2px solid white;
+    .botton_lista{
+        gap: 5px;
+    }
    
     #status {
         color: #23c23e;

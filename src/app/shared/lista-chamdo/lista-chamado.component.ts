@@ -56,7 +56,9 @@ export class ListaChamadoComponent implements OnInit {
   ];
   @Input() desableBotton!: boolean;
   desable: boolean = false;
-  totalPages = 0;
+  @Input() numberOfPages!: any;
+ totalPages= 0;
+
   @Output() PegesUpdate = new EventEmitter();
   @Output() pdf = new EventEmitter();
 
@@ -79,8 +81,9 @@ export class ListaChamadoComponent implements OnInit {
   @Input() itemTotal: any;
   @ViewChild("el",{static:false}) el!: ElementRef;
   @Input() filialAdmin = false;
+  @Output() delete = new EventEmitter();
 
-  size = 5;
+  size!: any;
 user!: any;
   constructor(private api: LogServiceService,private Snec: SnackBar,private dialog: MatDialog,public Auth: UserAuthService,private pd: PdfService, private sanitizer: DomSanitizer, private snackBar: SnackBar, private service: ChamadoApiService, public busca: BuscaService, private route: Router, public auth: UserAuthService) { }
   ngOnInit(): void {
@@ -112,6 +115,11 @@ user!: any;
   pegaData() {
     this.emitdata.emit();
 
+  }
+  deletar(id: number){
+    return new Promise((resolve) => {
+      resolve(  this.delete.emit(id));
+    });
   }
 
   userName(even: any){

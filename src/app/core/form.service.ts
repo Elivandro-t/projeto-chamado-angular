@@ -26,8 +26,8 @@ export class FormService {
     dataNasc:new FormControl(null,[Validators.required]),
     filial: new FormControl(null,[Validators.maxLength(4),Validators.pattern('^[0-9]*$')]),
     funcao: new FormControl(null,[Validators.required]),
-    descricao: new FormControl(null),
-    nomeMae:new FormControl(null,[Validators.required])
+    descricao: new FormControl(null)
+    // nomeMae:new FormControl(null,[Validators.required])
   });
   formControl = new FormGroup({
     usuario: new FormControl(null, [Validators.required]),

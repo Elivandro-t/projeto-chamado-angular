@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './lista-user.component.scss'
 })
 export class ListaUserComponent implements OnInit {
-  displayedColumns = ['Cards', 'Ref', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Card', 'Ref', 'Status', 'Setor', 'Solicitante', 'Data de criação', 'Atendente'];
   dataSource!: Chamados[];
   itens!: ChamdoId;
   event!: number;

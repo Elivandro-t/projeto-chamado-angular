@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="input_container-int">
-        <div class="input-Top">
+        <!-- <div class="input-Top">
             <b class="ls-label-text">
                 <p>Nome da Mae</p>
                 <p class="risc">*</p>
@@ -89,7 +89,7 @@
                     (keydown.enter)="enter(nasc)" matInput placeholder="Nome da mae..">
                 <mat-error *ngIf="myForm.get('nomeMae')?.errors?.['required']&&myForm.get('nomeMae')?.touched">Informe nome da mae</mat-error> </mat-form-field>
 
-        </div>
+        </div> -->
         <div class="input-Top">
             <b class="ls-label-text">
                 <p>Data de nascimento</p>
@@ -144,6 +144,11 @@
 
             <app-drop (emiter)="onSelect($event)"></app-drop>
         </div>
+        @if (botton) {
+            <ng-container>
+                <app-loading></app-loading>
+            </ng-container>
+           }
     </div>
 </form>
 <div class="button">

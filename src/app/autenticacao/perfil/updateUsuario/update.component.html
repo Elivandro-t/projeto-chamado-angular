@@ -1,5 +1,13 @@
 <div class="container_int">
-  <h3 mat-dialog-title>Atualizar dados</h3>
+  <h3 mat-dialog-title>
+    @if (data.titulo) {
+      {{data.titulo}} 
+    }
+    @else {
+      Atualizar dados
+    }
+
+  </h3>
   <mat-dialog-actions>
     <mat-icon mat-button  color="primary" mat-dialog-close>close</mat-icon>
   </mat-dialog-actions>   
@@ -14,7 +22,7 @@
          <label for="contatp">Filial</label>
          <input type="text" formControlName="filial" placeholder="Filial..." name="" id="">
          <label for="contatp">Contato</label>
-         <input type="tel" (keypress)="formatPhone($event)" formControlName="Contato" placeholder="telefone..." name="" id="">
+         <input type="tel" (keypress)="formatPhone($event)" formControlName="contato" placeholder="telefone..." name="" id="">
        </form>
        <button mat-raised-button color="primary" type="submit" (click)="hendleapi()">atualizar</button>
     </div>

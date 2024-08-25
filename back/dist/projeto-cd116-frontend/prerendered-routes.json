@@ -13,6 +13,7 @@
     "/auth/user/perfil",
     "/canvas",
     "/cards",
+    "/compras",
     "/lista",
     "/lista/admin",
     "/lista/aprovacoes/pendentes",

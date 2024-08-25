@@ -25,7 +25,7 @@
                         <div class="check">
                             <input width="15px" height="15px" (change)="check($event)" type="checkbox"
                                 placeholder="buscar...">
-                            <small>DATA</small>
+                            <small>Data</small>
                         </div>
                     </div>
                     @if (habilita) {
@@ -47,13 +47,13 @@
                                 <option [value]="item.ativo">{{item.name}}</option>
                             </ng-container>
                         </select>
-                        @if (user.includes("dev")||user.includes("suporte")) {
+                        @if (user.includes("dev")||user.includes("suporte")||user.includes("admin")) {
                         <!-- <button style="margin-bottom: 10px;" (click)="gerarRelatorio()">Relatorio</button>
                              < -->
                         <div style="margin-left: 2px;">
                             <app-pdf (pdf)="HendlePdf()"></app-pdf>
                         </div>
-    
+
                         }
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="titulo">
                     <span
                         style="text-align: start;font-size: 12px;font-weight:600;color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color))">
-                        Total page: {{number}} Total de itens: {{itemTotal}}</span>
+                        Total pages: {{number}} Total de itens: {{itemTotal}}</span>
                 </div>
                 <div class="paginator">
                     <button class="button-paginator" [disabled]="disable" mat-button color="primary" (click)="back()">
@@ -86,7 +86,7 @@
                     </button>
                     <span
                         style="text-align: start;font-size: 12px;font-weight:400;color: var(--ds-text-subtlest, var(--local-dynamic-table-text-color))">
-                        page: {{totalPages}}</span>
+                        page: {{numberOfPages}}</span>
                 </div>
                 <div class="mat-elevation-z8" *ngIf="number>0,else spiner" style="display: flex; margin-bottom: 25px;">
                     <table style="padding:20px;" #el>
@@ -119,23 +119,27 @@
                                 }
                                 <td style="width:123px;" id="status">{{ite.status.replace('_'," ")}}</td>
                                 <td style="width:120px;">{{ite.setor}}</td>
-                                <td style="width:120px;">{{userName(ite.usuario)}}</td>
+                                <td style="width:120px;">{{userName(servico.usuario_logado)}}</td>
                                 <td style="width:130px;">{{ite.data}}</td>
                                 <td style="width:120px;" style="color: rgb(209, 73, 73);">
                                     {{tecName(ite.tecnico_responsavel)}}</td>
-                                <td *ngIf="exibir">
+                                <td *ngIf="exibir" >
                                     @if(servico.usuarioid!==Auth.getId()){
-                                    <button [disabled]="ite.done" mat-raised-button style="font-size:9px;height: 20px;"
-                                        color="primary" (click)="getRa(ite.id,servico.id,ite.cardId)">Aceitar</button>
+                                        <button [disabled]="ite.done" mat-raised-button
+                                            style="font-size:9px;height: 20px;" color="primary"
+                                            (click)="getRa(ite.id,servico.id,ite.cardId)">Aceitar</button>
                                     }@else {
                                     <button disabled mat-raised-button style="font-size:9px;height: 20px;"
                                         color="primary">Você</button>
                                     }
+                                    @if (user.includes("suporte")) {
+                                        <button mat-raised-button
+                                            style="font-size:9px;height: 20px;margin: 0 2px;" color="secundary"
+                                            (click)="deletar(servico.id)">Deletar</button>
+                                        }
 
                                 </td>
                             </tr>
-                            }@empty {
-                            <div>Sem chamados encontrado...</div>
                             }
 
                         </tbody>

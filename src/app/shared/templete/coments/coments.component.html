@@ -1,5 +1,5 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
-<Section class="container_templet">
+<section class="container_templet">
     <div class="input_container-int2">
 
         <div class="input_container">
@@ -18,11 +18,12 @@
                 </div>
                 @if (cooments) {
                 <div class="comentarios"
-                    *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)" style="">
+                    *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)" >
                     <div class="itens" style="display: flex;border:0.2px dotted #4565;padding:5px;">
                         @if (img!==null||img !==undefined) {
                         <img [src]="commet.userImagem" width="30px" height="30px" style="border-radius: 50%;" alt="Sua imagem">
                         }@else{
+                        
                         <img src="../../../../assets/user.png" width="30px" height="30px" style="border-radius: 50%;"
                             alt="Imagem do usuario">
                         }
@@ -51,7 +52,7 @@
                 @if (exibiBotao) {
 
                 <editor class="editor" formControlName="comment"
-                    apiKey="2rptpuxtvy9rtscq2utfbgoipgbya6fcqg4sihje2y0m34hn" [init]="editorConfig"></editor>
+                    apiKey="3jzq1lryv8xzge6v00cxxvahxmmfyk8ht5zkimraz8d38s67" [init]="editorConfig"></editor>
                     <!-- <p-editor formControlName="comment" #app/> -->
                     
                 }@else {
@@ -75,4 +76,4 @@
 
         </div>
     </div>
-</Section>
+</section>

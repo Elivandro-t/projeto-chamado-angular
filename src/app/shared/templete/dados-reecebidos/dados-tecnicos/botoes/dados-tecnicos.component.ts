@@ -103,7 +103,7 @@ export class DadosTecnicosComponent implements OnInit {
   }
 
 handleSelectClick(event: any) {
-    const Status = event.value;
+    const Status = event.target.value;
     if (Status.includes("validacao")) {
       this.atualizarstatus();
     }

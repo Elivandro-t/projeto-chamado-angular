@@ -24,6 +24,8 @@ import { FormService } from "../../../../core/form.service";
 import { AlertComponent } from "../../alerta/alert/alert.component";
 import { DropComponent } from "../drop/drop.component";
 import { CpfValidationService } from "../validator.service";
+import { EnvioDeMesagemWhats } from "../../campos/EnvioDeMensagem.service";
+import { Loading } from "../../../../loading/Loading";
 export interface User {
   id: string;
   name: string;
@@ -46,7 +48,8 @@ export interface User {
     MuralPricipalComponent,
     DropComponent,
     AlertComponent,
-    BotaoBackComponent
+    BotaoBackComponent,
+    Loading
   ],
   providers: [],
   templateUrl: './ResetColetor.component.html',
@@ -95,6 +98,7 @@ export class ResetColetorComponent implements OnInit {
       tinyKay = environment.tinyKey;
       sprinner=false;
       loadin =false;
+      botton = false;
      @Input() solicitacaoUsuario: any;
       infor="name";
       @ViewChild("setors") setors!: ElementRef;
@@ -120,7 +124,7 @@ export class ResetColetorComponent implements OnInit {
           event.focus();
         }
       }
-      constructor(private cpfValidator: CpfValidationService,public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
+      constructor(private EnviarMsg: EnvioDeMesagemWhats,private cpfValidator: CpfValidationService,public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
         this.myForm = service.formAcess;
         this.ids = this.rout.snapshot.paramMap.get("id");
         this.Servico = this.rout.snapshot.paramMap.get("data");
@@ -172,7 +176,6 @@ export class ResetColetorComponent implements OnInit {
           gmid: this.selecione('gmid').value,
           data_admin:this.selecione('dataAdmin').value,
           data_nasc:this.selecione('dataNasc').value,
-          nome_mae: this.selecione('nomeMae').value,
           funcao: this.selecione('funcao').value,
           solicitacao: this.solicitacaoUsuario,
           descricao: this.selecione('descricao').value
@@ -205,6 +208,7 @@ export class ResetColetorComponent implements OnInit {
       onFile() {
         let id: any;
         this.sprinner =true;
+        this.botton = true;
         const form = this.myForm.get("cpf")?.value;
         if(this.cpfValidator.validateCPF(form)){
           this.http.pegarimg(this.chamdoId, this.files, this.datas()).subscribe((s: any) => {
@@ -215,12 +219,19 @@ export class ResetColetorComponent implements OnInit {
                 chamado = e.cardId;
               });
             }
+            this.botton =false;
             this.sprinner=false;
+            if(s.contato!=null){
+              this.EnviarMsg.PegarMsg(s.contato,s.usuario_logado,s.servico,chamado,s.usuarioid,s.id);
+      
+            }
             this.router.navigate([`/chamado/${chamado}/${s.usuarioid}/${s.id}/create`]);
             this.myForm.reset();
           });
         }else{
           alert("cpf invalido");
+          this.botton =false;
+            this.sprinner=false;
         }
         
       

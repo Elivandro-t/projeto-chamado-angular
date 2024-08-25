@@ -127,9 +127,6 @@
 
     </div>
     <div class="input_container-int2">
-        <!-- <div class="input-Top">
-        <app-alert aviso="Descreva sua solicitaçao!"></app-alert>
-    </div> -->
 
          <div class="input-Top">
             <b class="ls-label-text">
@@ -160,6 +157,9 @@
 
             </mat-form-field>
         </div> 
+        <small style="color: brown;" class="input-Top">
+            Para solicitacao de Pacote office adicione a matricula na descrição!
+            </small>
         <div>
             <div class="input_container">
                 <b class="ls-label-text">
@@ -170,6 +170,11 @@
                 </editor>
             </div>
         </div>
+        @if (botton) {
+            <ng-container>
+                <app-loading></app-loading>
+            </ng-container>
+           }
     </div>
 </form>
 <div class="button">

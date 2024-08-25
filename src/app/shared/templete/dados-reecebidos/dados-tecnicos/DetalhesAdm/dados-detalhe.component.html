@@ -5,19 +5,22 @@
         <div class="logolink">
             <app-back-button></app-back-button>
         </div>
+
         <div class="campos1 ">
             <div class="logo">
                 <!-- <img class="imagen-card"
                     src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" /> -->
                 <h2>{{chamdoCard.servico}}</h2>
             </div>
+            
         </div>
         <div class="campos ">
                     <section class="container_templete ">
                         <div class="Card">
                             <section id="formButton" class="container">
                                 <div class="input">
-        
+                                    <div style="width: 90%;text-align: right;"><mat-icon (click)="contato()" style="text-align: right;">share</mat-icon></div>
+
                                     <div class="ls-span">
                                         <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30" src="assets/pc.png" />
                                         @if (chamdoCard.usuario_logado!==""||chamdoCard.usuario_logado !==null || chamdoCard.usuario_logado!==undefined) {
@@ -31,7 +34,7 @@
                                     </div>
                                 </div>
                                 <div class="name" *ngIf="ocultar" >
-                                    <app-alert titulos="Informações do colaborador"></app-alert>
+                                    
                                     <div class="data_top">
                                         <div class="input-Top">
                                             <span class="inforDescricao">Solicitação</span>
@@ -95,7 +98,7 @@
                                                     <small>{{i.cpf}}</small>
                                                 </div>
                                             </div>
-                                            @if (i.solicitacao.includes("CRIACAO DE CONTA AD")||i.solicitacao.includes("RESET DE SENHA ZIMBRA")||i.solicitacao.includes("RESET DE SENHA MAESTRO")||i.solicitacao.includes("RESET DE SENHA JIRA")||i.solicitacao.includes("RESET DE CONTA AD")||i.solicitacao.includes("SOLICITACAO DE PACOTE OFFICE")||i.solicitacao.includes("SOLICITACAO DE VPN")){
+                                            @if (i.solicitacao.includes("CRIACAO DE CONTA AD")||i.solicitacao.includes("CRIACAO DE EMAIL")||i.solicitacao.includes("RESET DE SENHA ZIMBRA")||i.solicitacao.includes("RESET DE SENHA MAESTRO")||i.solicitacao.includes("RESET DE SENHA JIRA")||i.solicitacao.includes("RESET DE CONTA AD")||i.solicitacao.includes("SOLICITACAO DE PACOTE OFFICE")||i.solicitacao.includes("SOLICITACAO DE VPN")){
                                                  
                                             <div class="data_top">
                                                 <div class="input-Top">
@@ -105,6 +108,16 @@
                                                 <div class="input-Top">
                                                      <span class="inforDescricao">Email</span>
                                                     <small>{{i.emailUsuario}}</small>
+                                                </div>
+                                            </div>
+                                            <div class="data_top">
+                                                <div class="input-Top">
+                                                    <span class="inforDescricao">Data de nascimento</span>
+                                                    <small >{{i.data_nasc}}</small>
+                                                </div>
+                                                <div class="input-Top">
+                                                     <span class="inforDescricao">Data de admissão</span>
+                                                    <small>{{i.data_admin}}</small>
                                                 </div>
                                             </div>
                                             <div class="data_top">
@@ -125,9 +138,12 @@
                                             </div>
                                             }
                                             @else if (i.solicitacao.includes("ACESSO ESPECIFICO AO USUARIO")) {
-
-                                               
-                                        
+                                                <div class="data_top">
+                                                    <div class="input-Top">
+                                                        <span class="inforDescricao">Função</span>
+                                                       <small>{{i.funcao}}</small>
+                                                   </div>
+                                                </div>
                                             }
                                             @else {
         
@@ -142,10 +158,6 @@
                                                 </div>
                                             </div>
                                             <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Nome da mae</span>
-                                                    <small >{{i.nome_mae}}</small>
-                                                </div>
                                                 <div class="input-Top">
                                                      <span class="inforDescricao">Função</span>
                                                     <small>{{i.funcao}}</small>
@@ -167,7 +179,7 @@
                                     
                                 </div>
                             </section>
-                            <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
+                            <app-coments class="campo_comment" [chamadoId]="i.id" [contatoCliente]="telefoneOriginal" [servico]="chamdoCard.servico"></app-coments>
                         </div>
                     </section>
             <app-dados-tecnicos (Pegartect)="pegart(i.id)" [done]="i.done" (Pegartect)="buscar()" [nomeUsuario]="i.tecnico_responsavel"[disableAdmin]="true"

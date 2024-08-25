@@ -22,15 +22,15 @@ interface ativo {
 })
 export class ListaTecnicoComponent implements OnInit, OnDestroy {
 
-  displayedColumns = ['Cards', 'Ref', 'Status', 'Setores', 'Solicitantes', 'Data de criação', 'Assis tec'];
+  displayedColumns = ['Card', 'Ref', 'Status', 'Setor', 'Solicitante', 'Data de criação', 'Atendente'];
   dataSouce!: Chamados[];
   number!: number;
   totalPages!: number;
   itens!: any;
   ativo!: boolean;
   minhaSubscription: Subscription | undefined;
-  itemTotal: any;
-  size=5;
+  size=30;
+  numberOfPages!: any;
   constructor(private service: ChamadoApiService, public busca: BuscaService, private snackBar: SnackBar, private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -39,23 +39,19 @@ export class ListaTecnicoComponent implements OnInit, OnDestroy {
     this.gerar();
   }
   gerarativo(event: boolean) {
-    this.busca.form.reset();
     this.ativo = event;
     this.gerar();
   }
-
-
   gerar() {
     const data = {
       dataAntes:this.busca.form.get("dataAntes")?.value,
       dataDepois:this.busca.form.get("dataDepois")?.value
     };
-    this.minhaSubscription = this.service.ListaTecnico(this.totalPages,this.size).subscribe((e: any) => {
+    this.minhaSubscription = this.service.ListaTecnico(this.totalPages,this.size,this.ativo,data.dataAntes,data.dataDepois).subscribe((e: any) => {
       this.dataSouce = this.transformeEmItens(e);
       this.itens = this.transformeEmIten(e);
-      this.itemTotal = {...e.itens};
-      this.number = e.totalPages;
-      
+      this.number = e.totalPages; 
+      this.numberOfPages = e.number;     
     });
   }
   ngOnDestroy(): void {
@@ -63,9 +59,8 @@ export class ListaTecnicoComponent implements OnInit, OnDestroy {
       this.minhaSubscription.unsubscribe();
     }
   }
-  emitSize(event: any){
-   this.size = event.target.value;
-   this.gerar();
+  emitsize(event: any){
+    this.size = event.target.value;
   }
   pegarEvent(event: number) {
     this.totalPages = event;

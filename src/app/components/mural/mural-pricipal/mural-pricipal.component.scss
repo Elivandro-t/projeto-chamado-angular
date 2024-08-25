@@ -7,7 +7,7 @@
   }
   .mural{
     max-width:100%;
-    width:80%;
+    width:90%;
     margin: auto;
     margin-top: -24.5rem;
     display: flex;
@@ -15,7 +15,7 @@
     box-sizing: border-box;
   .template{
       &.primary{
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         margin-bottom: 25px;
@@ -28,7 +28,7 @@
         border-radius: 2px;
         }
         &.secundary{
-            width:100%;
+            width:90%;
             display: flex;
             flex-direction: column;
             background-color:white;
@@ -46,14 +46,23 @@
 
 
       }
+      &.compras{
+        width:60%;
+        display: flex;
+        flex-direction: column;  
+        box-sizing: border-box;
+        padding: 10px 0;
+
+
+    }
       &.auth{
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
     }
     &.home{
-      width: 100%;
+      width:90%;
       display: flex;
       margin-top:5rem;
       flex-direction: column;

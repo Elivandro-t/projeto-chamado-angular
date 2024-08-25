@@ -30,7 +30,11 @@ export class ServiceComponent implements OnInit{
   router(Event: number,Titulo: string,$index: any){
     if(Event===3){
       this.natigate.navigate([`reset/${Event}/serviços/${this.data.name}/${Titulo}/${$index}`]);
-    }else{
+    }else if(Event===5){
+      this.natigate.navigate([`compras`]);
+
+    }
+    else{
       this.natigate.navigate([`sistema/${Event}/serviços/${this.data.name}/${Titulo}/${$index}`]);
     }
   }

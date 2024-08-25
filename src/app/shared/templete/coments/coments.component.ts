@@ -1,8 +1,10 @@
+/* eslint-disable prefer-const */
+import { Input } from '@angular/core';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserService } from './../../../autenticacao/services/user.service';
 
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +17,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DropComponent } from '../campos/drop/drop.component';
 import { ImagensComponent } from '../dados-reecebidos/imagens/imagens.component';
+import { CommentZap } from './ComentZap.service';
 // import { EditorModule } from 'primeng/editor';
 @Component({
   selector: 'app-coments',
@@ -32,6 +35,7 @@ export class ComentsComponent implements OnInit,AfterViewInit{
 
   resizeEnabled = true;
   quandadeDeItens!: any;
+  @Input() servico: any;
   form!: FormGroup;
   cooments!: any[];
   detalhe: any;
@@ -40,9 +44,10 @@ export class ComentsComponent implements OnInit,AfterViewInit{
   @Input() chamadoId!: number;
   imagens: { [key: string]: string }={};
   numComentariosExibidos = 3;
+  @Input() contatoCliente: any;
   @Output() files: File[] = [];
   @ViewChild("file") file!: ElementRef;
-  constructor(public Auth: UserAuthService,private sanitizer: DomSanitizer,public Formb: FormBuilder,private userApi: UserService,public http: CommentsService,private user: UserAuthService){}
+  constructor(private zap: CommentZap,public Auth: UserAuthService,private sanitizer: DomSanitizer,public Formb: FormBuilder,private userApi: UserService,public http: CommentsService,private user: UserAuthService){}
   ngAfterViewInit(): void {
     this.commentsContainer.nativeElement.addEventListener('input',this.Resize.bind(this));
     this.textAreaForm.nativeElement.addEventListener('click',()=>{
@@ -121,11 +126,27 @@ carregarMaisComentarios() {
     
   }
    enviar(){
+    let msg = `
+*Olá*! Sou o Assistente virtual do Suporte TI.
+
+Gostaríamos de informar que um comentário foi registrado no portal de suporte, referente ao seu chamado solicitando apoio a *${this.servico}*. Estamos trabalhando para resolver sua solicitação o mais rápido possível.
+
+Atenciosamente,
+
+
+*#Suporte da TI#*
+    `;
+    const tel = this.contatoCliente;
+    const smg = this.form.get('comment')!.value;
+   if(tel!=null){
+    this.zap.PegarMsg(tel,msg);
+   }
     if(this.datas().comments.trim()!=null){
       this.http.RegistroComment(this.chamadoId,this.datas(),this.files).subscribe(()=>{
         this.http.comment(this.chamadoId).subscribe(e=>{
           this.cooments=e.itens;
           this.quandadeDeItens  =  this.pegarItens(e.itens);
+          
         });
        });
         this.form.reset();

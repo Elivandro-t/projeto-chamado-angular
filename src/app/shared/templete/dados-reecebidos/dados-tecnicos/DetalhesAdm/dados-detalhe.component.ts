@@ -18,7 +18,7 @@ import { MuralPricipalComponent } from "../../../../../components/mural/mural-pr
 import { MuralComponent } from "../../../../../components/mural-secundary/mural.component";
 import { BotaoBackComponent } from '../../../../../components/botao_voltar/botaoVoltar.component';
 import { LogServiceService } from '../../../../../core/log-service.service';
-
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-dados-detahe',
@@ -36,7 +36,8 @@ import { LogServiceService } from '../../../../../core/log-service.service';
         MuralPricipalComponent,
         ComentsComponent,
         AlertComponent,
-        ImagensComponent
+        ImagensComponent,
+        MatIcon
         
         
     ]
@@ -57,6 +58,8 @@ export class DadosDetalheComponent implements OnInit {
  cardid: any;
  idchamdo: any;
  card: any;
+ contatos!: any;
+ telefoneOriginal!: any;
  
   constructor(private api: LogServiceService,private SnackBar: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
   ngOnInit(): void {
@@ -69,6 +72,9 @@ export class DadosDetalheComponent implements OnInit {
       new Promise(()=>{
         this.chamdoCard = e;
           this.foto = e.itens;
+          this.contatos = e.contato;
+          this.telefoneOriginal  = e.contato;
+
       });
     });
     
@@ -87,6 +93,10 @@ pegart(idchamdo: any){
 
 }
 
+contato(){
+  const url = `https://web.whatsapp.com/send?phone=${this.contatos}`;
+   window.open(url,"_blank");
+ }
   sanitize(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }

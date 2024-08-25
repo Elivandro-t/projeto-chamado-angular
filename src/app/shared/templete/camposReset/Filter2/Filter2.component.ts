@@ -1,3 +1,4 @@
+import { SnackBar } from './../../../../AlertaDialog/snackBar/snackbar.component';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -25,6 +26,8 @@ import { FormService } from "../../../../core/form.service";
 import { AlertComponent } from "../../alerta/alert/alert.component";
 import { DropComponent } from "../drop/drop.component";
 import { CpfValidationService } from "../validator.service";
+import { EnvioDeMesagemWhats } from "../../campos/EnvioDeMensagem.service";
+import { Loading } from "../../../../loading/Loading";
 export interface User {
   id: string;
   name: string;
@@ -47,7 +50,8 @@ export interface User {
     MuralPricipalComponent,
     DropComponent,
     AlertComponent,
-    BotaoBackComponent
+    BotaoBackComponent,
+    Loading
   ],
   providers: [],
   templateUrl: './Filter2.component.html',
@@ -97,7 +101,7 @@ export class Filter2Component implements OnInit {
   @ViewChild("emailGestor") emailGestor!: ElementRef;
   @Input() solicitacaoUsuario: any;
   @Output() desbiled = new EventEmitter();
-
+  botton = false;
 
   descricao = "descricao";
   editorConfig = {
@@ -108,6 +112,7 @@ export class Filter2Component implements OnInit {
     toolbar: 'fontfamily fontsize | bold italic underline strikethrough forecolor backcolor | align lineheight  | emoticons charmap',
     statusbar: false,
     menubar: false,
+ 
 
 
 
@@ -118,7 +123,7 @@ export class Filter2Component implements OnInit {
     }
 
   }
-  constructor(private validatorCpf: CpfValidationService, public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
+  constructor(private SnackBar: SnackBar,private EnviarMsg: EnvioDeMesagemWhats,private validatorCpf: CpfValidationService, public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
     this.myForm = service.formControl;
     this.ids = this.rout.snapshot.paramMap.get("id");
     this.Servico = this.rout.snapshot.paramMap.get("data");
@@ -206,6 +211,7 @@ export class Filter2Component implements OnInit {
   onFile() {
     let id: any;
         this.sprinner =true;
+        this.botton =true;
         const form = this.myForm.get("cpf")?.value;
         if(this.validatorCpf.validateCPF(form)){
           this.http.pegarimg(this.chamdoId, this.files, this.datas()).subscribe((s: any) => {
@@ -216,12 +222,25 @@ export class Filter2Component implements OnInit {
                 chamado = e.cardId;
               });
             }
+            this.botton = false;
             this.sprinner=false;
+            if(s.contato!=null){
+              this.EnviarMsg.PegarMsg(s.contato,s.usuario_logado,s.servico,chamado,s.usuarioid,s.id);
+      
+            }
+            if(s.msg){
+              this.sprinner = false;
+              this.botton =false;
+              this.SnackBar.openSnackBar(s.msg);
+            }else{
             this.router.navigate([`/chamado/${chamado}/${s.usuarioid}/${s.id}/create`]);
             this.myForm.reset();
+            }
           });
         }else{
           alert("cpf invalido");
+          this.botton =false;
+            this.sprinner=false;
         }
   }
   formatCpf(Cpf: any){

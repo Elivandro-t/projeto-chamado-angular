@@ -79,6 +79,10 @@
                     <app-filter3 Alert="Informar as filiais que deseja adicionar e a rotina" [solicitacaoUsuario]="solicitacaoUsuario"></app-filter3>
     
                     }
+                    @if (filter11) {
+                        <app-add [solicitacaoUsuario]="solicitacaoUsuario" (desbiled)="desabilitar()"></app-add>
+        
+                        }
 
             </div>
         </div>

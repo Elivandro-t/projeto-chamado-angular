@@ -16,13 +16,15 @@ import { SigninServiceService } from '../services/signin-service.service';
 import { TelaDeLoginComponent } from '../tela-de-login/tela-de-login.component';
 import { TelaLoginAuthComponent } from '../tela-login-auth/tela-login-auth.component';
 import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
+import { Loading } from '../../loading/Loading';
+import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss',
-  imports: [MatInputModule, NgxLoadingButtonsModule, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
+  imports: [MatInputModule, NgxLoadingButtonsModule,Loading, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
 })
 export class SigninComponent {
   desable: boolean = false;
@@ -34,7 +36,7 @@ export class SigninComponent {
   @ViewChild("password") password!: ElementRef;
   @ViewChild("email") email!: ElementRef;
 
-  constructor(public service: SigninServiceService, private router: Router, private http: ApiLoginService, public Logued: UserAuthService, private dialog: MatDialog) { }
+  constructor(private snack: SnackBar,public service: SigninServiceService, private router: Router, private http: ApiLoginService, public Logued: UserAuthService, private dialog: MatDialog) { }
  selecione<T>(name: string){
   const form = this.service.Signin.get(name);
   if (!form) {
@@ -58,7 +60,7 @@ export class SigninComponent {
           this.sppiner = false;
         }
         if (e.msg) {
-          this.dialog.open(AlertaDialogLoginServiceComponent, { data: { informacoes: e.msg } });
+          this.snack.openSnackBar(e.msg);
           this.erro = e.msg;
           this.sppiner = false;
         }

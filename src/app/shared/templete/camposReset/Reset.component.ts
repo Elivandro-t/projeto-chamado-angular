@@ -71,7 +71,8 @@ export class ResetComponent {
     {name:"RESET DE SENHA JIRA"},
     {name:"RESET DE CONTA AD"},
     {name:"SOLICITACAO DE PACOTE OFFICE"},
-    {name:"SOLICITACAO DE VPN"}
+    {name:"SOLICITACAO DE VPN"},
+    {name:"CRIACAO DE EMAIL"}
 
   ];
  @Output() files: File[] = [];
@@ -108,6 +109,7 @@ export class ResetComponent {
   filter8 =false;
   filter9 =false;
   filter10 = false;
+  filter11 = false;
 
   solicitacaoUsuario: any;
   tituloUsuario: any;
@@ -179,6 +181,11 @@ export class ResetComponent {
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=true;
+    }
+    if(valueData.includes("CRIACAO DE EMAIL")){
+      this.filter1=false;this.filter2=false,this.filter3=false, 
+      this.filter4=false,this.filter5=false, this.filter6=false,
+      this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false,this.filter11=true;
     }
     
   }

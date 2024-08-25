@@ -24,13 +24,12 @@ import { MenuDropComponent } from '../../shared/menu/menuDrop/menuDrop.component
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.scss'
 })
-export class PerfilComponent implements OnInit {
+export class PerfilComponent implements OnInit{
   detalheUser!: user;
   img: boolean = false;
   constructor(private service: UserService,private matDialog: MatDialog,private router: Router,public auth: UserAuthService) { }
   ngOnInit(): void {
    this.chamaDadosUsuarios();
-   localStorage.setItem("image",this.detalheUser.imagem);
   }
   chamaDadosUsuarios(){
    this.service.detalheUser().subscribe(e => {

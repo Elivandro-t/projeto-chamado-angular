@@ -1,45 +1,51 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<app-tela-de-login *ngIf="!Logued.isLogout()">
+<app-tela-de-login variant="login" *ngIf="!Logued.isLogout()">
   <div class="painel">
-    <legend>Login</legend>
+    <header>
+     
+      <p class="span"> AGILE SERVICE</p>
+
+    </header>
     <form class="painel-login" [formGroup]="service.Signin">
-      <label>
-        <mat-form-field>
-          <mat-label>E-mail</mat-label>
-          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" />
-          <mat-error *ngIf="service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched">Digite
-            um email valido</mat-error>
-          <mat-error
-            *ngIf="service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched">Campo e
-            Obrigatorio</mat-error>
-        </mat-form-field>
-      </label>
-      <label class="input-text">
-        <mat-form-field>
-          <mat-label>Senha</mat-label>
+      <div class="login_int">
+          <label for="email">E-mail</label>
+          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" placeholder="Digite seu e-mail..." />
+          @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
+            <small class="mensagem-erro">Digite um email valido</small>
+          }
+           @else if (service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched) {
+            <small class="mensagem-erro">Campo obrigatório</small>
+           }
+      </div>
+      <div class="login_int">
+  
+          <label for="password">Senha</label>
           <div class="pass">
-            <input matInput type="{{text}}" formControlName="password" maxlength="14"  #password/>
-            <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+            <input matInput type="{{text}}" formControlName="password" maxlength="14"  #password placeholder="Digite sua senha..."/>
+            <div class="eg">
+              <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
           </div>
-          <mat-error
-            *ngIf="service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched">Campo
-            e obrigatorio</mat-error>
-        </mat-form-field>
-      </label>
+         </div>
+         @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
+          <small class="mensagem-erro">Campo obrigatório</small>
+        }
+      </div>
       <div class="btn-password">
         <a (click)="esqueceuSenha()">Esqueceu a senha?</a>
       </div>
       <div class="btn-login-button">
 
-        <button color="primary" [disabled]="!service.Signin.valid" (click)="Enviar()" (mousedown.enter)="Enviar()" class="btn-login" mat-raised-button
-          [mtBasicSpinner]="sppiner" [hideText]="true"><p>Acessar conta</p><mat-icon>login</mat-icon></button>
+        <button color="primary" [disabled]="!service.Signin.valid" (click)="Enviar()" (mousedown.enter)="Enviar()" class="btn-login" mat-raised-button><p>Acessar</p><mat-icon>login</mat-icon></button>
 
         <div class="btn-login-registrar">
           <p>Ainda não tem conta?</p>
           <a (click)="registrar()">Registrar-se</a>
         </div>
       </div>
+      @if (sppiner) {
+        <app-loading [ativo]="true"></app-loading>
+      }
     </form>
   </div>
 </app-tela-de-login>

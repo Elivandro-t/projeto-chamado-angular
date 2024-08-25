@@ -17,7 +17,7 @@
                 <div class="input_container-int">
                     <div class="input-Top">
                         <b class="ls-label-text">
-                            <p>Nome do colaborador</p>
+                            <p>Nome completo</p>
                             <p class="risc">*</p>
                         </b>
                         <mat-form-field class="input-form" appearance="outline">
@@ -139,7 +139,7 @@
                     <div class="input_container textarea">
                         <div class="input_container">
                             <b class="ls-label-text">
-                                <p>Descrição</p>
+                                <p>Como posso ajudá-lo?</p>
                                 <p class="risc">*</p>
                             </b>
                             <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig" >
@@ -154,10 +154,15 @@
 
             </form>
             <div class="button">
-                <button color="primary" [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
+                <button color="primary" [disabled]="!myForm.valid || botton " class="button" (click)="onFile()" color="primary"
                     mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
 
             </div>
+           @if (botton) {
+            <ng-container>
+                <app-loading></app-loading>
+            </ng-container>
+           }
         </div>
     </div>
 </app-mural-pricipal>

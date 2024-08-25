@@ -2,6 +2,9 @@ import { Routes } from '@angular/router';
 import { ErrorComponent } from './shared/error/error.component';
 import { RelatorioComponent } from './admin/relatorio/relatorio.component';
 import { AboutComponentComponent } from '../About/about.component';
+import { authGuard } from './autenticacao/auth/Auth.guard';
+import { ComprasComponent } from './shared/templete/campos/Compras/compras.component';
+
 const routes: Routes = [
     {
         path: '', pathMatch: 'full', redirectTo: '/cards'
@@ -17,6 +20,9 @@ const routes: Routes = [
     },
     {
         path: 'about',component:AboutComponentComponent
+    },
+    {
+        path:"compras", component:ComprasComponent, title:"compras", canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
     },
     {
         path: "**", component: ErrorComponent

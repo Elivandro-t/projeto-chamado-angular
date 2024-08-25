@@ -102,6 +102,11 @@
                 <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
                 </editor>
             </div>
+            @if (botton) {
+                <ng-container>
+                    <app-loading></app-loading>
+                </ng-container>
+               }
         </div>
         <div>
 

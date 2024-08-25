@@ -14,8 +14,15 @@
         border-radius: 3px;
     }
     &.secundary{
-        border-radius: 3px;
+        border-radius: 5px;
         color: #eee7e7;
+    }
+    &.login{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:var(--ds-surface,#FFFFFF);
+        border-radius:5px;
     }
 
 }

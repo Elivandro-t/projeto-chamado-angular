@@ -2,48 +2,62 @@
     background-color: var(--ds-surface, #FFFFFF);
     border-radius: 2px;
     padding: 0 48px;
-
     .logo {
         width: 100%;
         display: flex;
-        gap: 15rem;
-
+        gap:5rem;
+        padding:1rem 0px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
-
         .btn:hover {
             background-color: #dad3d3;
             border-radius: 50%;
         }
+        legend{
+            font-size:25px;
+        }
 
     }
-
     .painel-login {
-        width: 700px;
-        height: 564px;
+        width:440px;
+        height:484px;
+        margin:3px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 2px;
-
-        mat-label {
-            margin: 0 5px;
-        }
-
         .campo-top {
             width: 100%;
             display: flex;
             justify-content: space-between;
+            .input_int{
+                display: flex;
+                flex-direction: column;
+                width:48%;
 
-            mat-form-field {
-                width: 48%;
+                input{
+                    height: 25px;
+                    outline: none;
+                }
             }
         }
 
         .campo-botton {
             width: 100%;
 
+            .campo{
+                display: flex;
+                flex-direction: column;
+               margin:10px 0;
+               height:50px;
+               input{
+              height:35px;
+              border:1px solid black;
+              outline: none;
+            }
+            height:50px;
+            }
             .container-center {
                 left: 0;
                 top: 0;
@@ -67,22 +81,26 @@
                 }
 
                 button {
-                    margin-top: 25px;
-                }
-            }
-
-            .campo {
-                width: 100%;
-
-                mat-form-field {
-                    width: 90%;
-
+                    margin-top:15px;
                 }
             }
 
             .pass {
+                border: 1px solid black;
                 display: flex;
                 width: 100%;
+                align-items: center;
+                height:32px;
+                border-radius: 2px;
+                input{
+                    width: 100%;
+                    height: 30px;
+                    outline: none;
+                    border: 0;
+                }
+                .eg{
+                    margin: 2px;
+                }
             }
 
             .btn-password {
@@ -99,20 +117,7 @@
 
             }
 
-            .btn-login-button {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                gap: 3px;
-
-                .btn-login {
-                    width: 300px;
-
-                }
-
-            }
+           
         }
 
         .campo-btn {
@@ -128,6 +133,7 @@
     .btn-bottom{
         display: flex;
         gap:10px;
+        margin-bottom:15px;
     }
 
 }
@@ -247,3 +253,10 @@
     }
 
 }
+
+// global
+.mensagem-erro{
+    font-size: 10px;
+    color: red;
+    z-index: 999;
+  }
