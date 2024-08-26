@@ -1,16 +1,14 @@
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 1 2 auto;
 }
 .toolbar {
   display: flex;
   justify-content: space-between;
-  margin:15px 50px;
+  margin:15px 20px;
   span{
-    font-weight: 600;
     color: aliceblue;
   }
   .span {
-    color: aliceblue;
     cursor: pointer;
   }
   .active-page {
@@ -40,7 +38,12 @@
       height: 50px;
       border-radius: 100%;
        .menu{
-       
+        button{
+           span{
+            font-size: 10px;
+
+           }
+         }
           .btn-icon{
             width:25px;
             height:25px;
@@ -55,19 +58,26 @@
 
 }
 .user-name {
-  padding: 0 12px;
-  width: 100%;
+  width: 80%;
   display: flex;
-  align-items: center;
-  small {
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+  align-items: start;
+  padding:2px 15px;
+ .usuario{
     display: flex;
-    align-items: center;
-    p {
-      margin-left: 6px;
-      color: blue;
+    flex-direction: column;
+    margin:0px 16px;
+    small{
+      font-size:9px;
+      margin:1;
+      text-align: center;
     }
-  }
+    .name {
+      font-size:15px;
+      display: flex;
+      align-items: center;
+      color: blue;
+      cursor: pointer;
+    }
+ }
 
 }
