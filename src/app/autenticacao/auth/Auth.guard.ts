@@ -6,7 +6,7 @@ import { inject } from '@angular/core';
 export const authGuard: CanActivateChildFn= (route)=>{
   const token = inject(UserAuthService);
   const routers  = inject(Router);
-  if(token.isLogout()){
+  if(token?.isLogout()){
     const user = token.getRole() as unknown as any[];
     const ath = route.data['acess'] as string[];
   

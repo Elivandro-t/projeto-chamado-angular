@@ -1,6 +1,6 @@
-<app-cards-chamados class="banner">
+<app-cards-chamados>
     <section class="container-banner">
-      <h1>SOLICITAÇÕES</h1>
+       <h1>SOLICITAÇÕES</h1>
         <div class="card-button" >
             @for(item of data; track $index) {
                 <app-my-buttons rotas="/itens/{{item.id}}" src="{{item!.imagem}}" title="{{item!.name}}" subtitle="{{item.titulo}}"></app-my-buttons>

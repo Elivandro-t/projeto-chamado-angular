@@ -61,6 +61,7 @@ export interface User {
   styleUrl: './campos.component.scss'
 })
 export class CamposComponent implements OnInit {
+  val!: any;
   dat = [
     { name: "DESKTOP" },
     { name: "LEPTOP" },
@@ -127,6 +128,7 @@ export class CamposComponent implements OnInit {
     }
 
   }
+ 
   constructor(private dialog: Dialog,private EnviarMsg: EnvioDeMesagemWhats,private zap: ApiWhatsapp, public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService,private SnackBar: SnackBar) {
     this.myForm = service.form;
     this.ids = this.rout.snapshot.paramMap.get("id");
@@ -240,6 +242,21 @@ export class CamposComponent implements OnInit {
 
 
   }
-  // formatando data e hora para o horario atual
+  isValid(){
+    return this.myForm.get("solicitacao")?.errors?.['required'] && this.myForm.get("solicitacao")?.touched;
+  }
+  isSetor(){
+    return this.myForm.get("setor")?.errors?.['required'] && this.myForm.get("setor")?.touched;
+  }
+  isNome(){
+    return this.myForm.get("usuario")?.errors?.['required'] && this.myForm.get("usuario")?.touched;
+  }
+  isPatrimonio(){
+    return this.myForm.get('patrimonio')?.errors?.['pattern']&&this.myForm.get('patrimonio')?.touched;
+        
+  }
+  isp(){
+    return this.myForm.get('patrimonio')?.errors?.['maxlength']&& this.myForm.get('patrimonio')?.touched;
 
+  }
 }

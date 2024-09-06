@@ -132,30 +132,50 @@ export class ResetComponent {
     this.tituloUsuario = event.target.value;
     this.solicitacaoUsuario = event.target.value;
     const valueData = event.target.value;
+
+    const filter: {[key: string]: string[]}={
+    "CRIACAO DE CONTA AD": ["filter1"],
+      "RESET SENHA COLETOR" :["filter2"],
+      "ACESSO ESPECIFICO AO USUARIO": ["filter3"],
+      "ADICIONAR FILIAL": ["filter4"],
+      "RESET DE SENHA ZIMBRA": ["filter5"],
+      "RESET DE SENHA MAESTRO": ["filter6"],
+      "RESET DE SENHA JIRA": ["filter7"],
+      "RESET DE CONTA AD": ["filter8"],
+      "SOLICITACAO DE PACOTE OFFICE": ["filter9"],
+      "SOLICITACAO DE VPN":["filter10"],
+      "CRIACAO DE EMAIL":["filter11"]
+  
+    };
     if(valueData.includes("CRIACAO DE CONTA AD")){
       this.filter1=true;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("RESET SENHA COLETOR")){
       this.filter1=false;this.filter2=true,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("ACESSO ESPECIFICO AO USUARIO")){
       this.filter1=false;this.filter2=false,this.filter3=true, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("RESET DE SENHA ZIMBRA")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=true,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("RESET DE SENHA MAESTRO")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=true, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("RESET DE SENHA JIRA")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
@@ -166,30 +186,35 @@ export class ResetComponent {
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=true,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("SOLICITACAO DE PACOTE OFFICE")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=true,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     }
     if(valueData.includes("SOLICITACAO DE VPN")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=true,this.filter10=false;
+      this.filter11=false;
     }
     if(valueData.includes("ADICIONAR FILIAL")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
-      this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=true;
+      this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=true;this.filter11=false;
+
     }
     if(valueData.includes("CRIACAO DE EMAIL")){
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false,this.filter11=true;
+      this.filter11=true;
     }
     
   }
-  
+ 
   constructor(public service: FormService, private rout: ActivatedRoute,public Auth: UserAuthService, private http: ChamadoApiService, private router: Router, public user: UserAuthService) {
     this.myForm = service.form;
     this.ids = this.rout.snapshot.paramMap.get("id");
@@ -201,6 +226,7 @@ export class ResetComponent {
       this.filter1=false;this.filter2=false,this.filter3=false, 
       this.filter4=false,this.filter5=false, this.filter6=false,
       this.filter7=false,this.filter8=false,this.filter9=false,this.filter10=false; 
+      this.filter11=false;
     });
     window.location.reload();
 

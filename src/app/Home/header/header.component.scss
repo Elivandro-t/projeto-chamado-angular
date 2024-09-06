@@ -81,3 +81,15 @@
  }
 
 }
+@media screen and (max-width:700px){
+  .container{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+  }
+  .toolbar{
+    padding: 0px 10px;
+    width: 100%;
+  }
+  
+}

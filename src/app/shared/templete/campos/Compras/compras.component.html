@@ -1,130 +1,126 @@
 <app-mural-pricipal variant="compras">
     <div class="container_int">
-        <div class="campos ">
-            <div class="logo">
-                <app-back-button></app-back-button>
-                <!-- <img class="imagen-card" alt="logo" src="assets/ti.png" /> -->
-                <h2>TICKET E SERVICOS</h2>
-            </div>
-           
-            <form [formGroup]="formCompras" >
-                <div class="input_container-int2">
-                    <div class="input-Top">
-                        <b class="ls-label-text">
+        <div class="logo">
+            <app-back-button></app-back-button>
+            <!-- <img class="imagen-card" alt="logo" src="assets/ti.png" /> -->
+            <h2>TICKET E SERVIÇOS</h2>
+        </div>
+
+        <form [formGroup]="formCompras">
+            <div class="input_container-int2">
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
                             <p>Solicitação</p>
                             <p class="risc">*</p>
-                        </b>
-                        <mat-form-field class="input-form" appearance="outline">
-                            <input formControlName="solicitacao" class="input" type="text"
-                                placeholder="" matInput #solicitacao (keydown.enter)="enter(usuario)"
-                                >
-                            <!-- <mat-error
+                        </b> -->
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Solicitação</legend>
+                        <input formControlName="solicitacao" class="input" type="text" placeholder="" matInput
+                            #solicitacao (keydown.enter)="enter(usuario)">
+                        <!-- <mat-error
                                 *ngIf="myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched">Campo
                                 obrigatorio</mat-error> -->
-                        </mat-form-field>
-                    </div>
+                    </fieldset>
                 </div>
-                <div class="input_container-int">
-                    <div class="input-Top">
-                        <b class="ls-label-text">
+            </div>
+            <div class="input_container-int">
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
                             <p>Nome completo</p>
                             <p class="risc">*</p>
-                        </b>
-                        <mat-form-field class="input-form" appearance="outline">
-                            <input formControlName="nome" class="input" type="text"  placeholder="Nome completo.."
-                                matInput #usuario (keydown.enter)="enter(setor)">
-                            <!-- <mat-error
+                        </b> -->
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Nome completo</legend>
+                        <input formControlName="nome" class="input" type="text" placeholder="Nome do usuario.." matInput
+                            #usuario (keydown.enter)="enter(setor)">
+                        <!-- <mat-error
                                 *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">Campo
                                 obrigatorio</mat-error> -->
-                        </mat-form-field>
-                    </div>
-                    <div class="input-Top">
-                        <b class="ls-label-text">
+                    </fieldset>
+                </div>
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
                             <p>Setor</p>
                             <p class="risc">*</p>
-                        </b>
-                        <mat-form-field class="input-form" appearance="outline">
-                            <input formControlName="setor" class="input" type="text" aria-label="Setor" id="setor" 
-                                #setor (keydown.enter)="enter(equipamento)" matInput placeholder="Selecione o setor.."
-                               >
-                            <!-- <mat-autocomplete class="auto" #auto="matAutocomplete">
-                                @for (item of filteredOptions|async ; track item) {
-                                <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
+                        </b> -->
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Setor</legend>
+                        <input formControlName="setor" class="input" type="text" aria-label="Setor" id="setor" #setor
+                            (keydown.enter)="enter(equipamento)" matInput placeholder="Selecione o setor.."
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete class="auto" #auto="matAutocomplete">
+                            @for (item of filteredOptions|async ; track item) {
+                            <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
 
-                                }
-                            </mat-autocomplete> -->
-                            <!-- <mat-error
+                            }
+                        </mat-autocomplete>
+                        <!-- <mat-error
                                 *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
                                 o setor</mat-error>  -->
-                            </mat-form-field>
-
-                    </div>
+                    </fieldset>
 
                 </div>
-                <div class="input_container-int">
-                    <div class="input-Top">
-                        <b class="ls-label-text">
+
+            </div>
+            <div class="input_container-int">
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
                             <p>Equipamentos</p>
                             <p class="risc">*</p>
-                        </b>
-                        <mat-form-field class="input-form" appearance="outline">
-                            <input formControlName="equipamento" class="input" type="text"  placeholder="Selecione o tipo do equipamento."
-                                matInput #equipamento (keydown.enter)="enter(patrimonio)">
-                            <!-- <mat-error
-                                *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">Campo
-                                obrigatorio</mat-error> -->
-                        </mat-form-field>
-                    </div>
-                    <div class="input-Top">
-                        <b class="ls-label-text">
-                            <p>Patrimonio</p>
-                            <p class="risc">*</p>
-                        </b>
-                        <mat-form-field class="input-form" appearance="outline">
-                            <input formControlName="patrimonio" class="input" type="text" aria-label="Setor" id="setor" 
-                                #patrimonio (keydown.enter)="enter(descricao)" matInput placeholder="Informe o patrimonio.."
-                               >
-                            <!-- <mat-autocomplete class="auto" #auto="matAutocomplete">
-                                @for (item of filteredOptions|async ; track item) {
+                        </b> -->
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Equipamentos</legend>
+                        <input formControlName="equipamento" class="input" type="text"
+                            placeholder="Selecione o tipo do equipamento." matInput #equipamento
+                            (keydown.enter)="enter(patrimonio)"  [matAutocomplete]="auto">
+                            <mat-autocomplete class="auto" #auto="matAutocomplete">
+                                @for (item of equipamentos ; track item) {
                                 <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
 
                                 }
-                            </mat-autocomplete> -->
-                            <!-- <mat-error
+                            </mat-autocomplete>
+                    </fieldset>
+                </div>
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
+                            <p>Patrimonio</p>
+                            <p class="risc">*</p>
+                        </b> -->
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Patrimonio</legend>
+                        <input formControlName="patrimonio" class="input" type="text" aria-label="Setor" id="setor"
+                            #patrimonio (keydown.enter)="enter(descricao)" matInput
+                            placeholder="Informe o patrimonio.." >
+                        <!-- <mat-error
                                 *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
                                 o setor</mat-error>  -->
-                            </mat-form-field>
-
-                    </div>
+                    </fieldset>
 
                 </div>
-                <div class="input_container-int2">
-                    <div class="input_container textarea">
-                        <div class="input_container">
-                            <b class="ls-label-text">
-                                <p>Descrição</p>
-                                <p class="risc">*</p>
-                            </b>
-                            <editor formControlName="descricao" #descricao  apiKey="{{tinyKay}}" [init]="editorConfig" >
-                            </editor>
-                        </div>
-                    </div>
-                    <!-- <div>
+
+            </div>
+            <div class="input_container-int2">
+                <div class="input_container">
+                    <label style="margin-left: 18px;" for="descricao">Descrição</label>
+                    <editor style="box-shadow: none;" formControlName="descricao" #descricao apiKey="{{tinyKay}}"
+                        [init]="editorConfig">
+                    </editor>
+                </div>
+                <!-- <div>
 
                         <app-drop (emiter)="onSelect($event)"></app-drop>
                     </div> -->
-                </div>
-            </form>
-            <!-- <div class="button">
-                <button color="primary" [disabled]="!myForm.valid || botton " class="button" (click)="onFile()" color="primary"
-                    mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
-
             </div>
-           @if (botton) {
-            <ng-container>
-                <app-loading></app-loading>
-            </ng-container>
-           } -->
+        </form>
+        <div class="button">
+            <button color="primary" [disabled]="!formCompras.valid || botton " class="button" (click)="enviar()"
+                color="primary" mat-raised-button>Enviar</button>
+
         </div>
+        @if (botton) {
+        <ng-container>
+            <app-loading></app-loading>
+        </ng-container>
+        }
     </div>
 </app-mural-pricipal>

@@ -1,20 +1,20 @@
 .continer_int {
+  padding: 0px 16px;
   box-sizing: border-box;
-  padding: 0 16px;
 
   .logolink {
-    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding:2px 0px;
   }
 
   .campos1 {
     .logo {
       width: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 5px;
-
+      align-items:start;
+ 
       .imagen-card {
         width: 50px;
         height: 50px;
@@ -25,23 +25,20 @@
 
   .campos {
     display: flex;
-
     .container_templete {
       width:90%;
       margin-bottom: 5rem;
-
       .Card {
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-
         .container {
-          border: 0.2px solid #bdbadb;
-          padding: 10px;
-
+          padding:1px;
+          background-color:#597cb8;
           .input {
             width: 100%;
-            margin-bottom: 5px;
+            margin-bottom:2px;
+            
 
             a {
               cursor: pointer;
@@ -61,129 +58,6 @@
             }
           }
 
-          .name {
-            border: 0.2px solid #b3abf5;
-            border-radius: 2px;
-            background-color: rgb(241, 245, 248);
-            padding: 2px 12px;
-            max-width: 800px;
-            overflow: hidden;
-
-            .data_top {
-              display: flex;
-
-              .input-Top {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                .inforDescricao {
-                  color: var(--ds-text-subtle, #0d3a88);
-                  font-family: sans-serif;
-                  font-size: 12px;
-                  font-weight: 600;
-                  margin: 6px 0;
-                }
-
-                p {
-                  img {
-                    width: 150px;
-                  }
-                }
-
-                small {
-                  color: var(--ds-text-subtle, #6B778C);
-
-                  p {
-                    img {
-                      width: 150px;
-                    }
-                  }
-                }
-
-                
-
-                .ls-label-text {
-                  height: 60px;
-                  display: flex;
-                  align-items: center;
-
-                  a {
-                    cursor: pointer;
-                    margin: 0 10px;
-                  }
-
-                  a:hover {
-                    color: blue;
-                  }
-
-                  img {
-                    border-radius: 50%;
-                    margin: 0 10px;
-                  }
-                }
-
-                .risc {
-                  color: red;
-                }
-
-                .input-form {
-                  height: 30px;
-                }
-              }
-            }
-
-            .data_top2 {
-              display: flex;
-              flex-direction: column;
-              margin: 5px 0;
-              .input-descricao {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                .inforDescricao {
-                  color: var(--ds-text-subtle, #0d3a88);
-                  font-family: sans-serif;
-                  font-weight: 600;
-                  font-size: 12px;
-                  margin: 5px 0;
-                }
-
-                .input-Top {
-                  color: var(--ds-text-subtle, #6B778C);
-                  font-size: 12px;
-                }
-                .descricao-itens img{
-                  max-width: 100%; /* ou o valor que desejar */
-                  height: auto;
-                }
-                .ls-label-text {
-                  height: 60px;
-                  display: flex;
-                  align-items: center;
-
-                  a {
-                    cursor: pointer;
-                    margin: 0 10px;
-                  }
-
-                  a:hover {
-                    color: blue;
-                  }
-
-                  img {
-                    border-radius: 50%;
-                    margin: 0 10px;
-                  }
-                }
-
-                .input-form {
-                  height: 30px;
-                }
-              }
-            }
-          }
 
         }
       }
@@ -263,7 +137,6 @@
 
 @media screen and (max-width:634px) {
   .input {
-    background-color: rgb(252, 130, 180);
 
     a {
       width: 100px;

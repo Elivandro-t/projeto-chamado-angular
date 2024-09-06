@@ -1,49 +1,73 @@
 section{
     mat-card {
-        width:340px;
-        height: 140px;
-        border: 1px solid #726868;
-        font-size: 14px;
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: center;
+        width:340px;
+        height: 140px;
+        border: 1px solid #726868;
         background-color:var(--ds-surface,#FFFFFF);
-        
         padding: 0 26px;
         cursor: pointer;
         .imagen-card{
             width:70px;
             height:60px;
         }
-       
     }
-
     .card-transition:hover {
-        transform: translateY(-2px);
+        background-color: #f0eded;
+        transform: translateY(-1px);
         box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
     }
 
 }
 mat-card-header{
     display: flex;
-    align-items: center;
     flex-direction: column;
+    gap: 2px;
 }
-mat-card-title{
-    font-size: 14px;
+span{
+    text-align: start;
+    font-size: 16px;
     margin: 0;
+    color: #2c2020;
 }
-mat-card-subtitle{
+small{
+    text-align: start;
     font-size: 11px;
+    color: #7e7676;
 }
-
-@media screen  and (max-width:400px){
+@media screen  and (max-width:430px){
     section{
     mat-card {
-        width:280px;
-        height: 130px;
+        width:100%;
+        height: 140px;
        
-        padding: 0 26px;
+        padding: 0 15px;
+        .imagen-card{
+            width:70px;
+            height:50px;
+        }
+       
+    }
+    span{
+        font-size: 10px;
+        margin: 0;
+    }
+    small{
+        font-size: 8px;
+    }
+}
+
+    
+}
+
+@media screen  and (max-width:360px){
+    section{
+    mat-card {
+        width:95%;
+        height: 130px;
         .imagen-card{
             width:70px;
             height:50px;

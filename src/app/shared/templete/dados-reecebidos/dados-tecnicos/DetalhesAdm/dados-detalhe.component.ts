@@ -19,6 +19,7 @@ import { MuralComponent } from "../../../../../components/mural-secundary/mural.
 import { BotaoBackComponent } from '../../../../../components/botao_voltar/botaoVoltar.component';
 import { LogServiceService } from '../../../../../core/log-service.service';
 import { MatIcon } from '@angular/material/icon';
+import { DescricaoComponent } from '../../descricao/descricao.component';
 
 @Component({
     selector: 'app-dados-detahe',
@@ -36,8 +37,8 @@ import { MatIcon } from '@angular/material/icon';
         MuralPricipalComponent,
         ComentsComponent,
         AlertComponent,
-        ImagensComponent,
-        MatIcon
+        MatIcon,
+        DescricaoComponent
         
         
     ]
@@ -45,7 +46,6 @@ import { MatIcon } from '@angular/material/icon';
 export class DadosDetalheComponent implements OnInit {
 
   ocultar: boolean = false;
-  titulo: "Mostrar"|"Ocultar"="Mostrar";
   foto: any;
   chamdoCard: any;
   id: any;
@@ -61,7 +61,7 @@ export class DadosDetalheComponent implements OnInit {
  contatos!: any;
  telefoneOriginal!: any;
  
-  constructor(private api: LogServiceService,private SnackBar: SnackBar,private sanitizer: DomSanitizer,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
+  constructor(private api: LogServiceService,private SnackBar: SnackBar,private service: ChamadoApiService,private http: HttpClient,private rout: Router,private route: ActivatedRoute,public auth: UserAuthService){}
   ngOnInit(): void {
       this.card = this.route.snapshot.paramMap.get("card") as string;
       this.cardid = this.route.snapshot.paramMap.get("cardid") as string;
@@ -97,9 +97,6 @@ contato(){
   const url = `https://web.whatsapp.com/send?phone=${this.contatos}`;
    window.open(url,"_blank");
  }
-  sanitize(html: string): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
-  }
   navigar(arg0: string) {
     this.http.get(arg0, { responseType: 'blob' }).subscribe((res: Blob) => {
       const downloadLink = document.createElement('a');
@@ -118,16 +115,6 @@ contato(){
     this.showModal = false;
     document.body.classList.remove("modal-open");
     }
-
-  ocults(){
-    this.ocultar=!this.ocultar;
-    switch(this.ocultar){
-      case true:
-       return  this.titulo="Ocultar";
-      case false:
-        return  this.titulo = "Mostrar";
-    }
-  }
   showButtons() {
     this.showDownloadButtons = true;
     setTimeout(() => {

@@ -1,188 +1,39 @@
+
+
 @for (i of foto; track $index) {
 
 <app-mural-pricipal>
-    <div class="continer_int"  >
+    <div class="continer_int">
         <div class="logolink">
             <app-back-button></app-back-button>
+            <h2>{{chamdoCard.servico}}</h2>
         </div>
-
-        <div class="campos1 ">
+        <!-- <div class="campos1 ">
             <div class="logo">
-                <!-- <img class="imagen-card"
-                    src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" /> -->
+                <img class="imagen-card"
+                    src="/home/elivandro/Downloads/uploadsCaptura de tela de 2023-06-12 19-51-30.png" />
                 <h2>{{chamdoCard.servico}}</h2>
             </div>
-            
-        </div>
-        <div class="campos ">
-                    <section class="container_templete ">
-                        <div class="Card">
-                            <section id="formButton" class="container">
-                                <div class="input">
-                                    <div style="width: 90%;text-align: right;"><mat-icon (click)="contato()" style="text-align: right;">share</mat-icon></div>
 
-                                    <div class="ls-span">
-                                        <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30" src="assets/pc.png" />
-                                        @if (chamdoCard.usuario_logado!==""||chamdoCard.usuario_logado !==null || chamdoCard.usuario_logado!==undefined) {
-                                            <b>Chamado criado por  {{chamdoCard.usuario_logado}} em {{i.data}}</b>
-                                        }
-                                        @else {
-                                            <b>Chamado criado por {{i.usuario}} em {{i.data}}</b>
-                                        }
-                                       
-                                        <a (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}} detalhes</a>
-                                    </div>
-                                </div>
-                                <div class="name" *ngIf="ocultar" >
-                                    
-                                    <div class="data_top">
-                                        <div class="input-Top">
-                                            <span class="inforDescricao">Solicitação</span>
-                                            <small>{{i.solicitacao}}</small>
-                                           
-                                       </div>
-                                        <div class="input-Top">
-                                            <span class="inforDescricao">Nome completo</span>
-                                            <small>{{i.usuario}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="data_top">
-                                        @if (i.issuetype.includes("Inclusão de Acesso")) {
-                                            <div class="input-Top">
-                                                <span class="inforDescricao">Filial</span>
-                                                <small >{{i.filial}}</small>
-                                            </div>
-                                        }@else {
-                                            <div class="input-Top">
-                                                <span class="inforDescricao">Suporte</span>
-                                                <small >{{i.issuetype}}</small>
-                                            </div>
-                                        }
-                                        <div class="input-Top">
-                                             <span class="inforDescricao">Setor</span>
-                                            <small>{{i.setor}}</small>
-                                        </div>
-                                    </div>
-                                    <div class="data_top">
-                                       @if (i.issuetype.includes("Hardware")) {
-                                        <div class="input-Top">
-                                            <span class="inforDescricao">Patrimonio</span>
-                                            <small>{{i.patrimonio}}</small>
-                                        </div>
-                                        <div class="input-Top">
-                                            <span class="inforDescricao">Equipamento</span>
-                                            <small>{{i.equipamento}}</small>
-                                        </div>
-                                    }
-                                    </div>
-                                    <div class="data_top">
-                                        @if (i.issuetype.includes("Sistema")) {
-                                            <div class="input-Top">
-                                                <span class="inforDescricao">Sistema</span>
-                                                <small>{{i.sistem_erro}}</small>
-                                            </div>
-                                            <div class="input-Top">
-                                                <span class="inforDescricao">Erro</span>
-                                                <small>{{i.erro}}</small>
-                                            </div>
-                                        }
-                                    </div>
-                                        @if (i.issuetype.includes("Inclusão de Acesso")) {
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">GMcore id</span>
-                                                    <small >{{i.gmid}}</small>
-                                                </div>
-                                                <div class="input-Top">
-                                                     <span class="inforDescricao">Cpf</span>
-                                                    <small>{{i.cpf}}</small>
-                                                </div>
-                                            </div>
-                                            @if (i.solicitacao.includes("CRIACAO DE CONTA AD")||i.solicitacao.includes("CRIACAO DE EMAIL")||i.solicitacao.includes("RESET DE SENHA ZIMBRA")||i.solicitacao.includes("RESET DE SENHA MAESTRO")||i.solicitacao.includes("RESET DE SENHA JIRA")||i.solicitacao.includes("RESET DE CONTA AD")||i.solicitacao.includes("SOLICITACAO DE PACOTE OFFICE")||i.solicitacao.includes("SOLICITACAO DE VPN")){
-                                                 
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Centro de custo</span>
-                                                    <small >{{i.centro_de_custo}}</small>
-                                                </div>
-                                                <div class="input-Top">
-                                                     <span class="inforDescricao">Email</span>
-                                                    <small>{{i.emailUsuario}}</small>
-                                                </div>
-                                            </div>
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Data de nascimento</span>
-                                                    <small >{{i.data_nasc}}</small>
-                                                </div>
-                                                <div class="input-Top">
-                                                     <span class="inforDescricao">Data de admissão</span>
-                                                    <small>{{i.data_admin}}</small>
-                                                </div>
-                                            </div>
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Função</span>
-                                                   <small>{{i.funcao}}</small>
-                                               </div>
-                                            </div>
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Nome do aprovador</span>
-                                                    <small>{{i.nomeDogestor}}</small>
-                                                </div>
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Email aprovador</span>
-                                                    <small >{{i.emailGestorAprovador}}</small>
-                                                </div>
-                                            </div>
-                                            }
-                                            @else if (i.solicitacao.includes("ACESSO ESPECIFICO AO USUARIO")) {
-                                                <div class="data_top">
-                                                    <div class="input-Top">
-                                                        <span class="inforDescricao">Função</span>
-                                                       <small>{{i.funcao}}</small>
-                                                   </div>
-                                                </div>
-                                            }
-                                            @else {
-        
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                    <span class="inforDescricao">Data de nascimento</span>
-                                                    <small >{{i.data_nasc}}</small>
-                                                </div>
-                                                <div class="input-Top">
-                                                     <span class="inforDescricao">Data de admissão</span>
-                                                    <small>{{i.data_admin}}</small>
-                                                </div>
-                                            </div>
-                                            <div class="data_top">
-                                                <div class="input-Top">
-                                                     <span class="inforDescricao">Função</span>
-                                                    <small>{{i.funcao}}</small>
-                                                </div>
-                                            </div>
-                                            }
-                                        }
-                               
-                                    
-                                    <div class="data_top2">
-                                        <div class="input-descricao">
-                                            <span class="inforDescricao">Descrição</span>
-                                            <div class="input-Top"  [innerHTML]="sanitize(i.descricao)"></div>
-                                        </div>
-                                        <div class="input-Top">
-                                            <app-imagens [data]="i.imagens"></app-imagens>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </section>
-                            <app-coments class="campo_comment" [chamadoId]="i.id" [contatoCliente]="telefoneOriginal" [servico]="chamdoCard.servico"></app-coments>
-                        </div>
+        </div> -->
+        <div class="campos ">
+            <section class="container_templete ">
+                <div class="Card">
+                    <section id="formButton" class="container">
+                        <!--informações descriçao do usuario-->
+                        <app-descricao 
+                        [i]="i" 
+                        [ocultar]="ocultar"
+                        [contatos]="contatos"
+                        [chamado]="chamdoCard"
+                        ></app-descricao>
                     </section>
-            <app-dados-tecnicos (Pegartect)="pegart(i.id)" [done]="i.done" (Pegartect)="buscar()" [nomeUsuario]="i.tecnico_responsavel"[disableAdmin]="true"
+                    <app-coments class="campo_comment" [chamadoId]="i.id" [contatoCliente]="telefoneOriginal"
+                        [servico]="chamdoCard.servico"></app-coments>
+                </div>
+            </section>
+            <app-dados-tecnicos (Pegartect)="pegart(i.id)" [done]="i.done" (Pegartect)="buscar()"
+                [nomeUsuario]="i.tecnico_responsavel" [disableAdmin]="true"
                 [habilitaBotao]="i.client_feito"></app-dados-tecnicos>
         </div>
     </div>

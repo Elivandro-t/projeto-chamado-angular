@@ -16,6 +16,7 @@ import { UserAuthService } from '../../../../../core/user-auth.service';
 import { ImagensComponent } from "../../imagens/imagens.component";
 import { BotaoBackComponent } from '../../../../../components/botao_voltar/botaoVoltar.component';
 import { SnackBar } from '../../../../../AlertaDialog/snackBar/snackbar.component';
+import { DescricaoComponent } from '../../descricao/descricao.component';
 
 @Component({
   selector: 'app-dados-reecebidos',
@@ -31,7 +32,8 @@ import { SnackBar } from '../../../../../AlertaDialog/snackBar/snackbar.componen
     MuralPricipalComponent,
     ComentsComponent,
     AlertComponent,
-    BotaoBackComponent
+    BotaoBackComponent,
+    DescricaoComponent
   ],
   templateUrl: './dados-reecebidos.component.html',
   styleUrl: './dados-reecebidos.component.scss'

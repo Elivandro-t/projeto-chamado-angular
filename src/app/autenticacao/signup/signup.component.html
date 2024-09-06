@@ -12,7 +12,7 @@
                 <section class="input_int">
                     <label for="name">Nome</label>
                     <input matInput #nameInput type="text" formControlName="name" maxlength="25"
-                        (keydown.enter)="focusNext(lastnameInput)" placeholder="Nome.."/>
+                        (keydown.enter)="focusNext(lastnameInput)" placeholder="Digite seu nome.."/>
                     @if(service.form.get('name')?.errors?.['required']&&service.form.get('name')?.touched){
                     <div class="mensagem-erro" for="descricao">campo obrigatorio</div>
                     }
@@ -20,7 +20,7 @@
                 <section class="input_int">
                     <label for="lastname">Sobrenome</label>
                     <input matInput type="text" formControlName="lastname" #lastnameInput maxlength="20"
-                        (keydown.enter)="focusNext(setorInput)" placeholder="Sobrenome.." />
+                        (keydown.enter)="focusNext(setorInput)" placeholder="Digite seu sobrenome.." />
                     @if (service.form.get('lastname')?.errors?.['required']&&service.form.get('lastname')?.touched) {
                     <div class="mensagem-erro"> campo obrigatorio</div>
                     }
@@ -71,7 +71,7 @@
                         
                 </section>
             </div>
-            <label class="campo-botton">
+            <div class="campo-botton">
                 <section class="campo">
                     <label for="email">E-mail</label>
                     <input matInput type="email" formControlName="email" #emailInput
@@ -84,7 +84,7 @@
                             um email valido</small>
                     }
                 </section>
-            </label>
+            </div>
             <div style="width: 100%;height:40px;background-color: rgb(102, 102, 206);margin: 0 5px;">
                 <small style=" color: #fdf8f8;">Certifique-se de que sua senha tenha no mínimo 8 caracteres, incluindo
                     pelo menos uma letra maiúscula e um caractere especial.</small>

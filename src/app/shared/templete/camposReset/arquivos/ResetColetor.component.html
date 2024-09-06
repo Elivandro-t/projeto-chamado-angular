@@ -1,81 +1,76 @@
 <form [formGroup]="myForm">
     <div class="input_container-int">
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Nome do colaborador</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input class="input" type="text" formControlName="usuario" placeholder="Nome completo.." matInput
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isUsuario()}">
+                <legend>Nome completo</legend>
+                <input class="input" type="text" formControlName="usuario"  matInput
                     #usuario (keydown.enter)="enter(setors)">
-                <mat-error *ngIf="myForm.get('usuario')?.errors?.['required']&&myForm.get('usuario')?.touched">Campo
-                    obrigatorio</mat-error>
-            </mat-form-field>
+            </fieldset>
+            @if (isUsuario()) {
+            <div class="erro">Campo obrigatorio</div>
+            }
         </div>
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Setor</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isSetor()}">
+                <legend>Setor</legend>
                 <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor" #setors
-                    (keydown.enter)="enter(gm)" matInput placeholder="Selecione o setor.."
-                    [matAutocomplete]="auto">
+                    (keydown.enter)="enter(gm)" matInput [matAutocomplete]="auto">
                 <mat-autocomplete class="auto" #auto="matAutocomplete">
                     @for (item of filteredOptions|async ; track item) {
                     <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
 
                     }
                 </mat-autocomplete>
-                <mat-error *ngIf="myForm.get('setor')?.errors?.['required']&&myForm.get('setor')?.touched">Informe
-                    o setor</mat-error> </mat-form-field>
+            </fieldset>
+            @if (isSetor()) {
+            <div class="erro">Informeo setor</div>
+            }
+
 
         </div>
 
     </div>
     <div class="input_container-int">
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Gmcore id</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input class="input" type="text" formControlName="gmid" placeholder="Gmcore id..." matInput
-                    #gm (keydown.enter)="enter(cpf)">
-                <mat-error *ngIf="myForm.get('gmid')?.errors?.['required']&&myForm.get('gmid')?.touched">Campo
-                    obrigatorio</mat-error>
-            </mat-form-field>
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isGm()}">
+                <legend>GM ID</legend>
+                <input class="input" type="text" formControlName="gmid" placeholder="GM000000" matInput #gm
+                    (keydown.enter)="enter(cpf)">
+            </fieldset>
+            @if (isGm()) {
+                <div class="erro">Campo obrigatorio</div>
+            }
         </div>
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Cpf</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input  (keypress)="formatPhone($event)" (keydown)="formatPhone($event)" class="input" type="text" aria-label="Cpf" id="cpf" formControlName="cpf" #cpf
-                    (keydown.enter)="enter(filial)" matInput placeholder="Selecione o setor.."
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isCPF()}">
+                <legend>CPF</legend>
+                <input (keypress)="formatPhone($event)" (keydown)="formatPhone($event)" class="input" type="text"
+                    aria-label="Cpf" id="cpf" formControlName="cpf" #cpf (keydown.enter)="enter(filial)" matInput
                     [matAutocomplete]="auto">
-                <mat-error *ngIf="myForm.get('cpf')?.errors?.['required']&&myForm.get('cpf')?.touched">Informe
-                    o setor</mat-error> </mat-form-field>
+                </fieldset>
+                    @if (isCPF()) {
+                        <div class="erro">Informe o CPF</div>
+                    }
 
         </div>
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Filial</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="filial" placeholder="Filial" #filial
-                    (keydown.enter)="enter(nomeMae)" maxlength="3" matInput />
-                    <mat-autocomplete #autoEq="matAutocomplete">
-                        <mat-option *ngFor="let opt of listFiliais"
-                            [value]="opt.name">{{opt.name}}</mat-option>
-                    </mat-autocomplete>
-                <mat-error *ngIf="myForm.get('filial')?.errors?.['pattern']&&myForm.get('filial')?.touched">Apenas
-                    Numeros são permitidos</mat-error>
-                <mat-error *ngIf="myForm.get('filial')?.errors?.['maxlength']&&myForm.get('filial')?.touched">Máximo
-                    de 3 caracteres</mat-error>
-            </mat-form-field>
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isFilial()||isFilialRequired()||isFilialRe()}">
+                <legend>Filial</legend>
+                <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="filial"
+                    #filial (keydown.enter)="enter(nomeMae)" maxlength="3" matInput />
+                <mat-autocomplete #autoEq="matAutocomplete">
+                    <mat-option *ngFor="let opt of listFiliais" [value]="opt.name">{{opt.name}}</mat-option>
+                </mat-autocomplete>
+            </fieldset>
+            @if (isFilial()) {
+                <div class="erro">Máximo de 3 caracteres</div>
+            }
+            @else if (isFilialRequired()) {
+                <div class="erro">Apenas numeros são permitidos</div>
+            }
+            @else if (isFilialRe()) {
+                <div class="erro">Campo obrigatorio</div>
+            }
         </div>
     </div>
     <div class="input_container-int">
@@ -84,58 +79,47 @@
                 <p>Nome da Mae</p>
                 <p class="risc">*</p>
             </b>
-            <mat-form-field class="input-form" appearance="outline">
+            <fieldset class="input-form" appearance="outline">
                 <input class="input" type="text" aria-label="nomeMae" id="setor" formControlName="nomeMae" #nomeMae
                     (keydown.enter)="enter(nasc)" matInput placeholder="Nome da mae..">
-                <mat-error *ngIf="myForm.get('nomeMae')?.errors?.['required']&&myForm.get('nomeMae')?.touched">Informe nome da mae</mat-error> </mat-form-field>
+                <mat-error *ngIf="myForm.get('nomeMae')?.errors?.['required']&&myForm.get('nomeMae')?.touched">Informe nome da mae</mat-error> </fieldset>
 
         </div> -->
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Data de nascimento</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input (keypress)="formatData($event)" class="input" type="text" formControlName="dataNasc" placeholder="dd/mm/aaaa" #nasc
-                    (keydown.enter)="enter(adm)" matInput />
-                <mat-error
-                    *ngIf="myForm.get('dataNasc')?.errors?.['required']&&myForm.get('dataNasc')?.touched">Informe sua data de nascimento</mat-error>
-            </mat-form-field>
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isNasc()}">
+                <legend>Data nasc</legend>
+                <input (keypress)="formatData($event)" class="input" type="text" formControlName="dataNasc"
+                    placeholder="dd/mm/aaaa" #nasc (keydown.enter)="enter(adm)" matInput />
+            </fieldset>
+            @if (isNasc()) {
+                <div class="erro">Informa sua data de nascimento</div>
+            }
         </div>
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Data admissão</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input (keypress)="formatData($event)" class="input" type="text" formControlName="dataAdmin"  #adm placeholder="dd/mm/aaaa"
-                    (keydown.enter)="enter(funcao)"  matInput />
-                <mat-error
-                    *ngIf="myForm.get('dataAdmin')?.errors?.['required'] && myForm.get('dataAdmin')?.touched">Informe sua data de admissão</mat-error>
-            </mat-form-field>
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isAdmin()}">
+                <legend>Data Admin</legend>
+                <input (keypress)="formatData($event)" class="input" type="text" formControlName="dataAdmin" #adm
+                    placeholder="dd/mm/aaaa" (keydown.enter)="enter(funcao)" matInput />
+            </fieldset>
+            @if(isAdmin()){
+                <div class="erro">Informe sua data de admissão</div>
+            }
         </div>
     </div>
     <div class="input_container-int2">
         <div class="input-Top">
-            <b class="ls-label-text">
-                <p>Função</p>
-                <p class="risc">*</p>
-            </b>
-            <mat-form-field class="input-form" appearance="outline">
-                <input class="input" type="text" formControlName="funcao" placeholder="Funçao do usuario"
-                    matInput #funcao >
-                <mat-error
-                    *ngIf="myForm.get('funcao')?.errors?.['required']&&myForm.get('funcao')?.touched">campo
-                    obrigatorio</mat-error>
-            </mat-form-field>
+            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isFuncao()}">
+                <legend>Função</legend>
+                <input class="input" type="text" formControlName="funcao" matInput
+                    #funcao>
+            </fieldset>
+            @if (isFuncao()) {
+                <div class="erro">Campo obrigatorio</div>
+            }
         </div>
-
         <div class="input_container textarea">
             <div class="input_container">
-                <b class="ls-label-text">
-                    <p>Descrição</p>
-                    <p class="">*</p>
-                </b>
+                <legend style="color: #888;font-size: 14px;">Descrição</legend>
                 <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
                 </editor>
             </div>
@@ -145,14 +129,13 @@
             <app-drop (emiter)="onSelect($event)"></app-drop>
         </div>
         @if (botton) {
-            <ng-container>
-                <app-loading></app-loading>
-            </ng-container>
-           }
+        <ng-container>
+            <app-loading></app-loading>
+        </ng-container>
+        }
     </div>
 </form>
 <div class="button">
     <button color="primary" [disabled]="!myForm.valid" class="button" (click)="onFile()" color="primary"
         mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
-
 </div>

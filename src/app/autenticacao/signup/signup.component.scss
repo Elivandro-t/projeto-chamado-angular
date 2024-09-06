@@ -35,7 +35,11 @@
                 display: flex;
                 flex-direction: column;
                 width:48%;
-
+                label{
+                    font-size: 14px;
+                    font-family: sans-serif;
+                    color: #706b6b;
+                }
                 input{
                     height: 25px;
                     outline: none;
@@ -51,6 +55,11 @@
                 flex-direction: column;
                margin:10px 0;
                height:50px;
+               label{
+                font-size: 14px;
+                font-family: sans-serif;
+                color: #706b6b;
+            }
                input{
               height:35px;
               border:1px solid black;
@@ -97,6 +106,11 @@
                     height: 30px;
                     outline: none;
                     border: 0;
+                }
+                label{
+                    font-size: 14px;
+                    font-family: sans-serif;
+                    color: #706b6b;
                 }
                 .eg{
                     margin: 2px;

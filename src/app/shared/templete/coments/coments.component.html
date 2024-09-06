@@ -3,10 +3,9 @@
     <div class="input_container-int2">
 
         <div class="input_container">
-            <b class="ls-label-text ">
-                <p>Comentários</p>
-                <p class="risc">*</p>
-            </b>
+            <!-- <b class="ls-label-text ">
+                <p style="font-size: 15px;color: #bebbbb;">Comentários</p>
+            </b> -->
             <div class="comments-container">
 
                 <!-- <div class="button-exibir" (click)="exibirTodosComentarios()" tabindex="0" (keydown.enter)="exibirTodosComentarios()">Carregar comentarios</div> -->
@@ -19,18 +18,18 @@
                 @if (cooments) {
                 <div class="comentarios"
                     *ngFor="let commet of cooments.slice(comments.length - numComentariosExibidos)" >
-                    <div class="itens" style="display: flex;border:0.2px dotted #4565;padding:5px;">
+                    <div class="itens" style="display: flex;padding:5px;margin: 4px 0px;">
                         @if (img!==null||img !==undefined) {
                         <img [src]="commet.userImagem" width="30px" height="30px" style="border-radius: 50%;" alt="Sua imagem">
                         }@else{
                         
                         <img src="../../../../assets/user.png" width="30px" height="30px" style="border-radius: 50%;"
-                            alt="Imagem do usuario">
+                            alt="Usuario">
                         }
                         <div class="commet-itens" style="display: flex;flex-direction: column;align-items:start;">
                             <div style="display: flex;">
-                                <p style="margin: 0 5px;"><small>{{commet.usuario}}</small></p>
-                                <p style="margin: 0 5px;"><small>{{commet.data}}</small></p>
+                                <p style="margin: 0 5px;"><small style="font-size: 12px;color: #6b4a4a;">{{commet.usuario}}</small></p>
+                                <p style="margin: 0 5px;"><small style="font-size:9px;color: #bebbbb;">{{commet.data}}</small></p>
                             </div>
                             <div class="detalhes" style="margin:0px 5px; box-sizing: border-box;">
                                 <small #name class="sty" [innerHTML]="sanitize(commet.comments)"></small>
@@ -57,7 +56,7 @@
                     
                 }@else {
                 <div class="textArea">
-                    <input type="text" #textArea  placeholder="Digitar comentarios aqui!" />
+                    <input type="text" #textArea  placeholder="Digitar um comentarios!" />
                 </div>
 
             }
