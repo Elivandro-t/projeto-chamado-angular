@@ -82,16 +82,18 @@
                 *ngIf="myForm.get('centroDeCusto')?.errors?.['pattern']&&myForm.get('centroDeCusto')?.touched">Apenas
                 numero</div>
         </div>
-        <div class="input-Top">
-            <fieldset class="input-form" appearance="outline">
-                <legend>E-mail</legend>
-                <input class="input" type="email" formControlName="emailUsuario" matInput #email
-                    (keydown.enter)="enter(cargo)">
-                <div class="erro"
-                    *ngIf="myForm.get('emailUsuario')?.errors?.['required']&&myForm.get('emailUsuario')?.touched">campo
-                    obrigatorio</div>
-            </fieldset>
-        </div>
+        @if (ativo) {
+            <div  class="input-Top" >
+                <fieldset class="input-form" appearance="outline">
+                    <legend>E-mail</legend>
+                    <input class="input" type="email" formControlName="emailUsuario" matInput #email
+                        (keydown.enter)="enter(cargo)">
+                    <div class="erro"
+                        *ngIf="myForm.get('emailUsuario')?.errors?.['required']&&myForm.get('emailUsuario')?.touched">campo
+                        obrigatorio</div>
+                </fieldset>
+            </div>
+        }
         <div class="input-Top">
             <fieldset class="input-form" appearance="outline">
                 <legend>Cargo</legend>

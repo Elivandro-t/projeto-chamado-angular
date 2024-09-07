@@ -33,7 +33,7 @@ export class FormService {
     usuario: new FormControl(null, [Validators.required]),
     setor: new FormControl(null, [Validators.required]),
     gmid:new FormControl(null,[Validators.required]),//pego
-    emailUsuario:new FormControl(null,[Validators.required,Validators.email]),
+    emailUsuario:new FormControl(null,[Validators.email]),
     cpf:new FormControl(null,[Validators.required]),
     centroDeCusto:new FormControl(null,[Validators.required,Validators.pattern('^[0-9.-]*$'),Validators.minLength(4),Validators.maxLength(16)]),
     filial: new FormControl(null,[Validators.maxLength(4),Validators.pattern('^[0-9]*$')]),

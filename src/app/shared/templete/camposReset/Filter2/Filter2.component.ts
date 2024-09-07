@@ -74,6 +74,8 @@ export class Filter2Component implements OnInit {
 
   ];
   @Output() files: File[] = [];
+  @Input() ativo = true;
+
   @Output() data = new EventEmitter();
   myForm: FormGroup;
   changeImage = false;
