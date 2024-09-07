@@ -33,8 +33,11 @@
         flex-direction: column;
         box-sizing: border-box;
         .container {
+          border-top-right-radius:5px;
+          border-top-left-radius: 5px;
+
           padding:1px;
-          background-color:#597cb8;
+          background-color:#dee4ee;
           .input {
             width: 100%;
             margin-bottom:2px;

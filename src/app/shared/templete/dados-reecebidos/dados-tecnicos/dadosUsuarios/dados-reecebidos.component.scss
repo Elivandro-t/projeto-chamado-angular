@@ -1,6 +1,5 @@
 .continer_int {
   padding: 0px 16px;
-  margin: 0;
   box-sizing: border-box;
 
   .logolink {
@@ -29,18 +28,20 @@
     .container_templete {
       width:90%;
       margin-bottom: 5rem;
-
       .Card {
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-
         .container {
+          border-top-right-radius:5px;
+          border-top-left-radius: 5px;
+
           padding:1px;
-          background-color:#597cb8;
+          background-color:#dee4ee;
           .input {
             width: 100%;
             margin-bottom:2px;
+            
 
             a {
               cursor: pointer;

@@ -33,7 +33,7 @@
     <div class="input_container-int">
         <div class="input-Top">
             <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isGm()}">
-                <legend>GM ID</legend>
+                <legend></legend>
                 <input class="input" type="text" formControlName="gmid" placeholder="GM000000" matInput #gm
                     (keydown.enter)="enter(cpf)">
             </fieldset>
@@ -45,8 +45,7 @@
             <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isCPF()}">
                 <legend>CPF</legend>
                 <input (keypress)="formatPhone($event)" (keydown)="formatPhone($event)" class="input" type="text"
-                    aria-label="Cpf" id="cpf" formControlName="cpf" #cpf (keydown.enter)="enter(filial)" matInput
-                    [matAutocomplete]="auto">
+                    aria-label="Cpf" id="cpf" formControlName="cpf" #cpf (keydown.enter)="enter(filial)" matInput>
                 </fieldset>
                     @if (isCPF()) {
                         <div class="erro">Informe o CPF</div>

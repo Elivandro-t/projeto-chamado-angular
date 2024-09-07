@@ -131,7 +131,7 @@ export class Filter2Component implements OnInit {
   }
   ngOnInit() {
     this.carregar();
-    this.filteredOptions = this.selecione("setor")?.valueChanges.pipe(
+    this.filteredOptions = this.getSelect("setor")?.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || ""))
     );
@@ -143,10 +143,10 @@ export class Filter2Component implements OnInit {
     // })
   }
   // chamando o evento cada imagem
-  onSelect(event: any) {
-    // this.files.push(...event.addedFiles);
-    this.files = event;
-  }
+  // onSelect(event: any) {
+  //   // this.files.push(...event.addedFiles);
+  //   this.files = event;
+  // }
   desabilitarCampo(){
     this.desbiled.emit();
   }
@@ -156,10 +156,10 @@ export class Filter2Component implements OnInit {
     return this.setores ? this.setores.filter(option => option.name.toLowerCase().includes(filterValue)) : [];
   }
   // funcao vindo do form
-  selecione<T>(name: string) {
+  getSelect<T>(name: string) {
     const form = this.myForm.get(name);
     if (!form) {
-      throw new Error("nome nao existe");
+      throw new Error("Nome nao existe");
     }
     return form as FormControl;
   }
@@ -170,18 +170,18 @@ export class Filter2Component implements OnInit {
       titulo: this.titulo,
       sistemaid: parseInt(this.ids),
       issuetype: this.rout.snapshot.paramMap.get("name") as any,
-      usuario: this.selecione('usuario').value,
-      setor: this.selecione('setor').value,
-      cpf: this.selecione('cpf').value,
-      gmid: this.selecione('gmid').value,
-      filial: this.selecione('filial').value,
-      emailUsuario:this.selecione('emailUsuario').value,
-      centro_de_custo:this.selecione('centroDeCusto').value,
-      nomeDogestor:this.selecione('nomeDogestor').value,
-      emailGestorAprovador:this.selecione('emailGestorAprovador').value,
-      funcao: this.selecione('funcao').value,
+      usuario: this.getSelect('usuario').value,
+      setor: this.getSelect('setor').value,
+      cpf: this.getSelect('cpf').value,
+      gmid: this.getSelect('gmid').value,
+      filial: this.getSelect('filial').value,
+      emailUsuario:this.getSelect('emailUsuario').value,
+      centro_de_custo:this.getSelect('centroDeCusto').value,
+      nomeDogestor:this.getSelect('nomeDogestor').value,
+      emailGestorAprovador:this.getSelect('emailGestorAprovador').value,
+      funcao: this.getSelect('funcao').value,
       solicitacao: this.solicitacaoUsuario,
-      descricao:this.selecione('descricao').value,
+      descricao:this.getSelect('descricao').value,
 
     };
     return data;
@@ -238,7 +238,7 @@ export class Filter2Component implements OnInit {
             }
           });
         }else{
-          alert("cpf invalido");
+          this.SnackBar.openSnackBar("CPF invalido");
           this.botton =false;
             this.sprinner=false;
         }

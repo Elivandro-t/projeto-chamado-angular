@@ -1,7 +1,6 @@
 .container_int {
   height: 100%;
-  padding: 0 56px;
-
+  padding: 0 15px;
   .campos {
     .logo {
       width: 100%;
@@ -21,38 +20,10 @@
       display: flex;
       margin:5px 0;
       flex-direction: column;
-
-      .ls-label-text {
-        display: flex;
-
-        .risc {
-          color: red;
-        }
-      }
-
-
       .input-form {
         height: 20px;
       }
 
-      .txt {
-        display: flex;
-        border: 0;
-        flex-direction: column;
-        height: auto;
-
-        .textarea_input {
-          width: 100%;
-          min-height: 50%;
-          border-radius: 5px;
-          padding: 10px;
-          overflow: hidden;
-          resize: none;
-          outline: 0;
-          box-sizing: border-box;
-
-        }
-      }
     }
 
 
@@ -63,8 +34,8 @@
 
 @media screen and (max-width:755px) {
   .container_int {
-    height: 100%;
-    padding: 0 56px;
+ 
+   
 
     .campos {
       .logo {

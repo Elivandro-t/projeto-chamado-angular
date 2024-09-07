@@ -1,17 +1,19 @@
 <section id="formButton" class="container">
-<div class="input">
-    <div class="ls-span">
+<div class="input" >
+    <div class="ls-span" >
         <!-- <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30"
             src="assets/pc.png" /> -->
         @if (chamado.usuario_logado!==""||chamado.usuario_logado !==null ||
         chamado.usuario_logado!==undefined) {
             <div class="banner_logo">
-                <span>Criado por <b>{{chamado.usuario_logado}} </b></span>
-                <small>{{i.data}}</small>
+                <span>Criado por <b>{{chamado.usuario_logado.toUpperCase()}} </b></span>
             </div>
         }
-        <mat-icon (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}}</mat-icon>
+        <small>{{i.data}}</small>
     </div>
+    <mat-icon color="secundary" (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}}</mat-icon>
+
+    
 </div>
 <div class="name" *ngIf="ocultar" >
                                     

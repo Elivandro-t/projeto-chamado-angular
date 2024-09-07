@@ -26,6 +26,7 @@ import { DropComponent } from "../drop/drop.component";
 import { CpfValidationService } from "../validator.service";
 import { EnvioDeMesagemWhats } from "../../campos/EnvioDeMensagem.service";
 import { Loading } from "../../../../loading/Loading";
+import { SnackBar } from "../../../../AlertaDialog/snackBar/snackbar.component";
 export interface User {
   id: string;
   name: string;
@@ -124,7 +125,7 @@ export class ResetColetorComponent implements OnInit {
       event.focus();
     }
   }
-  constructor(private EnviarMsg: EnvioDeMesagemWhats, private cpfValidator: CpfValidationService, public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
+  constructor(private SnackBar: SnackBar,private EnviarMsg: EnvioDeMesagemWhats, private cpfValidator: CpfValidationService, public service: FormService, private rout: ActivatedRoute, private http: ChamadoApiService, private router: Router, private user: UserAuthService) {
     this.myForm = service.formAcess;
     this.ids = this.rout.snapshot.paramMap.get("id");
     this.Servico = this.rout.snapshot.paramMap.get("data");
@@ -225,8 +226,14 @@ export class ResetColetorComponent implements OnInit {
           this.EnviarMsg.PegarMsg(s.contato, s.usuario_logado, s.servico, chamado, s.usuarioid, s.id);
 
         }
-        this.router.navigate([`/chamado/${chamado}/${s.usuarioid}/${s.id}/create`]);
-        this.myForm.reset();
+        if(s.msg){
+          this.sprinner = false;
+          this.botton =false;
+          this.SnackBar.openSnackBar(s.msg);
+        }else{
+          this.router.navigate([`/chamado/${chamado}/${s.usuarioid}/${s.id}/create`]);
+          this.myForm.reset();
+        }
       });
     } else {
       alert("cpf invalido");

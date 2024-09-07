@@ -2,7 +2,7 @@ import { SnackBar } from './../../../../AlertaDialog/snackBar/snackbar.component
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { AsyncPipe, CommonModule } from "@angular/common";
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input, AfterViewInit } from "@angular/core";
 import { ReactiveFormsModule, FormsModule, FormGroup, FormControl } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
@@ -56,7 +56,7 @@ export interface User {
   templateUrl: './Filter3.component.html',
   styleUrl: './Filter3.component.scss'
 })
-export class Filter3Component implements OnInit {
+export class Filter3Component implements OnInit,AfterViewInit {
     @Output() EnviarRequisecaoReset = new EventEmitter();
     listFiliais = [
         {name:60},
@@ -95,7 +95,7 @@ export class Filter3Component implements OnInit {
       @ViewChild("gm") gm!: ElementRef;
       @ViewChild("cpf") cpf!: ElementRef;
       @ViewChild("filial") filial!: ElementRef;
-      @ViewChild("nomeMae") nomeMae!: ElementRef;
+      @ViewChild("usuario") usuario!: ElementRef;
       @ViewChild("nasc") nasc!: ElementRef; 
       @ViewChild("adm") adm!: ElementRef;
       @ViewChild("funcao") funcao!: ElementRef; 
@@ -120,6 +120,10 @@ export class Filter3Component implements OnInit {
         this.Servico = this.rout.snapshot.paramMap.get("data");
         this.titulo = this.rout.snapshot.paramMap.get("name");
       } 
+  ngAfterViewInit(): void {
+    this.usuario.nativeElement.focus();
+
+  }
       ngOnInit() {
         this.carregar();
         this.filteredOptions = this.selecione("setor")?.valueChanges.pipe(
