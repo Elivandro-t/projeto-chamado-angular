@@ -126,15 +126,13 @@ carregarMaisComentarios() {
     
   }
    enviar(){
-    let msg = `
-*Olá*! Sou o Assistente virtual do Suporte TI.
+    let msg = `*Olá+! Sou o Assistente Virtual do Suporte TI.
 
-Gostaríamos de informar que um comentário foi registrado no portal de suporte, referente ao seu chamado solicitando apoio a *${this.servico}*. Estamos trabalhando para resolver sua solicitação o mais rápido possível.
+Gostaríamos de informar que um comentário foi registrado no portal de suporte referente ao seu chamado solicitando apoio a ${this.servico}. Pedimos que você acesse o sistema e responda ao comentário enviado. Estamos trabalhando para resolver sua solicitação o mais rápido possível.
 
 Atenciosamente,
 
-
-*#Suporte da TI#*
+#Suporte da TI#
     `;
     const tel = this.contatoCliente;
     const smg = this.form.get('comment')!.value;
