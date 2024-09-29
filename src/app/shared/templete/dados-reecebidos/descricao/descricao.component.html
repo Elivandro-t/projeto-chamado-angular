@@ -1,4 +1,5 @@
 <section id="formButton" class="container">
+    <!--exibi informacoes do usuario-->
 <div class="input" >
     <div class="ls-span" >
         <!-- <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30"
@@ -6,11 +7,12 @@
         @if (chamado.usuario_logado!==""||chamado.usuario_logado !==null ||
         chamado.usuario_logado!==undefined) {
             <div class="banner_logo">
-                <span>Criado por <b>{{chamado.usuario_logado.toUpperCase()}} </b></span>
+                <span><b>{{chamado.usuario_logado.toUpperCase()}}</b> </span>
             </div>
         }
+        <p>criou em</p>
         <small>{{i.data}}</small>
-    </div>
+        </div>
     <mat-icon color="secundary" (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}}</mat-icon>
 
     
@@ -129,7 +131,7 @@
             }
             @else {
 
-            <div class="data_top">
+            <!-- <div class="data_top">
                 <div class="input-Top">
                     <span class="inforDescricao">Data de nascimento</span>
                     <small >{{i.data_nasc}}</small>
@@ -138,10 +140,10 @@
                      <span class="inforDescricao">Data de admissão</span>
                     <small>{{i.data_admin}}</small>
                 </div>
-            </div>
+            </div> -->
             <div class="data_top">
                 <div class="input-Top">
-                     <span class="inforDescricao">Função</span>
+                     <span class="inforDescricao">Cargo</span>
                     <small>{{i.funcao}}</small>
                 </div>
             </div>

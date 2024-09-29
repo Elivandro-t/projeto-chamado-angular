@@ -28,9 +28,7 @@
         text-decoration: underline;
       }
 
-      .sty {
-        width: 100;
-      }
+
 
       .ls-label-text {
         height: 60px;
@@ -58,71 +56,77 @@
       }
 
       .txt {
-        width: 400px;
+        width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
-        border: 0;
+
         border-radius: 2px;
         box-sizing: border-box;
         margin: 5px 0;
 
-        .editor {
-          width: 100%;
-        }
-
-        .textArea {
-          border: 1px solid #888;
-          overflow: hidden;
+        .input_img {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          outline: 0;
-          height: 30px;
+          padding: 2px;
 
-          input {
-            max-width: 400px;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            margin: 0;
+          .img {
+            width: 35px;
+            border-radius: 50%;
+
+            img {
+              border-radius: 100%;
+            }
           }
-        }
 
-        .button {
-          width: 100%;
-
-          section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
+          .ed {
             width: 100%;
-            height: 60px;
-
-            .drop {
+            .editor {
               width: 100%;
-              margin: 5px 0;
-              height: 100px;
-              border: 1px dotted #888;
-              border-radius: 2px;
-              display: flex;
-              align-items: center;
-
-              input {
-                margin-left: 5px;
-              }
             }
 
+           
+              .drop{
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+                box-sizing: border-box;
+                width: 100%;
+                height: 80px;
+                border-radius: 2px;
+                margin: 5px 0;
+
+                .btn {
+                  width: 30%;
+                  margin: 5px 0;
+                }
+
+              
+
+            }
 
           }
 
-          .btn {
+
+          .textArea {
+            border: 1px solid #888;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
+            outline: 0;
+            height: 30px;
+
+            input {
+              max-width: 800px;
+              width: 100%;
+              height: 100%;
+              border: 0;
+              margin: 0;
+            }
           }
         }
+
 
         .tinymce-editor {
 
@@ -139,19 +143,25 @@
       }
 
       .comments-container {
-        max-width: 400px;
+        max-width: 100%;
         width: 100%;
 
         .comentarios {
           width: 100%;
 
           .itens {
+            width: 100%;
+            display: flex;
+            padding: 5px 0;
+            margin: 4px 0px;
+            word-wrap: break-word;
+
             .commet-itens {
               .detalhes {
                 overflow: auto;
                 display: flex;
                 flex-direction: column;
-                font-size: 14px;
+                font-size: 15px;
                 color: #6b6666;
                 max-width: 100%;
                 word-wrap: break-word;
@@ -266,11 +276,13 @@
 
   .container_templet {
     margin: 0;
+    padding: 0 30px;
 
     .input_container-int2 {
 
 
       .input_container {
+        align-items: center;
         .txt {
 
           .editor {
@@ -319,6 +331,10 @@
     }
   }
 
+}
+
+.img_logo {
+  display: flex;
 }
 
 @media screen and (max-width:460px) {

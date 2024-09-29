@@ -13,13 +13,16 @@
     .ls-span{
       display: flex;
       align-items: center;
-      padding: 0px 6px;
-      gap:9rem;
+      padding: 0px 5px;
+      gap:10px;
+      margin-left:10px;
+      width: 100%;
       small{
         text-align: center;
         font-size:10px;
         color: #7c7b80;
       }
+    
       .banner_logo{
         gap:5px;
         display: flex;
@@ -35,7 +38,10 @@
         
       }
     }
+    mat-icon{
+      margin-right: 10px;
 
+    }
     a {
       cursor: pointer;
       width: 150px;
@@ -58,9 +64,7 @@
       border-radius: 2px;
       background-color: rgb(244, 248, 248);
       padding: 2px 12px;
-      max-width: 800px;
-      overflow: hidden;
-
+       word-wrap: break-word;
       .data_top {
         display: flex;
 
@@ -128,12 +132,12 @@
       .data_top2 {
         display: flex;
         flex-direction: column;
-        margin: 5px 0;
+        margin:5px 0;
         .input-descricao {
-          width: 100%;
+          max-width:630px;
+          width:100%;
           display: flex;
           flex-direction: column;
-
           .inforDescricao {
             color: var(--ds-text-subtle, #0d3a88);
             font-family: sans-serif;
@@ -143,8 +147,10 @@
           }
 
           .input-Top {
+            max-width:100%;
             color: var(--ds-text-subtle, #6B778C);
             font-size: 11px;
+            word-wrap: break-word;
           }
           .descricao-itens img{
             max-width: 100%; /* ou o valor que desejar */

@@ -32,6 +32,7 @@ import { JspdfComponent } from '../lista-tecnico/pdf/jsPdf.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RelatoriopdfComponent } from '../../grafico/canvas/modal/AlertRole/Relatoriopdf.component';
 import { LogServiceService } from '../../core/log-service.service';
+import { Loading } from '../../loading/Loading';
 
 @Component({
   selector: 'app-lista-chamado',
@@ -39,7 +40,11 @@ import { LogServiceService } from '../../core/log-service.service';
   imports: [MatButtonModule, MatIconModule, MatPaginatorModule, MuralPricipalComponent, MatProgressSpinnerModule, ReactiveFormsModule, CommonModule,
     MatSelectModule, MatCheckboxModule, MatSelectModule,
     AcitiveModule, BotaoBackComponent,
-    MatInputModule,JspdfComponent,JspdfComponent, MatAutocompleteModule, MatFormFieldModule, MatPaginatorModule, MenuComponent, LoadingComponent],
+    MatInputModule, JspdfComponent, JspdfComponent,
+    MatAutocompleteModule, MatFormFieldModule,
+    MatPaginatorModule, MenuComponent, LoadingComponent,
+    Loading
+  ],
   providers: [
 
   ],
@@ -48,7 +53,7 @@ import { LogServiceService } from '../../core/log-service.service';
 })
 @Inject('root')
 export class ListaChamadoComponent implements OnInit {
-  @ViewChild("color")  trColor!: ElementRef;
+  @ViewChild("color") trColor!: ElementRef;
   toppings = new FormControl('');
   lista = [
     { "ativo": false, "name": "fechado" },
@@ -57,7 +62,7 @@ export class ListaChamadoComponent implements OnInit {
   @Input() desableBotton!: boolean;
   desable: boolean = false;
   @Input() numberOfPages!: any;
- totalPages= 0;
+  totalPages = 0;
 
   @Output() PegesUpdate = new EventEmitter();
   @Output() pdf = new EventEmitter();
@@ -79,17 +84,19 @@ export class ListaChamadoComponent implements OnInit {
   habilita!: boolean;
   @Input() page: any;
   @Input() itemTotal: any;
-  @ViewChild("el",{static:false}) el!: ElementRef;
+  @ViewChild("el", { static: false }) el!: ElementRef;
   @Input() filialAdmin = false;
   @Output() delete = new EventEmitter();
+  ativo = false;
 
   size!: any;
-user!: any;
-  constructor(private api: LogServiceService,private Snec: SnackBar,private dialog: MatDialog,public Auth: UserAuthService,private pd: PdfService, private sanitizer: DomSanitizer, private snackBar: SnackBar, private service: ChamadoApiService, public busca: BuscaService, private route: Router, public auth: UserAuthService) { }
+  user!: any;
+  constructor(private api: LogServiceService, private Snec: SnackBar, private dialog: MatDialog, public Auth: UserAuthService, private pd: PdfService, private sanitizer: DomSanitizer, private snackBar: SnackBar, private service: ChamadoApiService, public busca: BuscaService, private route: Router, public auth: UserAuthService) { }
   ngOnInit(): void {
-    this.Auth.retornUser().subscribe((e)=>{
+    this.ativo = true;
+    this.Auth.retornUser().subscribe((e) => {
       this.user = e.perfil;
-     }); 
+    });
     switch (this.desableBotton) {
       case true:
         this.desable = false;
@@ -103,7 +110,7 @@ user!: any;
 
   }
   HendlePdf() {
-    this.dialog.open(RelatoriopdfComponent, { data: { informacoes:this.dataSource ,total: this.number,totalItens:this.itemTotal} });
+    this.dialog.open(RelatoriopdfComponent, { data: { informacoes: this.dataSource, total: this.number, totalItens: this.itemTotal } });
 
   }
   getRowClass(ite: any): string {
@@ -116,23 +123,23 @@ user!: any;
     this.emitdata.emit();
 
   }
-  deletar(id: number){
+  deletar(id: number) {
     return new Promise((resolve) => {
-      resolve(  this.delete.emit(id));
+      resolve(this.delete.emit(id));
     });
   }
 
-  userName(even: any){
+  userName(even: any) {
     if (typeof even === 'string') {
       return even.toUpperCase();
     }
-    return "- - -"; 
+    return "- - -";
   }
-  tecName(even: any){
+  tecName(even: any) {
     if (typeof even === 'string') {
       return even.toUpperCase();
     }
-    return "- - -"; 
+    return "- - -";
   }
   check(event: any) {
     this.habilita = event.target.checked;
@@ -169,14 +176,14 @@ user!: any;
     this.Buscar.emit();
 
   }
-  getRa(id: number, Idchamado: number,cardId: any) {
-    this.log.emit({id,cardId});
+  getRa(id: number, Idchamado: number, cardId: any) {
+    this.log.emit({ id, cardId });
 
     return new Promise((resolve) => {
       resolve(this.atualizar.emit({ id, Idchamado }));
 
     });
-    
+
   }
 
   // chamadoUser(idChamado: string, Id: number) {
@@ -184,8 +191,8 @@ user!: any;
   //   this.route.navigate([`/chamado/${idChamado}/${Id}`]);
 
   // }
-  chamadoUser(idChamado: string, Id: number,cardId: number,) {
-    
+  chamadoUser(idChamado: string, Id: number, cardId: number,) {
+
     new Promise<void>((resolve, reject) => {
       this.route.navigate([`/chamado/${idChamado}/${Id}/${cardId}/create`]).then(() => {
         resolve();
@@ -194,8 +201,8 @@ user!: any;
       });
     });
   }
-  chamadoAdmin(idChamado: string, Id: number,cardId: number,) {
-    
+  chamadoAdmin(idChamado: string, Id: number, cardId: number,) {
+
     new Promise<void>((resolve, reject) => {
       this.route.navigate([`/chamado/${idChamado}/${Id}/${cardId}/admin`]).then(() => {
         resolve();
@@ -212,28 +219,28 @@ user!: any;
     let data = [];
 
     for (let datas of this.dataSource) {
-        if (datas.itens !== undefined && datas.itens !== null) {
-            data.push(datas.itens);
-        }
+      if (datas.itens !== undefined && datas.itens !== null) {
+        data.push(datas.itens);
+      }
     }
 
     if (data.length > 0) {
-        const worksheet: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
-        const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const worksheet: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
+      const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
 
-        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 
-        this.saveExcelFile(excelBuffer, 'relatorio.xlsx');
+      this.saveExcelFile(excelBuffer, 'relatorio.xlsx');
     } else {
-       this.Snec.openSnackBar("Não há dados para criar o relatório.");
+      this.Snec.openSnackBar("Não há dados para criar o relatório.");
     }
-}
+  }
 
-private saveExcelFile(buffer: any, fileName: string) {
+  private saveExcelFile(buffer: any, fileName: string) {
     const data: Blob = new Blob([buffer], { type: 'application/octet-stream' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(data);
     link.download = fileName;
     link.click();
-}
+  }
 }

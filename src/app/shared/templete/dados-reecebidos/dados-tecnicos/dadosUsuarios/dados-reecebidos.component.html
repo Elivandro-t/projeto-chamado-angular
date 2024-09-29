@@ -5,7 +5,6 @@
             <h2>{{i.titulo}}</h2>
         </div>
         <div class="campos ">
-            <section class="container_templete ">
                 <div class="Card">
                     <section id="formButton" class="container">
                         <app-descricao 
@@ -16,7 +15,7 @@
                     </section>
                     <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
                 </div>
-            </section>
+           
             <app-dados-tecnicos [habilitaBotao]="i.client_feito" [id]="ids" [ChamdoId]="i.chamadoid"
                 (Pegartect)="pegart(i.id)" [done]="i.done" [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false"
                 [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>

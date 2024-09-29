@@ -1,7 +1,6 @@
 .continer_int {
   padding: 0px 16px;
   box-sizing: border-box;
-
   .logolink {
     display: flex;
     align-items: center;
@@ -25,17 +24,13 @@
 
   .campos {
     display: flex;
-    .container_templete {
-      width:90%;
-      margin-bottom: 5rem;
       .Card {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        box-sizing: border-box;
         .container {
           border-top-right-radius:5px;
           border-top-left-radius: 5px;
-
           padding:1px;
           background-color:#dee4ee;
           .input {
@@ -62,7 +57,7 @@
           }
 
 
-        }
+        
       }
 
     }

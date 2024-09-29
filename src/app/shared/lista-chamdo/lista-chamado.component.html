@@ -6,11 +6,11 @@
         <div class="lista-titulo">
             <div class="btn_back">
                 <app-back-button></app-back-button>
-                <a>Central informatica</a>
+                <a>Central de Informática</a>
             </div>
 
         </div>
-        <h2>Chamados</h2>
+        <h2>Solicitações de Usuários</h2>
         <div class="form">
             <div class="example-container">
                 <div [formGroup]="busca.form" class="form_centro">
@@ -143,8 +143,11 @@
                             }
 
                         </tbody>
-
+          
                     </table>
+                    @if (ativo) {
+                        <app-loading></app-loading>
+                    }
                 </div>
             </div>
         </div>
