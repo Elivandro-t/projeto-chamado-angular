@@ -1,3 +1,9 @@
+// @keyframes item4 {
+//     0% {opacity: 0.2; }
+//     50% {opacity: 0.4; }
+//     100% {opacity: 0.6; }
+// }
+
 :host {
     display: flex;
 }
@@ -161,7 +167,7 @@ table {
  
 .loading-dots {
     display: inline-block;
-    animation: loading 1.5s infinite;
+    // animation: loading 1.5s infinite;
   }
   
   .example-section {
@@ -261,10 +267,15 @@ table {
     border-collapse: collapse;
    
   }
- 
+
   .red-row {
-    background-color: rgb(255, 230, 230);
+    animation-name: item4;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    color: rgb(43, 40, 36);
+    background-color: rgb(248, 204, 204);
     border-radius: 1px;
+    transition: load;
    
     color: rgb(107, 101, 101);
 

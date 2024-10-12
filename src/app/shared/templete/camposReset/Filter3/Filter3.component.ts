@@ -87,6 +87,7 @@ export class Filter3Component implements OnInit,AfterViewInit {
       sprinner=false;
       loadin =false;
       botton =false;
+      @Input() ativo =  true;
       @Input() Alert: any;
 
      @Input() solicitacaoUsuario: any;
@@ -197,7 +198,15 @@ export class Filter3Component implements OnInit,AfterViewInit {
         this.sprinner =true;
         this.botton =true;
         const form = this.myForm.get("cpf")?.value;
-        if(this.cpfValidator.validateCPF(form)){
+        if(form!=null){
+          if(this.cpfValidator.validateCPF(form)){
+            return;
+          }else{
+            alert("cpf invalido");
+            this.botton =false;
+            this.sprinner=false;
+          }
+        }
           this.http.pegarimg(this.chamdoId, this.files, this.datas()).subscribe((s: any) => {
             id = s.id;
           let chamado;
@@ -221,11 +230,7 @@ export class Filter3Component implements OnInit,AfterViewInit {
             this.myForm.reset();
             }
           });
-        }else{
-          alert("cpf invalido");
-          this.botton =false;
-          this.sprinner=false;
-        }
+      
         
       
     

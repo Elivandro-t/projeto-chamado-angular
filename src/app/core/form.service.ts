@@ -21,7 +21,7 @@ export class FormService {
     usuario: new FormControl(null, [Validators.required]),
     setor: new FormControl(null, [Validators.required]),
     gmid:new FormControl(null,[Validators.required]),//pego
-    cpf:new FormControl(null,[Validators.required]),
+    cpf:new FormControl(null),
     dataAdmin:new FormControl(null,[Validators.required]),
     dataNasc:new FormControl(null,[Validators.required]),
     filial: new FormControl(null,[Validators.maxLength(4),Validators.pattern('^[0-9]*$')]),
@@ -47,7 +47,7 @@ export class FormService {
     usuario: new FormControl(null, [Validators.required]),
     setor: new FormControl(null, [Validators.required]),
     gmid:new FormControl(null,[Validators.required]),//pego
-    cpf:new FormControl(null,[Validators.required]),
+    cpf:new FormControl(null),
     filial: new FormControl(null,[Validators.maxLength(3),Validators.pattern('^[0-9]*$')]),
     funcao: new FormControl(null,[Validators.required]),
     descricao: new FormControl(null,[Validators.required]),

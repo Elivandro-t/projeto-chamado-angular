@@ -1,10 +1,11 @@
+<!-- eslint-disable @angular-eslint/template/no-autofocus -->
 <form [formGroup]="myForm">
     <div class="input_container-int">
         <div class="input-Top">
             <fieldset class="input-form" appearance="outline" [ngClass]="{'input-Valid':isUsuario()}">
                 <legend>Nome completo</legend>
                 <input class="input" type="text" formControlName="usuario"  matInput
-                    #usuario (keydown.enter)="enter(setors)">
+                    #usuario (keydown.enter)="enter(setors)" autofocus="on">
             </fieldset>
             @if (isUsuario()) {
             <div class="erro">Campo obrigatorio</div>

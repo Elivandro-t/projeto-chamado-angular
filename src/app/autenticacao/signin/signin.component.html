@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/no-autofocus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <app-tela-de-login variant="login" *ngIf="!Logued.isLogout()">
@@ -10,7 +11,7 @@
     <form class="painel-login" [formGroup]="service.Signin">
       <div class="login_int">
           <label for="email">E-mail</label>
-          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" placeholder="Digite seu e-mail..." />
+          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" placeholder="Digite seu e-mail..."  autocomplete="on" autofocus="on"/>
           @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
             <small class="mensagem-erro">Digite um email valido</small>
           }
