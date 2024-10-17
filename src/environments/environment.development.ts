@@ -2,6 +2,6 @@ export const environment = {
     production: true,
     apiUrl: 'https://back-chamados.onrender.com',
     // apiUrl: 'http://localhost:8080',
-    tinyKey:"i8g2fz4jt1dou9z9mwnrklp7dc1dulnzrqf4s7hu4pj1x3az"
+    tinyKey:"q50b23gixhikpwzzp03o9n2v05hnr9ev2knq8sln6wepsnli"
 
 };
