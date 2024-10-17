@@ -5,6 +5,7 @@ import { RodapeComponent } from './shared/footer/rodape/rodape.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from '../HomePrincipal/Home.component';
 import { HeaderComponent } from './Home/header/header.component';
+import { UserAuthService } from './core/user-auth.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -28,4 +29,5 @@ import { HeaderComponent } from './Home/header/header.component';
 })
 export class AppComponent {
   title = 'projetoCd116Frontend';
+  constructor(public Auth: UserAuthService){}
 }

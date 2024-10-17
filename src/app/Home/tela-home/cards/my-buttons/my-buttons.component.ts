@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { Router } from '@angular/router';
+import { UserAuthService } from '../../../../core/user-auth.service';
 
 @Component({
   selector: 'app-my-buttons',
@@ -14,8 +15,12 @@ export class MyButtonsComponent {
 @Input() subtitle: string = '';
 @Input() src: string = '';
 @Input() rotas: string = '';
-constructor(private router: Router){}
+constructor(private router: Router, public Auth: UserAuthService){}
 navegar(){
-  this.router.navigate([this.rotas]);
+  if(this.Auth.isLogout()){
+    this.router.navigate([this.rotas]);
+  }else{
+    this.router.navigate(["/auth/login"]);
+  }
 }
 }

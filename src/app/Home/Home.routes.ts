@@ -19,7 +19,7 @@ import { ConexaoActive } from "../autenticacao/auth/conectionActive";
 
 export const routes: Routes = [
     {
-        path: 'cards', component: TelaHomeComponent, canActivate: [authGuard,ConexaoActive], data: { acess:  ["user","admin","suporte","dev"] },
+        path: 'cards', component: TelaHomeComponent, canActivate: [ConexaoActive], data: { acess:  ["user","admin","suporte","dev"] },
         title:"cards - Chamados",
     },
     {

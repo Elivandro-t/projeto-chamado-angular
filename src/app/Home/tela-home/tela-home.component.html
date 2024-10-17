@@ -1,4 +1,6 @@
-<!-- <app-header></app-header> -->
+@if (!Auth.isLogout()) {
+    <app-header></app-header>
+}
 <app-mural-pricipal variant="home">
     <main class="main">
             <app-figure></app-figure>

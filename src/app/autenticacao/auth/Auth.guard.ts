@@ -17,7 +17,7 @@ export const authGuard: CanActivateChildFn= (route)=>{
     return false;
     
   }else{
-    window.location.href ="auth/login";
+    window.location.href ="cards";
     return false;
    
   }

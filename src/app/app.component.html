@@ -1,6 +1,7 @@
-<div class="main">
+@if (Auth.isLogout()) {
     <app-header></app-header>
-
+}
+<div class="main">
     <router-outlet></router-outlet>
 </div>
 <app-rodape></app-rodape>

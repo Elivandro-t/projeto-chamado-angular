@@ -1,9 +1,10 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<header class="container header">
+<header *ngIf="ativo" class="container header">
   <div class="toolbar">
-    <section *ngIf="Auth?.isLogout()" class="span" routerLinkActive="active-page"
-      ariaCurrentWhenActive="page" style="size:45px;">
+    @if (Auth?.isLogout()) {
+    <section  class="span" routerLinkActive="active-page"
+      ariaCurrentWhenActive="page" style="size:40px;">
       <div class="btn" (click)="ativaMenu()">
         <span></span>
         <span></span>
@@ -12,7 +13,7 @@
      <p style="color: aliceblue;" routerLink="/cards"> {{logoName}}</p>
     </section> 
     <span class="example-spacer"></span>
-    <div class="button" *ngIf="Auth?.isLogout()">
+    <div class="button" >
       <mat-chip-listbox aria-label="Fish selection">
         <button (EventClick)="search()" class="search" mat-icon-button matTooltip="primary"
           aria-label="Example icon-button with a heart icon">
@@ -40,6 +41,19 @@
       <app-menu-drop (ativaMenu)="ativaMenu()"></app-menu-drop>
       }
     </div>
+  }@else {
+    <p style="color: aliceblue;" routerLink="/cards"> {{logoName}}</p>
+    <div class="button" >
+      <mat-chip-listbox class="btn" aria-label="Fish selection">
+        <button routerLink="/auth/login" mat-raised-button color="primary">
+          Sign in
+        </button>
+        <button  routerLink="/auth/signup" mat-raised-button color="secundary">
+          Sign up
+        </button>
+      </mat-chip-listbox>
+    </div>
+  }
   </div>
 
 </header>

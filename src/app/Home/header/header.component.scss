@@ -5,7 +5,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 36px;
+  padding:15px 36px;
+  border-bottom:1px solid #37495a;
+  background-color: #396172 ;
   
   .span {
     width: 186px;
@@ -48,6 +50,11 @@
     .button-icon {
       width: 120px;
     }
+    mat-chip-listbox{
+      button{
+        margin: 0 5px;
+       }
+     }
     .search {
       color: aliceblue;
     }
@@ -81,6 +88,7 @@
             font-size: 10px;
 
            }
+           
          }
           .btn-icon{
             width:25px;

@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
   alertDialog: boolean = false;
   menu = false;
   username: any;
+  @Input() ativo = true;
   @Output() menuEvent = new EventEmitter;
   constructor(private snack: SnackBar, private button: ApiLoginService, private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
   ngOnInit(): void {
@@ -89,7 +90,7 @@ export class HeaderComponent implements OnInit {
     this.Auth.removeRefreshToken();
     this.Auth.removeToken();
     this.Auth.getimageRemuve();
-    this.router.navigateByUrl("auth/login");
+    this.router.navigateByUrl("/");
   }
   search() {
     document.body.classList.add("semScroll");
