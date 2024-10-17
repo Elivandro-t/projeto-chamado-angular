@@ -2,15 +2,15 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <header class="container header">
   <div class="toolbar">
-    <section *ngIf="Auth?.isLogout()" class="span" routerLink="/cards" routerLinkActive="active-page"
+    <section *ngIf="Auth?.isLogout()" class="span" routerLinkActive="active-page"
       ariaCurrentWhenActive="page" style="size:45px;">
       <div class="btn" (click)="ativaMenu()">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      {{logoName}}
-    </section>
+     <p style="color: aliceblue;" routerLink="/cards"> {{logoName}}</p>
+    </section> 
     <span class="example-spacer"></span>
     <div class="button" *ngIf="Auth?.isLogout()">
       <mat-chip-listbox aria-label="Fish selection">
