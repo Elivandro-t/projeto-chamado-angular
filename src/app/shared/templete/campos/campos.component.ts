@@ -14,7 +14,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EditorModule } from "@tinymce/tinymce-angular";
-import { NgxLoadingButtonsModule } from "ngx-loading-buttons";
 import { Observable, startWith, map } from "rxjs";
 import { environment } from "../../../../environments/environment";
 import { CardsChamadosComponent } from "../../../Home/tela-home/cards/cards-chamados/cards-chamados.component";
@@ -43,7 +42,6 @@ export interface User {
     Loading,
     EditorModule,
     AsyncPipe, ReactiveFormsModule, MatInputModule,
-    NgxLoadingButtonsModule,
     FormsModule, MatAutocompleteModule,
     MatFormFieldModule,
     CommonModule,

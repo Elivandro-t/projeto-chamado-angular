@@ -19,13 +19,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 import { AlertComponent } from '../../Home/tela-home/cards/cards-anuncios/alert/alert.component';
 import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatIconModule,AlertComponent, NgxLoadingButtonsModule, AsyncPipe, MatIcon, MatAutocompleteModule, MatInputModule, MatSelectModule, MatButtonModule, TelaDeLoginComponent, ReactiveFormsModule, CommonModule],
+  imports: [MatIconModule,AlertComponent, AsyncPipe, MatIcon, MatAutocompleteModule, MatInputModule, MatSelectModule, MatButtonModule, TelaDeLoginComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 

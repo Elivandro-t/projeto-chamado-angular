@@ -10,7 +10,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EditorModule } from "@tinymce/tinymce-angular";
-import { NgxLoadingButtonsModule } from "ngx-loading-buttons";
 import { Observable, startWith, map } from "rxjs";
 import { environment } from "../../../../../environments/environment";
 import { CardsChamadosComponent } from "../../../../Home/tela-home/cards/cards-chamados/cards-chamados.component";
@@ -18,7 +17,7 @@ import { BotaoBackComponent } from "../../../../components/botao_voltar/botaoVol
 import { MuralComponent } from "../../../../components/mural-secundary/mural.component";
 import { MuralPricipalComponent } from "../../../../components/mural/mural-pricipal/mural-pricipal.component";
 import { ChamadoApiService } from "../../../../core/chamado-api.service";
-import { setor, chamadoNew, sistemaReset } from "../../../../core/types";
+import { setor, sistemaReset } from "../../../../core/types";
 import { UserAuthService } from "../../../../core/user-auth.service";
 import { FormService } from "../../../../core/form.service";
 import { AlertComponent } from "../../alerta/alert/alert.component";
@@ -38,7 +37,6 @@ export interface User {
   imports: [
     EditorModule,
     AsyncPipe, ReactiveFormsModule, MatInputModule,
-    NgxLoadingButtonsModule,
     FormsModule, MatAutocompleteModule,
     MatFormFieldModule,
     CommonModule,

@@ -8,7 +8,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { DropzoneMaterialModule } from "@ngx-dropzone/material";
 import { NgxDropzoneModule } from "ngx-dropzone";
 interface FileWithPreview extends File {
     dataURL?: string;
@@ -19,7 +18,6 @@ interface FileWithPreview extends File {
     selector:"app-drop",
     standalone:true,
     imports:[ NgxDropzoneModule,
-        DropzoneMaterialModule,
           MatProgressBarModule,
           AsyncPipe, ReactiveFormsModule, MatInputModule,
           FormsModule, MatAutocompleteModule,

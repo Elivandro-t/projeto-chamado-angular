@@ -9,7 +9,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { EditorModule } from "@tinymce/tinymce-angular";
-import { NgxLoadingButtonsModule } from "ngx-loading-buttons";
 import { environment } from "../../../../../environments/environment";
 import { BotaoBackComponent } from "../../../../components/botao_voltar/botaoVoltar.component";
 import { MuralComponent } from "../../../../components/mural-secundary/mural.component";
@@ -31,7 +30,6 @@ import { setor } from "../../../../core/types";
         Loading,
     EditorModule,
     AsyncPipe, ReactiveFormsModule, MatInputModule,
-    NgxLoadingButtonsModule,
     FormsModule, MatAutocompleteModule,
     MatFormFieldModule,
     CommonModule,

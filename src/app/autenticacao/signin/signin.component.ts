@@ -10,12 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserAuthService } from '../../core/user-auth.service';
-import { AlertaDialogLoginServiceComponent } from '../../AlertaDialog/alerta-dialog-login/alerta-dialog-login-service.component';
 import { ApiLoginService } from '../services/api-login.service';
 import { SigninServiceService } from '../services/signin-service.service';
 import { TelaDeLoginComponent } from '../tela-de-login/tela-de-login.component';
 import { TelaLoginAuthComponent } from '../tela-login-auth/tela-login-auth.component';
-import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 import { Loading } from '../../loading/Loading';
 import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
 
@@ -24,7 +22,7 @@ import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
   standalone: true,
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss',
-  imports: [MatInputModule, NgxLoadingButtonsModule,Loading, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
+  imports: [MatInputModule,Loading, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
 })
 export class SigninComponent {
   desable: boolean = false;

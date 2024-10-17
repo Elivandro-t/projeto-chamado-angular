@@ -25,9 +25,9 @@
             </div>
             <div class="button">
                 <button [disabled]="habilitaBotao" (click)="atualizarstatusFechado()" mat-raised-button color="primary"
-                    [mtBasicSpinner]="spinner1" [hideText]="true">Aprovar</button>
+                    >Aprovar</button>
                 <button [disabled]="habilitaBotao" (click)="ReabrirChamado()" mat-raised-button
-                    [mtBasicSpinner]="spinner2" [hideText]="true" color="secundary">Recusar</button>
+                    color="secundary">Recusar</button>
             </div>
         </div>
         }
@@ -55,7 +55,7 @@
                 </div>
     
                 <div class="button">
-                    <button [disabled]="item.done" (click)="getRas()" [mtBasicSpinner]="spinner1" [hideText]="true"
+                    <button [disabled]="item.done" (click)="getRas()" 
                         mat-raised-button color="secundary">Aceitar</button>
                 </div>
     

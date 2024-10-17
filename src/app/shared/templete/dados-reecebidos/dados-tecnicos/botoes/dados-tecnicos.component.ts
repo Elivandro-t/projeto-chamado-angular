@@ -5,7 +5,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { StatusChamadoService } from '../../../../../core/status-chamado.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgxLoadingButtonsModule } from 'ngx-loading-buttons';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBar } from '../../../../../AlertaDialog/snackBar/snackbar.component';
 import { ChamadoApiService } from '../../../../../core/chamado-api.service';
@@ -22,7 +21,7 @@ import { SelectComponet } from '../../../coments/Select/select.component';
 @Component({
   selector: 'app-dados-tecnicos',
   standalone: true,
-  imports: [SelectComponet,MatFormFieldModule,MatSelectModule,MatInputModule,FormsModule,MatButtonModule, MatSnackBarModule, CommonModule, NgxLoadingButtonsModule, DropComponent],
+  imports: [SelectComponet,MatFormFieldModule,MatSelectModule,MatInputModule,FormsModule,MatButtonModule, MatSnackBarModule, CommonModule, DropComponent],
   templateUrl: './dados-tecnicos.component.html',
   styleUrl: './dados-tecnicos.component.scss'
 })
