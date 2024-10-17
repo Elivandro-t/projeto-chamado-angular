@@ -28,7 +28,7 @@
             <nav>
                 <ul>
                    @for (item of itensMenu; track $index) {
-                    <a  [routerLink]="item?.routerLink">
+                    <a  (click)="eventP()" [routerLink]="item?.routerLink">
                         <li [ngClass]="item.class"  *ngIf="hashRole(item.role)">
                             <img [src]="item.icon" width="25px" height="25px" alt="" />
                             <span>{{item.name}}</span>
