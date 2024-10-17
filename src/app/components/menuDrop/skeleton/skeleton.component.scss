@@ -1,5 +1,5 @@
 .skeleton {
-    background-color: #fcf9f9;
+  background-color: #eeebeb;
     border-radius: 4px;
     animation: pulse 0.8s infinite ease-in-out;
   }
@@ -11,12 +11,12 @@
   
   @keyframes pulse {
     0% {
-      opacity: 0.8;
+      opacity: 0.5;
     }
     50% {
       opacity: 1;
     }
     100% {
-      opacity: 0.8;
+      opacity: 0.5;
     }
   }

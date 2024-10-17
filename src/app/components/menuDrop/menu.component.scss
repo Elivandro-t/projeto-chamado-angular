@@ -11,12 +11,14 @@
     .menu_btn{
         width:250px;
         height: 100vh;
-        background-color: rgb(84, 85, 110);
+        background-color:#d3d3d3;
         .myCount{
             width: 100%;
             height:190px;
             background-size: cover;
             background-position: center;
+            filter: contrast(105%) brightness(1.1) blur(0.5px); 
+            image-rendering: -webkit-optimize-contrast; 
             .header{
                 width: 100%;
                 display: flex;
@@ -70,7 +72,7 @@
              height:calc(100vh - 50px);
              border-top-left-radius: 18px;
              border-top-right-radius: 18px;
-             margin-top: -0.6rem;
+             margin-top: -0.7rem;
              position: relative;
              .logo_name{
                 height: 30px;
@@ -97,14 +99,18 @@
                     img{
                         margin: 0 5px;
                     }
+                    span{
+                        margin: 0 5px;
+                    }
                 }
             }
             a .li:hover{
-               background-color: rgb(176, 172, 212);
+                color: #ecf0f1; // Cinza muito claro
+                background-color: #34495e; 
             }
             a .li:active{
-                background-color: rgb(151, 145, 199);
-                color: antiquewhite;
+                color: #ffffff; // Mantém o texto branco
+  background-color: #444444; 
              }
         }
         .footer{
@@ -115,7 +121,7 @@
             bottom: 0;
             width:250px;
             height: 30px;
-            color: blue;
+            color: #bdc3c7;
             font-size: 12px;
         }
     }

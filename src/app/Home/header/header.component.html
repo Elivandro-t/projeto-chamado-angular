@@ -2,7 +2,7 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <header *ngIf="ativo" class="container header">
   <div class="toolbar">
-    @if (Auth?.isLogout()) {
+    @if (Auth.isLogout()) {
     <section  class="span" routerLinkActive="active-page"
       ariaCurrentWhenActive="page" style="size:40px;">
       <div class="btn" (click)="ativaMenu()">
