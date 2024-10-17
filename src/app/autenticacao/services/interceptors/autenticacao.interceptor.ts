@@ -33,7 +33,7 @@ export class AuthInterceptors implements HttpInterceptor {
               this.dialog.open(ConfirmComponent);
         }
         if (error.status === 401) {
-          this.router.navigate(["/auth/login"]);
+          this.router.navigate(["/"]);
           this.auth.RemoveToken();
           this.auth.RemoveRefreshToken();
         }
