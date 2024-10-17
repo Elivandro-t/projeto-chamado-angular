@@ -71,6 +71,6 @@ export class MenuComponent implements OnInit{
         this.Auth.removeRefreshToken();
         this.Auth.removeToken();
         this.Auth.getimageRemuve();
-        this.router.navigateByUrl("auth/login");
+        this.router.navigateByUrl("/");
       }
 } 
