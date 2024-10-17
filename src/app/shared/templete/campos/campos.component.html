@@ -1,146 +1,148 @@
+<!-- eslint-disable @angular-eslint/template/no-autofocus -->
 <app-mural-pricipal variant="campos">
-        <div class="campos ">
-            <div class="logo">
-                <app-back-button></app-back-button>
-                <img class="imagen-card"  alt="logo" src="assets/ti.png" />
-                <h2>SUPORTE TI</h2>
+    <div class="campos ">
+        <div class="logo">
+            <app-back-button></app-back-button>
+            <img class="imagen-card" alt="logo" src="assets/ti.png" />
+            <h2>SUPORTE TI</h2>
+        </div>
+        <form [formGroup]="myForm" class="form">
+            @if (titulo.includes("Hardware")) {
+            <div class="input-Top">
+                <app-alert aviso="Suporte hardware, solicitacao de periféricos de entrada"
+                    saudacao="Para solicitaçao periféricos de entrada: mouse, teclado, HDMI,VGA etc.."
+                    subtitulo=" "></app-alert>
             </div>
-            <form [formGroup]="myForm" class="form">
-                @if (titulo.includes("Hardware")) {
+            }
+            <div class="input_container-int2">
                 <div class="input-Top">
-                    <app-alert aviso="Suporte hardware, solicitacao de periféricos de entrada"
-                        saudacao="Para solicitaçao periféricos de entrada: mouse, teclado, HDMI,VGA etc.."
-                        subtitulo=" "></app-alert>
+                    <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isValid()}">
+                        <legend>Solicitação</legend>
+                        <input class="input" type="text" formControlName="solicitacao" matInput #solicitacao
+                            autofocus="on" (keydown.enter)="enter(patrimon)">
+                    </fieldset>
+                    @if (myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched) {
+                    <div class="erro">Campo obrigatorio</div>
+                    }
                 </div>
-                }
-                <div class="input_container-int2">
-                    <div class="input-Top">
-                        <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isValid()}">
-                            <legend>Solicitação</legend>
-                            <input class="input" type="text" formControlName="solicitacao" matInput #solicitacao
-                                (keydown.enter)="enter(patrimon)">
-                        </fieldset>
-                        @if (myForm.get('solicitacao')?.errors?.['required']&&myForm.get('solicitacao')?.touched) {
-                        <div class="erro">Campo obrigatorio</div>
-                        }
-                    </div>
+            </div>
+            <div class="input_container-int">
+                <div class="input-Top">
+                    <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isNome()}">
+                        <legend>Nome completo</legend>
+                        <input class="input" type="text" formControlName="usuario" matInput #usuario
+                            (keydown.enter)="enter(setors)">
+                    </fieldset>
+                    @if (isNome()) {
+                    <div class="erro">Campo obrigatorio</div>
+                    }
                 </div>
-                <div class="input_container-int">
-                    <div class="input-Top">
-                        <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isNome()}">
-                            <legend>Nome completo</legend>
-                            <input class="input" type="text" formControlName="usuario" matInput #usuario
-                                (keydown.enter)="enter(setors)">
-                        </fieldset>
-                        @if (isNome()) {
-                        <div class="erro">Campo obrigatorio</div>
-                        }
-                    </div>
-                    <div class="input-Top">
-                        <!-- <b class="ls-label-text">
+                <div class="input-Top">
+                    <!-- <b class="ls-label-text">
                             <p>Setor</p>
                             <p class="risc">*</p>
                         </b> -->
-                        <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isSetor()}">
-                            <legend>Setor</legend>
-                            <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor"
-                                #setors (keydown.enter)="enter(solicitacao)" matInput [matAutocomplete]="auto">
-                            <mat-autocomplete class="auto" #auto="matAutocomplete">
-                                @for (item of filteredOptions|async ; track item) {
-                                <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
+                    <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isSetor()}">
+                        <legend>Setor</legend>
+                        <input class="input" type="text" aria-label="Setor" id="setor" formControlName="setor" #setors
+                            (keydown.enter)="enter(solicitacao)" matInput [matAutocomplete]="auto">
+                        <mat-autocomplete class="auto" #auto="matAutocomplete">
+                            @for (item of filteredOptions|async ; track item) {
+                            <mat-option [value]="item.name.toUpperCase()">{{item.name}}</mat-option>
 
-                                }
-                            </mat-autocomplete>
-                        </fieldset>
-                        @if (isSetor()){
-                        <div class="erro">Informe o setor</div>
-                        }
-                    </div>
-
-                </div>
-                <div class="input_container-int">
-                    @if(titulo.includes("Hardware")){
-                        <div class="input-Top">
-                            <fieldset class="input-form" appearance="outline">
-                                <legend>Equipamento</legend>
-                                <input class="input" [matAutocomplete]="autoEq" type="text"
-                                    formControlName="equipamento" #equipa (keydown.enter)="enter(sistem)" matInput>
-
-                                <mat-autocomplete #autoEq="matAutocomplete">
-                                    <mat-option *ngFor="let opt of dat"
-                                        [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
-                                    <mat-option matAutocomplete value="outros">outros</mat-option>
-                                </mat-autocomplete>
-                            </fieldset>
-                        </div>
-                        <div class="input-Top">
-                            <fieldset class="input-form" appearance="outline" [ngClass]="{'input-form_coor':isPatrimonio()||isp()}">
-                                <legend>Patrimonio</legend>
-                                <input class="input" type="text" formControlName="patrimonio" #patrimon
-                                    (keydown.enter)="enter(equipa)" maxlength="10" matInput />
-                            </fieldset>
-                            @if (isPatrimonio()) {
-                            <div class="erro">Apenas Numeros são permitidos</div>
                             }
-                            @else if
-                            (isp()) {
-                            <div class="erro">Máximo de 6 caracteres</div>
-                            }
-                        </div>
-                        
-                        }
-                        @if(titulo.includes("Sistema")){
-                        <div class="input-Top">
-                            <fieldset class="input-form" appearance="outline">
-                                <legend>Erro</legend>
-                                <input class="input" type="text" formControlName="erro" #sistem #equipa
-                                    (keydown.enter)="enter(erro)" maxlength="22" matInput>
-                            </fieldset>
-                        </div>
-                        <div class="input-Top">
-                            <fieldset class="input-form" appearance="outline">
-                                <legend>Sistema</legend>
-                                <input class="input" [matAutocomplete]="autoEq" type="text"
-                                    formControlName="sistem_erro" #erro matInput>
-                                <mat-autocomplete #autoEq="matAutocomplete">
-                                    <mat-option *ngFor="let opt of list"
-                                        [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
-                                    <mat-option matAutocomplete value="outros">Não encontrado</mat-option>
-                                </mat-autocomplete>
-                            </fieldset>
-                        </div>
-                        }
+                        </mat-autocomplete>
+                    </fieldset>
+                    @if (isSetor()){
+                    <div class="erro">Informe o setor</div>
+                    }
                 </div>
-                <div class="input_container-int2">
-                    <!-- <div class="input-Top">
-                        <app-alert aviso="Descreva sua solicitaçao!"></app-alert>
-                    </div> -->
-                    <div class="input_container textarea">
-                        <div class="input_container">
-                            <b class="ls-label-text">
-                                <p>Como posso ajudá-lo?</p>
-                            </b>
-                            <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
-                            </editor>
-                        </div>
-                    </div>
-                    <div>
-
-                        <app-drop (emiter)="onSelect($event)"></app-drop>
-                    </div>
-                </div>
-
-            </form>
-            <div class="button">
-                <button color="primary" [disabled]="!myForm.valid || botton " class="button" (click)="onFile()"
-                    color="primary" mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
 
             </div>
-            @if (botton) {
-            <ng-container>
-                <app-loading></app-loading>
-            </ng-container>
-            }
+            <div class="input_container-int">
+                @if(titulo.includes("Hardware")){
+                <div class="input-Top">
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Equipamento</legend>
+                        <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="equipamento"
+                            #equipa (keydown.enter)="enter(sistem)" matInput>
+
+                        <mat-autocomplete #autoEq="matAutocomplete">
+                            <mat-option *ngFor="let opt of dat"
+                                [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
+                            <mat-option matAutocomplete value="outros">outros</mat-option>
+                        </mat-autocomplete>
+                    </fieldset>
+                </div>
+                <div class="input-Top">
+                    <fieldset class="input-form" appearance="outline"
+                        [ngClass]="{'input-form_coor':isPatrimonio()||isp()}">
+                        <legend>Patrimonio</legend>
+                        <input class="input" type="text" formControlName="patrimonio" #patrimon
+                            (keydown.enter)="enter(equipa)" maxlength="10" matInput />
+                    </fieldset>
+                    @if (isPatrimonio()) {
+                    <div class="erro">Apenas Numeros são permitidos</div>
+                    }
+                    @else if
+                    (isp()) {
+                    <div class="erro">Máximo de 6 caracteres</div>
+                    }
+                </div>
+
+                }
+                @if(titulo.includes("Sistema")){
+                <div class="input-Top">
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Erro</legend>
+                        <input class="input" type="text" formControlName="erro" #sistem #equipa
+                            (keydown.enter)="enter(erro)" maxlength="22" matInput>
+                    </fieldset>
+                </div>
+                <div class="input-Top">
+                    <fieldset class="input-form" appearance="outline">
+                        <legend>Sistema</legend>
+                        <input class="input" [matAutocomplete]="autoEq" type="text" formControlName="sistem_erro" #erro
+                            matInput>
+                        <mat-autocomplete #autoEq="matAutocomplete">
+                            <mat-option *ngFor="let opt of list"
+                                [value]="opt.name">{{opt.name.toUpperCase()}}</mat-option>
+                            <mat-option matAutocomplete value="outros">Não encontrado</mat-option>
+                        </mat-autocomplete>
+                    </fieldset>
+                </div>
+                }
+            </div>
+            <div class="input_container-int2">
+                <!-- <div class="input-Top">
+                        <app-alert aviso="Descreva sua solicitaçao!"></app-alert>
+                    </div> -->
+                <div class="input_container textarea">
+                    <div class="input_container">
+                        <b class="ls-label-text">
+                            <p>Como posso ajudá-lo?</p>
+                        </b>
+                        <editor formControlName="descricao" apiKey="{{tinyKay}}" [init]="editorConfig">
+                        </editor>
+                    </div>
+                </div>
+                <div>
+
+                    <app-drop (emiter)="onSelect($event)"></app-drop>
+                </div>
+            </div>
+
+        </form>
+        <div class="button">
+            <button color="primary" [disabled]="!myForm.valid || botton " class="button" (click)="onFile()"
+                color="primary" mat-raised-button [mtBasicSpinner]="sprinner" [hideText]="true">Enviar</button>
+
         </div>
-  
+        @if (botton) {
+        <ng-container>
+            <app-loading></app-loading>
+        </ng-container>
+        }
+    </div>
+
 </app-mural-pricipal>

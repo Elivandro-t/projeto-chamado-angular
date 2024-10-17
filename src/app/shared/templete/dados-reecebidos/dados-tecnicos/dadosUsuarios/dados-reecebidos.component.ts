@@ -1,3 +1,4 @@
+import { SkeletonAdminComponent } from './../DetalhesAdm/skeleton/admin.skeleton.component';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -33,7 +34,8 @@ import { DescricaoComponent } from '../../descricao/descricao.component';
     ComentsComponent,
     AlertComponent,
     BotaoBackComponent,
-    DescricaoComponent
+    DescricaoComponent,
+    SkeletonAdminComponent
   ],
   templateUrl: './dados-reecebidos.component.html',
   styleUrl: './dados-reecebidos.component.scss'
@@ -52,8 +54,12 @@ export class DadosReecebidosComponent implements OnInit {
     "SOLICITACAO DE PACOTE OFFICE",
     "SOLICITACAO DE VPM"
   ];
+  loading = false;
   constructor(private Snack: SnackBar, private api: ChamadoApiService, private snack: SnackBar, private sanitizer: DomSanitizer, private service: ChamadoApiService, private route: ActivatedRoute, private servicestatus: StatusChamadoService, public auth: UserAuthService) { }
   ngOnInit(): void {
+    setInterval(()=>{
+      this.loading =true;
+    },1000);
     const card = this.route.snapshot.paramMap.get("card") as string;
     const id = this.route.snapshot.paramMap.get("id") as any;
 

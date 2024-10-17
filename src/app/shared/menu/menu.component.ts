@@ -6,13 +6,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AcitiveModule } from '../../core/activete.module';
 import { UserAuthService } from '../../core/user-auth.service';
 import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
+import { RodapeComponent } from '../footer/rodape/rodape.component';
+
 
 @Component({
     selector:"app-menu",
     templateUrl:"./menu.component.html",
     styleUrl:"./menu.component.scss",
     standalone:true,
-    imports:[MatMenuModule,MatIcon,MatButtonModule,AcitiveModule,RouterLink]
+    imports:[MatMenuModule,MatIcon,MatButtonModule,AcitiveModule,RouterLink,RodapeComponent]
 })
 export class MenuComponent implements OnInit{
     @Output() nav = new EventEmitter();

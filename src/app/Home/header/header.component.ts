@@ -2,7 +2,7 @@ import { SnackBar } from './../../AlertaDialog/snackBar/snackbar.component';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApiResponse } from '../../core/types';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,6 +17,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { AcitiveModule } from '../../core/activete.module';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
 import { ApiLoginService } from '../../autenticacao/services/api-login.service';
+import { MenuComponent } from '../../components/menuDrop/menu.component';
 
 
 @Component({
@@ -34,7 +35,8 @@ import { ApiLoginService } from '../../autenticacao/services/api-login.service';
     MatChipsModule,
     MatMenuModule,
     SearchDialogComponent,
-    RouterLinkActive
+    RouterLinkActive,
+    MenuComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -43,10 +45,12 @@ export class HeaderComponent implements OnInit {
   @Input() logoName: "AGILE SERVICE" | "Tela de Login" = "AGILE SERVICE";
   titulo!: any;
   logued: boolean = false;
-  user: any;
   img: any;
   desable: boolean = false;
   alertDialog: boolean = false;
+  menu = false;
+  username: any;
+  @Output() menuEvent = new EventEmitter;
   constructor(private snack: SnackBar, private button: ApiLoginService, private router: Router, private api: ChamadoApiService, public Auth: UserAuthService, private dialog: Dialog) { }
   ngOnInit(): void {
     this.option();
@@ -59,12 +63,12 @@ export class HeaderComponent implements OnInit {
     });
      
   }
+  ativaMenu(){
+    this.menu = !this.menu;
+  }
   option(){
     this.Auth.retornUser().subscribe((e) => {
-      if (e && e.perfil) {
-        this.user = e.perfil;
-      }
-     
+      this.username = e;
         if (e && e.imagem) {
           this.img = e.imagem;
         }

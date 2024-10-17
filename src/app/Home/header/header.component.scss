@@ -4,11 +4,33 @@
 .toolbar {
   display: flex;
   justify-content: space-between;
-  margin:15px 20px;
-  span{
-    color: aliceblue;
-  }
+  align-items: center;
+  padding: 0 36px;
+  
   .span {
+    width: 186px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      span{
+        width: 15px;
+        padding: 1px;
+        margin: 2px;
+        background-color: rgb(250, 248, 248);
+      }
+    }
+    .btn:active{
+      background-color: rgba(255, 255, 255, 0.5);
+      
+    }
     cursor: pointer;
   }
   .active-page {
@@ -32,11 +54,27 @@
     mat-chip-listbox {
       gap: 5px;
     }
+    .logo_left{
+      display: flex;
+      align-items: center;
+      .nome_usuario{
+        margin: 0 5px;
+        b{
+          color: #17222c;
+        }
+        small{
+          margin:0px 5px;
+          color: rgb(245, 241, 236);
+        }
+      }
+    }
+    
     .favoritos{
       margin: 5px;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
+      cursor: pointer;
        .menu{
         button{
            span{
@@ -91,5 +129,19 @@
     padding: 0px 10px;
     width: 100%;
   }
+  
+}
+@media screen and (max-width:500px){
+  .toolbar {
+    .button{
+      .logo_left{
+        display: none;
+      }
+    }
+
+  }
+ 
+
+  
   
 }

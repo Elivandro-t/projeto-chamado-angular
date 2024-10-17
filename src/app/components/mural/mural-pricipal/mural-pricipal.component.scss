@@ -1,25 +1,22 @@
 :host{
     display: block;
-    margin: 10px auto;
-    max-width: 1248px;
     width:100%;
-    
+    margin: auto;
   }
   .mural{
     max-width:100%;
     width:90%;
     margin: auto;
-    margin-top: -24.5rem;
     padding: 0 10px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
   .template{
       &.primary{
-        width: 90%;
+        width: 80%;
         display: flex;
         flex-direction: column;
-        margin-bottom: 25px;
+        margin-top: 5rem;
         background-color:white;
         box-sizing: border-box;
         border-top-left-radius: 2px;
@@ -40,15 +37,15 @@
         }
         &.list{
           width: 100%;
+          height:calc(100vh - 100px);
           display: flex;
           flex-direction: column;  
-          box-sizing: border-box;
           padding: 10px 0;
-
 
       }
       &.compras{
         width:70%;
+        margin-top: 5rem;
         display: flex;
         flex-direction: column;  
         align-items: center;
@@ -56,7 +53,8 @@
 
 
     } &.campos{
-      width:70%;
+      width:60%;
+      margin-top: 5rem;
       padding: 0 15px;
       background-color:white;
   }
@@ -69,8 +67,8 @@
     &.home{
       width:100%;
       display: flex;
-      margin-top:5rem;
       flex-direction: column;
+      margin-top: 2px;
       max-height:880px;
       height:90vh;   
       border-top-left-radius: 2px;

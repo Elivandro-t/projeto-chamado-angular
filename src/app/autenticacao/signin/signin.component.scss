@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     height:394px;
+
     header{
         p{
             font-size:21px;
@@ -20,13 +21,12 @@
    
    
     .painel-login{
-        width:340px;
+       
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 2px;
-        padding:0 3rem;
         .login_int{
             display: flex;
             flex-direction: column;
@@ -115,25 +115,13 @@
        
     }
 }
-@media screen and (max-width:520px) {
-    .painel{
-        width:90%;
-        padding: 0 25px;
-        .painel-login{
-            width:90%;
-            margin: 0 20px;
-        }
-    }
-    
-}
+
 @media screen and (max-width:420px) {
     .painel{
         display: flex;
-        width:70%;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin: 0 10px;
         .painel-login{
             background: var(--red-to-pink-to-purple-horizontal-gradient);
             width:100%;
@@ -141,19 +129,22 @@
     }
     
 }
-@media screen and (max-width:320px) {
+@media screen and (max-width:360px) {
     .painel{
+
         .painel-login{
+            padding: 0 86px;
             background: var(--red-to-pink-to-purple-horizontal-gradient);
-            width:100%;
+            width:70%;
             mat-form-field{
-                width:100%;
+                width:90%;
                }
         }
         .btn-login-button{
-            width:90%;
+            padding: 0 5px;
             .btn-login{
-               width:100%;
+               
+               width:50%;
     
             }
             .btn-login-registrar{

@@ -4,6 +4,7 @@ import { RelatorioComponent } from './admin/relatorio/relatorio.component';
 import { AboutComponentComponent } from '../About/about.component';
 import { authGuard } from './autenticacao/auth/Auth.guard';
 import { ComprasComponent } from './shared/templete/campos/Compras/compras.component';
+import { ConexaoActive } from './autenticacao/auth/conectionActive';
 
 const routes: Routes = [
     {
@@ -11,21 +12,25 @@ const routes: Routes = [
     },
     {
         path: '',loadChildren:()=>import("../app/Home/Home.routes").then(e=>e.routes),
+        canActivate:[ConexaoActive]
     },
     {
-        path:"auth", loadChildren:()=>import("./autenticacao/autentication.routes").then(s=>s.routes)
+        path:"auth", loadChildren:()=>import("./autenticacao/autentication.routes").then(s=>s.routes),
+        canActivate:[ConexaoActive]
     },
     {
-        path: 'relatorio',component:RelatorioComponent
+        path: 'relatorio',component:RelatorioComponent,
+        canActivate:[ConexaoActive]
     },
     {
         path: 'about',component:AboutComponentComponent
     },
     {
-        path:"compras", component:ComprasComponent, title:"compras", canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] }
+        path:"compras", component:ComprasComponent, title:"compras", canActivate: [authGuard,ConexaoActive], data: { acess:  ["user","admin","suporte","dev"] }
     },
     {
-        path: "**", component: ErrorComponent
+        path: "**", component: ErrorComponent,
+        canActivate:[ConexaoActive]
     },
 ]; 
 

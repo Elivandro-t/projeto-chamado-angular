@@ -1,0 +1,51 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+
+<aside class="menu" (click)="eventP()">
+    <div class="menu_btn" (click)="s($event)">
+        
+        @if (isLoading) {
+            <app-image-loader></app-image-loader>
+        }@else {
+            <div  class="myCount" [style.backgroundImage]="'url('+img+')'">
+                <div class="header">
+                    <div class="btn">
+                        <a routerLink="/auth/user/perfil" class="myUsuario"> Minha conta</a>
+                        <mat-icon class="icon" (click)="ativar()">
+                            close
+                        </mat-icon>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        }
+      
+        <div class="lista-menu">
+            <div class="logo_name">
+                <span>{{usuario.name}}</span>
+            </div>
+            <nav>
+                <ul>
+                   @for (item of itensMenu; track $index) {
+                    <a  [routerLink]="item?.routerLink">
+                        <li [ngClass]="item.class"  *ngIf="hashRole(item.role)">
+                            <img [src]="item.icon" width="25px" height="25px" alt="" />
+                            <span>{{item.name}}</span>
+                        </li>
+                    </a>
+                   }
+                    <a routerLink=""  (click)="removeTOken()">
+                        <li class="li">
+                            <img src="assets/saida.png" width="25px" height="25px" alt="" />
+                            <span>Sair</span>
+                        </li>
+                    </a> 
+                </ul>
+            </nav>
+        </div>
+        <div class="footer">
+            NG 18 standalone-true V 2.2.20
+        </div>
+    </div>
+</aside>

@@ -9,12 +9,15 @@
 }
 
 .mural {
-    box-sizing: border-box;
-    margin-top: -24rem;
+
+    margin-top:25px;
     display: flex;
     align-items: center;
     justify-content: center;
+    // margin-top: 15rem;
+    box-sizing: border-box;
     padding: 0 10px;
+
      .template {
         &.primary {
             max-width: 100%;
@@ -26,6 +29,7 @@
             border-radius: 5px;
             box-sizing: border-box;
             margin: 0 10px;
+            
 
         }
 
@@ -38,6 +42,7 @@
             flex-direction: column;
             height: auto;
             box-sizing: border-box;
+            
         }
 
         width: 100%;

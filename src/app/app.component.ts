@@ -4,6 +4,7 @@ import { FigureComponent } from './shared/banner/figure/figure.component';
 import { RodapeComponent } from './shared/footer/rodape/rodape.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from '../HomePrincipal/Home.component';
+import { HeaderComponent } from './Home/header/header.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,7 +13,8 @@ import { HomeComponent } from '../HomePrincipal/Home.component';
     FigureComponent,
     RodapeComponent,
     MatSnackBarModule,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   providers:[
     // {

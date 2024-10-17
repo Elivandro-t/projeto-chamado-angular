@@ -18,7 +18,7 @@ import { ChamadoApiService } from '../../core/chamado-api.service';
 import { BuscaService } from '../../core/busca.service';
 import { MatIconModule } from '@angular/material/icon';
 import { AcitiveModule } from '../../core/activete.module';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MuralPricipalComponent } from '../../components/mural/mural-pricipal/mural-pricipal.component';
@@ -43,7 +43,8 @@ import { Loading } from '../../loading/Loading';
     MatInputModule, JspdfComponent, JspdfComponent,
     MatAutocompleteModule, MatFormFieldModule,
     MatPaginatorModule, MenuComponent, LoadingComponent,
-    Loading
+    Loading,
+    RouterLink
   ],
   providers: [
 

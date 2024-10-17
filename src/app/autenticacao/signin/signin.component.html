@@ -4,32 +4,34 @@
 <app-tela-de-login variant="login" *ngIf="!Logued.isLogout()">
   <div class="painel">
     <header>
-     
+
       <p class="span"> AGILE SERVICE</p>
 
     </header>
     <form class="painel-login" [formGroup]="service.Signin">
       <div class="login_int">
-          <label for="email">E-mail</label>
-          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" placeholder="Digite seu e-mail..."  autocomplete="on" autofocus="on"/>
-          @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
-            <small class="mensagem-erro">Digite um email valido</small>
-          }
-           @else if (service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched) {
-            <small class="mensagem-erro">Campo obrigatório</small>
-           }
+        <label for="email">E-mail</label>
+        <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)"
+          placeholder="Digite seu e-mail..." autocomplete="on" autofocus="on" />
+        @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
+        <small class="mensagem-erro">Digite um email valido</small>
+        }
+        @else if (service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched) {
+        <small class="mensagem-erro">Campo obrigatório</small>
+        }
       </div>
       <div class="login_int">
-  
-          <label for="password">Senha</label>
-          <div class="pass">
-            <input matInput type="{{text}}" formControlName="password" maxlength="14"  #password placeholder="Digite sua senha..."/>
-            <div class="eg">
-              <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+
+        <label for="password">Senha</label>
+        <div class="pass">
+          <input matInput type="{{text}}" formControlName="password" maxlength="14" #password
+            placeholder="Digite sua senha..." />
+          <div class="eg">
+            <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
           </div>
-         </div>
-         @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
-          <small class="mensagem-erro">Campo obrigatório</small>
+        </div>
+        @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
+        <small class="mensagem-erro">Campo obrigatório</small>
         }
       </div>
       <div class="btn-password">
@@ -37,7 +39,10 @@
       </div>
       <div class="btn-login-button">
 
-        <button color="primary" [disabled]="!service.Signin.valid" (click)="Enviar()" (mousedown.enter)="Enviar()" class="btn-login" mat-raised-button><p>Acessar</p><mat-icon>login</mat-icon></button>
+        <button color="primary" [disabled]="!service.Signin.valid" (click)="Enviar()" (mousedown.enter)="Enviar()"
+          class="btn-login" mat-raised-button>
+          <p>Acessar</p><mat-icon>login</mat-icon>
+        </button>
 
         <div class="btn-login-registrar">
           <p>Ainda não tem conta?</p>
@@ -45,7 +50,7 @@
         </div>
       </div>
       @if (sppiner) {
-        <app-loading [ativo]="true"></app-loading>
+      <app-loading [ativo]="true"></app-loading>
       }
     </form>
   </div>

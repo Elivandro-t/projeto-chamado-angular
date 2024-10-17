@@ -1,24 +1,29 @@
-<app-mural-pricipal>
-    <div class="continer_int" *ngFor="let i of foto">
-        <div class="logolink">
-            <app-back-button></app-back-button>
-            <h2>{{i.titulo}}</h2>
+@if (loading) {
+    <app-mural-pricipal variant="primary">
+        <div class="continer_int" *ngFor="let i of foto">
+            <div class="logolink">
+                <app-back-button></app-back-button>
+                <h2>{{i.titulo}}</h2>
+            </div>
+            <div class="campos ">
+                    <div class="Card">
+                        <section id="formButton" class="container">
+                            <app-descricao 
+                            [i]="i" 
+                            [ocultar]="ocultar"
+                            [chamado]="chamdoCard"
+                            ></app-descricao>
+                        </section>
+                        <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
+                    </div>
+               
+                <app-dados-tecnicos [habilitaBotao]="i.client_feito" [id]="ids" [ChamdoId]="i.chamadoid"
+                    (Pegartect)="pegart(i.id)" [done]="i.done" [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false"
+                    [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
+            </div>
         </div>
-        <div class="campos ">
-                <div class="Card">
-                    <section id="formButton" class="container">
-                        <app-descricao 
-                        [i]="i" 
-                        [ocultar]="ocultar"
-                        [chamado]="chamdoCard"
-                        ></app-descricao>
-                    </section>
-                    <app-coments class="campo_comment" [chamadoId]="i.id"></app-coments>
-                </div>
-           
-            <app-dados-tecnicos [habilitaBotao]="i.client_feito" [id]="ids" [ChamdoId]="i.chamadoid"
-                (Pegartect)="pegart(i.id)" [done]="i.done" [nomeUsuario]="i.tecnico_responsavel" [Perfil]="false"
-                [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
-        </div>
-    </div>
-</app-mural-pricipal>
+    </app-mural-pricipal>
+}
+@else {
+  <app-skeletonsdmn></app-skeletonsdmn>
+}

@@ -24,7 +24,8 @@ import { MatDialog } from '@angular/material/dialog';
     FigureComponent,
     AlertComponent,
     RodapeComponent,
-    UpdateComponent
+    UpdateComponent,
+    FigureComponent
   ],
   templateUrl: './tela-home.component.html',
   styleUrl: './tela-home.component.scss'

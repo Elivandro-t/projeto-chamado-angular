@@ -11,7 +11,7 @@
     </div>
     <div *ngIf="showModal" class="modal" (mousemove)="showButtons()" (mouseleave)="showButtons()">
         <div class="titule" *ngIf="showDownloadButtons">
-            <div>{{FotoName.replace("http://localhost:8080/imagens/","")}}</div>
+            <div class="name">{{FotoName.replace("https://back-chamados.onrender.com/imagens/","")}} </div>
             <div class="bot">
                 <mat-icon class="icon" (click)="navigar(FotoName)">cloud_download</mat-icon>
                 <mat-icon class="button-icon" (click)="close()">
@@ -19,14 +19,16 @@
                 </mat-icon>
             </div>
         </div>
-       
-        <img #img [src]="FotoName" alt="imagem exibida com detalhes chamados" class="modal-content" />
-        <div class="history">
-            @for (imagen of data; track $index) {
-            <img  class="imghistory" alt="exibindo imagens para admin" [src]="imagen.name"
-                (click)="showFullScreen(imagen.name)" tabindex="0" (keydown.enter)="showFullScreen(imagen.name)"
-                width="50px" height="50px" />
-            }
+        <div class="img">
+            <img #img [src]="FotoName" alt="imagem exibida com detalhes chamados" class="modal-content" />
+            <div class="history"  *ngIf="showDownloadButtons">
+                @for (imagen of data; track $index) {
+                <img  class="imghistory" alt="exibindo imagens para admin" [src]="imagen.name"
+                    (click)="showFullScreen(imagen.name)" tabindex="0" (keydown.enter)="showFullScreen(imagen.name)"
+                    width="50px" height="50px" />
+                }
+            </div>
         </div>
+       
     </div>
 </section>
