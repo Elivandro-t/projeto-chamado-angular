@@ -10,7 +10,7 @@
             <div  class="myCount" [style.backgroundImage]="'url('+img+')'">
                 <div class="header">
                     <div class="btn">
-                        <a routerLink="/auth/user/perfil" class="myUsuario"> Minha conta</a>
+                        <a (click)="removeTOken()" routerLink="/auth/user/perfil" class="myUsuario"> Minha conta</a>
                         <mat-icon class="icon" (click)="ativar()">
                             close
                         </mat-icon>
