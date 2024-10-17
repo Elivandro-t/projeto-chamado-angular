@@ -107,10 +107,10 @@
     }
 }
 #radio1:checked ~  .slide_checked .checked1{
-    background-color: aliceblue;
+    background-color: rgb(51, 50, 50);
  }
  #radio2:checked ~  .slide_checked .checked2{
-     background-color: aliceblue;
+    background-color: rgb(51, 50, 50);
   }
 
 @media screen and (max-width:900px){
