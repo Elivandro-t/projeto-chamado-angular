@@ -31,7 +31,7 @@ export const Itens = [
     {
         routerLink:"/lista/chamados/filiais",
         icon:"assets/all.png",
-        name:"Cards gerais",
+        name:"Solicitações Gerais",
         class:"li",
         role:["suporte"]
     }
