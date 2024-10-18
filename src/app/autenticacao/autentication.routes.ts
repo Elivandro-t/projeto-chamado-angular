@@ -11,29 +11,29 @@ import { EsqueceuSenhaComponent } from "./esqueceu-senha/novaSenha/esqueceu-senh
 export const routes: Routes = [
     {
         path: "signup", component: SignupComponent,
-        title:"tela de cadastro"
+        title:"Tela de cadastro"
     },
     {
         path: "user/perfil", component: PerfilComponent, canActivate: [authGuard], data: { acess:  ["user","admin","suporte","dev"] },title:"perfil usuario"
     },
     {
         path: "alterar/senha", component: AlterarSenhaComponent, canActivate: [authGuard], data: { acess: ["user","admin","suporte","dev"] },
-        title:"nova senha"
+        title:"Vova senha"
     },
     {
         path: "alterar/senha/:email", component: CodigoComponent
     },
     {
         path: "send/email", component: EmailSendComponent,
-        title:"esqueceu a senha"
+        title:"Esqueceu a senha"
     },
     {
         path: "esqueceu/senha", component: EsqueceuSenhaComponent,
-        title:"esqueceu a senha"
+        title:"Esqueceu a senha"
     },
     {
         path: "login", component: SigninComponent,
-        title:"tela de login - Chamado TI"
+        title:"Tela de login - Chamado TI"
     }
 ];
 

@@ -30,10 +30,12 @@ export class AuthInterceptors implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 500 ) {
-              this.dialog.open(ConfirmComponent);
+          this.authApi.$refreshtoken.next(true);
+
+              // this.dialog.open(ConfirmComponent);
         }
         if (error.status === 401) {
-          this.router.navigate(["/"]);
+          this.router.navigate(["/cards"]);
           this.auth.RemoveToken();
           this.auth.RemoveRefreshToken();
         }
