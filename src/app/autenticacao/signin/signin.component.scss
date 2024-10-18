@@ -25,16 +25,27 @@
         align-items: center;
         justify-content: center;
         border-radius: 2px;
+        padding: 0 5px;
         .login_int{
             display: flex;
             flex-direction: column;
             width: 100%;
             margin:5px 0;
-            height:60px;
+            height:50px;
+            padding: 2px 0;
+            background-color: #FFFF;
+            outline-color: blue;
+            border: 1px solid #293df0;
+            border-radius: 5px;
+            justify-content: center;
+               legend{
+                color: #d3d1d1;
+               }
                 input{
-                    height:32px;
-                    outline-color: blue;
-                   
+                    height:28px;
+                    margin:0 5px;
+                   outline: none;
+                   border: 0;
                 }
                 label{
                     font-size: 14px;
@@ -46,9 +57,6 @@
             .pass{
 
               display: flex;
-              border: 1px solid rgb(116, 110, 110);
-              align-items: center;
-              outline-color: blue;
               border-radius:2px;
               input{
                 width: 100%;

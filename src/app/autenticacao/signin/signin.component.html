@@ -4,25 +4,22 @@
 <app-tela-de-login variant="login" *ngIf="!Logued.isLogout()">
   <div class="painel">
     <header>
-
       <p class="span"> AGILE SERVICE</p>
-
     </header>
     <form class="painel-login" [formGroup]="service.Signin">
-      <div class="login_int">
-        <label for="email">E-mail</label>
+      <fieldset class="login_int">
+        <legend for="email">E-mail</legend>
         <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)"
           placeholder="Digite seu e-mail..." autocomplete="on" autofocus="on" />
-        @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
+      </fieldset>
+      @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
         <small class="mensagem-erro">Digite um email valido</small>
         }
         @else if (service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched) {
         <small class="mensagem-erro">Campo obrigatório</small>
         }
-      </div>
-      <div class="login_int">
-
-        <label for="password">Senha</label>
+      <fieldset class="login_int">
+        <legend for="password">Senha</legend>
         <div class="pass">
           <input matInput type="{{text}}" formControlName="password" maxlength="14" #password
             placeholder="Digite sua senha..." />
@@ -30,10 +27,10 @@
             <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
           </div>
         </div>
-        @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
+      </fieldset>
+      @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
         <small class="mensagem-erro">Campo obrigatório</small>
         }
-      </div>
       <div class="btn-password">
         <a (click)="esqueceuSenha()">Esqueceu a senha?</a>
       </div>
