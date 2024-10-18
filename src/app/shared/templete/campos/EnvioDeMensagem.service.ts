@@ -33,7 +33,7 @@ Acompanhe pelo portal todo o processo da sua solicitação.
 Caso tenha alguma dúvida, entre em contato.
 
 🔔 Clique abaixo e acesse seu link de acesso ao nosso portal: ⬇
-https://suporteinformatic.com.br/chamado/${card}/${usuarioId}/${id_chamado}/create
+http://suporteinformatic.com.br/chamado/${card}/${usuarioId}/${id_chamado}/create
 
 🔴
 

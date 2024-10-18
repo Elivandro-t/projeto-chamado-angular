@@ -1,21 +1,23 @@
 .example-spacer {
   flex: 1 2 auto;
 }
+
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:15px 26px;
-  border-bottom:1px solid #34495e;
+  padding: 15px 26px;
+  border-bottom: 1px solid #34495e;
   // background-color:#2c3e50 ;
-  background-color:#344453 ;
+  background-color: #344453;
 
-  
+
   .span {
     width: 186px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     .btn {
       width: 30px;
       height: 30px;
@@ -24,7 +26,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 15px;
-      span{
+
+      span {
         width: 15px;
         padding: 1px;
         margin: 2px;
@@ -33,127 +36,149 @@
 
       }
     }
-    .btn:active{
+
+    .btn:active {
       background-color: rgba(255, 255, 255, 0.5);
-      
+
     }
+
     cursor: pointer;
   }
+
   .active-page {
     font-weight: 600;
     color: rgb(255, 255, 255);
   }
-  .butosn{
+
+  .butosn {
     display: flex;
     align-items: center;
   }
+
   .button {
     display: flex;
     justify-content: center;
     align-items: center;
+
     .button-icon {
       width: 120px;
     }
-    mat-chip-listbox{
-      button{
+
+    mat-chip-listbox {
+      button {
         margin: 0 5px;
-       }
-     }
+      }
+    }
+
     .search {
       color: aliceblue;
     }
+
     mat-chip-listbox {
       gap: 5px;
     }
-    .logo_left{
+
+    .logo_left {
       display: flex;
       align-items: center;
-      .nome_usuario{
+
+      .nome_usuario {
         margin: 0 5px;
-        b{
+
+        b {
           color: #17222c;
         }
-        small{
-          margin:0px 5px;
+
+        small {
+          margin: 0px 5px;
           color: rgb(245, 241, 236);
         }
       }
     }
-    
-    .favoritos{
+
+    .favoritos {
       margin: 5px;
       width: 40px;
       height: 40px;
       border-radius: 100%;
       cursor: pointer;
-       .menu{
-        button{
-           span{
+
+      .menu {
+        button {
+          span {
             font-size: 10px;
 
-           }
-           
-         }
-          .btn-icon{
-            width:25px;
-            height:25px;
-          
-         }
-       
-       }
-     
-     }
+          }
+
+        }
+
+        .btn-icon {
+          width: 25px;
+          height: 25px;
+
+        }
+
+      }
+
+    }
 
   }
 
 }
+
 .user-name {
   width: 80%;
   display: flex;
   align-items: start;
-  padding:2px 15px;
- .usuario{
+  padding: 2px 15px;
+
+  .usuario {
     display: flex;
     flex-direction: column;
-    margin:0px 16px;
-    small{
-      font-size:9px;
-      margin:1;
+    margin: 0px 16px;
+
+    small {
+      font-size: 9px;
+      margin: 1;
       text-align: center;
     }
+
     .name {
-      font-size:15px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       color: blue;
       cursor: pointer;
     }
- }
+  }
 
 }
-@media screen and (max-width:700px){
-  .container{
+
+@media screen and (max-width:700px) {
+  .container {
     display: flex;
     align-self: center;
     justify-content: center;
   }
-  .toolbar{
+
+  .toolbar {
     padding: 0px 10px;
     width: 100%;
   }
-  
+
 }
-@media screen and (max-width:500px){
+
+@media screen and (max-width:500px) {
   .toolbar {
-    .button{
-      .logo_left{
+    .button {
+      .logo_left {
         display: none;
       }
     }
 
   }
- 
 
-  
-  
+
+
+
 }
