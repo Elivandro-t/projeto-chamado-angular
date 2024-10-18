@@ -60,6 +60,7 @@
             height: 20px;
             margin-right: 2px;
             margin-top: 2px;
+            
             }
         }
         
@@ -126,4 +127,20 @@
         }
     }
 
+}
+@media screen and (max-width:400px) {
+    .menu{
+        .menu_btn{
+            width: 200px;
+            .myCount{
+                height:150px;
+            }
+            .footer{
+                width:200px;
+                font-size: 10px;
+            }
+        }
+        
+    }
+    
 }
