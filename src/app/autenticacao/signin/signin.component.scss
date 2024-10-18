@@ -4,14 +4,12 @@
     justify-content: center;
     flex-direction: column;
     height:394px;
-
-
     header{
         p{
             font-size:21px;
             font-family:sans-serif;
             font-weight: 700;
-            color: #8a9fb8;
+            color: #fdfeff;
             width:100%;
             height:2px;
             margin: 0;
@@ -42,7 +40,7 @@
                 label{
                     font-size: 14px;
                     font-family: sans-serif;
-                    color: #706b6b;
+                    color: #d3d1d1;
                 }
             
         }
@@ -99,7 +97,7 @@
                 justify-content:center;
                 gap: 10px;
                 p{
-                    color: rgb(45, 79, 107);
+                    color: #d3d1d1;
                     font-size: 14px;
                 }
                 a{
