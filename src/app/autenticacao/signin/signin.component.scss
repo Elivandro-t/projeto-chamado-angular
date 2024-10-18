@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height:394px;
     header{
         p{
             font-size:21px;
@@ -30,7 +29,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            margin:10px 0;
+            margin:5px 0;
             height:60px;
                 input{
                     height:32px;
@@ -70,7 +69,7 @@
             a{
                 font-size: 14px;
                 font-family: sans-serif;
-                color: blue;
+                color: rgb(128, 175, 247);
                 cursor: pointer;
             }
             a:hover{
@@ -85,6 +84,8 @@
             align-items: center;
             justify-content:center;
             flex-direction: column;
+            background-color: #e7eff7;
+            border-radius:3px;
             gap: 5px;
             .btn-login{
                 width: 300px;
