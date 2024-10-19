@@ -2,6 +2,9 @@
   display: block;
   width: 100%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mural {
@@ -9,11 +12,11 @@
   width: 90%;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   box-sizing: border-box;
 
   .template {
-
     &.primary {
       width: 90%;
       display: flex;
@@ -87,6 +90,28 @@
     }
   }
 }
+@media screen and (max-width:720px) {
+
+  .mural {
+
+    .template {
+      &.primary {
+        width: 90%;
+      }
+
+      &.secundary {
+        width: 100%;
+      }
+
+      &.campos {
+        width: 100%;
+      }
+     
+
+    }
+  }
+
+}
 
 @media screen and (max-width:520px) {
 
@@ -105,6 +130,30 @@
       &.campos {
         width: 100%;
       }
+      
+
+    }
+  }
+
+}
+@media screen and (max-width:420px) {
+
+  .mural {
+    max-width: 500px;
+
+    .template {
+      &.primary {
+        width: 90%;
+      }
+
+      &.secundary {
+        width: 100%;
+      }
+
+      &.campos {
+        width: 100%;
+      }
+      
 
     }
   }

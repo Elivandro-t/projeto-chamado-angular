@@ -18,7 +18,7 @@ export const routes: Routes = [
     },
     {
         path: "alterar/senha", component: AlterarSenhaComponent, canActivate: [authGuard], data: { acess: ["user","admin","suporte","dev"] },
-        title:"Vova senha"
+        title:"Nova senha"
     },
     {
         path: "alterar/senha/:email", component: CodigoComponent

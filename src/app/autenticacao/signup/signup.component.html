@@ -1,4 +1,10 @@
-<app-tela-de-login variant="primary">
+<div class="signup">
+    <div class="banner">
+        <!-- <h1 style="position: absolute;top: 0;left: 0;margin-top: 4px;margin-left: 10px;" class="span"> AGILE SERVICE</h1>
+         <img src="assets/meninoHD.png"  alt="">
+         <div style="position: fixed;bottom: 0;color: #767c7c;">ng 18  v 2.3.20</div> -->
+         <app-login-bnnner></app-login-bnnner>
+      </div>
     <div class="painel">
         <div class="logo">
 
@@ -54,7 +60,7 @@
             <div class="campo-botton">
                 <section class="campo">
                     <label for="filial">Filial</label>
-                    <input matInput type="text" formControlName="filial" #filialInput
+                    <input style="height: 35px;" matInput type="text" formControlName="filial" #filialInput
                         (keydown.enter)="focusNext(emailInput)" placeholder="Digite sua filial..." />
                     @if (service.form.get('filial')?.errors?.['required']&&service.form.get('filial')?.touched) {
                         <small class="mensagem-erro">Campo obrigatorio</small>
@@ -134,4 +140,4 @@
             </div>
         </div>
     </div>
-</app-tela-de-login>
+</div>

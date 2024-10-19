@@ -16,13 +16,14 @@ import { TelaDeLoginComponent } from '../tela-de-login/tela-de-login.component';
 import { TelaLoginAuthComponent } from '../tela-login-auth/tela-login-auth.component';
 import { Loading } from '../../loading/Loading';
 import { SnackBar } from '../../AlertaDialog/snackBar/snackbar.component';
+import { LoginBnnnerComponent } from '../../components/shared/banner/login-bnnner/login-bnnner.component';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss',
-  imports: [MatInputModule,Loading, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
+  imports: [LoginBnnnerComponent,MatInputModule,Loading, MatProgressSpinnerModule, MatButtonModule, MatIconModule, ReactiveFormsModule, CommonModule, TelaLoginAuthComponent, TelaDeLoginComponent]
 })
 export class SigninComponent {
   desable: boolean = false;
