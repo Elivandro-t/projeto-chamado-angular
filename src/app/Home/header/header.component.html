@@ -10,7 +10,7 @@
         <span></span>
         <span></span>
       </div>
-     <p style="color: aliceblue;" routerLink="/cards"> {{logoName}}</p>
+     <p routerLink="/cards"> {{logoName}}</p>
     </section> 
     <span class="example-spacer"></span>
     <div class="button" >
@@ -42,7 +42,7 @@
       }
     </div>
   }@else {
-    <p style="color: aliceblue;font-weight: bold;" routerLink="/cards"> {{logoName}}</p>
+    <p style="color: aliceblue;font-weight: bold;padding: 2px 5px; border-radius: 2px;border: 1px solid #FFFF;" routerLink="/cards"> {{logoName}}</p>
     <div class="button" >
       <mat-chip-listbox class="btn" aria-label="Fish selection">
         <button routerLink="/auth/login" mat-raised-button color="primary">

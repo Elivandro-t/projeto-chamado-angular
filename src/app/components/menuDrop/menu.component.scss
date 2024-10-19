@@ -1,3 +1,20 @@
+@keyframes button{
+    0% {
+        transform: rotateY(0deg);  /* Começa na posição original */
+      }
+      25% {
+        transform: rotateY(-90deg);  /* Rotaciona 90 graus */
+      }
+      50% {
+        transform:rotateY(-180deg); /* Rotaciona 180 graus */
+      }
+      75% {
+        transform: rotateY(-270deg); /* Rotaciona 270 graus */
+      }
+      100% {
+        transform: rotateY(-360deg); /* Completa a rotação de volta à posição original */
+      }
+}
 .menu{
     position: fixed;
     z-index: 999;
@@ -40,6 +57,11 @@
                         }
                     }
                     mat-icon{
+                        animation: button 5s linear infinite;
+                        cursor: pointer;
+                    }
+                    mat-icon:hover{
+                        animation:none;
                         cursor: pointer;
                     }
                 }
@@ -69,7 +91,9 @@
             display: flex;
             width: 100%;
             flex-direction: column;
-             background-color:#2d2d2d;
+            //  background-color:#2d2d2d;
+            background: linear-gradient(135deg, #1C1C1C, #2E2E2E);
+
              height:calc(100vh - 50px);
              border-top-left-radius: 18px;
              border-top-right-radius: 18px;

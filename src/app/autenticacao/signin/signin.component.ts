@@ -89,4 +89,14 @@ export class SigninComponent {
       this.desable = true;
     }
   }
+  isborda(){
+    return this.service.Signin.get('email')?.errors?.['email']&&this.service.Signin.get('email')?.touched;
+        
+  }
+  isRequired(){
+    return this.service.Signin.get('email')?.errors?.['required']&&this.service.Signin.get('email')?.touched;
+  }
+  ispassword(){
+    return this.service.Signin.get('password')?.errors?.['required']&&this.service.Signin.get('password')?.touched;
+  }
 }

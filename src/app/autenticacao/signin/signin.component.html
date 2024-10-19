@@ -1,36 +1,47 @@
 <!-- eslint-disable @angular-eslint/template/no-autofocus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<app-tela-de-login variant="login" *ngIf="!Logued.isLogout()">
+<div class="login" *ngIf="!Logued.isLogout()">
+  <div class="banner">
+    <h1 style="position: absolute;top: 0;left: 0;margin-top: 4px;margin-left: 10px;" class="span"> AGILE SERVICE</h1>
+     <img src="assets/meninoHD.png"  alt="">
+     <div style="position: fixed;bottom: 0;color: #767c7c;">ng 18  v 2.3.20</div>
+  </div>
   <div class="painel">
     <header>
-      <p class="span"> AGILE SERVICE</p>
+      <h1 style="position: absolute;top: 0;left: 0;margin-top: 4px;margin-left: 10px;" class="span"> AGILE SERVICE</h1>
+      <h2 style="left: 0;margin-top: 4px;margin-left: 10px;" class="span">LOGIN</h2>
     </header>
     <form class="painel-login" [formGroup]="service.Signin">
-      <fieldset class="login_int">
-        <legend for="email">E-mail</legend>
-        <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)"
-          placeholder="Digite seu e-mail..." autocomplete="on" autofocus="on" />
-      </fieldset>
-      @if (service.Signin.get('email')?.errors?.['email']&&service.Signin.get('email')?.touched) {
+      <div class="container_field">
+        <fieldset class="login_int" [ngClass]="{'borda':isborda()||isRequired()}"  >
+          <legend for="email">E-mail</legend>
+          <input matInput type="email" formControlName="email" #email (keydown.enter)="Next(password)" autocomplete="of" required
+            placeholder="Digite seu e-mail..." autocomplete="on" autofocus="on" />
+        </fieldset>
+        @if (isborda()) {
         <small class="mensagem-erro">Digite um email valido</small>
         }
-        @else if (service.Signin.get('email')?.errors?.['required']&&service.Signin.get('email')?.touched) {
+        @else if (isRequired()) {
         <small class="mensagem-erro">Campo obrigatório</small>
         }
-      <fieldset class="login_int">
-        <legend for="password">Senha</legend>
-        <div class="pass">
-          <input matInput type="{{text}}" formControlName="password" maxlength="14" #password
-            placeholder="Digite sua senha..." />
-          <div class="eg">
-            <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+      </div>
+      <div class="container_field">
+        <fieldset class="login_int" [ngClass]="{'borda':ispassword()}">
+          <legend  class="legend" for="password">Senha</legend>
+          <div class="pass">
+            <input matInput type="{{text}}" formControlName="password" maxlength="14" #password
+              placeholder="Digite sua senha..." />
+            <div class="eg">
+              <mat-icon (click)="mostrar()">{{icon}}</mat-icon>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      @if (service.Signin.get('password')?.errors?.['required']&&service.Signin.get('password')?.touched) {
+        </fieldset>
+        @if (ispassword()) {
         <small class="mensagem-erro">Campo obrigatório</small>
         }
+      </div>
+      
       <div class="btn-password">
         <a (click)="esqueceuSenha()">Esqueceu a senha?</a>
       </div>
@@ -51,4 +62,4 @@
       }
     </form>
   </div>
-</app-tela-de-login>
+</div>

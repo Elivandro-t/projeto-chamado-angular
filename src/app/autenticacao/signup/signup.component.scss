@@ -42,9 +42,11 @@
                     font-family: sans-serif;
                     color: #706b6b;
                 }
-                input{
+                input::placeholder{
                     height: 25px;
                     outline: none;
+                    color: #B0B0B0; /* Escolha a cor desejada */
+  opacity: 1; 
                 }
             }
         }
