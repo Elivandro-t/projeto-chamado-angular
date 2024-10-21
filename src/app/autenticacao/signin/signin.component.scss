@@ -1,14 +1,4 @@
-@keyframes rotateY {
-    from {
-        transform: rotateY(0deg);
-        /* Inicia na posição normal */
-    }
 
-    to {
-        transform: rotateY(360deg);
-        /* Gira completamente */
-    }
-}
 
 .login {
     display: flex;
@@ -17,11 +7,8 @@
     padding: 0;
 
     .banner {
-        background: linear-gradient(135deg, #1C1C1C, #2E2E2E);
+        // background: linear-gradient(135deg, #1C1C1C, #2E2E2E);
         flex: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.3);
         /* Sombra mais forte e difusa */
         flex-direction: column;
@@ -40,7 +27,6 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             margin-top: 20px;
             letter-spacing: 1px;
-            animation: rotateY 15s linear infinite;
 
         }
     }
@@ -52,7 +38,7 @@
         flex-direction: column;
         height: 100vh;
         flex: 1;
-        padding: 0 20px;
+        padding: 0 15px;
         h1 {
             font-size: 1.5rem;
             color: #FFFFFF;

@@ -42,7 +42,7 @@ import { DescricaoComponent } from '../../descricao/descricao.component';
 })
 export class DadosReecebidosComponent implements OnInit {
 
-  ocultar: boolean = false;
+  ocultar: boolean = true;
   titulo: "Mostrar" | "Ocultar" = "Mostrar";
   foto: any;
   ids: any;

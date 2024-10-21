@@ -1,9 +1,10 @@
 @if (loading) {
     <app-mural-pricipal variant="primary">
-        <div class="continer_int" *ngFor="let i of foto">
+        @for (i of foto; track $index) {
+        <div class="continer_int" >
             <div class="logolink">
                 <app-back-button></app-back-button>
-                <h2>{{i.titulo}}</h2>
+                <h2>{{i?.titulo}}</h2>
             </div>
             <div class="campos ">
                     <div class="Card">
@@ -22,6 +23,7 @@
                     [disable]="i.aceito" [disableAdmin]="false"></app-dados-tecnicos>
             </div>
         </div>
+    }
     </app-mural-pricipal>
 }
 @else {

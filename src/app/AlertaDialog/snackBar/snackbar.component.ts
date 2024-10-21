@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
     providedIn:"root"
 })
 export class SnackBar{
-    horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+    horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private _snackBar: MatSnackBar,private routes: Router) {}

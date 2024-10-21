@@ -1,18 +1,23 @@
-<app-tela-de-login variant="secundary">
-    <form class="painel-login" [formGroup]="form">
+<div class="email">
+   <div class="banner">
+    <app-login-bnnner></app-login-bnnner>
+   </div>
+    @if (!ValidaEmail) {
+      <form class="painel-login" [formGroup]="form">
         <legend>Esqueceu a senha?</legend>
-         <label  class="input-text">
-          <mat-form-field>
-            <mat-label>E-mail</mat-label>
+         <div  class="input-text">
              <div class="input-search">
-                <input matInput type="text" formControlName="email" />
+                <input matInput type="text" id="email" formControlName="email"  placeholder="Digite seu email..."/>
                 <button [disabled]="!form.valid"  (click)="enviar()" (keydown.enter)="enviar()" class="btn-login"  mat-button color="primary"><mat-icon>search</mat-icon></button>
             </div>
             <mat-error *ngIf="form.get('email')?.errors?.['required']&&form.get('email')?.touched">Campo obrigatorio</mat-error>
             <mat-error *ngIf="form.get('email')?.errors?.['email']&&form.get('email')?.touched">Digite um E-mail valido</mat-error>
 
-
-          </mat-form-field>
-        </label >
+        </div >
     </form>
-</app-tela-de-login>
+    }@else if (validaCode && ValidaEmail) {
+      <div  class="painel-login" >
+        <app-codigo [email]="email"></app-codigo>
+      </div>
+    }
+  </div>

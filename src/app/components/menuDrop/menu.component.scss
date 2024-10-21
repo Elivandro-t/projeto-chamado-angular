@@ -23,7 +23,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color:rgba(53, 50, 50, 0.6);
+    background-color:rgba(0, 0, 0, 0.1);
      transition: 10s;
     .menu_btn{
         width:250px;
@@ -92,13 +92,13 @@
             width: 100%;
             flex-direction: column;
             //  background-color:#2d2d2d;
-            background: linear-gradient(135deg, #1C1C1C, #2E2E2E);
-
+            background: linear-gradient(360deg,#3f5264, #2b3a47);
              height:calc(100vh - 50px);
              border-top-left-radius: 18px;
              border-top-right-radius: 18px;
              margin-top: -0.7rem;
              position: relative;
+             z-index: 9999;
              .logo_name{
                 height: 30px;
                 display: flex;

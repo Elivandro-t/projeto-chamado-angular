@@ -47,7 +47,7 @@ import { SkeletonAdminComponent } from './skeleton/admin.skeleton.component';
 })
 export class DadosDetalheComponent implements AfterViewInit {
 
-  ocultar: boolean = false;
+  ocultar: boolean = true;
   foto: any;
   chamdoCard: any;
   id: any;

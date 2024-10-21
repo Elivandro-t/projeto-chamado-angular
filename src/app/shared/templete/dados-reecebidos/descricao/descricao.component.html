@@ -1,66 +1,69 @@
 <section id="formButton" class="container">
     <!--exibi informacoes do usuario-->
-<div class="input" >
-    <div class="ls-span" >
-        <!-- <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30"
+    <div class="input">
+        <div class="ls-span">
+            <!-- <img class="imagen-card" alt="imagem topo detalhes chamados" width="30" [height]="30"
             src="assets/pc.png" /> -->
-        @if (chamado.usuario_logado!==""||chamado.usuario_logado !==null ||
-        chamado.usuario_logado!==undefined) {
+            @if (chamado.usuario_logado!==""||chamado.usuario_logado !==null ||
+            chamado.usuario_logado!==undefined) {
             <div class="banner_logo">
                 <span><b>{{chamado.usuario_logado.toUpperCase()}}</b> </span>
             </div>
-        }
-        <p>criou em</p>
-        <small>{{i.data}}</small>
-        </div>
-    <mat-icon color="secundary" (click)="ocults()" (keydown.enter)="ocults()" role="button" tabindex="0">{{titulo}}</mat-icon>
+            <p>criou em</p>
+            <small>{{i.data}}</small>
 
-    
-</div>
-<div class="name" *ngIf="ocultar" >
-                                    
-    <div class="data_top">
-        <div class="input-Top">
-            <span class="inforDescricao">Solicitação</span>
-            <small>{{i.solicitacao}}</small>
-           
-       </div>
-        <div class="input-Top">
-            <span class="inforDescricao">Nome completo</span>
-            <small>{{i.usuario}}</small>
+            }
         </div>
+
+        <mat-icon color="secundary" (click)="ocults()" (keydown.enter)="ocults()" role="button"
+            tabindex="0">{{titulo}}</mat-icon>
+
+
     </div>
-    <div class="data_top">
-        @if (i.issuetype.includes("Inclusão de Acesso")) {
+    <div class="name" *ngIf="ocultar">
+
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Solicitação</span>
+                <small>{{i.solicitacao}}</small>
+
+            </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Nome completo</span>
+                <small>{{i.usuario}}</small>
+            </div>
+        </div>
+        <div class="data_top">
+            @if (i.issuetype.includes("Inclusão de Acesso")) {
             <div class="input-Top">
                 <span class="inforDescricao">Filial</span>
-                <small >{{i.filial}}</small>
+                <small>{{i.filial}}</small>
             </div>
-        }@else {
+            }@else {
             <div class="input-Top">
                 <span class="inforDescricao">Suporte</span>
-                <small >{{i.issuetype}}</small>
+                <small>{{i.issuetype}}</small>
             </div>
-        }
-        <div class="input-Top">
-             <span class="inforDescricao">Setor</span>
-            <small>{{i.setor}}</small>
+            }
+            <div class="input-Top">
+                <span class="inforDescricao">Setor</span>
+                <small>{{i.setor}}</small>
+            </div>
         </div>
-    </div>
-    <div class="data_top">
-       @if (i.issuetype.includes("Hardware")) {
-        <div class="input-Top">
-            <span class="inforDescricao">Patrimonio</span>
-            <small>{{i.patrimonio}}</small>
+        <div class="data_top">
+            @if (i.issuetype.includes("Hardware")) {
+            <div class="input-Top">
+                <span class="inforDescricao">Patrimonio</span>
+                <small>{{i.patrimonio}}</small>
+            </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Equipamento</span>
+                <small>{{i.equipamento}}</small>
+            </div>
+            }
         </div>
-        <div class="input-Top">
-            <span class="inforDescricao">Equipamento</span>
-            <small>{{i.equipamento}}</small>
-        </div>
-    }
-    </div>
-    <div class="data_top">
-        @if (i.issuetype.includes("Sistema")) {
+        <div class="data_top">
+            @if (i.issuetype.includes("Sistema")) {
             <div class="input-Top">
                 <span class="inforDescricao">Sistema</span>
                 <small>{{i.sistem_erro}}</small>
@@ -69,69 +72,72 @@
                 <span class="inforDescricao">Erro</span>
                 <small>{{i.erro}}</small>
             </div>
-        }
-    </div>
+            }
+        </div>
         @if (i.issuetype.includes("Inclusão de Acesso")) {
-            <div class="data_top">
-                <div class="input-Top">
-                    <span class="inforDescricao">GMcore id</span>
-                    <small >{{i.gmid}}</small>
-                </div>
-                <div class="input-Top">
-                     <span class="inforDescricao">Cpf</span>
-                    <small>{{i.cpf}}</small>
-                </div>
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">GMcore id</span>
+                <small>{{i.gmid}}</small>
             </div>
-            @if (i.solicitacao.includes("CRIACAO DE CONTA AD")||i.solicitacao.includes("CRIACAO DE EMAIL")||i.solicitacao.includes("RESET DE SENHA ZIMBRA")||i.solicitacao.includes("RESET DE SENHA MAESTRO")||i.solicitacao.includes("RESET DE SENHA JIRA")||i.solicitacao.includes("RESET DE CONTA AD")||i.solicitacao.includes("SOLICITACAO DE PACOTE OFFICE")||i.solicitacao.includes("SOLICITACAO DE VPN")){
-                 
-            <div class="data_top">
-                <div class="input-Top">
-                    <span class="inforDescricao">Centro de custo</span>
-                    <small >{{i.centro_de_custo}}</small>
-                </div>
-                <div class="input-Top">
-                     <span class="inforDescricao">Email</span>
-                    <small>{{i.emailUsuario}}</small>
-                </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Cpf</span>
+                <small>{{i.cpf}}</small>
             </div>
-            <div class="data_top">
-                <div class="input-Top">
-                    <span class="inforDescricao">Data de nascimento</span>
-                    <small >{{i.data_nasc}}</small>
-                </div>
-                <div class="input-Top">
-                     <span class="inforDescricao">Data de admissão</span>
-                    <small>{{i.data_admin}}</small>
-                </div>
-            </div>
-            <div class="data_top">
-                <div class="input-Top">
-                    <span class="inforDescricao">Função</span>
-                   <small>{{i.funcao}}</small>
-               </div>
-            </div>
-            <div class="data_top">
-                <div class="input-Top">
-                    <span class="inforDescricao">Nome do aprovador</span>
-                    <small>{{i.nomeDogestor}}</small>
-                </div>
-                <div class="input-Top">
-                    <span class="inforDescricao">Email aprovador</span>
-                    <small >{{i.emailGestorAprovador}}</small>
-                </div>
-            </div>
-            }
-            @else if (i.solicitacao.includes("ACESSO ESPECIFICO AO USUARIO")) {
-                <div class="data_top">
-                    <div class="input-Top">
-                        <span class="inforDescricao">Função</span>
-                       <small>{{i.funcao}}</small>
-                   </div>
-                </div>
-            }
-            @else {
+        </div>
+        @if (i.solicitacao.includes("CRIACAO DE CONTA AD")||i.solicitacao.includes("CRIACAO DE
+        EMAIL")||i.solicitacao.includes("RESET DE SENHA ZIMBRA")||i.solicitacao.includes("RESET DE SENHA
+        MAESTRO")||i.solicitacao.includes("RESET DE SENHA JIRA")||i.solicitacao.includes("RESET DE CONTA
+        AD")||i.solicitacao.includes("SOLICITACAO DE PACOTE OFFICE")||i.solicitacao.includes("SOLICITACAO DE VPN")){
 
-            <!-- <div class="data_top">
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Centro de custo</span>
+                <small>{{i.centro_de_custo}}</small>
+            </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Email</span>
+                <small>{{i.emailUsuario}}</small>
+            </div>
+        </div>
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Data de nascimento</span>
+                <small>{{i.data_nasc}}</small>
+            </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Data de admissão</span>
+                <small>{{i.data_admin}}</small>
+            </div>
+        </div>
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Função</span>
+                <small>{{i.funcao}}</small>
+            </div>
+        </div>
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Nome do aprovador</span>
+                <small>{{i.nomeDogestor}}</small>
+            </div>
+            <div class="input-Top">
+                <span class="inforDescricao">Email aprovador</span>
+                <small>{{i.emailGestorAprovador}}</small>
+            </div>
+        </div>
+        }
+        @else if (i.solicitacao.includes("ACESSO ESPECIFICO AO USUARIO")) {
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Função</span>
+                <small>{{i.funcao}}</small>
+            </div>
+        </div>
+        }
+        @else {
+
+        <!-- <div class="data_top">
                 <div class="input-Top">
                     <span class="inforDescricao">Data de nascimento</span>
                     <small >{{i.data_nasc}}</small>
@@ -141,25 +147,25 @@
                     <small>{{i.data_admin}}</small>
                 </div>
             </div> -->
-            <div class="data_top">
-                <div class="input-Top">
-                     <span class="inforDescricao">Cargo</span>
-                    <small>{{i.funcao}}</small>
-                </div>
+        <div class="data_top">
+            <div class="input-Top">
+                <span class="inforDescricao">Cargo</span>
+                <small>{{i.funcao}}</small>
             </div>
-            }
+        </div>
+        }
         }
 
-    
-    <div class="data_top2">
-        <div class="input-descricao">
-            <span class="inforDescricao">Descrição</span>
-            <div class="input-Top"  [innerHTML]="sanitize(i.descricao)"></div>
+
+        <div class="data_top2">
+            <div class="input-descricao">
+                <span class="inforDescricao">Descrição</span>
+                <div class="input-Top" [innerHTML]="sanitize(i.descricao)"></div>
+            </div>
+            <div class="input-Top">
+                <app-imagens [data]="i.imagens"></app-imagens>
+            </div>
         </div>
-        <div class="input-Top">
-            <app-imagens [data]="i.imagens"></app-imagens>
-        </div>
+
     </div>
-    
-</div>
 </section>

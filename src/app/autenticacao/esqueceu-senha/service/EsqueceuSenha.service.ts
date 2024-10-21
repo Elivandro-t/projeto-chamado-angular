@@ -12,8 +12,7 @@ export class EsqueceuSenhaService{
     api=environment.apiUrl;
     constructor(private http: HttpClient){}
     Send(email: any): Observable<any>{
-        console.log("meu email "+ email);
-        return this.http.put<any>(`${this.api}/alterar/cod/${email}`,{}).pipe();
+        return this.http.put<any>(`${this.api}/alterar/cod/${email}`,{});
     }
     Verificar(email: any,codigo: any): Observable<any>{
         return this.http.post<any>(`${this.api}/varificacao/code`,{email,codigo}).pipe();

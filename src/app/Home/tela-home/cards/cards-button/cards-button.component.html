@@ -1,10 +1,30 @@
 <app-cards-chamados>
     <section class="container-banner">
-       <h1>SOLICITAÇÕES</h1>
-        <div class="card-button" >
+        @if (loading) {
+        <h1>SOLICITAÇÕES</h1>
+        <div class="card-button">
             @for(item of data; track $index) {
-                    <app-my-buttons rotas="/itens/{{item.id}}" src="{{item!.imagem}}" title="{{item!.name}}" subtitle="{{item.titulo}}"></app-my-buttons>
+            <app-my-buttons rotas="/itens/{{item.id}}" src="{{item!.imagem}}" title="{{item!.name}}"
+                subtitle="{{item.titulo}}"></app-my-buttons>
+
             }
         </div>
+    }@else {
+     
+        <section>
+            @for (item of it; track $index) {
+            <mat-card  class="card-transition">
+                <div class="imagen-card" alt="Imagem card"  ></div>
+               <div class="mat-titolo">
+                <mat-card-header class="title">
+                </mat-card-header>
+                <mat-card-header class="title">
+                </mat-card-header>
+               </div>
+              </mat-card>
+            }
+        </section>
+      
+    }
     </section>
 </app-cards-chamados>
