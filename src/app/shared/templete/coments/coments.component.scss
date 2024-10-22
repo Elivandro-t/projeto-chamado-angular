@@ -1,6 +1,5 @@
 .container_templet {
   padding: 0 17px;
-
   .input_container-int2 {
     box-sizing: border-box;
     display: flex;
@@ -79,28 +78,29 @@
 
           .ed {
             width: 100%;
+
             .editor {
               width: 100%;
             }
 
-           
-              .drop{
-                display: flex;
-                align-items: start;
-                justify-content: center;
-                flex-direction: column;
-                box-sizing: border-box;
-                width: 100%;
-                height: 80px;
-                border-radius: 2px;
+
+            .drop {
+              display: flex;
+              align-items: start;
+              justify-content: center;
+              flex-direction: column;
+              box-sizing: border-box;
+              width: 100%;
+              height: 80px;
+              border-radius: 2px;
+              margin: 5px 0;
+
+              .btn {
+                width: 30%;
                 margin: 5px 0;
+              }
 
-                .btn {
-                  width: 30%;
-                  margin: 5px 0;
-                }
 
-              
 
             }
 
@@ -123,6 +123,7 @@
               height: 100%;
               border: 0;
               margin: 0;
+              outline: none;
             }
           }
         }
@@ -276,21 +277,21 @@
 
   .container_templet {
     margin: 0;
-    padding: 0 30px;
 
     .input_container-int2 {
 
 
       .input_container {
         align-items: center;
+
         .txt {
 
           .editor {
-            width: 60%;
+            width: 40%;
           }
 
           .textArea {
-            width: 60%;
+            width: 40%;
 
             input {
               width: 100%;
@@ -308,7 +309,7 @@
               height: 60px;
 
               .drop {
-                width: 80%;
+                width: 60%;
                 margin: 5px 0;
                 height: 100px;
               }
@@ -333,66 +334,8 @@
 
 }
 
+
 .img_logo {
   display: flex;
 }
 
-@media screen and (max-width:460px) {
-  .txt {
-    .input_container {
-      .txt {
-
-        .editor {
-          width: 60%;
-        }
-
-        .textArea {
-          width: 60%;
-
-          input {
-            width: 70%;
-          }
-        }
-
-        .button {
-          width: 80%;
-
-          section {
-            width: 80%;
-
-            .drop {
-              width: 80%;
-              margin: 5px 0;
-              height: 100px;
-            }
-
-
-          }
-
-          .btn {
-            width: 60%;
-          }
-        }
-
-        .tinymce-editor {
-
-          margin-bottom: 0 !important;
-        }
-
-      }
-
-    }
-
-    .comments-container {
-      max-width: 300px;
-      width: 100%;
-
-      .comentarios {
-        width: 100%;
-
-      }
-    }
-
-  }
-
-}

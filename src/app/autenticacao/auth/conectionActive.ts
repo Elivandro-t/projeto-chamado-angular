@@ -9,6 +9,7 @@ import { Conect } from './Conect.service';
     providedIn:"root"
 })
 export class ConexaoActive implements CanActivate{
+  url = "https://agileservice.onrender.com";
     constructor(
         private router: Router,
         private dialog: MatDialog,
@@ -20,7 +21,7 @@ export class ConexaoActive implements CanActivate{
           this.dialog.open(InternetErroComponent);
           return false;
         } else {
-          return this.connectivityService.checkConnectivity("https://agileservice.onrender.com/", 20000).pipe(
+          return this.connectivityService.checkConnectivity("http://localhost:4200/", 20000).pipe(
             map((isConnected: boolean) => {
               if (!isConnected) {
                 this.dialog.open(InternetErroComponent);

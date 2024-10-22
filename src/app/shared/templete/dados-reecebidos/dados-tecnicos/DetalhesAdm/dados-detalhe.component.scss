@@ -1,6 +1,9 @@
 .continer_int {
-  padding: 0px 16px;
+  padding: 0px 30px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   .logolink {
     display: flex;
@@ -25,13 +28,11 @@
 
   .campos {
     display: flex;
+  
+    // descrição e comentario
     .container_templete {
       width:90%;
       margin-bottom: 5rem;
-      .Card {
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
         .container {
           border-top-right-radius:5px;
           border-top-left-radius: 5px;
@@ -63,7 +64,7 @@
 
 
         }
-      }
+      
 
     }
 
@@ -121,6 +122,7 @@
             border: 1px solid rgba(136, 136, 125, 0.267);
             outline-color: rgb(53, 36, 206);
             border: 1px #ff34;
+            outline: none;
           }
         }
       }
