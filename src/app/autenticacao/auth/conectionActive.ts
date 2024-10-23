@@ -20,7 +20,7 @@ export class ConexaoActive implements CanActivate{
           this.dialog.open(InternetErroComponent);
           return false;
         } else {
-          return this.connectivityService.checkConnectivity("http://localhost:4200", 10000).pipe(
+          return this.connectivityService.checkConnectivity("https://agileservice.onrender.com/", 10000).pipe(
             map((isConnected: boolean) => {
               if (!isConnected) {
                 this.dialog.open(InternetErroComponent);
